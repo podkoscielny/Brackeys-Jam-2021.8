@@ -1,0 +1,111 @@
+using UnityEngine;
+
+public class CharacterController2D : MonoBehaviour
+{
+    [Header("Movement")]
+    [Range(0, 1)] [SerializeField] float crouchSpeed = .36f;
+    [SerializeField] float jumpForce = 12f;
+    [SerializeField] bool airControl = false;
+
+    [Header("Collision")]
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] Transform ceilingCheck;
+
+    [Header("Rigidbody")]
+    [SerializeField] Rigidbody2D characterRb;
+
+    [Header("Animation")]
+    [SerializeField] AnimationController animationController;
+
+    public bool IsGrounded { get; private set; }
+    private bool _facingRight = true;
+    private bool _isCrouching = false;
+    private bool _isCheckingCeiling = false;
+    private float _movementMultiplier = 1f;
+    private const float _groundedRadius = .2f;
+    private const float _ceilingRadius = .2f;
+
+    public void Move(float moveAmount)
+    {
+        //only control the player if grounded or airControl is turned on
+        if (IsGrounded || airControl)
+        {
+            if (_isCheckingCeiling) CeilingCheck(); //check if the player can stand up after releasing crouch key
+
+            moveAmount *= _movementMultiplier;
+            characterRb.velocity = new Vector2(0, characterRb.velocity.y);
+            if (moveAmount != 0) characterRb.AddForce(Vector2.right * moveAmount);
+
+            if (moveAmount > 0 && !_facingRight || moveAmount < 0 && _facingRight)
+                FlipCharacter();
+        }
+    }
+
+    public void Crouch(bool isCrouching)
+    {
+        if (isCrouching)
+        {
+            _movementMultiplier = crouchSpeed;
+            _isCrouching = true;
+            animationController.OnCrouching(true); //Start Crouching animation
+        }
+        else
+        {
+            _isCheckingCeiling = true;
+
+        }
+    }
+
+    public void Jump()
+    {
+        if (IsGrounded && !_isCrouching)
+        {
+            IsGrounded = false;
+            animationController.OnJumping(); //Start jump animation
+            characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    void FlipCharacter()
+    {
+        _facingRight = !_facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    void GroundCheck()
+    {
+        if (!IsGrounded)
+        {
+            if (IsGroundBeneath())
+            {
+                IsGrounded = true;
+                animationController.OnLanding(); //Set Landing animation
+            }
+        }
+    }
+
+    bool IsGroundBeneath() => Physics2D.OverlapCircle(groundCheck.position, _groundedRadius, groundMask) != null;
+
+    void CeilingCheck()
+    {
+        _isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, _ceilingRadius, groundMask) != null;
+        if (!_isCrouching)
+        {
+            _movementMultiplier = 1f;
+            _isCheckingCeiling = false;
+            animationController.OnCrouching(false); //Stop Crouching animation
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision) => GroundCheck();
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (IsGrounded && (groundMask.value & (1 << collision.gameObject.layer)) > 0 && !IsGroundBeneath()) //check if collisions layer is the same as grounds
+        {
+            IsGrounded = false;
+            animationController.OnFalling(); //Set falling animation
+        }
+    }
+}
