@@ -44,3 +44,9 @@ TagManager:
   - name: Characters
     uniqueID: 1360585385
     locked: 0
+  - name: Bullets
+    uniqueID: 3531804453
+    locked: 0
+  - name: Player
+    uniqueID: 107206495
+    locked: 0

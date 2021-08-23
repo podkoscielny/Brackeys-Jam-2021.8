@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] CharacterController2D controller;
+    [SerializeField] Rigidbody2D playerRb;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] GameObject poopPrefab;
+    [SerializeField] Transform poopSpawn;
 
     private float _horizontalMovement = 0f;
     private float _movementSpeed = 200f;
@@ -18,6 +21,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             controller.Jump();
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
+            Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
+
+            poopRb.velocity = playerRb.velocity / 2;
         }
     }
 
