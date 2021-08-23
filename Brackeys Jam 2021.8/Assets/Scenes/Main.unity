@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 355462007}
   - component: {fileID: 355462006}
   - component: {fileID: 355462008}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchSpeed: 0.36
-  jumpForce: 6
+  jumpForce: 5
   airControl: 1
   groundMask:
     serializedVersion: 2
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 1184998421}
   - component: {fileID: 1184998420}
   - component: {fileID: 1184998419}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

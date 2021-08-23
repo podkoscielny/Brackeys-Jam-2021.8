@@ -21,6 +21,7 @@ public class CharacterController2D : MonoBehaviour
     public bool IsGrounded { get; private set; }
     private bool _facingRight = true;
     private bool _isCrouching = false;
+    private bool _hasGroundCollisionEntered = false;
     private bool _isCheckingCeiling = false;
     private float _movementMultiplier = 1f;
     private const float _groundedRadius = .2f;
@@ -62,6 +63,7 @@ public class CharacterController2D : MonoBehaviour
         if (IsGrounded && !_isCrouching)
         {
             IsGrounded = false;
+            _hasGroundCollisionEntered = false;
             animationController.OnJumping(); //Start jump animation
             characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -75,17 +77,16 @@ public class CharacterController2D : MonoBehaviour
 
     void GroundCheck()
     {
-        if (!IsGrounded)
+        if (IsGroundBeneath())
         {
-            if (IsGroundBeneath())
-            {
-                IsGrounded = true;
-                animationController.OnLanding(); //Set Landing animation
-            }
+            IsGrounded = true;
+            animationController.OnLanding(); //Set Landing animation
         }
     }
 
     bool IsGroundBeneath() => Physics2D.OverlapCircle(groundCheck.position, _groundedRadius, groundMask) != null;
+
+    bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
 
     void CeilingCheck()
     {
@@ -98,11 +99,24 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision) => GroundCheck();
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (IsObjectsMaskSameAsGrounds(collision.gameObject))
+        {
+            _hasGroundCollisionEntered = true;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!IsGrounded && _hasGroundCollisionEntered) GroundCheck();
+    }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (IsGrounded && (groundMask.value & (1 << collision.gameObject.layer)) > 0 && !IsGroundBeneath()) //check if collisions layer is the same as grounds
+        _hasGroundCollisionEntered = false;
+
+        if (IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && !IsGroundBeneath()) //check if collisions layer is the same as grounds
         {
             IsGrounded = false;
             animationController.OnFalling(); //Set falling animation
