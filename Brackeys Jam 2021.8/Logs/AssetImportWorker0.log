@@ -15,11 +15,11 @@ D:/Unity Projects/Brackeys Jam 2021.8/Brackeys Jam 2021.8
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51606
+63246
 Successfully changed project path to: D:/Unity Projects/Brackeys Jam 2021.8/Brackeys Jam 2021.8
 D:/Unity Projects/Brackeys Jam 2021.8/Brackeys Jam 2021.8
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 130.77 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 70.48 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.12f1 (b3b2c6512326)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Resources/UnitySubsystems
@@ -35,39 +35,39 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56848
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56736
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003793 seconds.
+Registered in 0.002940 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 86.93 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 71.46 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.309 seconds
+- Completed reload, in  1.534 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006665 seconds.
+Registered in 0.005188 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 66.40 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 71.58 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.907 seconds
+- Completed reload, in  1.424 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2691 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.5 MB.
-System memory in use after: 118.7 MB.
+Unloading 3223 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 137.2 MB.
+System memory in use after: 134.3 MB.
 
-Unloading 55 unused Assets to reduce memory usage. Loaded Objects now: 3086.
-Total: 5.098600 ms (FindLiveObjects: 0.401200 ms CreateObjectMapping: 0.226800 ms MarkObjects: 2.776000 ms  DeleteObjects: 1.692200 ms)
+Unloading 64 unused Assets to reduce memory usage. Loaded Objects now: 3625.
+Total: 4.538600 ms (FindLiveObjects: 0.303400 ms CreateObjectMapping: 0.173600 ms MarkObjects: 2.362500 ms  DeleteObjects: 1.697900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -82,666 +82,40 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Readme.asset
-  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ffd2c44ffeb50c574abb5d0c4453328') in 0.079751 seconds 
-  Import took 0.099216 seconds .
+  path: Assets/Assets
+  artifactKey: Guid(85dcaadf43c7bf54d9fd248e7ec10bc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets using Guid(85dcaadf43c7bf54d9fd248e7ec10bc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24cad3c926d2cefddef3fa1c89be98c4') in 0.075719 seconds 
+  Import took 0.088879 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.950665 seconds.
-  path: Assets/Readme.asset
-  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ffd2c44ffeb50c574abb5d0c4453328') in 0.004642 seconds 
-  Import took 0.041598 seconds .
+  Time since last request: 4.805692 seconds.
+  path: Assets/Assets/Pigeon
+  artifactKey: Guid(d4f7d1fa95823984ea9c71f92579327d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Pigeon using Guid(d4f7d1fa95823984ea9c71f92579327d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '487035228d4b47646c353dae7b91fff5') in 0.003315 seconds 
+  Import took 0.044953 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 29.862529 seconds.
-  path: Assets/ExampleAssets
-  artifactKey: Guid(990f5c2df70993f4987a388ca178996a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ExampleAssets using Guid(990f5c2df70993f4987a388ca178996a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5ac45704b3e904ca5b19a6457cc79ac') in 0.002661 seconds 
-  Import took 1.677244 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004978 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.449 seconds
-Platform modules already initialized, skipping
-Switching render pipeline 19ba41d7c0026c3459d37c2fe90c55a0 -> 00000000000000000000000000000000
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2615 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 118.1 MB.
-System memory in use after: 115.3 MB.
-
-Unloading 52 unused Assets to reduce memory usage. Loaded Objects now: 3087.
-Total: 5.229600 ms (FindLiveObjects: 0.303000 ms CreateObjectMapping: 0.177900 ms MarkObjects: 3.010600 ms  DeleteObjects: 1.736300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 44.383769 seconds.
-  path: Assets
-  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d402b061de3733987d63b9cc3b64de') in 0.003821 seconds 
-  Import took 0.037880 seconds .
+  Time since last request: 21.200019 seconds.
+  path: Assets/Assets/Characters
+  artifactKey: Guid(3a26008708977e841a045573df284ff8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Characters using Guid(3a26008708977e841a045573df284ff8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71c416af058a25960b17e04dc7cbbaed') in 0.002013 seconds 
+  Import took 0.009642 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.340730 seconds.
-  path: Assets/URP
-  artifactKey: Guid(45c129d31c8fe3947b4b79e9915cb95e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP using Guid(45c129d31c8fe3947b4b79e9915cb95e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9467835674793cf8e169f998bc9f4bf4') in 0.001949 seconds 
-  Import took 0.008008 seconds .
+  Time since last request: 10.682090 seconds.
+  path: Assets/Assets/Pigeon/pigeon_pecking.png
+  artifactKey: Guid(84663d5b13a6f234693b4967160789fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Pigeon/pigeon_pecking.png using Guid(84663d5b13a6f234693b4967160789fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b976c9e51b354fab9084357a312fcceb') in 0.110438 seconds 
+  Import took 0.117061 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 40.903654 seconds.
-  path: Assets/URP/2D.asset
-  artifactKey: Guid(d930d58ae245b084b80bda0bb9d7bd1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2D.asset using Guid(d930d58ae245b084b80bda0bb9d7bd1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed1cfab441135b453c6f6d11145c74e8') in 0.017411 seconds 
-  Import took 0.022711 seconds .
+  Time since last request: 0.000518 seconds.
+  path: Assets/Assets/Pigeon/pigeon_walking.png
+  artifactKey: Guid(49e2ba5b5f7cac64b8f710ebbde58ba8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Pigeon/pigeon_walking.png using Guid(49e2ba5b5f7cac64b8f710ebbde58ba8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bf5c61e21a75383b8eebaefc5e370ae') in 0.010355 seconds 
+  Import took 0.015885 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000347 seconds.
-  path: Assets/URP/2D_Renderer.asset
-  artifactKey: Guid(41317d76adcffd54987a9383f7b853c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2D_Renderer.asset using Guid(41317d76adcffd54987a9383f7b853c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c1bcd778dd72469da2044052fa6a63e') in 0.008816 seconds 
-  Import took 0.027337 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 43.704369 seconds.
-  path: Assets/URP/2DPipelineAsset.asset
-  artifactKey: Guid(82e44bce718411f4faf2b3a3d5dbedc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2DPipelineAsset.asset using Guid(82e44bce718411f4faf2b3a3d5dbedc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2037b673f86871c23c2d1bddfce0be97') in 0.005058 seconds 
-  Import took 0.010507 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000362 seconds.
-  path: Assets/URP/2DPipelineAsset_Renderer.asset
-  artifactKey: Guid(f478180d82c261e498a871602980dd4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2DPipelineAsset_Renderer.asset using Guid(f478180d82c261e498a871602980dd4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35adbffeb23d2c470c594e82790e56b9') in 0.004692 seconds 
-  Import took 0.010059 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 58.172463 seconds.
-  path: Assets/URP/2DRenderer.asset
-  artifactKey: Guid(bac57a5ca870bf34db9c29c7e0e99ce6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2DRenderer.asset using Guid(bac57a5ca870bf34db9c29c7e0e99ce6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c2a35f8e2b832fb91f8880db1a89b88') in 0.020596 seconds 
-  Import took 0.025969 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.003900 seconds.
-  path: Assets/URP/2DRenderer.asset
-  artifactKey: Guid(bac57a5ca870bf34db9c29c7e0e99ce6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/URP/2DRenderer.asset using Guid(bac57a5ca870bf34db9c29c7e0e99ce6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c2a35f8e2b832fb91f8880db1a89b88') in 0.052347 seconds 
-  Import took 0.057769 seconds .
-
-========================================================================
-Received Prepare
-Switching render pipeline 19ba41d7c0026c3459d37c2fe90c55a0 -> 82e44bce718411f4faf2b3a3d5dbedc9
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 3.57 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 68.0 MB.
-System memory in use after: 65.2 MB.
-
-Unloading 48 unused Assets to reduce memory usage. Loaded Objects now: 3090.
-Total: 5.266500 ms (FindLiveObjects: 0.342900 ms CreateObjectMapping: 0.183700 ms MarkObjects: 3.108900 ms  DeleteObjects: 1.629900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 272.252030 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(f2c5c09cd3ca09b49a3e265c46b294ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(f2c5c09cd3ca09b49a3e265c46b294ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7777c76d9876c6e5cf5af35d5fa30ab') in 0.002265 seconds 
-  Import took 0.007386 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.477127 seconds.
-  path: Assets/Scenes/Main.unity
-  artifactKey: Guid(8528ec79ad1878e429cfc29d42ec784f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Main.unity using Guid(8528ec79ad1878e429cfc29d42ec784f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f33fa696028eed8ee8f30067a921530') in 0.003180 seconds 
-  Import took 0.008991 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.146499 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 6.03 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.485 seconds
-Platform modules already initialized, skipping
-Script is not up to date after domain reload: guid(bee8f4b5ba5b4ee46a3b10bad91b8c97) path("Packages/com.unity.2d.animation/Editor/SkinningModule/DefaultPoseScope.cs") state(2)
-Script is not up to date after domain reload: guid(57c008f954fe54a8bb972de1018a2cb8) path("Packages/com.unity.2d.animation/Runtime/SpriteSkin.cs") state(2)
-Script is not up to date after domain reload: guid(b5575e7bca1590549b79930bc2df9679) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IconUtility.cs") state(2)
-Script is not up to date after domain reload: guid(1bb64055b5d894141b91d275f422e5dc) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/GenerateWeightsPanel.cs") state(2)
-Script is not up to date after domain reload: guid(5f299983c913b724da97b312e5f58120) path("Packages/com.unity.2d.animation/Editor/SkinningModule/WeightsGenerator/BoundedBiharmonicWeightsGenerator.cs") state(2)
-Script is not up to date after domain reload: guid(26ec4641af523f44f8f62994a423b3b4) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkeletonTool/SkeletonToolView.cs") state(2)
-Script is not up to date after domain reload: guid(90e762d3b06944889a5d95fc12a8db68) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MeshPreviewTool/MeshPreviewTool.cs") state(2)
-Script is not up to date after domain reload: guid(9cedbe3e5072c1f449a54018d80be6f0) path("Packages/com.unity.2d.animation/IK/Editor/IKEditorManager.cs") state(2)
-Script is not up to date after domain reload: guid(efa4ba0c38e16414f80d3ccfb6cbd821) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/ConstraintMesher.cs") state(2)
-Script is not up to date after domain reload: guid(22395c0668d29483bbb5685bf1385ecb) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/ITriangulator.cs") state(2)
-Script is not up to date after domain reload: guid(8092360c71284424f8739b0eb0b2a04a) path("Packages/com.unity.2d.animation/Runtime/SpriteSkinBatch.cs") state(2)
-Script is not up to date after domain reload: guid(099fdfcf904bb544cbac5d0f920940c0) path("Packages/com.unity.2d.animation/Runtime/UpdateBoundsJob.cs") state(2)
-Script is not up to date after domain reload: guid(4d7d16e2d9869a84190616f30b11be2d) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkeletonTool/SkeletonToolWrapper.cs") state(2)
-Script is not up to date after domain reload: guid(aa2a7a8ee6a464dd9ae636e73111beb6) path("Packages/com.unity.2d.animation/Editor/SkinningModule/ModuleUtility.cs") state(2)
-Script is not up to date after domain reload: guid(5b626110ec3a746c19f67a83afab1cc7) path("Packages/com.unity.2d.animation/Runtime/Triangle/Properties/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(ad7233a4a9bae914696f0c4fe3c9c8c1) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/VisibilityTool.cs") state(2)
-Script is not up to date after domain reload: guid(22143b1295b3a684d8118f7fa6c0403d) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/MeshPreviewCache.cs") state(2)
-Script is not up to date after domain reload: guid(37848a25a68e0924ea2814f224e4d44a) path("Packages/com.unity.2d.animation/Editor/SpriteLib/SpriteLibraryDataProvider.cs") state(2)
-Script is not up to date after domain reload: guid(a82556ec642d74b2f83095af97dce435) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Iterators/RegionIterator.cs") state(2)
-Script is not up to date after domain reload: guid(599f7dd3d2f02c04093072e31f7f7069) path("Packages/com.unity.2d.animation/Editor/SpriteLib/SpriteLibraryAssetInspector.cs") state(2)
-Script is not up to date after domain reload: guid(3610f44c4cf884dad93f89fe4f19b8db) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/WeightInspector.cs") state(2)
-Script is not up to date after domain reload: guid(7eb2e763592fc45778f3a2f7718c12fd) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Polygon.cs") state(2)
-Script is not up to date after domain reload: guid(608972c8a79af4e13a2b24b406eacdcb) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/DefaultVoronoiFactory.cs") state(2)
-Script is not up to date after domain reload: guid(1a6b4c973006a4e1eb35cb87a8d6d385) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/TriangleQuadTree.cs") state(2)
-Script is not up to date after domain reload: guid(efabf946c69d212429c75db0d9aa9d1a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCopyUtility.cs") state(2)
-Script is not up to date after domain reload: guid(826e5298bd8f8498a9a2f3a04a3b2fa9) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/AdjacencyMatrix.cs") state(2)
-Script is not up to date after domain reload: guid(097b551f2844b054290f18a39bf892e9) path("Packages/com.unity.2d.animation/IK/Runtime/IKManager2D.cs") state(2)
-Script is not up to date after domain reload: guid(bffd3c18e4fd644ef820ed46f2f9133c) path("Packages/com.unity.2d.animation/Runtime/Triangle/Enums.cs") state(2)
-Script is not up to date after domain reload: guid(32c23f1f2292142599f01204e68664c9) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Vertex.cs") state(2)
-Script is not up to date after domain reload: guid(bf06445e471002b42ad1039aee488229) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/DisableUndoScope.cs") state(2)
-Script is not up to date after domain reload: guid(bdb9c5ef1811c494984e02a884726c96) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/Legacy/IVoronoi.cs") state(2)
-Script is not up to date after domain reload: guid(7115b8240624044b9a02b74ca778a32e) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Contour.cs") state(2)
-Script is not up to date after domain reload: guid(56ae7d772de344c1a9a4484e952b7d33) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/DebugWriter.cs") state(2)
-Script is not up to date after domain reload: guid(87a0e38ad31404f7285fa9bf6fa08eaa) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/DCEL/Vertex.cs") state(2)
-Script is not up to date after domain reload: guid(3abac741b8a6142f39b485177be8e65d) path("Packages/com.unity.2d.animation/Runtime/Triangle/Logging/ILog.cs") state(2)
-Script is not up to date after domain reload: guid(a913e1ffc26254097a25b9656988d897) path("Packages/com.unity.2d.animation/Runtime/Triangle/RobustPredicates.cs") state(2)
-Script is not up to date after domain reload: guid(d0481896be8a94a678efd967e5309d04) path("Packages/com.unity.2d.animation/Runtime/Triangle/Smoothing/SimpleSmoother.cs") state(2)
-Script is not up to date after domain reload: guid(3668477112fb74f47ae17f9a227d562f) path("Packages/com.unity.2d.animation/Runtime/Triangle/Configuration.cs") state(2)
-Script is not up to date after domain reload: guid(4da748bcb2b2d41bbad9ec2561d1d2e9) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/GenericMesher.cs") state(2)
-Script is not up to date after domain reload: guid(6ea81e02715034d7e81c7c8e6f5e3329) path("Packages/com.unity.2d.common/Editor/ImagePacker/ImagePacker.cs") state(2)
-Script is not up to date after domain reload: guid(a43eacb849c08fa47b752df4f2e05c7a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/TransformCache.cs") state(2)
-Script is not up to date after domain reload: guid(06c115e22e25aad4e9a720594b10fa29) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/Brush.cs") state(2)
-Script is not up to date after domain reload: guid(3fe89a573a78649d2856fde6fc441e38) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/SerializableSelection.cs") state(2)
-Script is not up to date after domain reload: guid(9df99dfc0f67dd145a0774a4fa06b839) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/WeightEditor.cs") state(2)
-Script is not up to date after domain reload: guid(f7836643c0cc9724c94363180ebebd47) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteBoneInfluence/SpriteBoneInfluenceTool.cs") state(2)
-Script is not up to date after domain reload: guid(a4a265973daf84c31b1feb0b2f1f44a7) path("Packages/com.unity.2d.animation/Runtime/Triangle/Logging/LogItem.cs") state(2)
-Script is not up to date after domain reload: guid(30ae93fb156fc6d4c828c64571fc3edd) path("Packages/com.unity.2d.animation/IK/Runtime/LimbSolver2D.cs") state(2)
-Script is not up to date after domain reload: guid(aaae1a0ac32489e4db7ca7c10f984ade) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/Slider2D.cs") state(2)
-Script is not up to date after domain reload: guid(6c2817c735e6d4f80867fba95274f386) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/ITriangle.cs") state(2)
-Script is not up to date after domain reload: guid(237f0a0a8eeab0d46873db954d4abded) path("Packages/com.unity.2d.animation/Editor/SkinningModule/GenerateGeometryTool.cs") state(2)
-Script is not up to date after domain reload: guid(08c104e7d99d71c4eb0702b4e3e4b7d5) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/ITransformSelection.cs") state(2)
-Script is not up to date after domain reload: guid(10db00a3c51d23d4ab8a68837ffa21fc) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/BoneSelection.cs") state(2)
-Script is not up to date after domain reload: guid(06de59c21b18a5641b881cd7844c41be) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/BoneToolbar.cs") state(2)
-Script is not up to date after domain reload: guid(5e4f2af0145cfe44797338834d0b013a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MathUtility.cs") state(2)
-Script is not up to date after domain reload: guid(d02894817219f7c43bd5dad401749d7e) path("Packages/com.unity.2d.animation/Editor/ICharacterDataProvider.cs") state(2)
-Script is not up to date after domain reload: guid(08c6298ccaa77394ab7bed9478eb9a9a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/CharacterPartCacheExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(4e0025ed472de854692946726304a452) path("Packages/com.unity.2d.animation/Editor/SkinningModule/BoneDrawingUtility.cs") state(2)
-Script is not up to date after domain reload: guid(0e71212805f8c4fc7a7db8dd552b73a6) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Algorithm/SweepLine.cs") state(2)
-Script is not up to date after domain reload: guid(40548468add2f5c4694bff827b24d425) path("Packages/com.unity.2d.animation/IK/Editor/IKGizmos.cs") state(2)
-Script is not up to date after domain reload: guid(10f309ec2a0fbf64e80346fdd64cb6b1) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SpriteCache.cs") state(2)
-Script is not up to date after domain reload: guid(196e2f3da40aa4a94a0a42a5e8fe60b9) path("Packages/com.unity.2d.animation/Runtime/Triangle/Log.cs") state(2)
-Script is not up to date after domain reload: guid(19387af761aa944a6bda921093ae6d70) path("Packages/com.unity.2d.animation/Runtime/Triangle/NewLocation.cs") state(2)
-Script is not up to date after domain reload: guid(0115a1541423b477a94d872384667321) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/CuthillMcKee.cs") state(2)
-Script is not up to date after domain reload: guid(6bd5cf21232960a4b846e6cba1798aee) path("Packages/com.unity.2d.animation/IK/Runtime/Solvers/FABRIK2D.cs") state(2)
-Script is not up to date after domain reload: guid(cb006e3fa37420b42b3673eef90cd4b5) path("Packages/com.unity.2d.common/Runtime/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(ee97fb199f5d4c248b3a02ae9e3e39d5) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/IUndo.cs") state(2)
-Script is not up to date after domain reload: guid(76888b2ae85744537a8e1a2e367760bc) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/BoundedVoronoi.cs") state(2)
-Script is not up to date after domain reload: guid(43e16ced10076476cafe049a9a276377) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Iterators/EdgeIterator.cs") state(2)
-Script is not up to date after domain reload: guid(4c818720e20ebad4b9d7ba3cc548cdb6) path("Packages/com.unity.2d.animation/Editor/SpriteLib/SpriteSelectionWidget.cs") state(2)
-Script is not up to date after domain reload: guid(9132cd52e337145a7a84643de287a066) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/ISegment.cs") state(2)
-Script is not up to date after domain reload: guid(cc4f3446a7ed4468da9886cadbe2ad0c) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/SubSegment.cs") state(2)
-Script is not up to date after domain reload: guid(68c59424e0fae433b9a2957e751fb25f) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/IPolygon.cs") state(2)
-Script is not up to date after domain reload: guid(83711169e2aa1fb439980c4d6fa5ef24) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/WeightInspectorIMGUIPanel.cs") state(2)
-Script is not up to date after domain reload: guid(df44828de9ac64d44ba1a553e06eb335) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/ISelection.cs") state(2)
-Script is not up to date after domain reload: guid(ac8497ccdcaa24180924e889b9d7b7d5) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/IEdge.cs") state(2)
-Script is not up to date after domain reload: guid(c86b96101a8b8f043a01b9c64b788b6b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/MeshVisibilityTool.cs") state(2)
-Script is not up to date after domain reload: guid(ea21de3798988c84dbc83021a3e6ecee) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Cache/CacheObject.cs") state(2)
-Script is not up to date after domain reload: guid(7fc947ed5e1e2b141bd741eca43b418c) path("Packages/com.unity.2d.common/Editor/InternalBridge/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(51167ca4da0b28040a7d5f7d97f77e86) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkinningCachePersistentState.cs") state(2)
-Script is not up to date after domain reload: guid(92be5a949cc9a014dbcb41d98e5aec03) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningModule.cs") state(2)
-Script is not up to date after domain reload: guid(44669af070a82b748b20b2a0fa6482d2) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/SpriteSkinCompositeDebugWindow.cs") state(2)
-Script is not up to date after domain reload: guid(7b6edb0347e814797aa9c181f8e5918f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/RectSelectionTool.cs") state(2)
-Script is not up to date after domain reload: guid(06de6e0c9858a4745907366b6fea9bdd) path("Packages/com.unity.2d.animation/Runtime/Triangle/TrianglePool.cs") state(2)
-Script is not up to date after domain reload: guid(7fcfe3c97703ff145afae98c5b358e95) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/CharacterCache.cs") state(2)
-Script is not up to date after domain reload: guid(14eab3f75d7d9eb479d8880e6ad90557) path("Packages/com.unity.2d.animation/Editor/LayoutOverlay/ScrollableToolbar.cs") state(2)
-Script is not up to date after domain reload: guid(c5038e46090aa4f809c75db148ca3b5f) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/IPolygonFormat.cs") state(2)
-Script is not up to date after domain reload: guid(4a4d0d0740dce7045a9925d5be120303) path("Packages/com.unity.2d.animation/IK/Editor/Inspectors/Solver2DEditor.cs") state(2)
-Script is not up to date after domain reload: guid(80b572e0f086ba540b44ec45a404263a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/VisibilityToolBase.cs") state(2)
-Script is not up to date after domain reload: guid(74d5c6e86f4a1214ca6e9737086f7468) path("Packages/com.unity.2d.common/Runtime/InternalBridge/InternalEngineBridge.cs") state(2)
-Script is not up to date after domain reload: guid(cb2b414b37e204a0e9107e0b489ce263) path("Packages/com.unity.2d.animation/Runtime/Triangle/IPredicates.cs") state(2)
-Script is not up to date after domain reload: guid(daabb48969fe3724f80d2c96d89d710e) path("Packages/com.unity.2d.animation/Editor/SkinningModule/CharacterModeTool/SwitchModeTool.cs") state(2)
-Script is not up to date after domain reload: guid(ccdfa7b650f4fb642b56fe417d650188) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/DisabledUndo.cs") state(2)
-Script is not up to date after domain reload: guid(879d7ab84cd1a4d3c9481c194ae09404) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/Vertex2D.cs") state(2)
-Script is not up to date after domain reload: guid(415cd2cd116f59445a6667da7c21b4ac) path("Packages/com.unity.2d.animation/IK/Editor/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(acc0de355e663464684a1b81871fe30b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkeletonTool/SkeletonTool.cs") state(2)
-Script is not up to date after domain reload: guid(8f503e223cd1e624d9aae16f915047f3) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MeshPreviewTool/MeshPreviewBehaviour.cs") state(2)
-Script is not up to date after domain reload: guid(3a77eab5a6c484379b637070c9da9793) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/Legacy/VoronoiRegion.cs") state(2)
-Script is not up to date after domain reload: guid(61f1168dfbac54f04b6068f199c35704) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/UnselectTool.cs") state(2)
-Script is not up to date after domain reload: guid(5bf608e7cb56c4f44b49044e0fc738ec) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/ISelector.cs") state(2)
-Script is not up to date after domain reload: guid(60eebfa1ba55bfc4d973c4de75d40e99) path("Packages/com.unity.2d.common/Editor/InternalBridge/TexturePlatformSettings/TexturePlatformSettings.cs") state(2)
-Script is not up to date after domain reload: guid(98caf1503e1ef65468fc96b334fee770) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/SpriteVisibilityTool.cs") state(2)
-Script is not up to date after domain reload: guid(f4f814197752ea84db033f3822b113b2) path("Packages/com.unity.2d.common/Editor/TextureGenerator/TextureGeneratorHelper.cs") state(2)
-Script is not up to date after domain reload: guid(11be01bfe5fde8f419a0ec4a38e1026e) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/VisibilityToolColumnHeader.cs") state(2)
-Script is not up to date after domain reload: guid(e099a9a50d79b464db71bd8aeda04a6f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UserSettings.cs") state(2)
-Script is not up to date after domain reload: guid(9d39e60df00ea46b4af0f2ee69c0541b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/Edge.cs") state(2)
-Script is not up to date after domain reload: guid(3a361ade0d5860841861f16877a7a43d) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkinningEnums.cs") state(2)
-Script is not up to date after domain reload: guid(f95db4a471e2cb94badcf4b1271cfee1) path("Packages/com.unity.2d.animation/Editor/LayoutOverlay/LayoutOverlay.cs") state(2)
-Script is not up to date after domain reload: guid(7c725737cdc184d969ef5d53b813d1b0) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/DCEL/DcelMesh.cs") state(2)
-Script is not up to date after domain reload: guid(1af64e13882d6445bb141ef2f2810b17) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/Statistic.cs") state(2)
-Script is not up to date after domain reload: guid(72bf58aecc1877e48b77ac8a0408b0c6) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MeshTool/MeshTool.cs") state(2)
-Script is not up to date after domain reload: guid(031a31877f2d04a4dac4146c804dbde9) path("Packages/com.unity.2d.common/Runtime/InternalBridge/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(455f18c8a1cd7574f84ff7236cfaadea) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Cache/Cache.cs") state(2)
-Script is not up to date after domain reload: guid(02625be83abde4b498b0acf0df6237ff) path("Packages/com.unity.2d.animation/Editor/SpriteLib/SpriteLibraryInspector.cs") state(2)
-Script is not up to date after domain reload: guid(ed18cd282abce4422b584d99115a6c87) path("Packages/com.unity.2d.animation/Runtime/Triangle/Behavior.cs") state(2)
-Script is not up to date after domain reload: guid(831c95a008fa0fd478a97a3ea977d036) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/RectBoneSelector.cs") state(2)
-Script is not up to date after domain reload: guid(ca1b61f918cd44aec95c1fcde79a51f9) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/FileProcessor.cs") state(2)
-Script is not up to date after domain reload: guid(5e1a1f401d8254b9386c06b5f3e122a4) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Converter.cs") state(2)
-Script is not up to date after domain reload: guid(3add3986a01573a4186a96dd45cd2f5b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/SmoothingUtility.cs") state(2)
-Script is not up to date after domain reload: guid(80d43aefd9bfa4f669b8abc336353628) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Edge.cs") state(2)
-Script is not up to date after domain reload: guid(833bedb11c85e4260a9ec09f2f773258) path("Packages/com.unity.2d.animation/Runtime/Triangle/Logging/ILogItem.cs") state(2)
-Script is not up to date after domain reload: guid(9aa1c187477fd364bb93e6f97f16c9fa) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningSerializer/SkinningSerializerXML.cs") state(2)
-Script is not up to date after domain reload: guid(99e6114d2bbce43ca94c406f19ba2eaf) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Data/BadTriangle.cs") state(2)
-Script is not up to date after domain reload: guid(8a6bdf2f80b4745c9a689f3afaa4a134) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/Osub.cs") state(2)
-Script is not up to date after domain reload: guid(39d177597cd8a914ab266d4dec677b74) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkinningEvents.cs") state(2)
-Script is not up to date after domain reload: guid(aeeab8c4e75a1e8419b0eed0716d850a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MeshPreviewTool/IMeshPreviewBehaviour.cs") state(2)
-Script is not up to date after domain reload: guid(ae33c30ef3b5e474ca5a46d925273adc) path("Packages/com.unity.2d.animation/Editor/SkinningModule/OutlineGenerator/OutlineGenerator.cs") state(2)
-Script is not up to date after domain reload: guid(48179771067a4e00a357de587413b621) path("Packages/com.unity.2d.animation/Runtime/BufferManager.cs") state(2)
-Script is not up to date after domain reload: guid(e7ad5906e3c5748eaa55d2843a8c129e) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/PolygonValidator.cs") state(2)
-Script is not up to date after domain reload: guid(c66db58fd56e0a14690d99c115527f28) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/SkeletonSelection.cs") state(2)
-Script is not up to date after domain reload: guid(b5fde14964733764c8c198a418b2eaaf) path("Packages/com.unity.2d.animation/IK/Runtime/IKUtility.cs") state(2)
-Script is not up to date after domain reload: guid(0799df1a3fe414d198d40c6f6535e890) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/EditableBoneWeightUtility.cs") state(2)
-Script is not up to date after domain reload: guid(8cf26b17030744f44b4984670864cede) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/ICacheUndo.cs") state(2)
-Script is not up to date after domain reload: guid(609d69ce95fbbe148aac9ed99bf92679) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/UnityEngineUndo.cs") state(2)
-Script is not up to date after domain reload: guid(5b0085fc7caad034f8513c17d7e40646) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/SpriteMeshDataController.cs") state(2)
-Script is not up to date after domain reload: guid(9ceaf8ef48b796342bb695b046536af8) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Cache/BaseObject.cs") state(2)
-Script is not up to date after domain reload: guid(187a6ce7f29024eab88bfc87e4b5312c) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/QualityMeasure.cs") state(2)
-Script is not up to date after domain reload: guid(5e7f946eb25bb4bc887edd4b4fb595eb) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Triangulation/TriangulationUtility.cs") state(2)
-Script is not up to date after domain reload: guid(07d9e02d256864a01916e9533af15bca) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Point.cs") state(2)
-Script is not up to date after domain reload: guid(fdb3ad5d765ec4a49906a82ea1fe3d06) path("Packages/com.unity.2d.animation/Tests/Editor/PlaceholderTests.cs") state(2)
-Script is not up to date after domain reload: guid(6111684d389380840a9e782a0936a829) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteBoneInfluence/SpriteBoneInfluenceListWidget.cs") state(2)
-Script is not up to date after domain reload: guid(171c69f47e06f2d47ab4225b6afbb5db) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningSerializer/SkinningSerializerJSON.cs") state(2)
-Script is not up to date after domain reload: guid(ff5bfc64209341d4f9e4517be1634f62) path("Packages/com.unity.2d.animation/Editor/SkinningModule/WeightPainterTool.cs") state(2)
-Script is not up to date after domain reload: guid(cf5fb0e34d9b14ac88f67bf18b0bc902) path("Packages/com.unity.2d.animation/Runtime/Triangle/Mesh.cs") state(2)
-Script is not up to date after domain reload: guid(dc4f326c25da1c048a6365f4f5c7198e) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/BoneTreeViewModel.cs") state(2)
-Script is not up to date after domain reload: guid(976d01c510fb7407580d39aaa0294cb0) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/EditableBoneWeight.cs") state(2)
-Script is not up to date after domain reload: guid(b245eff55d115544b9cc52444a1b8ca5) path("Packages/com.unity.2d.animation/Editor/LayoutOverlay/DropdownMenu.cs") state(2)
-Script is not up to date after domain reload: guid(e28e411d271b90e45894708257ca80fa) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/VisibilityToolResizer.cs") state(2)
-Script is not up to date after domain reload: guid(5c8f0437817e84603a4785292a7e5242) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/RegionPointer.cs") state(2)
-Script is not up to date after domain reload: guid(4cd626f08811c47b092c491b658d4ef1) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/IConstraintMesher.cs") state(2)
-Script is not up to date after domain reload: guid(a732f85efc12f294dac56a504b4b6123) path("Packages/com.unity.2d.animation/IK/Runtime/IKEditorManagerHelper.cs") state(2)
-Script is not up to date after domain reload: guid(ef93bb9fe9d240e418a7fb8b476f3d34) path("Packages/com.unity.2d.animation/IK/Runtime/CCDSolver2D.cs") state(2)
-Script is not up to date after domain reload: guid(1a16f886b3d85c640ad6350d0db615f1) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/IndexedSelection.cs") state(2)
-Script is not up to date after domain reload: guid(448d8fb02c0a5495ea149174a75f80c2) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/DCEL/Face.cs") state(2)
-Script is not up to date after domain reload: guid(5427b508fe0244b63ac33dac16710613) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/IntersectionHelper.cs") state(2)
-Script is not up to date after domain reload: guid(3ffa994dccc684238af9f51c4b71a053) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Algorithm/Incremental.cs") state(2)
-Script is not up to date after domain reload: guid(e36885ee33061da4a8a74190c4d36486) path("Packages/com.unity.2d.animation/Runtime/TransformAccessJob.cs") state(2)
-Script is not up to date after domain reload: guid(1c04b7203b8c62948b2649d0584acdf3) path("Packages/com.unity.2d.animation/Runtime/NativeArrayHelper.cs") state(2)
-Script is not up to date after domain reload: guid(9bc7b5069eb56064a965af1f5d392959) path("Packages/com.unity.2d.animation/Editor/LayoutOverlay/LayoutOverlayUtility.cs") state(2)
-Script is not up to date after domain reload: guid(e6dab3a6b0e864d71a92072b3d3224c3) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Rectangle.cs") state(2)
-Script is not up to date after domain reload: guid(456daa24c602c419ba5653d9dac96c28) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/DCEL/HalfEdge.cs") state(2)
-Script is not up to date after domain reload: guid(015d7144666ec57449ae83559d3e26c6) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/ISpriteMeshView.cs") state(2)
-Script is not up to date after domain reload: guid(5c4ca39dfae364d0cabfa9898d2acfa1) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/SpriteSkinEditor.cs") state(2)
-Script is not up to date after domain reload: guid(089ed0d19d5c8124da97c7dc15838b97) path("Packages/com.unity.2d.animation/IK/Editor/Inspectors/CCDSolver2DEditor.cs") state(2)
-Script is not up to date after domain reload: guid(d0bd0aa54cffc442b82bc92946537e05) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/BoneGizmo.cs") state(2)
-Script is not up to date after domain reload: guid(36c1c6da648bfa14fb09e548b0f27446) path("Packages/com.unity.2d.animation/IK/Runtime/Solver2DMenuAttribute.cs") state(2)
-Script is not up to date after domain reload: guid(0eadb29f63f3caa4d991699df42f251f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Triangulation/ITriangulator.cs") state(2)
-Script is not up to date after domain reload: guid(afa9255f65ec947029394580abdc1070) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/IMesh.cs") state(2)
-Script is not up to date after domain reload: guid(ea09cf179b192498284b7d89afdbff8a) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/RectSlider.cs") state(2)
-Script is not up to date after domain reload: guid(bda7ebfc26d032447b9bd9311dd6ee39) path("Packages/com.unity.2d.animation/Runtime/SpriteSkinManager.cs") state(2)
-Script is not up to date after domain reload: guid(7974be9b5f0db0f41a7acc758375c6a8) path("Packages/com.unity.2d.animation/Runtime/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(8bb3407583ec744c0ba8307cebefdc1d) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/ConstraintOptions.cs") state(2)
-Script is not up to date after domain reload: guid(9b3eb1ded0fb747809431ebbd42aa4f3) path("Packages/com.unity.2d.common/Editor/ImagePacker/Jobs/FindTightRectJob.cs") state(2)
-Script is not up to date after domain reload: guid(5756a98707df6417ba9135ea9d4f857e) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/ExtensionMethods.cs") state(2)
-Script is not up to date after domain reload: guid(35869f4d0e1d03e4ebffcc461c55773f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Lib/x64/BoundedBiharmonicWeightsModule.so") state(2)
-Script is not up to date after domain reload: guid(774c00e683b6094459a1ed557b35694b) path("Packages/com.unity.2d.animation/IK/Editor/Inspectors/IKManager2DEditor.cs") state(2)
-Script is not up to date after domain reload: guid(03bd69c1b56e1114794712e23f86f554) path("Packages/com.unity.2d.animation/IK/Editor/Inspectors/LimbSolver2DEditor.cs") state(2)
-Script is not up to date after domain reload: guid(fc0f7df10f714e0458bbe6f652412bda) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/BoneVisibilityToolInterface.cs") state(2)
-Script is not up to date after domain reload: guid(26b0ec3fec60ce84eac8ead5fd651199) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/Toolbar.cs") state(2)
-Script is not up to date after domain reload: guid(9c2c3aea8fdba4a288f591cbf028963d) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Algorithm/Dwyer.cs") state(2)
-Script is not up to date after domain reload: guid(68e86a17b9682ee4a81c0bd5627704a1) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/BoneInspectorPanel.cs") state(2)
-Script is not up to date after domain reload: guid(6f5e55d6f95334cb29464817d94cd9fd) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/Otri.cs") state(2)
-Script is not up to date after domain reload: guid(0c98ced09a56d4e0b97757317086dd36) path("Packages/com.unity.2d.animation/Runtime/DeformSpriteSystem.cs") state(2)
-Script is not up to date after domain reload: guid(40cebb2c3989f5844a7cbdc20bb68bdf) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/BoneTreeViewController.cs") state(2)
-Script is not up to date after domain reload: guid(783ca490d14f68c4891dfa4ca54364fc) path("Packages/com.unity.2d.animation/Editor/Analytics.cs") state(2)
-Script is not up to date after domain reload: guid(5260ebe2b8ba2724eb92daea93bddf3c) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SelectionTool.cs") state(2)
-Script is not up to date after domain reload: guid(85b7a96bd2d82844391585d64f46742b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkinningCache.cs") state(2)
-Script is not up to date after domain reload: guid(5ae1953898c2e4565a0a2b0af0a10985) path("Packages/com.unity.2d.common/Tests/Editor/PlaceholderTests.cs") state(2)
-Script is not up to date after domain reload: guid(cc0c24ed6655ecc449dcbe4a8f3bd744) path("Packages/com.unity.2d.animation/Editor/SkinningModule/BaseTool.cs") state(2)
-Script is not up to date after domain reload: guid(fd469cc9c7a046649b08db54fa8e1cca) path("Packages/com.unity.2d.animation/IK/Runtime/Solver2D.cs") state(2)
-Script is not up to date after domain reload: guid(22525e1e29f10a14db7e0bdf3b9f2a11) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/SpriteSkinEntityEditor.cs") state(2)
-Script is not up to date after domain reload: guid(ba29542a56435e44a82237577ea08616) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/GenerateGeometryPanel.cs") state(2)
-Script is not up to date after domain reload: guid(b5e5a351c019c4444bc838b6e5fcd0a3) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/WeightPainterPanel.cs") state(2)
-Script is not up to date after domain reload: guid(5796720807c5b4856aea84babbabd4ee) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/SpriteMeshController.cs") state(2)
-Script is not up to date after domain reload: guid(65760d058db37cb438c9002fb9c5dc92) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningSerializer/ISkinningSerializer.cs") state(2)
-Script is not up to date after domain reload: guid(1d7148ed526519c48bda43a8a5a9dceb) path("Packages/com.unity.2d.animation/Editor/ResourceLoader.cs") state(2)
-Script is not up to date after domain reload: guid(07512ec0d03c84285a2573a5747097d4) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/SpriteMeshView.cs") state(2)
-Script is not up to date after domain reload: guid(71f3a5c724055424d80f4940228fd9ae) path("Packages/com.unity.2d.animation/Runtime/SpriteSkinUtility.cs") state(2)
-Script is not up to date after domain reload: guid(cb006e3fa37420b42b3673eef90cd4b3) path("Packages/com.unity.2d.common/Editor/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(19c21ce977fd53a46857b0dac2845685) path("Packages/com.unity.2d.animation/Editor/SkinningModule/MeshTool/MeshToolWrapper.cs") state(2)
-Script is not up to date after domain reload: guid(e34a36941d2784847b89139feea69b32) path("Packages/com.unity.2d.animation/Editor/SkinningModule/TextContent.cs") state(2)
-Script is not up to date after domain reload: guid(262d646365ba9344aa9e63c3d60c4522) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/BoneCache.cs") state(2)
-Script is not up to date after domain reload: guid(a660ba45386a23843a274d00b171e0fc) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/BoneReparentTool.cs") state(2)
-Script is not up to date after domain reload: guid(86113b46907d64d39a01d8aa150f1271) path("Packages/com.unity.2d.animation/IK/Runtime/IKManager2DEditorData.cs") state(2)
-Script is not up to date after domain reload: guid(6b45f23bbec334ab6885f2a26888d1a0) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/IVoronoiFactory.cs") state(2)
-Script is not up to date after domain reload: guid(b410f2c9e86a44d35992f15c05361b29) path("Packages/com.unity.2d.common/Editor/InternalBridge/InternalEditorBridge.cs") state(2)
-Script is not up to date after domain reload: guid(13c8cc9c7db80f945b93295497790775) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Triangulation/Triangulator.cs") state(2)
-Script is not up to date after domain reload: guid(2e79c8e51ce4486409b7daf3012a1f4d) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selection/IBoneSelection.cs") state(2)
-Script is not up to date after domain reload: guid(8e96f8a2db4cc7d48a77700beddf5d34) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SerializableDictionary.cs") state(2)
-Script is not up to date after domain reload: guid(189b37483531447aa818511aea18b139) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/IFileFormat.cs") state(2)
-Script is not up to date after domain reload: guid(2e9e350cb0a504f889ef5d8575817e56) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/QualityOptions.cs") state(2)
-Script is not up to date after domain reload: guid(acaa2d82522f0dd45b4dc5ce9c7dcff0) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteBoneInfluence/SpriteBoneInfluenceWindow.cs") state(2)
-Script is not up to date after domain reload: guid(6ad9a0e8a9171a24abf3f2b88bec2bfa) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/CharacterPartCache.cs") state(2)
-Script is not up to date after domain reload: guid(6376b9aaff8504ac697cd831a610f1e8) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/IMeshFormat.cs") state(2)
-Script is not up to date after domain reload: guid(a4ccab030e59cd542a67539ba0c86549) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/BoneWeightExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(28c640dd2a903f0498148ed21c25a97f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/HorizontalToggleTools.cs") state(2)
-Script is not up to date after domain reload: guid(51ee03bc936f1bf4489c0ee8696ebab7) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/TransformCacheExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(87771fd0f1d988d478a8f45923440eb8) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/ISkeletonView.cs") state(2)
-Script is not up to date after domain reload: guid(5379fb539445eb24ea7ac709f8df31b9) path("Packages/com.unity.2d.animation/Editor/SkinningModule/AssociateBonesScope.cs") state(2)
-Script is not up to date after domain reload: guid(7698a2e5326da4363ac142814272de0c) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/StandardVoronoi.cs") state(2)
-Script is not up to date after domain reload: guid(ab0e12b6f8d3e4699af8cc8018397a8d) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Data/BadSubseg.cs") state(2)
-Script is not up to date after domain reload: guid(d50b4f1248a256c4d96a6b0e9f346671) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/BoneCacheExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(feb0f1207f0b84a5c9b69df93ebe6f00) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/Legacy/BoundedVoronoiLegacy.cs") state(2)
-Script is not up to date after domain reload: guid(d9921ba0f389d3045ac52c4880cf5397) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SpriteMeshData/SpriteMeshData.cs") state(2)
-Script is not up to date after domain reload: guid(eb14a3e61fe4b114ebd94c7d27a6a110) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Undo/UndoScope.cs") state(2)
-Script is not up to date after domain reload: guid(8688318786c2246dbae9df88b4e94a46) path("Packages/com.unity.2d.animation/Runtime/Triangle/MeshValidator.cs") state(2)
-Script is not up to date after domain reload: guid(8586f5d059bef4957927fa6f9b5f33f2) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/InputTriangle.cs") state(2)
-Script is not up to date after domain reload: guid(ea4cc92a263807f4985d77508d2bb536) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/SkeletonController.cs") state(2)
-Script is not up to date after domain reload: guid(4ddf280179469e548a5aff8e5eec973c) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningModuleView.cs") state(2)
-Script is not up to date after domain reload: guid(9fd71ece24e4d504ba204588a27de2cc) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkeletonCache.cs") state(2)
-Script is not up to date after domain reload: guid(24ebc91d6c6eb624b864ea095c30529b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/WeightPainterToolWrapper.cs") state(2)
-Script is not up to date after domain reload: guid(54f9a28ad3c3f4bb79ec4dea2d3d987b) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/QualityMesher.cs") state(2)
-Script is not up to date after domain reload: guid(63a168f3fcb899c438f953c5e064a1b9) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/VisualElementExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(bb49f1bf55a2144ddaf5fc16f2d218dd) path("Packages/com.unity.2d.animation/Runtime/Triangle/TriangleSampler.cs") state(2)
-Script is not up to date after domain reload: guid(10889aecec5b6ee41a2a1626c4cfc07c) path("Packages/com.unity.2d.animation/Editor/SkinningModule/ColorExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(8016d85182d14704da1cf959d18ac860) path("Packages/com.unity.2d.animation/IK/Runtime/Solvers/CCD2D.cs") state(2)
-Script is not up to date after domain reload: guid(81d5f69f47c861d40beee8891a4ac92e) path("Packages/com.unity.2d.animation/Editor/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(4f72d6610b39b1d458e0efb7d4aa5977) path("Packages/com.unity.2d.animation/Runtime/Components.cs") state(2)
-Script is not up to date after domain reload: guid(f8bd55f54ef124b618d88fafb91f0170) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/CircleVertexSelector.cs") state(2)
-Script is not up to date after domain reload: guid(32b6c1f19cdc32d45aff3ce5c06f3ac3) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/SkeletonView.cs") state(2)
-Script is not up to date after domain reload: guid(14aa89f96f565c749a282d699727c02c) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/ICircleSelector.cs") state(2)
-Script is not up to date after domain reload: guid(277552e57c26b45f38d5c788700c1b7e) path("Packages/com.unity.2d.animation/Runtime/Triangle/Topology/Triangle.cs") state(2)
-Script is not up to date after domain reload: guid(415234662fb7af24aad2c5a78a55b3ed) path("Packages/com.unity.2d.animation/IK/Runtime/IKChain2D.cs") state(2)
-Script is not up to date after domain reload: guid(09c24a0e213174105acf5329eadc89bb) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/Interpolation.cs") state(2)
-Script is not up to date after domain reload: guid(427677fae20f0460e9d05b080a3d93ad) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/Data/BadTriQueue.cs") state(2)
-Script is not up to date after domain reload: guid(225c4acd316f96e48803d330638d757e) path("Packages/com.unity.2d.animation/IK/Runtime/Solvers/Limb.cs") state(2)
-Script is not up to date after domain reload: guid(a6f597013f4dd4897a204c7116d61766) path("Packages/com.unity.2d.animation/Runtime/Triangle/TriangleLocator.cs") state(2)
-Script is not up to date after domain reload: guid(e498c656b0d8bb146b9446ea90d67e40) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/CopyToolbar.cs") state(2)
-Script is not up to date after domain reload: guid(c29cff538c195c249b69c6f2236de67b) path("Packages/com.unity.2d.animation/Runtime/SpriteLib/SpriteLibrary.cs") state(2)
-Script is not up to date after domain reload: guid(2d813b6701ce64ba398e4a1d159ae1a3) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/TriangleWriter.cs") state(2)
-Script is not up to date after domain reload: guid(1c1fa730356b2f54e932bbcfe5507f93) path("Packages/com.unity.2d.animation/Editor/SkinningModule/OutlineGenerator/IOutlineGenerator.cs") state(2)
-Script is not up to date after domain reload: guid(fcf9d5fa95289914b82e16091eedfb4f) path("Packages/com.unity.2d.animation/Editor/SpriteLib/SpriteResolverInspector.cs") state(2)
-Script is not up to date after domain reload: guid(aa59961bf83f3b64f93ee898f3f51ec4) path("Packages/com.unity.2d.animation/Runtime/NativeCustomSlice.cs") state(2)
-Script is not up to date after domain reload: guid(0a2dae245e3ce6444a467f0c55afd6f2) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SkeletonCacheExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(2de348482e4ae654d84449d90f5c7a34) path("Packages/com.unity.2d.animation/IK/Runtime/AssemblyInfo.cs") state(2)
-Script is not up to date after domain reload: guid(ebefc406fa7f065458cfccf8e07be2f9) path("Packages/com.unity.2d.animation/Editor/SkinningModule/ModuleToolGroup.cs") state(2)
-Script is not up to date after domain reload: guid(6f606e975498d44149054ec8fedf092e) path("Packages/com.unity.2d.animation/Runtime/Triangle/Meshing/IQualityMesher.cs") state(2)
-Script is not up to date after domain reload: guid(d9c47b7ad095c4d6ea979045d1498235) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/Legacy/SimpleVoronoi.cs") state(2)
-Script is not up to date after domain reload: guid(627558f812b9bb944851932d0a8d80d5) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/BoneGizmoToggle.cs") state(2)
-Script is not up to date after domain reload: guid(c2c0fb0c74cf78d4a9e0138173ed725b) path("Packages/com.unity.2d.animation/Editor/SpriteOutlineRenderer/SpriteOutlineRenderer.cs") state(2)
-Script is not up to date after domain reload: guid(ed8b1ae4e4e52b34ea557c1c11e076fc) path("Packages/com.unity.2d.animation/Runtime/SpriteLib/SpriteResolver.cs") state(2)
-Script is not up to date after domain reload: guid(762e1216b23c61f45a276e00a8acd78d) path("Packages/com.unity.2d.animation/Runtime/UpdateBoundsSystem.cs") state(2)
-Script is not up to date after domain reload: guid(4a1337b0388344c16a0e94a38038934f) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/TriangleFormat.cs") state(2)
-Script is not up to date after domain reload: guid(ec847c6dc93e9e6459ad61443ca36507) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/MeshCache.cs") state(2)
-Script is not up to date after domain reload: guid(1d814cba40e37284b8e04f5f06b68300) path("Packages/com.unity.2d.animation/Editor/LayoutOverlay/Manipulators/Draggable.cs") state(2)
-Script is not up to date after domain reload: guid(1139f30c04130724d998e1bae48d15c6) path("Packages/com.unity.2d.animation/Editor/ClipperLib/clipper.cs") state(2)
-Script is not up to date after domain reload: guid(35f5a927d239440c0a09f2ced66ba1f8) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/RectVertexSelector.cs") state(2)
-Script is not up to date after domain reload: guid(71855e9e46fcdd7408882b24732e4808) path("Packages/com.unity.2d.animation/Editor/SkinningModule/IMGUI/GUIWrapper.cs") state(2)
-Script is not up to date after domain reload: guid(d5b43421660b55349b6bb57288b4baf0) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/WeightToolbar.cs") state(2)
-Script is not up to date after domain reload: guid(afb6404781555c04b94d057ffb3676d5) path("Packages/com.unity.2d.animation/Runtime/SpriteSkinEntity.cs") state(2)
-Script is not up to date after domain reload: guid(5d3bb77bab9e1a343983ee641d146f99) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/MeshToolbar.cs") state(2)
-Script is not up to date after domain reload: guid(497003cbd9cf35349bb7a01db4d94b26) path("Packages/com.unity.2d.animation/Editor/SkinningModule/GenerateWeightsTool.cs") state(2)
-Script is not up to date after domain reload: guid(a0e8a5f39ab443849ac34497669e976f) path("Packages/com.unity.2d.animation/Editor/SkinningModule/VisibilityTool/BoneVisibilityTool.cs") state(2)
-Script is not up to date after domain reload: guid(5bf7c34a0dc4e6348bea04faa70406ee) path("Packages/com.unity.2d.animation/Runtime/SpriteLib/SpriteLibraryAsset.cs") state(2)
-Script is not up to date after domain reload: guid(83a049cd282c44dd3ba1c44001c8a6d5) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Lib/x86_64/BoundedBiharmonicWeightsModule.bundle") state(2)
-Script is not up to date after domain reload: guid(9718fdfb7e2ff4a7cb44fc9e84468a8f) path("Packages/com.unity.2d.animation/Editor/SpritePostProcess.cs") state(2)
-Script is not up to date after domain reload: guid(c1d33bf12c73dd84786449f5fd74a908) path("Packages/com.unity.2d.animation/Runtime/PrepareSkinningSystem.cs") state(2)
-Script is not up to date after domain reload: guid(fc487a3a8092e46c0879d9e74ba443aa) path("Packages/com.unity.2d.animation/Runtime/Triangle/Smoothing/VoronoiFactory.cs") state(2)
-Script is not up to date after domain reload: guid(503b817aa45fa4a43abb42801b56b1e3) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkinningCache/SpriteCacheExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(9b3f77b5965944b8ba5c1beefa1eb533) path("Packages/com.unity.2d.animation/Editor/SkinningModule/DrawingUtility.cs") state(2)
-Script is not up to date after domain reload: guid(9bd4358267e2d4fe3966c374d0a5b5b7) path("Packages/com.unity.2d.animation/Runtime/Triangle/IO/TriangleReader.cs") state(2)
-Script is not up to date after domain reload: guid(311e00422db8e4949bf926b0d039e05e) path("Packages/com.unity.2d.animation/Editor/SkinningModule/CopyTool.cs") state(2)
-Script is not up to date after domain reload: guid(488b804e650114066b55d51eefc85775) path("Packages/com.unity.2d.common/Editor/ImagePacker/ImagePackNode.cs") state(2)
-Script is not up to date after domain reload: guid(b276ded4b8314c24f801e98504841e79) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/Unselector.cs") state(2)
-Script is not up to date after domain reload: guid(c127d0e1e24224577950ebc042c30437) path("Packages/com.unity.2d.animation/Runtime/Triangle/Voronoi/VoronoiBase.cs") state(2)
-Script is not up to date after domain reload: guid(1bbf7e9905b18064197948bb9710c04d) path("Packages/com.unity.2d.animation/IK/Editor/Inspectors/FabrikSolver2DEditor.cs") state(2)
-Script is not up to date after domain reload: guid(1ae93e85c98624948917679be12e485b) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/GenericVertexSelector.cs") state(2)
-Script is not up to date after domain reload: guid(b581e4fda8368f54987b99360c4b24e8) path("Packages/com.unity.2d.animation/Editor/SkinningModule/UI/PastePanel.cs") state(2)
-Script is not up to date after domain reload: guid(518b12f30bc1f1649a6c2c03b688eba9) path("Packages/com.unity.2d.animation/Editor/SkinningModule/WeightsGenerator/IWeightsGenerator.cs") state(2)
-Script is not up to date after domain reload: guid(5f02453d23ed9451aa6e2ccb3efc0597) path("Packages/com.unity.2d.animation/Runtime/Triangle/Tools/VertexSorter.cs") state(2)
-Script is not up to date after domain reload: guid(7600825fd0008354ea24e17c94591a19) path("Packages/com.unity.2d.animation/Editor/SkinningModule/SkeletonTool/SkeletonStyles.cs") state(2)
-Script is not up to date after domain reload: guid(35740bedfbcef470ab44b7b96930602b) path("Packages/com.unity.2d.animation/Runtime/Triangle/Smoothing/ISmoother.cs") state(2)
-Script is not up to date after domain reload: guid(13c5c1934f6f927419763b01ff95ed74) path("Packages/com.unity.2d.common/Editor/ImagePacker/ImagePackerDebugEditor.cs") state(2)
-Script is not up to date after domain reload: guid(0d865d2c5503d6342891956184902996) path("Packages/com.unity.2d.animation/Runtime/SpriteSkinComposite.cs") state(2)
-Script is not up to date after domain reload: guid(64b0cc51c72d04973b2516dd2c8137b6) path("Packages/com.unity.2d.animation/Runtime/Triangle/Geometry/Segment.cs") state(2)
-Script is not up to date after domain reload: guid(d9a419daec90432458cae4e9ae74d26e) path("Packages/com.unity.2d.animation/IK/Runtime/FabrikSolver2D.cs") state(2)
-Script is not up to date after domain reload: guid(47d4401cb6fd9f54b9c33acc7881703d) path("Packages/com.unity.2d.animation/Editor/SpriteSkin/TransformExtensions.cs") state(2)
-Script is not up to date after domain reload: guid(84b178f994f5f114889b2ea8d042fcad) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Selectors/IRectSelector.cs") state(2)
-Script is not up to date after domain reload: guid(780f94cfcb317444289dc159309d8b07) path("Packages/com.unity.2d.animation/Editor/SkinningModule/Lib/x64/BoundedBiharmonicWeightsModule.dll") state(2)
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2649 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 119.6 MB.
-System memory in use after: 116.9 MB.
-
-Unloading 50 unused Assets to reduce memory usage. Loaded Objects now: 3127.
-Total: 4.821600 ms (FindLiveObjects: 0.368500 ms CreateObjectMapping: 0.172900 ms MarkObjects: 2.653800 ms  DeleteObjects: 1.624700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.007601 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.329 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.78 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2950 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 129.0 MB.
-System memory in use after: 126.1 MB.
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 3431.
-Total: 5.880100 ms (FindLiveObjects: 0.327900 ms CreateObjectMapping: 0.155100 ms MarkObjects: 2.705300 ms  DeleteObjects: 2.690200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005944 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.459 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.82 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2960 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 129.3 MB.
-System memory in use after: 126.5 MB.
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 3445.
-Total: 4.877300 ms (FindLiveObjects: 0.272400 ms CreateObjectMapping: 0.138400 ms MarkObjects: 2.496100 ms  DeleteObjects: 1.969100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004941 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 73.00 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.654 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3021 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.0 MB.
-System memory in use after: 128.2 MB.
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 3510.
-Total: 4.839800 ms (FindLiveObjects: 0.379900 ms CreateObjectMapping: 0.151600 ms MarkObjects: 2.589000 ms  DeleteObjects: 1.717900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004986 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.424 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.93 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3109 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.6 MB.
-System memory in use after: 130.8 MB.
-
-Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 3601.
-Total: 5.585600 ms (FindLiveObjects: 0.308300 ms CreateObjectMapping: 0.188500 ms MarkObjects: 2.502500 ms  DeleteObjects: 2.585300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005339 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.88 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.517 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.10 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3149 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 134.8 MB.
-System memory in use after: 131.9 MB.
-
-Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 3649.
-Total: 6.050000 ms (FindLiveObjects: 0.364900 ms CreateObjectMapping: 0.187500 ms MarkObjects: 3.792700 ms  DeleteObjects: 1.703200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:srp/default-shader: 0000e00a000e0de00000e000e02d0000 -> 0000e00a000e0de00000e000e0000000
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
