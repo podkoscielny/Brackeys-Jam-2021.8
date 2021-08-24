@@ -11,8 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform poopSpawn;
 
     private ObjectPooler _objectPooler;
+    private bool _canShoot = true;
     private float _horizontalMovement = 0f;
     private float _movementSpeed = 200f;
+    private const float _shootDelay = 0.5f;
 
     void Start() => _objectPooler = ObjectPooler.Instance;
 
@@ -26,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
             controller.Jump();
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _canShoot)
         {
             //GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
             //Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
@@ -42,5 +44,15 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject poop = _objectPooler.GetFromPool("Poop");
         poop.transform.position = poopSpawn.position;
+
+        _canShoot = false;
+        StartCoroutine(DelayShooting());
+    }
+
+    IEnumerator DelayShooting()
+    {
+        yield return new WaitForSeconds(_shootDelay);
+
+        _canShoot = true;
     }
 }
