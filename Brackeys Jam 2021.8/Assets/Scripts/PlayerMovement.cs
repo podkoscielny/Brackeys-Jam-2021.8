@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject poopPrefab;
     [SerializeField] Transform poopSpawn;
 
+    private ObjectPooler _objectPooler;
     private float _horizontalMovement = 0f;
     private float _movementSpeed = 200f;
+
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void Update()
     {
@@ -25,12 +28,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
-            Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
+            //GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
+            //Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
 
-            poopRb.velocity = playerRb.velocity / 2;
+            //poopRb.velocity = playerRb.velocity / 2;
+            Shoot();
         }
     }
 
     void FixedUpdate() => controller.Move(_horizontalMovement);
+
+    void Shoot()
+    {
+        GameObject poop = _objectPooler.GetFromPool("Poop");
+        poop.transform.position = poopSpawn.position;
+    }
 }

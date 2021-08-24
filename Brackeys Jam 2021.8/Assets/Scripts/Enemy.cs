@@ -30,13 +30,11 @@ public class Enemy : MonoBehaviour
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
-    void OnBecameInvisible() => _objectPooler.AddToPool("Character", gameObject);
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Poop"))
+        if (collision.CompareTag("Poop"))
         {
-            _objectPooler.AddToPool("Character", gameObject);
+            _objectPooler.AddToPool("Poop", collision.gameObject);
         }
     }
 }
