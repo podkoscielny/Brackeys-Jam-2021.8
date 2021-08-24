@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 813753172112441296}
   - component: {fileID: 813753172112441297}
   m_Layer: 0
-  m_Name: Male_Character
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,6 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ebda0d366249d43be7ce7b9c08db72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  humanCharacters:
+  - {fileID: 11400000, guid: 9710a420bb97f38449ad36f46cdf796a, type: 2}
+  - {fileID: 11400000, guid: 3b583fe5a1081544c936c45335942359, type: 2}
+  spriteRenderer: {fileID: 813753172112441309}
+  enemyAnimator: {fileID: 813753172112441299}
 --- !u!70 &813753172112441297
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

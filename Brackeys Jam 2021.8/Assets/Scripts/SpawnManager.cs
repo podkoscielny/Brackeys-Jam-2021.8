@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] prefabs;
-
     private ObjectPooler _objectPooler;
     private Vector2 _spawnPosition = new Vector2(-10f, -2f);
 
@@ -17,7 +15,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCharacter()
     {
-        GameObject obj = _objectPooler.GetFromPool("Male");
+        GameObject obj = _objectPooler.GetFromPool("Character");
         obj.transform.position = _spawnPosition;
     }
 }
