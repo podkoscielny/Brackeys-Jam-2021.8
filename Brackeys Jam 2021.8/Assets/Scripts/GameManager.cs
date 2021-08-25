@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; private set; }
 
+    private int _cornEaten = 0;
     private int _scoreAmount = 10;
 
     public static GameManager Instance;
@@ -29,5 +30,10 @@ public class GameManager : MonoBehaviour
     {
         Score += _scoreAmount;
         OnScoreUpdate?.Invoke(Score);
+    }
+
+    public void EatCorn()
+    {
+        _cornEaten++;
     }
 }
