@@ -66,7 +66,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject GetFromPool(string tag)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(tag) || poolDictionary[tag].Count < 1)
         {
             return null;
         }
