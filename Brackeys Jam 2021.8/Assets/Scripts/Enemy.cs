@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static event Action<int> OnEnemyHit;
-
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
@@ -43,7 +40,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Poop"))
         {
             _objectPooler.AddToPool("Poop", collision.gameObject);
-            OnEnemyHit?.Invoke(_gameManager.Score + 10);
+            _gameManager.UpdateScore();
         }
     }
 }

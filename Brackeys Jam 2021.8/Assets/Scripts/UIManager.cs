@@ -7,13 +7,9 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
 
-    private GameManager _gameManager;
+    void OnEnable() => GameManager.OnScoreUpdate += UpdateScore;
 
-    void OnEnable() => Enemy.OnEnemyHit += UpdateScore;
-
-    void OnDisable() => Enemy.OnEnemyHit -= UpdateScore;
-
-    void Start() => _gameManager = GameManager.Instance;
+    void OnDisable() => GameManager.OnScoreUpdate -= UpdateScore;
 
     void UpdateScore(int score) => scoreText.text = score.ToString();
 }
