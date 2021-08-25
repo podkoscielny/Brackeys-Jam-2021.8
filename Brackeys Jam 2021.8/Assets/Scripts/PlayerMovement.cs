@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Helpers;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Shoot()
     {
-        GameObject poop = _objectPooler.GetFromPool("Poop");
+        GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
         poop.transform.position = poopSpawn.position;
 
         _canShoot = false;

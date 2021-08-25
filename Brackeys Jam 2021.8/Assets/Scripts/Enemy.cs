@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Helpers;
 
 public class Enemy : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class Enemy : MonoBehaviour
     {
         if (humanCharacters.Length < 1) return;
 
-        int characterIndex = UnityEngine.Random.Range(0, humanCharacters.Length);
+        int characterIndex = Random.Range(0, humanCharacters.Length);
 
         spriteRenderer.sprite = humanCharacters[characterIndex].sprite;
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
@@ -37,9 +38,9 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Poop"))
+        if (collision.CompareTag(Tags.Poop))
         {
-            _objectPooler.AddToPool("Poop", collision.gameObject);
+            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
         }
     }

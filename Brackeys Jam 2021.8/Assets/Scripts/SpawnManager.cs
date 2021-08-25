@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Helpers;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCharacter()
     {
-        GameObject obj = _objectPooler.GetFromPool("Character");
+        GameObject obj = _objectPooler.GetFromPool(Tags.Character);
 
         if (obj != null)
             obj.transform.position = _spawnPosition;
@@ -28,7 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCorn()
     {
-        GameObject obj = _objectPooler.GetFromPool("Corn");
+        GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
         if (obj != null)
         {
             float xPosition = Random.Range(_cornMinPositionX, _cornMaxPositionX);
