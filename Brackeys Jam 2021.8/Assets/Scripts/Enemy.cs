@@ -5,18 +5,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static event Action OnEnemyHit;
+    public static event Action<int> OnEnemyHit;
 
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
 
     private ObjectPooler _objectPooler;
+    private GameManager _gameManager;
     private float _movementSpeed = 4f;
 
     void OnEnable() => SetRandomSprite();
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    void Start()
+    {   
+        _objectPooler = ObjectPooler.Instance;
+        _gameManager = GameManager.Instance;
+    }
 
     void Update()
     {
@@ -38,7 +43,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Poop"))
         {
             _objectPooler.AddToPool("Poop", collision.gameObject);
-            OnEnemyHit?.Invoke();
+            OnEnemyHit?.Invoke(_gameManager.Score + 10);
         }
     }
 }

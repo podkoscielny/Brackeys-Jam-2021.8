@@ -28,5 +28,5 @@ public class GameManager : MonoBehaviour
 
     void OnDisable() => Enemy.OnEnemyHit -= UpdateScore;
 
-    void UpdateScore() => Score += _scoreAmount;
+    void UpdateScore(int score) => Score = score;
 }

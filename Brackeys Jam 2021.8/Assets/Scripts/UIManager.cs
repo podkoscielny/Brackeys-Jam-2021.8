@@ -15,5 +15,5 @@ public class UIManager : MonoBehaviour
 
     void Start() => _gameManager = GameManager.Instance;
 
-    void UpdateScore() => scoreText.text = _gameManager.Score.ToString();
+    void UpdateScore(int score) => scoreText.text = score.ToString();
 }
