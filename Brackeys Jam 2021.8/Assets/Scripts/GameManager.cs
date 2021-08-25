@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int _cornEaten = 0;
     private int _poopChargeLevel = 1;
     private int _chargeGoal = 5;
+    private int _chaosStarsAmount = 0;
     private int _scoreAmount = 10;
 
     public static GameManager Instance;
