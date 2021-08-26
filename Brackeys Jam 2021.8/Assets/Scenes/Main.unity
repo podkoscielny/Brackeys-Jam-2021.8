@@ -1002,6 +1002,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &956767358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
+  m_PrefabInstance: {fileID: 1816157651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &956767359
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956767358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36945ea000cf55c479cff6c0668adb8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1039779760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813753172112441308, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.99
+      value: -10.13
       objectReference: {fileID: 0}
     - target: {fileID: 813753172112441308, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1889,11 +1913,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 813753172112441309, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5626149497181746903, guid: 5ba18c87909b7c44899156b6b6328eaa, type: 3}
     - target: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
       propertyPath: m_Name
-      value: HostileCharacter
+      value: Policeman
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 813753172112441299, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
 --- !u!1001 &6103923788812017617
 PrefabInstance:
