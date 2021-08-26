@@ -134,10 +134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanCharacters:
-  - {fileID: 11400000, guid: 9710a420bb97f38449ad36f46cdf796a, type: 2}
   - {fileID: 11400000, guid: 3b583fe5a1081544c936c45335942359, type: 2}
   - {fileID: 11400000, guid: 448390ee55fefc5469735e58e2e7f96f, type: 2}
   - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
+  - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
   spriteRenderer: {fileID: 813753172112441309}
   enemyAnimator: {fileID: 813753172112441299}
 --- !u!210 &-8051431534695751512
