@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnHostile()
     {
-        GameObject obj = _objectPooler.GetFromPool(Tags.Character);
+        GameObject obj = _objectPooler.GetFromPool(Tags.Hostile);
 
         if (obj != null)
             obj.transform.position = _spawnPosition;
@@ -62,7 +62,6 @@ public class SpawnManager : MonoBehaviour
     void ChangeSpawnIntervals(int chaosStarsAmount)
     {
         CancelOngoingInvokes();
-        Debug.Log("change");
 
         switch (chaosStarsAmount)
         {

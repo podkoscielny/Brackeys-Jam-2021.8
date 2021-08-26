@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
             _chaosStarsAmount++;
             _chaosStarGoal *= _chaosStarsAmount * 2;
             OnChaosStarGained?.Invoke(_chaosStarsAmount);
-            Debug.Log(_chaosStarsAmount);
         }
 
         OnScoreUpdated?.Invoke(Score);
