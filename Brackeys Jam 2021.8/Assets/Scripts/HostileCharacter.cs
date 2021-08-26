@@ -46,8 +46,9 @@ public class HostileCharacter : MonoBehaviour
         _hasReachedTarget = true;
         enemyAnimator.SetFloat("Speed", 0f);
 
-        GameObject bullet = _objectPooler.GetFromPool(Tags.Bullet);
+        GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
         bullet.transform.position = transform.position;
+        bullet.SetActive(true);
     }
 
     //void SetRandomSprite()

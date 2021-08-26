@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static event Action<int> OnScoreUpdate;
+    public static event Action<int> OnScoreUpdated;
+    public static event Action<int> OnChaosStarGained;
 
     public int Score { get; private set; }
 
     private int _cornEaten = 0;
     private int _poopChargeLevel = 1;
     private int _chargeGoal = 5;
-    //private int _chaosStarsAmount = 0;
+    private int _chaosStarsAmount = 0;
+    private int _chaosStarGoal = 100;
     private int _scoreAmount = 10;
 
     public static GameManager Instance;
@@ -32,7 +34,16 @@ public class GameManager : MonoBehaviour
     public void UpdateScore()
     {
         Score += _scoreAmount;
-        OnScoreUpdate?.Invoke(Score);
+
+        if(Score >= _chaosStarGoal)
+        {
+            _chaosStarsAmount++;
+            _chaosStarGoal *= _chaosStarsAmount * 2;
+            OnChaosStarGained?.Invoke(_chaosStarsAmount);
+            Debug.Log(_chaosStarsAmount);
+        }
+
+        OnScoreUpdated?.Invoke(Score);
     }
 
     public void EatCorn()

@@ -78,5 +78,18 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
     }
 
+    public GameObject GetFromPoolInActive(string tag)
+    {
+        if (!poolDictionary.ContainsKey(tag) || poolDictionary[tag].Count < 1)
+        {
+            return null;
+        }
+
+        Queue<GameObject> pool = poolDictionary[tag];
+        GameObject objectToSpawn = pool.Dequeue();
+
+        return objectToSpawn;
+    }
+
     public bool IsTagInDictionary(string tag) => poolDictionary.ContainsKey(tag);
 }

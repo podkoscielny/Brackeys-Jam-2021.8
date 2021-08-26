@@ -8,6 +8,7 @@ TagManager:
   - Character
   - Corn
   - Bullet
+  - Hostile
   layers:
   - Default
   - TransparentFX

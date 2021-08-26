@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1024598227517482621}
   m_Layer: 0
   m_Name: HostileCharacter
-  m_TagString: Character
+  m_TagString: Hostile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
