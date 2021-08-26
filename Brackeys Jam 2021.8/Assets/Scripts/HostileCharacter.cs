@@ -19,6 +19,8 @@ public class HostileCharacter : MonoBehaviour
 
     //void OnEnable() => SetRandomSprite();
 
+    void OnDisable() => CancelInvoke(nameof(Shoot));
+
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
@@ -34,12 +36,13 @@ public class HostileCharacter : MonoBehaviour
         
         if(Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
-            Shoot();
+            InvokeRepeating(nameof(Shoot), 0f, 2f);
         }    
     }
 
     void Shoot()
     {
+        
         _hasReachedTarget = true;
         enemyAnimator.SetFloat("Speed", 0f);
 
