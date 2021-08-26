@@ -14,6 +14,7 @@ public class HostileCharacter : MonoBehaviour
     private float _movementSpeed = 4f;
     private float _minPositionX = -7f;
     private float _maxPositionX = 7f;
+    private bool _hasReachedTarget = false;
     private Vector2 _randomStopPosition;
 
     //void OnEnable() => SetRandomSprite();
@@ -31,10 +32,19 @@ public class HostileCharacter : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
         
-        if(Vector2.Distance(transform.position, _randomStopPosition) < 0.01f)
+        if(Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
-            enemyAnimator.SetFloat("Speed", 0f);
+            Shoot();
         }    
+    }
+
+    void Shoot()
+    {
+        _hasReachedTarget = true;
+        enemyAnimator.SetFloat("Speed", 0f);
+
+        GameObject bullet = _objectPooler.GetFromPool(Tags.Bullet);
+        bullet.transform.position = transform.position;
     }
 
     //void SetRandomSprite()

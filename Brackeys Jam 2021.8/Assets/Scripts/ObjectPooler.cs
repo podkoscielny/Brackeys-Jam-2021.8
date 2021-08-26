@@ -12,8 +12,8 @@ public class ObjectPooler : MonoBehaviour
         public int size;
     }
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    [SerializeField] List<Pool> pools;
+    [SerializeField] Dictionary<string, Queue<GameObject>> poolDictionary;
 
     public static ObjectPooler Instance;
 
@@ -77,4 +77,6 @@ public class ObjectPooler : MonoBehaviour
 
         return objectToSpawn;
     }
+
+    public bool IsTagInDictionary(string tag) => poolDictionary.ContainsKey(tag);
 }

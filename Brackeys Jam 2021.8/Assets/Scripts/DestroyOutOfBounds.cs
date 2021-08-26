@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Helpers;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
@@ -8,5 +9,11 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     void Start() => _objectPooler = ObjectPooler.Instance;
 
-    void OnTriggerEnter2D(Collider2D collision) => _objectPooler.AddToPool(collision.gameObject.tag, collision.gameObject);
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_objectPooler.IsTagInDictionary(collision.tag))
+        {
+            _objectPooler.AddToPool(collision.tag, collision.gameObject);
+        }
+    }
 }
