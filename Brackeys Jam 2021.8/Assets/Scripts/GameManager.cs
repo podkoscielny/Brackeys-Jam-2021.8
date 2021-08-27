@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     public static event Action<int> OnChaosStarGained;
 
     public int Score { get; private set; }
+    public int PoopChargeLevel { get; private set; } = 1;
 
     private int _cornEaten = 0;
-    private int _poopChargeLevel = 1;
     private int _chargeGoal = 5;
     private int _chaosStarsAmount = 0;
     private int _chaosStarGoal = 100;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         Score += _scoreAmount;
 
-        if(Score >= _chaosStarGoal)
+        if (Score >= _chaosStarGoal)
         {
             _chaosStarsAmount++;
             _chaosStarGoal *= _chaosStarsAmount * 2;
@@ -49,12 +49,12 @@ public class GameManager : MonoBehaviour
     {
         _cornEaten++;
 
-        if(_cornEaten == _chargeGoal)
+        if (_cornEaten == _chargeGoal)
         {
-            _poopChargeLevel++;
-            _chargeGoal = _poopChargeLevel * 5;
+            PoopChargeLevel++;
+            _chargeGoal = PoopChargeLevel * 5;
             _cornEaten = 0;
-            _scoreAmount = 10 * _poopChargeLevel * _poopChargeLevel;
+            _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
         }
     }
 }

@@ -71,6 +71,13 @@ public class HostileCharacter : MonoBehaviour
         if (collision.CompareTag(Tags.Poop))
         {
             splashEffect.SetActive(true);
+            int poopLevel = _gameManager.PoopChargeLevel;
+            float splashScaleX = splashEffect.transform.localScale.x + 0.1f * poopLevel;
+            float splashScaleY = splashEffect.transform.localScale.y + 0.1f * poopLevel;
+            float splashScaleZ = splashEffect.transform.localScale.z;
+
+            splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
+
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
         }
