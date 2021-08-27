@@ -8,12 +8,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] GameObject splashEffect;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private float _movementSpeed = 4f;
 
-    void OnEnable() => SetRandomSprite();
+    void OnEnable()
+    {
+        splashEffect.SetActive(false);
+        SetRandomSprite();
+    }
 
     void Start()
     {   
@@ -40,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag(Tags.Poop))
         {
+            splashEffect.SetActive(true);
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
         }

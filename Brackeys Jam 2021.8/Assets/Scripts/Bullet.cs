@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
     void GoTowardsTarget()
     {
         Vector2 direction = _player.transform.position - transform.position;
-        bulletRb.AddForce(direction * _speed, ForceMode2D.Impulse);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bulletRb.rotation = angle;
+        bulletRb.AddForce(transform.right * _speed, ForceMode2D.Impulse);
     }
 }

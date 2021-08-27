@@ -7,7 +7,9 @@ public class HostileCharacter : MonoBehaviour
 {
     //[SerializeField] HumanCharacter[] humanCharacters;
     //[SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] GameObject splashEffect;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
@@ -17,7 +19,11 @@ public class HostileCharacter : MonoBehaviour
     private bool _hasReachedTarget = false;
     private Vector2 _randomStopPosition;
 
-    //void OnEnable() => SetRandomSprite();
+    void OnEnable()
+    {
+        splashEffect.SetActive(false);
+        //SetRandomSprite();
+    }
 
     void OnDisable() => CancelInvoke(nameof(Shoot));
 
@@ -33,21 +39,20 @@ public class HostileCharacter : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
-        
-        if(Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
+
+        if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
-            InvokeRepeating(nameof(Shoot), 0f, 2f);
-        }    
+            _hasReachedTarget = true;
+            InvokeRepeating(nameof(ShootAnimation), 0f, 2f);
+        }
     }
+
+    void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
     void Shoot()
     {
-        
-        _hasReachedTarget = true;
-        enemyAnimator.SetFloat("Speed", 0f);
-
         GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
-        bullet.transform.position = transform.position;
+        bullet.transform.position = firePoint.position;
         bullet.SetActive(true);
     }
 
@@ -65,6 +70,7 @@ public class HostileCharacter : MonoBehaviour
     {
         if (collision.CompareTag(Tags.Poop))
         {
+            splashEffect.SetActive(true);
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
         }
