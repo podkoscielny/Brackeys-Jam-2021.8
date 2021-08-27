@@ -1,19 +1,34 @@
 fileFormatVersion: 2
-guid: 84663d5b13a6f234693b4967160789fe
+guid: 12e058c5e4a9d8646843f81ae5ce33cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -994632800760977212
-    second: pigeon_pecking_0
+      213: -1160377538573332201
+    second: pigeon_walking2_0
   - first:
-      213: -2380894887710094497
-    second: pigeon_pecking_1
+      213: 8906765581272279147
+    second: pigeon_walking2_1
   - first:
-      213: -7810524276553103267
-    second: pigeon_pecking_2
+      213: -112341584615004295
+    second: pigeon_walking2_2
   - first:
-      213: 2908436690506121470
-    second: pigeon_pecking_3
+      213: 5054355879802529389
+    second: pigeon_walking2_3
+  - first:
+      213: 4807458648942280923
+    second: pigeon_walking2_4
+  - first:
+      213: -7358090468723889277
+    second: pigeon_walking2_5
+  - first:
+      213: 1234795471069332325
+    second: pigeon_walking2_6
+  - first:
+      213: 3231405166912955294
+    second: pigeon_walking2_7
+  - first:
+      213: -3975331349444648402
+    second: pigeon_walking2_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,12 +118,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pigeon_pecking_0
+      name: pigeon_walking2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -117,19 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c8a0bcccba5232f0800000000000000
-      internalID: -994632800760977212
+      spriteID: 7119effc6c285efe0800000000000000
+      internalID: -1160377538573332201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pigeon_pecking_1
+      name: pigeon_walking2_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 0
-        width: 48
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -138,19 +153,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5b0f72d6bc55fed0800000000000000
-      internalID: -2380894887710094497
+      spriteID: b68e8692b103b9b70800000000000000
+      internalID: 8906765581272279147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pigeon_pecking_2
+      name: pigeon_walking2_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977a48b8ce1e07ef0800000000000000
+      internalID: -112341584615004295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeon_walking2_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 48
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -159,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58cc7a6d817b9390800000000000000
-      internalID: -7810524276553103267
+      spriteID: d666900c4eda42640800000000000000
+      internalID: 5054355879802529389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pigeon_pecking_3
+      name: pigeon_walking2_4
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 0
-        width: 48
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -180,8 +216,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef0845da2c7dc5820800000000000000
-      internalID: 2908436690506121470
+      spriteID: bd085929b2687b240800000000000000
+      internalID: 4807458648942280923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeon_walking2_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b668a14bfc2e990800000000000000
+      internalID: -7358090468723889277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeon_walking2_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563495f40ffd22110800000000000000
+      internalID: 1234795471069332325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeon_walking2_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93653be0e148dc20800000000000000
+      internalID: 3231405166912955294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeon_walking2_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22a0eb2339c4d8c0800000000000000
+      internalID: -3975331349444648402
       vertices: []
       indices: 
       edges: []
