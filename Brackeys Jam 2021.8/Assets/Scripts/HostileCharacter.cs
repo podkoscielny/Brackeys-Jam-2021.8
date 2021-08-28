@@ -71,6 +71,8 @@ public class HostileCharacter : MonoBehaviour
         }
     }
 
+    public void DisableMoving() => _isDown = true;
+
     void FlipCharacter() => transform.Rotate(0, 180, 0);
 
     void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
@@ -94,11 +96,9 @@ public class HostileCharacter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Poop))
+        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
         {
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-            _gameManager.UpdateScore();
-
             SetSplashEffect(collision.transform.position);
         }
     }
@@ -117,6 +117,7 @@ public class HostileCharacter : MonoBehaviour
         if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
         {
             _isDown = true;
+            _gameManager.UpdateScore();
             enemyAnimator.SetTrigger("Death");
             enemyCollider.enabled = false;
         }

@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; private set; }
     public int PoopChargeLevel { get; private set; } = 1;
+    public int ChaosStarsAmount { get; private set; } = 0;
 
     private int _cornEaten = 0;
-    private int _chargeGoal = 5;
-    private int _chaosStarsAmount = 0;
-    private int _chaosStarGoal = 100;
+    private int _chargeGoal = 3;
+    private int _chaosStarGoal = 10;
     private int _scoreAmount = 10;
+    private int _maxPoopChargeLevel = 5;
+    private int _maxChaosStarsAmount = 5;
 
     public static GameManager Instance;
 
@@ -35,11 +37,11 @@ public class GameManager : MonoBehaviour
     {
         Score += _scoreAmount;
 
-        if (Score >= _chaosStarGoal)
+        if (Score >= _chaosStarGoal && ChaosStarsAmount < _maxChaosStarsAmount)
         {
-            _chaosStarsAmount++;
-            _chaosStarGoal *= _chaosStarsAmount * 2;
-            OnChaosStarGained?.Invoke(_chaosStarsAmount);
+            ChaosStarsAmount++;
+            SetChaosStarsGoal();
+            OnChaosStarGained?.Invoke(ChaosStarsAmount);
         }
 
         OnScoreUpdated?.Invoke(Score);
@@ -49,12 +51,67 @@ public class GameManager : MonoBehaviour
     {
         _cornEaten++;
 
-        if (_cornEaten == _chargeGoal)
+        if (_cornEaten == _chargeGoal && PoopChargeLevel < _maxPoopChargeLevel)
         {
             PoopChargeLevel++;
-            _chargeGoal = PoopChargeLevel * 5;
+            _chargeGoal = PoopChargeLevel * 1;
             _cornEaten = 0;
             _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
+        }
+    }
+
+    void SetChaosStarsGoal()
+    {
+        //switch (ChaosStarsAmount)
+        //{
+        //    case 1:
+        //        _chaosStarGoal = 200;
+        //        break;
+
+        //    case 2:
+        //        _chaosStarGoal = 400;
+        //        break;
+
+        //    case 3:
+        //        _chaosStarGoal = 800;
+        //        break;
+
+        //    case 4:
+        //        _chaosStarGoal = 1600;
+        //        break;
+
+        //    case 5:
+        //        _chaosStarGoal = 3000;
+        //        break;
+
+        //    default:
+        //        break;
+        //}
+
+        switch (ChaosStarsAmount)
+        {
+            case 1:
+                _chaosStarGoal = 20;
+                break;
+
+            case 2:
+                _chaosStarGoal = 50;
+                break;
+
+            case 3:
+                _chaosStarGoal = 100;
+                break;
+
+            case 4:
+                _chaosStarGoal = 150;
+                break;
+
+            case 5:
+                _chaosStarGoal = 200;
+                break;
+
+            default:
+                break;
         }
     }
 }

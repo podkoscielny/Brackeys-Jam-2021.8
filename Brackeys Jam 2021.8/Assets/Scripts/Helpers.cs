@@ -11,6 +11,9 @@ namespace Helpers
         public static string Bullet { get; private set; } = "Bullet";
         public static string Hostile { get; private set; } = "Hostile";
         public static string SplashEffect { get; private set; } = "SplashEffect";
+        public static string Ground { get; private set; } = "Ground";
+        public static string ExplosionGreen { get; private set; } = "ExplosionGreen";
+        public static string ExplosionRed { get; private set; } = "ExplosionRed";
     }
 }
 

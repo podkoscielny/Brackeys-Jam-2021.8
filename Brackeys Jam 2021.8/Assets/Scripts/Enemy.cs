@@ -58,6 +58,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void DisableMoving() => _canMove = false;
+
     public void SetFacing(bool isFacingRight)
     {
         _isMovingRight = isFacingRight;
@@ -86,7 +88,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Poop))
+        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
         {
 
             splashEffect.transform.position = collision.transform.position;
