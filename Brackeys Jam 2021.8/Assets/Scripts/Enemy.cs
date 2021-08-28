@@ -14,7 +14,10 @@ public class Enemy : MonoBehaviour
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private float _movementSpeed = 4f;
-    private int layerIgnore = 8;
+    private int _layerIgnore = 8;
+    private bool _isMovingRight = true;
+    private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
+    private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
     void OnEnable()
     {
@@ -23,16 +26,37 @@ public class Enemy : MonoBehaviour
     }
 
     void Start()
-    {   
+    {
         _objectPooler = ObjectPooler.Instance;
         _gameManager = GameManager.Instance;
 
-        Physics2D.IgnoreLayerCollision(layerIgnore, layerIgnore);
+        Physics2D.IgnoreLayerCollision(_layerIgnore, _layerIgnore);
     }
 
     void Update()
     {
-        transform.Translate(Vector3.right * _movementSpeed * Time.deltaTime);
+        if (_isMovingRight)
+        {
+            transform.position += Vector3.right * _movementSpeed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += Vector3.left * _movementSpeed * Time.deltaTime;
+        }
+    }
+
+    public void SetFacing(bool isFacingRight)
+    {
+        _isMovingRight = isFacingRight;
+
+        if (isFacingRight)
+        {
+            transform.rotation = _rightRotation;
+        }
+        else
+        {
+            transform.rotation = _leftRotation;
+        }
     }
 
     void SetRandomSprite()

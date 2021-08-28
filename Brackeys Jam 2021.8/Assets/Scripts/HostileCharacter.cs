@@ -5,7 +5,6 @@ using Helpers;
 
 public class HostileCharacter : MonoBehaviour
 {
-    //[SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
@@ -19,13 +18,13 @@ public class HostileCharacter : MonoBehaviour
     private float _minPositionX = -7f;
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
+    private bool _isFacingRight = true;
     private Vector2 _randomStopPosition;
     private int layerIgnore = 8;
 
     void OnEnable()
     {
         splashEffect.SetActive(false);
-        //SetRandomSprite();
     }
 
     void OnDisable() => CancelInvoke(nameof(Shoot));
@@ -43,7 +42,19 @@ public class HostileCharacter : MonoBehaviour
 
     void Update()
     {
-        //transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
+        Move();
+    }
+
+    void Move()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
+
+        if (_randomStopPosition.x < transform.position.x && _isFacingRight || _randomStopPosition.x > transform.position.x && !_isFacingRight)
+        {
+            _isFacingRight = !_isFacingRight;
+            FlipCharacter();
+        }
+
 
         if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
@@ -51,6 +62,8 @@ public class HostileCharacter : MonoBehaviour
             InvokeRepeating(nameof(ShootAnimation), 0f, 2f);
         }
     }
+
+    void FlipCharacter() => transform.Rotate(0, 180, 0);
 
     void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
@@ -60,16 +73,6 @@ public class HostileCharacter : MonoBehaviour
         bullet.transform.position = firePoint.position;
         bullet.SetActive(true);
     }
-
-    //void SetRandomSprite()
-    //{
-    //    if (humanCharacters.Length < 1) return;
-
-    //    int characterIndex = Random.Range(0, humanCharacters.Length);
-
-    //    spriteRenderer.sprite = humanCharacters[characterIndex].sprite;
-    //    enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
-    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {

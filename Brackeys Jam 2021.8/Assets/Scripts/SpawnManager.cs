@@ -7,18 +7,18 @@ public class SpawnManager : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
 
-    private Vector3 _spawnPosition = new Vector3(-10f, -2f, 0f);
     private float _spawnMaxY = -1.98f;
     private float _spawnMinY = -2.8f;
+    private float _spawnXRange = 10f;
     private float _cornMinPositionX = -7f;
     private float _cornMaxPositionX = 0f;
     private float _cornPositionY = 3.29f;
 
-    private float _neutralInterval = 4f;
-    private float _hostileInterval = 0f;
+    private float _neutralInterval = 0f;
+    private float _hostileInterval = 2f;
     private float _cornInterval = 4f;
 
-    private int _hostileLimit = 0;
+    private int _hostileLimit = 7;
 
     void OnEnable()
     {
@@ -40,13 +40,18 @@ public class SpawnManager : MonoBehaviour
     void SpawnNeutral()
     {
         GameObject obj = _objectPooler.GetFromPool(Tags.Character);
+        Enemy objScript = obj.GetComponent<Enemy>();
 
         if (obj != null)
         {
+            bool isMovingRight = Random.Range(0, 2) == 1;
+
+            float randomX = isMovingRight ? -_spawnXRange : _spawnXRange;
             float randomY = Random.Range(_spawnMinY, _spawnMaxY);
-            _spawnPosition.y = randomY;
-            _spawnPosition.z = randomY;
-            obj.transform.position = _spawnPosition;
+            Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
+            obj.transform.position = charactersPosition;
+
+            objScript.SetFacing(isMovingRight);
         }
     }
 
@@ -60,10 +65,12 @@ public class SpawnManager : MonoBehaviour
 
             if (obj != null)
             {
+                bool isMovingRight = Random.Range(0, 2) == 1;
+
+                float randomX = isMovingRight ? -_spawnXRange : _spawnXRange;
                 float randomY = Random.Range(_spawnMinY, _spawnMaxY);
-                _spawnPosition.y = randomY;
-                _spawnPosition.z = randomY;
-                obj.transform.position = _spawnPosition;
+                Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
+                obj.transform.position = charactersPosition;
             }
         }
     }
@@ -76,6 +83,14 @@ public class SpawnManager : MonoBehaviour
             float xPosition = Random.Range(_cornMinPositionX, _cornMaxPositionX);
             obj.transform.position = new Vector2(xPosition, _cornPositionY);
         }
+    }
+
+    void SetCharactersPosition(GameObject character)
+    {
+        float randomX = Random.Range(0, 1) > 0.5f ? _spawnXRange : -_spawnXRange;
+        float randomY = Random.Range(_spawnMinY, _spawnMaxY);
+        Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
+        character.transform.position = charactersPosition;
     }
 
     void ChangeSpawnIntervals(int chaosStarsAmount)
