@@ -14,11 +14,11 @@ public class SpawnManager : MonoBehaviour
     private float _cornMaxPositionX = 0f;
     private float _cornPositionY = 3.29f;
 
-    private float _neutralInterval = 0f;
-    private float _hostileInterval = 2f;
+    private float _neutralInterval = 3f;
+    private float _hostileInterval = 0f;
     private float _cornInterval = 4f;
 
-    private int _hostileLimit = 7;
+    private int _hostileLimit = 0;
 
     void OnEnable()
     {

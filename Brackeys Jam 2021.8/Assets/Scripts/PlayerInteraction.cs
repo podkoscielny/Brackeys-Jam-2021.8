@@ -7,19 +7,23 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] LayerMask interactableMask;
     [SerializeField] AnimationController animationController;
 
+    private bool _isInteracting = false;
     private const float INTERACTION_RADIUS = 0.7f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Interaction"))
+        if (Input.GetButtonDown("Interaction") && !_isInteracting)
         {
             Collider2D interactableObject = Physics2D.OverlapCircle(transform.position, INTERACTION_RADIUS, interactableMask);
 
             if (interactableObject != null)
             {
                 interactableObject.GetComponent<IInteractable>()?.PickUp();
+                _isInteracting = true;
                 animationController.OnPickup();
             }
         }
     }
+
+    void EnableInteracting() => _isInteracting = false;
 }
