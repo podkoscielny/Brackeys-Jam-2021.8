@@ -21,6 +21,7 @@ public class HostileCharacter : MonoBehaviour
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
     private bool _isFacingRight = true;
+    private bool _isDown = false;
     private Vector2 _randomStopPosition;
     private int layerIgnore = 8;
 
@@ -29,7 +30,12 @@ public class HostileCharacter : MonoBehaviour
         splashEffect.SetActive(false);
     }
 
-    void OnDisable() => CancelInvoke(nameof(Shoot));
+    void OnDisable()
+    {
+        _isDown = false;
+        _hasReachedTarget = false;
+        CancelInvoke(nameof(Shoot));
+    }
 
     void Start()
     {
@@ -43,7 +49,8 @@ public class HostileCharacter : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (!_isDown)
+            Move();
     }
 
     void Move()
@@ -109,6 +116,7 @@ public class HostileCharacter : MonoBehaviour
 
         if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
         {
+            _isDown = true;
             enemyAnimator.SetTrigger("Death");
             enemyCollider.enabled = false;
         }
