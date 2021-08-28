@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1024598227517482621}
   - component: {fileID: 956767359}
   - component: {fileID: 7229662874108291226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HostileCharacter
   m_TagString: Hostile
   m_Icon: {fileID: 0}
@@ -231,9 +231,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac3b8bafa804e64ab86b5d617290710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
   firePoint: {fileID: 534719745}
   enemyAnimator: {fileID: 956767359}
   splashEffect: {fileID: 8336473719959366959}
+  splashRenderer: {fileID: 6714487046496678840}
+  layerToIgnoreCollision:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!210 &1024598227517482621
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -428,5 +433,10 @@ GameObject:
 --- !u!4 &8610225165346948647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3220248138495717832, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
+  m_PrefabInstance: {fileID: 6615001382070269935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6714487046496678840 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 496401811769476183, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
   m_PrefabInstance: {fileID: 6615001382070269935}
   m_PrefabAsset: {fileID: 0}

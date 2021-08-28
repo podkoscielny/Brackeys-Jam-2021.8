@@ -9,10 +9,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] GameObject splashEffect;
+    [SerializeField] LayerMask layerToIgnoreCollision;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private float _movementSpeed = 4f;
+    private int layerIgnore = 8;
 
     void OnEnable()
     {
@@ -24,6 +26,8 @@ public class Enemy : MonoBehaviour
     {   
         _objectPooler = ObjectPooler.Instance;
         _gameManager = GameManager.Instance;
+
+        Physics2D.IgnoreLayerCollision(layerIgnore, layerIgnore);
     }
 
     void Update()

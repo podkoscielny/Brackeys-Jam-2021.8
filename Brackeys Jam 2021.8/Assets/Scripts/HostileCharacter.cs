@@ -6,10 +6,12 @@ using Helpers;
 public class HostileCharacter : MonoBehaviour
 {
     //[SerializeField] HumanCharacter[] humanCharacters;
-    //[SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] GameObject splashEffect;
+    [SerializeField] SpriteRenderer splashRenderer;
+    [SerializeField] LayerMask layerToIgnoreCollision;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
@@ -18,6 +20,7 @@ public class HostileCharacter : MonoBehaviour
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
     private Vector2 _randomStopPosition;
+    private int layerIgnore = 8;
 
     void OnEnable()
     {
@@ -34,11 +37,13 @@ public class HostileCharacter : MonoBehaviour
 
         float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
         _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
+
+        Physics2D.IgnoreLayerCollision(layerIgnore, layerIgnore);
     }
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
@@ -70,16 +75,26 @@ public class HostileCharacter : MonoBehaviour
     {
         if (collision.CompareTag(Tags.Poop))
         {
-            splashEffect.SetActive(true);
-            int poopLevel = _gameManager.PoopChargeLevel;
-            float splashScaleX = splashEffect.transform.localScale.x + 0.1f * poopLevel;
-            float splashScaleY = splashEffect.transform.localScale.y + 0.1f * poopLevel;
-            float splashScaleZ = splashEffect.transform.localScale.z;
-
-            splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
-
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
+
+            SetSplashEffect();
+        }
+    }
+
+    void SetSplashEffect()
+    {
+        splashEffect.SetActive(true);
+        int poopLevel = _gameManager.PoopChargeLevel;
+        float splashScaleX = splashEffect.transform.localScale.x + 0.1f * poopLevel;
+        float splashScaleY = splashEffect.transform.localScale.y + 0.1f * poopLevel;
+        float splashScaleZ = splashEffect.transform.localScale.z;
+
+        splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
+
+        if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
+        {
+            _objectPooler.AddToPool(Tags.Hostile, gameObject);
         }
     }
 }

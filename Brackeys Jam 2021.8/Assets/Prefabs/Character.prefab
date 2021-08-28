@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 813753172112441296}
   - component: {fileID: -8051431534695751512}
   - component: {fileID: 1262634898865482270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character
   m_TagString: Character
   m_Icon: {fileID: 0}
@@ -144,6 +144,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 813753172112441309}
   enemyAnimator: {fileID: 813753172112441299}
   splashEffect: {fileID: 7771160401071954365}
+  layerToIgnoreCollision:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!210 &-8051431534695751512
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -264,6 +267,10 @@ PrefabInstance:
     - target: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
       propertyPath: m_Name
       value: Splash_shape1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
       propertyPath: m_IsActive
