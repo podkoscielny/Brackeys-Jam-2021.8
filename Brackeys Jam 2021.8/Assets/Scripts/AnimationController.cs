@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour, IControlAnimation
 {
+    [SerializeField] Animator animator;
+
     public void OnLanding()
     {
-        
+        animator.SetBool("IsJumping", false);
     }
 
     public void OnFalling()
@@ -21,6 +23,6 @@ public class AnimationController : MonoBehaviour, IControlAnimation
 
     public void OnJumping()
     {
-
+        animator.SetBool("IsJumping", true);
     }
 }
