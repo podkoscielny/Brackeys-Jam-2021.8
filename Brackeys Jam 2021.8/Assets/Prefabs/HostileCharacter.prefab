@@ -249,7 +249,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 1360585385
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
 --- !u!95 &956767359
 Animator:
   serializedVersion: 3

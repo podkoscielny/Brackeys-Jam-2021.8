@@ -7,9 +7,9 @@ public class SpawnManager : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
 
-    private Vector2 _spawnPosition = new Vector2(-10f, -2f);
+    private Vector3 _spawnPosition = new Vector3(-10f, -2f, 0f);
     private float _spawnMaxY = -1.98f;
-    private float _spawnMinY = -2.13f;
+    private float _spawnMinY = -2.8f;
     private float _cornMinPositionX = -7f;
     private float _cornMaxPositionX = 0f;
     private float _cornPositionY = 3.29f;
@@ -45,6 +45,7 @@ public class SpawnManager : MonoBehaviour
         {
             float randomY = Random.Range(_spawnMinY, _spawnMaxY);
             _spawnPosition.y = randomY;
+            _spawnPosition.z = randomY;
             obj.transform.position = _spawnPosition;
         }
     }
@@ -61,6 +62,7 @@ public class SpawnManager : MonoBehaviour
             {
                 float randomY = Random.Range(_spawnMinY, _spawnMaxY);
                 _spawnPosition.y = randomY;
+                _spawnPosition.z = randomY;
                 obj.transform.position = _spawnPosition;
             }
         }
