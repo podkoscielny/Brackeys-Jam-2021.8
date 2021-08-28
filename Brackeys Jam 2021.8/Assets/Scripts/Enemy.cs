@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     private float _movementSpeed = 4f;
     private int _layerIgnore = 8;
     private bool _isMovingRight = true;
+    private bool _isHit = false;
+    private bool _canMove = true;
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
     private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
@@ -23,6 +25,11 @@ public class Enemy : MonoBehaviour
     {
         splashEffect.SetActive(false);
         SetRandomSprite();
+    }
+
+    private void OnDisable()
+    {
+        _isHit = false;
     }
 
     void Start()
@@ -34,6 +41,12 @@ public class Enemy : MonoBehaviour
     }
 
     void Update()
+    {
+        if (_canMove)
+            Move();
+    }
+
+    void Move()
     {
         if (_isMovingRight)
         {
@@ -69,14 +82,24 @@ public class Enemy : MonoBehaviour
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
+    void EnableMoving() => _canMove = true;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Tags.Poop))
         {
+
             splashEffect.transform.position = collision.transform.position;
             splashEffect.SetActive(true);
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-            _gameManager.UpdateScore();
+
+            if (!_isHit)
+            {
+                _gameManager.UpdateScore();
+                _isHit = true;
+                _canMove = false;
+                enemyAnimator.SetTrigger("IsHit");
+            }
         }
     }
 }
