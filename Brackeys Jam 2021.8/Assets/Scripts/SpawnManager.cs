@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     private ObjectPooler _objectPooler;
 
     private Vector2 _spawnPosition = new Vector2(-10f, -2f);
+    private float _spawnMaxY = -1.98f;
+    private float _spawnMinY = -2.13f;
     private float _cornMinPositionX = -7f;
     private float _cornMaxPositionX = 0f;
     private float _cornPositionY = 2.15f;
@@ -40,7 +42,11 @@ public class SpawnManager : MonoBehaviour
         GameObject obj = _objectPooler.GetFromPool(Tags.Character);
 
         if (obj != null)
+        {
+            float randomY = Random.Range(_spawnMinY, _spawnMaxY);
+            _spawnPosition.y = randomY;
             obj.transform.position = _spawnPosition;
+        }
     }
 
     void SpawnHostile()
@@ -52,7 +58,11 @@ public class SpawnManager : MonoBehaviour
             GameObject obj = _objectPooler.GetFromPool(Tags.Hostile);
 
             if (obj != null)
+            {
+                float randomY = Random.Range(_spawnMinY, _spawnMaxY);
+                _spawnPosition.y = randomY;
                 obj.transform.position = _spawnPosition;
+            }
         }
     }
 

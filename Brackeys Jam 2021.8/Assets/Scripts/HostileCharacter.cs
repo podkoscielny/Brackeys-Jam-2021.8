@@ -78,12 +78,13 @@ public class HostileCharacter : MonoBehaviour
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
 
-            SetSplashEffect();
+            SetSplashEffect(collision.transform.position);
         }
     }
 
-    void SetSplashEffect()
+    void SetSplashEffect(Vector2 poopPosition)
     {
+        splashEffect.transform.position = poopPosition;
         splashEffect.SetActive(true);
         int poopLevel = _gameManager.PoopChargeLevel;
         float splashScaleX = splashEffect.transform.localScale.x + 0.1f * poopLevel;

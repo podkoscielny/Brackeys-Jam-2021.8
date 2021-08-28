@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag(Tags.Poop))
         {
+            splashEffect.transform.position = collision.transform.position;
             splashEffect.SetActive(true);
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             _gameManager.UpdateScore();
