@@ -12,9 +12,11 @@ public class SpawnManager : MonoBehaviour
     private float _cornMaxPositionX = 0f;
     private float _cornPositionY = 2.15f;
 
-    private float _neutralInterval = 2f;
+    private float _neutralInterval = 4f;
     private float _hostileInterval = 0f;
     private float _cornInterval = 4f;
+
+    private int _hostileLimit = 0;
 
     void OnEnable()
     {
@@ -43,10 +45,15 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnHostile()
     {
-        GameObject obj = _objectPooler.GetFromPool(Tags.Hostile);
+        GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
 
-        if (obj != null)
-            obj.transform.position = _spawnPosition;
+        if (hostiles.Length < _hostileLimit)
+        {
+            GameObject obj = _objectPooler.GetFromPool(Tags.Hostile);
+
+            if (obj != null)
+                obj.transform.position = _spawnPosition;
+        }
     }
 
     void SpawnCorn()
@@ -68,24 +75,29 @@ public class SpawnManager : MonoBehaviour
             case 1:
                 _neutralInterval = 1.5f;
                 _hostileInterval = 6f;
+                _hostileLimit = 1;
                 break;
 
             case 2:
                 _neutralInterval = 2f;
                 _hostileInterval = 4.5f;
+                _hostileLimit = 2;
                 break;
 
             case 3:
                 _neutralInterval = 4f;
                 _hostileInterval = 3f;
+                _hostileLimit = 4;
                 break;
 
             case 4:
                 _hostileInterval = 2f;
+                _hostileLimit = 6;
                 break;
 
             case 5:
                 _hostileInterval = 2f;
+                _hostileLimit = 8;
                 break;
 
             default:
