@@ -6,6 +6,7 @@ using Helpers;
 public class HostileCharacter : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Collider2D enemyCollider;
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
@@ -108,7 +109,10 @@ public class HostileCharacter : MonoBehaviour
 
         if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
         {
-            _objectPooler.AddToPool(Tags.Hostile, gameObject);
+            enemyAnimator.SetTrigger("Death");
+            enemyCollider.enabled = false;
         }
     }
+
+    void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Hostile, gameObject);
 }
