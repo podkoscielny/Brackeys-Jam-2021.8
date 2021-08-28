@@ -35,8 +35,7 @@ public class HostileCharacter : MonoBehaviour
         _objectPooler = ObjectPooler.Instance;
         _gameManager = GameManager.Instance;
 
-        float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
-        _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
+        SetRandomStopPosition();
 
         Physics2D.IgnoreLayerCollision(layerIgnore, layerIgnore);
     }
@@ -75,6 +74,12 @@ public class HostileCharacter : MonoBehaviour
         bullet.transform.position = firePoint.position;
         bullet.transform.rotation = gun.rotation;
         bullet.SetActive(true);
+    }
+
+    void SetRandomStopPosition()
+    {
+        float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
+        _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
