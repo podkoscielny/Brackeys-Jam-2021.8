@@ -6,6 +6,7 @@ using Helpers;
 public class HostileCharacter : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] GameObject splashEffect;
@@ -70,7 +71,9 @@ public class HostileCharacter : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
+
         bullet.transform.position = firePoint.position;
+        bullet.transform.rotation = gun.rotation;
         bullet.SetActive(true);
     }
 

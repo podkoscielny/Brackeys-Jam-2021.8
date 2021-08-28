@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
+  gun: {fileID: 1279665798}
   firePoint: {fileID: 534719745}
   enemyAnimator: {fileID: 956767359}
   splashEffect: {fileID: 8336473719959366959}
