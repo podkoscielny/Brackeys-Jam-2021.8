@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanCharacters:
-  - {fileID: 11400000, guid: 3b583fe5a1081544c936c45335942359, type: 2}
+  - {fileID: 11400000, guid: c05b479f1e7726143bfe668334b33ef0, type: 2}
   - {fileID: 11400000, guid: 448390ee55fefc5469735e58e2e7f96f, type: 2}
   - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
