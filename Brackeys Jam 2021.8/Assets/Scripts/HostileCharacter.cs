@@ -59,7 +59,7 @@ public class HostileCharacter : MonoBehaviour
         if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
             _hasReachedTarget = true;
-            InvokeRepeating(nameof(ShootAnimation), 0f, 2f);
+            ShootAnimation();
         }
     }
 
@@ -80,6 +80,8 @@ public class HostileCharacter : MonoBehaviour
     {
         float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
         _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
+
+        _hasReachedTarget = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
