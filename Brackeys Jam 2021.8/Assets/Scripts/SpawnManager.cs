@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     private float _spawnMinY = -2.13f;
     private float _cornMinPositionX = -7f;
     private float _cornMaxPositionX = 0f;
-    private float _cornPositionY = 2.15f;
+    private float _cornPositionY = 3.29f;
 
     private float _neutralInterval = 4f;
     private float _hostileInterval = 0f;
