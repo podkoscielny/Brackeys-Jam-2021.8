@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] LayerMask interactableMask;
+    [SerializeField] AnimationController animationController;
 
     private const float INTERACTION_RADIUS = 0.7f;
 
@@ -17,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
             if (interactableObject != null)
             {
                 interactableObject.GetComponent<IInteractable>()?.PickUp();
+                animationController.OnPickup();
             }
         }
     }
