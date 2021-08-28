@@ -214,7 +214,7 @@ MonoBehaviour:
     size: 10
   - tag: Bullet
     prefab: {fileID: 5473719288613799238, guid: ea3720726714df44488a04ec6e331a90, type: 3}
-    size: 10
+    size: 20
   - tag: Hostile
     prefab: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
     size: 10

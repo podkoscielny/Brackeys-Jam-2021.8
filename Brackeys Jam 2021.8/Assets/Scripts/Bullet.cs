@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody2D bulletRb;
 
-    private float _speed = 8f;
+    private float _speed = 10f;
 
     private void OnEnable()
     {

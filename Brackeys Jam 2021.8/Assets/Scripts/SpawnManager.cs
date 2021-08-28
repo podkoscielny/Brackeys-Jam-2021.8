@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     private float _cornInterval = 4f;
 
     private int _hostileLimit = 0;
+    private int _cornLimit = 3;
 
     void OnEnable()
     {
@@ -77,12 +78,17 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCorn()
     {
-        GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
-        if (obj != null)
+        GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
+
+        if(corns.Length < _cornLimit)
         {
-            float xPosition = Random.Range(_cornMinPositionX, _cornMaxPositionX);
-            obj.transform.position = new Vector2(xPosition, _cornPositionY);
-        }
+            GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
+            if (obj != null)
+            {
+                float xPosition = Random.Range(_cornMinPositionX, _cornMaxPositionX);
+                obj.transform.position = new Vector2(xPosition, _cornPositionY);
+            }
+        }    
     }
 
     void SetCharactersPosition(GameObject character)
