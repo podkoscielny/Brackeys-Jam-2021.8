@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (_cornEaten == _chargeGoal && PoopChargeLevel < _maxPoopChargeLevel)
         {
             PoopChargeLevel++;
-            _chargeGoal = PoopChargeLevel * 1;
+            _chargeGoal = PoopChargeLevel * 3;
             _cornEaten = 0;
             _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
             OnPoopUpgrade?.Invoke();
@@ -100,23 +100,23 @@ public class GameManager : MonoBehaviour
         switch (ChaosStarsAmount)
         {
             case 1:
-                _chaosStarGoal = 20;
+                _chaosStarGoal = 200;
                 break;
 
             case 2:
-                _chaosStarGoal = 50;
+                _chaosStarGoal = 400;
                 break;
 
             case 3:
-                _chaosStarGoal = 100;
+                _chaosStarGoal = 800;
                 break;
 
             case 4:
-                _chaosStarGoal = 150;
+                _chaosStarGoal = 1600;
                 break;
 
             case 5:
-                _chaosStarGoal = 200;
+                _chaosStarGoal = 3000;
                 break;
 
             default:
