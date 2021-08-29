@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     private bool _isMovingRight = true;
     private bool _isHit = false;
     private bool _canMove = true;
+    private bool _isExplosion = false;
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
     private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
@@ -28,11 +29,20 @@ public class Enemy : MonoBehaviour
         enemyCollider.enabled = true;
         splashEffect.SetActive(false);
         SetRandomSprite();
+        _isExplosion = false;
+        _canMove = true;
+        _isHit = false;
+
+        Color color = spriteRenderer.color;
+        color.a = 1;
+
+        spriteRenderer.color = color;
     }
 
     private void OnDisable()
     {
         _isHit = false;
+        _isExplosion = false;
     }
 
     void Start()
@@ -86,6 +96,8 @@ public class Enemy : MonoBehaviour
         spriteRenderer.sprite = humanCharacters[characterIndex].sprite;
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
+
+    void ChangeExplosionMovement() => _isExplosion = true;
 
     void EnableMoving() => _canMove = true;
 

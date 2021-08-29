@@ -30,6 +30,13 @@ public class HostileCharacter : MonoBehaviour
     {
         splashEffect.SetActive(false);
         enemyCollider.enabled = true;
+        _isDown = false;
+        _hasReachedTarget = false;
+
+        Color color = spriteRenderer.color;
+        color.a = 1;
+
+        spriteRenderer.color = color;
     }
 
     void OnDisable()

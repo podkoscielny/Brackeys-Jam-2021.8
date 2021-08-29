@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
             Vector2 direction = collision.transform.position - transform.position;
             playerRb.AddForce(direction * 20f, ForceMode2D.Impulse);
 
-            GameManager.Instance.GameOver();
+            //GameManager.Instance.GameOver();
         }
     }
 }

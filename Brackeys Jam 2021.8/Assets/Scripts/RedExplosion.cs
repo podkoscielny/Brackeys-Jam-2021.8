@@ -11,7 +11,6 @@ public class RedExplosion : MonoBehaviour
     private ObjectPooler _objectPooler;
     private float _explosionRange = 1.4f;
     private float _impactForce = 10f;
-    private float _impactTorque = 80f;
 
     void OnEnable()
     {
@@ -26,13 +25,10 @@ public class RedExplosion : MonoBehaviour
 
             enemyAnimator.SetTrigger("Explosion");
 
-            float toruqeDirection = enemyRb.position.x < transform.position.x ? -_impactTorque : _impactTorque;
-
             character.GetComponent<Enemy>()?.DisableMoving();
             character.GetComponent<HostileCharacter>()?.DisableMoving();
 
             enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
-            enemyRb.AddTorque(toruqeDirection);
 
             GameManager.Instance.UpdateScore();
         }

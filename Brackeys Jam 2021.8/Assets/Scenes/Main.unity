@@ -205,7 +205,7 @@ MonoBehaviour:
   pools:
   - tag: Character
     prefab: {fileID: 813753172112441310, guid: 09252f7b1f09c024a9ca9573fc5b8ee8, type: 3}
-    size: 10
+    size: 100
   - tag: Poop
     prefab: {fileID: 7332715859959600718, guid: 026760682ab5e5a4e9385d6830f6e48b, type: 3}
     size: 10
@@ -217,16 +217,16 @@ MonoBehaviour:
     size: 20
   - tag: Hostile
     prefab: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
-    size: 10
+    size: 100
   - tag: SplashEffect
     prefab: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
     size: 15
   - tag: ExplosionGreen
     prefab: {fileID: 3611115197517940133, guid: 00001ce5eba60894f908a04e8f1faadc, type: 3}
-    size: 10
+    size: 15
   - tag: ExplosionRed
     prefab: {fileID: 1476872259882243360, guid: 25dcdc9815678444faf8c9610812f84e, type: 3}
-    size: 10
+    size: 15
 --- !u!1 &56064107
 GameObject:
   m_ObjectHideFlags: 0
