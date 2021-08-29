@@ -86,6 +86,8 @@ public class Enemy : MonoBehaviour
 
     void EnableMoving() => _canMove = true;
 
+    void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Character, gameObject);
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)

@@ -20,6 +20,9 @@ public class RedExplosion : MonoBehaviour
         foreach (Collider2D character in charactersInRange)
         {
             Rigidbody2D enemyRb = character.GetComponent<Rigidbody2D>();
+            Animator enemyAnimator = character.GetComponent<Animator>();
+
+            enemyAnimator.SetTrigger("Explosion");
 
             float toruqeDirection = enemyRb.position.x < transform.position.x ? -_impactTorque : _impactTorque;
 
@@ -36,11 +39,6 @@ public class RedExplosion : MonoBehaviour
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, _explosionRange);
     }
 
     void MoveExplosionToPool()
