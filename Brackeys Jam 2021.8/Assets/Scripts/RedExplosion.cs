@@ -10,7 +10,7 @@ public class RedExplosion : MonoBehaviour
 
     private ObjectPooler _objectPooler;
     private float _explosionRange = 1.4f;
-    private float _impactForce = 15f;
+    private float _impactForce = 10f;
     private float _impactTorque = 80f;
 
     void OnEnable()
