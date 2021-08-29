@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject[] chaosStars;
+    [SerializeField] GameObject gameOverPanel;
     [SerializeField] Animator bulletsUpgradedAnimator;
 
     void OnEnable()
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnScoreUpdated += UpdateScore;
         GameManager.OnChaosStarGained += EnableChaosStar;
         GameManager.OnPoopUpgrade += ShowBulletsUpgradedText;
+        GameManager.OnGameOver += SetGameOverPanel;
     }
 
     void OnDisable()
@@ -21,6 +23,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnScoreUpdated -= UpdateScore;
         GameManager.OnChaosStarGained -= EnableChaosStar;
         GameManager.OnPoopUpgrade -= ShowBulletsUpgradedText;
+        GameManager.OnGameOver -= SetGameOverPanel;
     }
 
     void UpdateScore(int score) => scoreText.text = score.ToString();
@@ -28,4 +31,6 @@ public class UIManager : MonoBehaviour
     void EnableChaosStar(int chaosStarsAmount) => chaosStars[chaosStarsAmount - 1].SetActive(true);
 
     void ShowBulletsUpgradedText() => bulletsUpgradedAnimator.SetTrigger("Appear");
+
+    void SetGameOverPanel() => gameOverPanel.SetActive(true);
 }

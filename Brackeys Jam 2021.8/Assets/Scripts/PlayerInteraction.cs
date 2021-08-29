@@ -17,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Interaction") && !_isInteracting)
+        if (Input.GetButtonDown("Interaction") && !_isInteracting && !GameManager.Instance.IsGameOver)
         {
             Collider2D interactableObject = Physics2D.OverlapCircle(transform.position, INTERACTION_RADIUS, interactableMask);
 

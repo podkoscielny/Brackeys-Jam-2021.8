@@ -14,6 +14,7 @@ namespace Helpers
         public static string Ground { get; private set; } = "Ground";
         public static string ExplosionGreen { get; private set; } = "ExplosionGreen";
         public static string ExplosionRed { get; private set; } = "ExplosionRed";
+        public static string Player { get; private set; } = "Player";
     }
 }
 

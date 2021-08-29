@@ -40,6 +40,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnNeutral()
     {
+        if (GameManager.Instance.IsGameOver) return;
+
         GameObject obj = _objectPooler.GetFromPool(Tags.Character);
         Enemy objScript = obj.GetComponent<Enemy>();
 
@@ -58,6 +60,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnHostile()
     {
+        if (GameManager.Instance.IsGameOver) return;
+
         GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
 
         if (hostiles.Length < _hostileLimit)
@@ -78,6 +82,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCorn()
     {
+        if (GameManager.Instance.IsGameOver) return;
+
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
         if(corns.Length < _cornLimit)
