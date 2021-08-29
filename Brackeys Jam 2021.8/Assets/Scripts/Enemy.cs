@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Collider2D enemyCollider;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] GameObject splashEffect;
     [SerializeField] LayerMask layerToIgnoreCollision;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
+        enemyCollider.enabled = true;
         splashEffect.SetActive(false);
         SetRandomSprite();
     }

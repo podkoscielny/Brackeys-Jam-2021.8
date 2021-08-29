@@ -10,6 +10,11 @@ public class PlayerInteraction : MonoBehaviour
     private bool _isInteracting = false;
     private const float INTERACTION_RADIUS = 0.7f;
 
+    void Start()
+    {
+        Physics2D.IgnoreLayerCollision(9, 8);    
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Interaction") && !_isInteracting)

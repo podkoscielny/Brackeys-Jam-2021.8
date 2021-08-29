@@ -21,6 +21,8 @@ public class RedExplosion : MonoBehaviour
         {
             Rigidbody2D enemyRb = character.GetComponent<Rigidbody2D>();
             Animator enemyAnimator = character.GetComponent<Animator>();
+            Collider2D enemyCollider = character.GetComponent<Collider2D>();
+            enemyCollider.enabled = false;
 
             enemyAnimator.SetTrigger("Explosion");
 

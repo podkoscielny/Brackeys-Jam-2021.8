@@ -28,6 +28,7 @@ public class HostileCharacter : MonoBehaviour
     void OnEnable()
     {
         splashEffect.SetActive(false);
+        enemyCollider.enabled = true;
     }
 
     void OnDisable()
