@@ -15,7 +15,7 @@ public class RedExplosion : MonoBehaviour
 
     void OnEnable()
     {
-        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange);
+        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange, layerToImpact);
 
         foreach (Collider2D character in charactersInRange)
         {

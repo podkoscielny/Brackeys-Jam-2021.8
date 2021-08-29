@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Rigidbody2D enemyRb;
     [SerializeField] Collider2D enemyCollider;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] GameObject splashEffect;
@@ -88,7 +89,12 @@ public class Enemy : MonoBehaviour
 
     void EnableMoving() => _canMove = true;
 
-    void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Character, gameObject);
+    void MoveEnemyToPool()
+    {
+        enemyRb.velocity = new Vector2(0f, 0f);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        _objectPooler.AddToPool(Tags.Character, gameObject);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

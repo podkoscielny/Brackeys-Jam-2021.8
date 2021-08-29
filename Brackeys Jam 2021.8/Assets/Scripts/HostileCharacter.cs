@@ -7,6 +7,7 @@ public class HostileCharacter : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
+    [SerializeField] Rigidbody2D enemyRb;
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
@@ -124,5 +125,10 @@ public class HostileCharacter : MonoBehaviour
         }
     }
 
-    void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Hostile, gameObject);
+    void MoveEnemyToPool()
+    {
+        enemyRb.velocity = new Vector2(0f, 0f);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        _objectPooler.AddToPool(Tags.Hostile, gameObject);
+    }
 }

@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
+    public static event Action OnPoopUpgrade;
 
     public int Score { get; private set; }
     public int PoopChargeLevel { get; private set; } = 1;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
             _chargeGoal = PoopChargeLevel * 1;
             _cornEaten = 0;
             _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
+            OnPoopUpgrade?.Invoke();
         }
     }
 

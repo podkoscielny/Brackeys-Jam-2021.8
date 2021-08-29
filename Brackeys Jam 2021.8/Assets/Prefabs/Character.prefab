@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
   spriteRenderer: {fileID: 813753172112441309}
+  enemyRb: {fileID: -8301118719605198981}
   enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 813753172112441299}
   splashEffect: {fileID: 7771160401071954365}
