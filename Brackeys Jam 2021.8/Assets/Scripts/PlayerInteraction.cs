@@ -10,6 +10,10 @@ public class PlayerInteraction : MonoBehaviour
     private bool _isInteracting = false;
     private const float INTERACTION_RADIUS = 0.7f;
 
+    void OnEnable() => GameManager.OnGameOver += DisableSelf;
+
+    void OnDisable() => GameManager.OnGameOver -= DisableSelf;
+
     void Start()
     {
         Physics2D.IgnoreLayerCollision(9, 8);   
@@ -31,4 +35,6 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void EnableInteracting() => _isInteracting = false;
+
+    void DisableSelf() => this.enabled = false;
 }

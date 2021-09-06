@@ -67,39 +67,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         OnGameOver?.Invoke();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerMovement>().enabled = false;
-        player.GetComponent<PlayerInteraction>().enabled = false;
     }
 
     void SetChaosStarsGoal()
     {
-        //switch (ChaosStarsAmount)
-        //{
-        //    case 1:
-        //        _chaosStarGoal = 200;
-        //        break;
-
-        //    case 2:
-        //        _chaosStarGoal = 400;
-        //        break;
-
-        //    case 3:
-        //        _chaosStarGoal = 800;
-        //        break;
-
-        //    case 4:
-        //        _chaosStarGoal = 1600;
-        //        break;
-
-        //    case 5:
-        //        _chaosStarGoal = 3000;
-        //        break;
-
-        //    default:
-        //        break;
-        //}
-
         switch (ChaosStarsAmount)
         {
             case 1:
