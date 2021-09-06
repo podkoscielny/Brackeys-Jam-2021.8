@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        Physics2D.IgnoreLayerCollision(9, 8);    
+        Physics2D.IgnoreLayerCollision(9, 8);   
     }
 
     void Update()

@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         OnGameOver?.Invoke();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<PlayerInteraction>().enabled = false;
     }
 
     void SetChaosStarsGoal()
