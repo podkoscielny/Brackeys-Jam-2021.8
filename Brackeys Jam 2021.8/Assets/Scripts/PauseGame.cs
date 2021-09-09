@@ -6,24 +6,24 @@ public class PauseGame : MonoBehaviour
 {
     [SerializeField] GameObject pauseText;
 
+    private GameManager _gameManager;
     private bool _isGamePaused = false;
+
+    void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {
-        if (!GameManager.Instance.IsGameOver && ( Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)))
+        if (!_gameManager.IsGameOver && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)))
         {
-            if (_isGamePaused)
-            {
-                Time.timeScale = 1;
-                pauseText.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 0;
-                pauseText.SetActive(true);
-            }
-
-            _isGamePaused = !_isGamePaused;
+            Pause();
         }
+    }
+
+    void Pause()
+    {
+        Time.timeScale = _isGamePaused ? 1 : 0;
+        pauseText.SetActive(!_isGamePaused);
+
+        _isGamePaused = !_isGamePaused;
     }
 }
