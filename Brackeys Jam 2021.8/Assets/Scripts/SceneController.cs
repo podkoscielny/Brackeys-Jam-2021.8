@@ -9,15 +9,7 @@ public class SceneController : MonoBehaviour
 
     private Animator animator;
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    void GoToGameplay()
-    {
-        SceneManager.LoadSceneAsync("Main");
-    }
+    void Start() => animator = GetComponent<Animator>();
 
     public void Restart()
     {
@@ -29,6 +21,11 @@ public class SceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        SceneManager.LoadSceneAsync("Main");
+    }
+
+    void GoToGameplay()
+    {
         SceneManager.LoadSceneAsync("Main");
     }
 

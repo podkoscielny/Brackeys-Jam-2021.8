@@ -17,10 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private float _movementSpeed = 200f;
     private const float _shootDelay = 0.5f;
 
-    void OnEnable() => GameManager.OnGameOver += DisableSelf;
-
-    void OnDisable() => GameManager.OnGameOver -= DisableSelf;
-
     void Start() => _objectPooler = ObjectPooler.Instance;
 
     void Update()
@@ -62,6 +58,4 @@ public class PlayerMovement : MonoBehaviour
 
         _canShoot = true;
     }
-
-    void DisableSelf() => this.enabled = false;
 }
