@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class RedExplosion : MonoBehaviour
+public class Explosion : MonoBehaviour
 {
     [SerializeField] Animator explosionAnimator;
     [SerializeField] LayerMask layerToImpact;
@@ -38,6 +38,6 @@ public class RedExplosion : MonoBehaviour
 
     void MoveExplosionToPool()
     {
-        _objectPooler.AddToPool(Tags.ExplosionRed, gameObject);
+        _objectPooler.AddToPool(Tags.Explosion, gameObject);
     }
 }

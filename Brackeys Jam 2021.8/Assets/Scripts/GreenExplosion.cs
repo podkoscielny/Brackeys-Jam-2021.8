@@ -34,10 +34,7 @@ public class GreenExplosion : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-    }
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void MoveExplosionToPool()
     {

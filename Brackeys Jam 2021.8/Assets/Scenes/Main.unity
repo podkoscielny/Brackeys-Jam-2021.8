@@ -227,6 +227,9 @@ MonoBehaviour:
   - tag: ExplosionRed
     prefab: {fileID: 1476872259882243360, guid: 25dcdc9815678444faf8c9610812f84e, type: 3}
     size: 15
+  - tag: Explosion
+    prefab: {fileID: 479763507512777320, guid: 76b04570d44a36148af25cf84dfb200a, type: 3}
+    size: 15
 --- !u!1 &56064107
 GameObject:
   m_ObjectHideFlags: 0
