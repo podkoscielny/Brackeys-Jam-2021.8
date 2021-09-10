@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public int PoopChargeLevel { get; private set; } = 1;
     public int ChaosStarsAmount { get; private set; } = 0;
     public bool IsGameOver { get; private set; } = false;
+    public ExplosionType ExplosionEffect { get; private set; }
+
+    [SerializeField] ExplosionType explosionRed;
+    [SerializeField] ExplosionType explosionGreen;
 
     private int _cornEaten = 0;
     private int _chargeGoal = 3;
@@ -56,17 +60,31 @@ public class GameManager : MonoBehaviour
 
         if (_cornEaten == _chargeGoal && PoopChargeLevel < _maxPoopChargeLevel)
         {
-            PoopChargeLevel++;
-            _chargeGoal = PoopChargeLevel * 3;
-            _cornEaten = 0;
-            _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
-            OnPoopUpgrade?.Invoke();
+            UpgradePoop();
         }
     }
 
     public void GameOver()
     {
         OnGameOver?.Invoke();
+    }
+
+    void UpgradePoop()
+    {
+        PoopChargeLevel++;
+        _chargeGoal = PoopChargeLevel * 3;
+        _cornEaten = 0;
+        _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
+        OnPoopUpgrade?.Invoke();
+
+        if(PoopChargeLevel == 4)
+        {
+            ExplosionEffect = explosionGreen;
+        }
+        else if(PoopChargeLevel == 5)
+        {
+            ExplosionEffect = explosionRed;
+        }
     }
 
     void SetChaosStarsGoal()

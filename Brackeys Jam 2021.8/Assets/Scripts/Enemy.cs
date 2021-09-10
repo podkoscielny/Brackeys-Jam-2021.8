@@ -94,8 +94,6 @@ public class Enemy : MonoBehaviour
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
-    void EnableMoving() => _canMove = true;
-
     void MoveEnemyToPool()
     {
         enemyRb.velocity = new Vector2(0f, 0f);

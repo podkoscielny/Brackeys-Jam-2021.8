@@ -47,18 +47,9 @@ public class Poop : MonoBehaviour
     {
         if (collision.CompareTag(Tags.Ground) && _gameManager.PoopChargeLevel >= 4)
         {
-            if (_gameManager.PoopChargeLevel == 4)
-            {
-                GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.ExplosionGreen);
-                explosion.transform.position = (Vector2)transform.position + _explosionGreenOffset;
-                explosion.SetActive(true);
-            }
-            else
-            {
-                GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.ExplosionRed);
-                explosion.transform.position = (Vector2)transform.position + _explosionRedOffset;
-                explosion.SetActive(true);
-            }
+            GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
+            explosion.transform.position = (Vector2)transform.position + _explosionGreenOffset;
+            explosion.SetActive(true);
         }
     }
 }

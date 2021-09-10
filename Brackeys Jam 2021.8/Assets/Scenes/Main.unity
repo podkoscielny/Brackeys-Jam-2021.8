@@ -221,12 +221,6 @@ MonoBehaviour:
   - tag: SplashEffect
     prefab: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
     size: 15
-  - tag: ExplosionGreen
-    prefab: {fileID: 3611115197517940133, guid: 00001ce5eba60894f908a04e8f1faadc, type: 3}
-    size: 15
-  - tag: ExplosionRed
-    prefab: {fileID: 1476872259882243360, guid: 25dcdc9815678444faf8c9610812f84e, type: 3}
-    size: 15
   - tag: Explosion
     prefab: {fileID: 479763507512777320, guid: 76b04570d44a36148af25cf84dfb200a, type: 3}
     size: 15
@@ -3004,6 +2998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0091096a0b7118549b98cd228d5693f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionRed: {fileID: 11400000, guid: 0ec71979273aaca479d59eb539258f5d, type: 2}
+  explosionGreen: {fileID: 11400000, guid: 9f149f1d94312204db53b42d5d8e4a34, type: 2}
 --- !u!1 &1131203302
 GameObject:
   m_ObjectHideFlags: 0

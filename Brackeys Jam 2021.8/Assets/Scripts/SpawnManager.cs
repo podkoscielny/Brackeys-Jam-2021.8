@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
 
     private float _neutralInterval = 3f;
     private float _hostileInterval = 0f;
-    private float _cornInterval = 4f; //Set to larger
+    private float _cornInterval = 1f; //Set to larger
 
     private int _hostileLimit = 0;
     private int _cornLimit = 3;

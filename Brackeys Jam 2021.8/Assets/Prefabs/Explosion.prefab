@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3bb65957670f24b8594d70180b6856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionAnimator: {fileID: 0}
+  explosionAnimator: {fileID: -4826059908891534778}
+  spriteRenderer: {fileID: 6618602292847412094}
   layerToImpact:
     serializedVersion: 2
     m_Bits: 256

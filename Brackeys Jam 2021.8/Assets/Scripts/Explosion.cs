@@ -6,6 +6,7 @@ using Helpers;
 public class Explosion : MonoBehaviour
 {
     [SerializeField] Animator explosionAnimator;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] LayerMask layerToImpact;
 
     private ObjectPooler _objectPooler;
@@ -13,6 +14,24 @@ public class Explosion : MonoBehaviour
     private float _impactForce = 10f;
 
     void OnEnable()
+    {
+        SetProperties();
+        ExplodeCharactersInRange();
+    }
+
+    void Start() => _objectPooler = ObjectPooler.Instance;
+
+    void SetProperties()
+    {
+        if (GameManager.Instance.ExplosionEffect != null)
+        {
+            spriteRenderer.sprite = GameManager.Instance.ExplosionEffect.sprite;
+            explosionAnimator.runtimeAnimatorController = GameManager.Instance.ExplosionEffect.animatorController;
+            transform.localScale = GameManager.Instance.ExplosionEffect.size;
+        }
+    }
+
+    void ExplodeCharactersInRange()
     {
         Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange, layerToImpact);
 
@@ -34,10 +53,5 @@ public class Explosion : MonoBehaviour
         }
     }
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
-
-    void MoveExplosionToPool()
-    {
-        _objectPooler.AddToPool(Tags.Explosion, gameObject);
-    }
+    void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation
 }
