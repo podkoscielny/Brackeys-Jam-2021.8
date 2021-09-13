@@ -11,7 +11,6 @@ public class Explosion : MonoBehaviour
 
     private ObjectPooler _objectPooler;
     private float _explosionRange = 1.4f;
-    private float _impactForce = 10f;
 
     void OnEnable()
     {
@@ -37,21 +36,9 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D character in charactersInRange)
         {
-            Rigidbody2D enemyRb = character.GetComponent<Rigidbody2D>();
-            Animator enemyAnimator = character.GetComponent<Animator>();
-            Collider2D enemyCollider = character.GetComponent<Collider2D>();
-            enemyCollider.enabled = false;
-
-            enemyAnimator.SetTrigger("Explosion");
-
-            character.GetComponent<Enemy>()?.DisableMoving();
-            character.GetComponent<HostileCharacter>()?.DisableMoving();
-
-            enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
-
-            GameManager.Instance.UpdateScore();
+            character.GetComponent<ExplosionHandler>().HandleExplosion();
         }
     }
 
-    void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation
+    public void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation
 }

@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
-    void MoveEnemyToPool()
+    void MoveEnemyToPool() // Animation
     {
         enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);

@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 1024598227517482621}
   - component: {fileID: 956767359}
   - component: {fileID: 7229662874108291226}
+  - component: {fileID: 4730801214454032271}
   - component: {fileID: -4740147536647809229}
   m_Layer: 8
   m_Name: HostileCharacter
@@ -287,6 +288,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   spriteMask: {fileID: 1588558502781354596}
+--- !u!114 &4730801214454032271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cf3f55a86a2544c92cb70cf4b615fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRb: {fileID: -4740147536647809229}
+  enemyAnimator: {fileID: 956767359}
+  enemyCollider: {fileID: 813753172112441297}
 --- !u!50 &-4740147536647809229
 Rigidbody2D:
   serializedVersion: 4
