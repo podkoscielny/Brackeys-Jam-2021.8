@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour
+public class HostileCharacter : MonoBehaviour, IMovementDisabler
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;

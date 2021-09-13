@@ -9,9 +9,14 @@ public class ExplosionHandler : MonoBehaviour
     [SerializeField] Collider2D enemyCollider;
 
     private GameManager _gameManager;
+    private IMovementDisabler _movementController;
     private float _impactForce = 10f;
 
-    void Start() => _gameManager = GameManager.Instance;
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _movementController = GetComponent<IMovementDisabler>();
+    }
 
     public void HandleExplosion()
     {
@@ -19,8 +24,7 @@ public class ExplosionHandler : MonoBehaviour
 
         enemyAnimator.SetTrigger("Explosion");
 
-        GetComponent<Enemy>()?.DisableMoving();
-        GetComponent<HostileCharacter>()?.DisableMoving();
+        _movementController.DisableMoving();
 
         enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
 
