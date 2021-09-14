@@ -23,7 +23,7 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
     private bool _isFacingRight = true;
-    private bool _isDown = false;
+    private bool _canMove = false;
     private Vector2 _randomStopPosition;
     private int layerIgnore = 8;
 
@@ -31,7 +31,7 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
     {
         splashEffect.SetActive(false);
         enemyCollider.enabled = true;
-        _isDown = false;
+        _canMove = true;
         _hasReachedTarget = false;
 
         Color color = spriteRenderer.color;
@@ -42,7 +42,6 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
 
     void OnDisable()
     {
-        _isDown = false;
         _hasReachedTarget = false;
         CancelInvoke(nameof(Shoot));
     }
@@ -59,7 +58,7 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
 
     void Update()
     {
-        if (!_isDown)
+        if (_canMove)
             Move();
     }
 
@@ -81,7 +80,7 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
         }
     }
 
-    public void DisableMoving() => _isDown = true;
+    public void DisableMoving() => _canMove = false;
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);
 
@@ -126,14 +125,14 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
 
         if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
         {
-            _isDown = true;
+            _canMove = false;
             _gameManager.UpdateScore();
             enemyAnimator.SetTrigger("Death");
             enemyCollider.enabled = false;
         }
     }
 
-    void MoveEnemyToPool()
+    public void MoveEnemyToPool()
     {
         enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);

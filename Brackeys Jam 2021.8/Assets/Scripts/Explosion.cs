@@ -36,7 +36,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D character in charactersInRange)
         {
-            character.GetComponent<IExplosionHandler>().HandleExplosion();
+            character.GetComponent<IExplosionHandler>()?.HandleExplosion();
         }
     }
 
