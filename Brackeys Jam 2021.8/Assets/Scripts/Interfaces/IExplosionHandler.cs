@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovementDisabler
+public interface IExplosionHandler
 {
-    public void DisableMoving();
+    public void HandleExplosion();
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 813753172112441297}
   - component: {fileID: 813753172112441296}
   - component: {fileID: 1262634898865482270}
-  - component: {fileID: 8376011239354829053}
   - component: {fileID: -8051431534695751512}
   - component: {fileID: -8301118719605198981}
   m_Layer: 8
@@ -165,21 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   spriteMask: {fileID: 8591371557590965562}
---- !u!114 &8376011239354829053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41cf3f55a86a2544c92cb70cf4b615fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyRb: {fileID: -8301118719605198981}
-  enemyAnimator: {fileID: 813753172112441299}
-  enemyCollider: {fileID: 813753172112441297}
 --- !u!210 &-8051431534695751512
 SortingGroup:
   m_ObjectHideFlags: 0

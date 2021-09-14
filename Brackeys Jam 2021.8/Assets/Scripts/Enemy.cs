@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class Enemy : MonoBehaviour, IMovementDisabler
+public class Enemy : MonoBehaviour, IExplosionHandler
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IMovementDisabler
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
+    private float _impactForce = 10f;
     private float _movementSpeed = 4f;
     private int _layerIgnore = 8;
     private bool _isMovingRight = true;
@@ -99,6 +100,19 @@ public class Enemy : MonoBehaviour, IMovementDisabler
         enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _objectPooler.AddToPool(Tags.Character, gameObject);
+    }
+
+    public void HandleExplosion()
+    {
+        enemyCollider.enabled = false;
+
+        enemyAnimator.SetTrigger("Explosion");
+
+        DisableMoving();
+
+        enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
+
+        _gameManager.UpdateScore();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

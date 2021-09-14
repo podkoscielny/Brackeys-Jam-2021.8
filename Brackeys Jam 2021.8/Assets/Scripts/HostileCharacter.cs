@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour, IMovementDisabler
+public class HostileCharacter : MonoBehaviour, IExplosionHandler
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
@@ -17,6 +17,7 @@ public class HostileCharacter : MonoBehaviour, IMovementDisabler
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
+    private float _impactForce = 10f;
     private float _movementSpeed = 4f;
     private float _minPositionX = -7f;
     private float _maxPositionX = 7f;
@@ -137,5 +138,18 @@ public class HostileCharacter : MonoBehaviour, IMovementDisabler
         enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _objectPooler.AddToPool(Tags.Hostile, gameObject);
+    }
+
+    public void HandleExplosion()
+    {
+        enemyCollider.enabled = false;
+
+        enemyAnimator.SetTrigger("Explosion");
+
+        DisableMoving();
+
+        enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
+
+        _gameManager.UpdateScore();
     }
 }
