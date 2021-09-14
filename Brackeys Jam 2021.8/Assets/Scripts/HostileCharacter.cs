@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour, IExplosionHandler
+public class HostileCharacter : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
@@ -11,33 +11,21 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
-    [SerializeField] GameObject splashEffect;
     [SerializeField] SpriteRenderer splashRenderer;
-    [SerializeField] LayerMask layerToIgnoreCollision;
+    [SerializeField] EnemyCharacter baseFunctionalityController;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
-    private float _impactForce = 10f;
     private float _movementSpeed = 4f;
     private float _minPositionX = -7f;
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
     private bool _isFacingRight = true;
-    private bool _canMove = false;
     private Vector2 _randomStopPosition;
-    private int layerIgnore = 8;
 
     void OnEnable()
     {
-        splashEffect.SetActive(false);
-        enemyCollider.enabled = true;
-        _canMove = true;
         _hasReachedTarget = false;
-
-        Color color = spriteRenderer.color;
-        color.a = 1;
-
-        spriteRenderer.color = color;
     }
 
     void OnDisable()
@@ -52,13 +40,11 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
         _gameManager = GameManager.Instance;
 
         SetRandomStopPosition();
-
-        Physics2D.IgnoreLayerCollision(layerIgnore, layerIgnore);
     }
 
     void Update()
     {
-        if (_canMove)
+        if (baseFunctionalityController.CanMove)
             Move();
     }
 
@@ -79,8 +65,6 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
             ShootAnimation();
         }
     }
-
-    public void DisableMoving() => _canMove = false;
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);
 
@@ -103,52 +87,27 @@ public class HostileCharacter : MonoBehaviour, IExplosionHandler
         _hasReachedTarget = false;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
-        {
-            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-            SetSplashEffect(collision.transform.position);
-        }
-    }
-
-    void SetSplashEffect(Vector2 poopPosition)
-    {
-        splashEffect.transform.position = poopPosition;
-        splashEffect.SetActive(true);
-        int poopLevel = _gameManager.PoopChargeLevel;
-        float splashScaleX = splashEffect.transform.localScale.x + 0.1f * poopLevel;
-        float splashScaleY = splashEffect.transform.localScale.y + 0.1f * poopLevel;
-        float splashScaleZ = splashEffect.transform.localScale.z;
-
-        splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
-
-        if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
-        {
-            _canMove = false;
-            _gameManager.UpdateScore();
-            enemyAnimator.SetTrigger("Death");
-            enemyCollider.enabled = false;
-        }
-    }
-
-    public void MoveEnemyToPool()
+    public void MoveEnemyToPool() // Invoke in animation
     {
         enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _objectPooler.AddToPool(Tags.Hostile, gameObject);
     }
 
-    public void HandleExplosion()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        enemyCollider.enabled = false;
+        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
+        {
+            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
+            baseFunctionalityController.SetSplashEffect(collision.transform.position);
 
-        enemyAnimator.SetTrigger("Explosion");
-
-        DisableMoving();
-
-        enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
-
-        _gameManager.UpdateScore();
+            if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
+            {
+                baseFunctionalityController.DisableMoving();
+                _gameManager.UpdateScore();
+                enemyAnimator.SetTrigger("Death");
+                enemyCollider.enabled = false;
+            }
+        }
     }
 }

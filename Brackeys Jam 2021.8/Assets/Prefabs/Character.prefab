@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 813753172112441309}
   - component: {fileID: 813753172112441299}
   - component: {fileID: 813753172112441297}
+  - component: {fileID: -8301118719605198981}
   - component: {fileID: 813753172112441296}
   - component: {fileID: 1262634898865482270}
+  - component: {fileID: 7559855718117537268}
   - component: {fileID: -8051431534695751512}
-  - component: {fileID: -8301118719605198981}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -125,56 +126,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0051904917, y: -0.07007247}
   m_Size: {x: 0.3459909, y: 0.82871187}
   m_Direction: 0
---- !u!114 &813753172112441296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ebda0d366249d43be7ce7b9c08db72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  humanCharacters:
-  - {fileID: 11400000, guid: c05b479f1e7726143bfe668334b33ef0, type: 2}
-  - {fileID: 11400000, guid: 448390ee55fefc5469735e58e2e7f96f, type: 2}
-  - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
-  - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
-  spriteRenderer: {fileID: 813753172112441309}
-  enemyRb: {fileID: -8301118719605198981}
-  enemyCollider: {fileID: 813753172112441297}
-  enemyAnimator: {fileID: 813753172112441299}
-  splashEffect: {fileID: 7771160401071954365}
-  layerToIgnoreCollision:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!114 &1262634898865482270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44026dde354a05e4da17ea1b8a96a5b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 813753172112441309}
-  spriteMask: {fileID: 8591371557590965562}
---- !u!210 &-8051431534695751512
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_SortingLayerID: 1360585385
-  m_SortingLayer: 1
-  m_SortingOrder: 0
 --- !u!50 &-8301118719605198981
 Rigidbody2D:
   serializedVersion: 4
@@ -196,6 +147,70 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &813753172112441296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ebda0d366249d43be7ce7b9c08db72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  humanCharacters:
+  - {fileID: 11400000, guid: c05b479f1e7726143bfe668334b33ef0, type: 2}
+  - {fileID: 11400000, guid: 448390ee55fefc5469735e58e2e7f96f, type: 2}
+  - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
+  - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
+  spriteRenderer: {fileID: 813753172112441309}
+  enemyRb: {fileID: -8301118719605198981}
+  enemyCollider: {fileID: 813753172112441297}
+  enemyAnimator: {fileID: 813753172112441299}
+  baseFunctionalityController: {fileID: 7559855718117537268}
+--- !u!114 &1262634898865482270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44026dde354a05e4da17ea1b8a96a5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  spriteMask: {fileID: 8591371557590965562}
+--- !u!114 &7559855718117537268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c00b0105d29ed4b8a3e35daa930a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  splashEffect: {fileID: 7771160401071954365}
+  enemyRb: {fileID: -8301118719605198981}
+  enemyCollider: {fileID: 813753172112441297}
+  enemyAnimator: {fileID: 813753172112441299}
+--- !u!210 &-8051431534695751512
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_SortingLayerID: 1360585385
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &3883292311394086353
 GameObject:
   m_ObjectHideFlags: 0

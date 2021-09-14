@@ -123,12 +123,13 @@ GameObject:
   m_Component:
   - component: {fileID: 813753172112441308}
   - component: {fileID: 813753172112441309}
-  - component: {fileID: 813753172112441297}
-  - component: {fileID: 4258235215177178470}
-  - component: {fileID: 1024598227517482621}
   - component: {fileID: 956767359}
-  - component: {fileID: 7229662874108291226}
+  - component: {fileID: 813753172112441297}
   - component: {fileID: -4740147536647809229}
+  - component: {fileID: 4258235215177178470}
+  - component: {fileID: 7229662874108291226}
+  - component: {fileID: 213449981646807084}
+  - component: {fileID: 1024598227517482621}
   m_Layer: 8
   m_Name: HostileCharacter
   m_TagString: Hostile
@@ -204,56 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &813753172112441297
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0051904917, y: -0.07007247}
-  m_Size: {x: 0.3459909, y: 0.82871187}
-  m_Direction: 0
---- !u!114 &4258235215177178470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ac3b8bafa804e64ab86b5d617290710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 813753172112441309}
-  enemyCollider: {fileID: 813753172112441297}
-  enemyRb: {fileID: -4740147536647809229}
-  gun: {fileID: 1279665798}
-  firePoint: {fileID: 534719745}
-  enemyAnimator: {fileID: 956767359}
-  splashEffect: {fileID: 8336473719959366959}
-  splashRenderer: {fileID: 6714487046496678840}
-  layerToIgnoreCollision:
-    serializedVersion: 2
-    m_Bits: 256
---- !u!210 &1024598227517482621
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_Enabled: 1
-  m_SortingLayerID: 1360585385
-  m_SortingLayer: 1
-  m_SortingOrder: 0
 --- !u!95 &956767359
 Animator:
   serializedVersion: 3
@@ -273,20 +224,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7229662874108291226
-MonoBehaviour:
+--- !u!70 &813753172112441297
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813753172112441310}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44026dde354a05e4da17ea1b8a96a5b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 813753172112441309}
-  spriteMask: {fileID: 1588558502781354596}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0051904917, y: -0.07007247}
+  m_Size: {x: 0.3459909, y: 0.82871187}
+  m_Direction: 0
 --- !u!50 &-4740147536647809229
 Rigidbody2D:
   serializedVersion: 4
@@ -308,6 +261,68 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4258235215177178470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac3b8bafa804e64ab86b5d617290710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  enemyCollider: {fileID: 813753172112441297}
+  enemyRb: {fileID: -4740147536647809229}
+  gun: {fileID: 1279665798}
+  firePoint: {fileID: 534719745}
+  enemyAnimator: {fileID: 956767359}
+  splashRenderer: {fileID: 6714487046496678840}
+  baseFunctionalityController: {fileID: 213449981646807084}
+--- !u!114 &7229662874108291226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44026dde354a05e4da17ea1b8a96a5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  spriteMask: {fileID: 1588558502781354596}
+--- !u!114 &213449981646807084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c00b0105d29ed4b8a3e35daa930a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  splashEffect: {fileID: 8336473719959366959}
+  enemyRb: {fileID: -4740147536647809229}
+  enemyCollider: {fileID: 813753172112441297}
+  enemyAnimator: {fileID: 956767359}
+--- !u!210 &1024598227517482621
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_SortingLayerID: 1360585385
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &8167646078136970761
 GameObject:
   m_ObjectHideFlags: 0
