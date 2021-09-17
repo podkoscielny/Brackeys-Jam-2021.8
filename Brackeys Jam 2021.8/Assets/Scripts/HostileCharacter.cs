@@ -7,7 +7,6 @@ public class HostileCharacter : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
-    [SerializeField] Rigidbody2D enemyRb;
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
@@ -79,13 +78,6 @@ public class HostileCharacter : MonoBehaviour
         _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
 
         _hasReachedTarget = false;
-    }
-
-    public void MoveEnemyToPool() // Invoke in animation
-    {
-        enemyRb.velocity = new Vector2(0f, 0f);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        _objectPooler.AddToPool(Tags.Hostile, gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

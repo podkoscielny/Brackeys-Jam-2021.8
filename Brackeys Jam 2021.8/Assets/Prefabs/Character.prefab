@@ -200,6 +200,7 @@ MonoBehaviour:
   enemyRb: {fileID: -8301118719605198981}
   enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 813753172112441299}
+  enemyTag: Character
 --- !u!210 &-8051431534695751512
 SortingGroup:
   m_ObjectHideFlags: 0
