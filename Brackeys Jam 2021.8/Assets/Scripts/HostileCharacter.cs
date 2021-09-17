@@ -28,12 +28,6 @@ public class HostileCharacter : MonoBehaviour
         _hasReachedTarget = false;
     }
 
-    void OnDisable()
-    {
-        _hasReachedTarget = false;
-        CancelInvoke(nameof(Shoot));
-    }
-
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
@@ -70,7 +64,7 @@ public class HostileCharacter : MonoBehaviour
 
     void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
-    void Shoot()
+    public void Shoot() // Invoke in Shoot animation
     {
         GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
 
