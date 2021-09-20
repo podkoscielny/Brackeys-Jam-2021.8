@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 813753172112441309}
   - component: {fileID: 956767359}
   - component: {fileID: 813753172112441297}
-  - component: {fileID: -4740147536647809229}
   - component: {fileID: 4258235215177178470}
   - component: {fileID: 7229662874108291226}
   - component: {fileID: 213449981646807084}
@@ -240,27 +239,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0051904917, y: -0.07007247}
   m_Size: {x: 0.3459909, y: 0.82871187}
   m_Direction: 0
---- !u!50 &-4740147536647809229
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &4258235215177178470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   enemyCollider: {fileID: 813753172112441297}
-  enemyRb: {fileID: -4740147536647809229}
   gun: {fileID: 1279665798}
   firePoint: {fileID: 534719745}
   enemyAnimator: {fileID: 956767359}
@@ -309,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   splashEffect: {fileID: 8336473719959366959}
-  enemyRb: {fileID: -4740147536647809229}
   enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 956767359}
   enemyTag: Hostile

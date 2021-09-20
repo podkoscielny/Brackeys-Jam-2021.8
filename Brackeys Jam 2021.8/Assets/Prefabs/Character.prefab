@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 813753172112441309}
   - component: {fileID: 813753172112441299}
   - component: {fileID: 813753172112441297}
-  - component: {fileID: -8301118719605198981}
   - component: {fileID: 813753172112441296}
   - component: {fileID: 1262634898865482270}
   - component: {fileID: 7559855718117537268}
@@ -80,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 1360585385
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -614743094889025203, guid: 8850f2bb42dbed4489ed4e769b94dbe5, type: 3}
+  m_Sprite: {fileID: -7713576805399841915, guid: 3cab6c53ee717d3489f3c1cc130b8fbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,27 +125,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0051904917, y: -0.07007247}
   m_Size: {x: 0.3459909, y: 0.82871187}
   m_Direction: 0
---- !u!50 &-8301118719605198981
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813753172112441310}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &813753172112441296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +143,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
   spriteRenderer: {fileID: 813753172112441309}
-  enemyRb: {fileID: -8301118719605198981}
-  enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 813753172112441299}
   baseFunctionalityController: {fileID: 7559855718117537268}
 --- !u!114 &1262634898865482270
@@ -197,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   splashEffect: {fileID: 7771160401071954365}
-  enemyRb: {fileID: -8301118719605198981}
   enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 813753172112441299}
   enemyTag: Character

@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (_gameManager.IsGameOver) return;
 
-        GameObject obj = _objectPooler.GetFromPool(Tags.Character);
+        GameObject obj = _objectPooler.GetFromPoolInActive(Tags.Character);
         Enemy objScript = obj.GetComponent<Enemy>();
 
         if (obj != null)
@@ -58,6 +58,7 @@ public class SpawnManager : MonoBehaviour
             obj.transform.position = charactersPosition;
 
             objScript.SetFacing(isMovingRight);
+            obj.SetActive(true);
         }
     }
 

@@ -8,7 +8,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject splashEffect;
-    [SerializeField] Rigidbody2D enemyRb;
+    //[SerializeField] Rigidbody2D enemyRb;
     [SerializeField] Collider2D enemyCollider;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] string enemyTag;
@@ -17,7 +17,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private ObjectPooler _objectPooler;
     private Vector2 _targetPosition;
     private float _movementSpeed = 4f;
-    private float _impactForce = 10f;
+    //private float _impactForce = 10f;
     private const int LAYER_TO_IGNORE = 8;
 
     void Awake()
@@ -28,7 +28,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     void OnEnable()
     {
-        enemyCollider.enabled = true;
+        //enemyCollider.enabled = true;
         CanMove = true;
         splashEffect.SetActive(false);
         SetSpriteColor();
@@ -58,7 +58,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     public void MoveEnemyToPool() // Invoke in animation
     {
-        enemyRb.velocity = new Vector2(0f, 0f);
+        //enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _objectPooler.AddToPool(enemyTag, gameObject);
     }
@@ -73,13 +73,13 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     public void HandleExplosion()
     {
-        enemyCollider.enabled = false;
+        //enemyCollider.enabled = false;
 
         enemyAnimator.SetTrigger("Explosion");
 
         CanMove = false;
 
-        enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
+        //enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
 
         _gameManager.UpdateScore();
     }

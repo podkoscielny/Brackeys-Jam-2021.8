@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private float _movementSpeed = 4f;
-    private bool _isMovingRight = true;
     private bool _isHit = false;
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
     private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
@@ -36,22 +35,10 @@ public class Enemy : MonoBehaviour
             Move();
     }
 
-    void Move()
-    {
-        if (_isMovingRight)
-        {
-            transform.position += Vector3.right * _movementSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += Vector3.left * _movementSpeed * Time.deltaTime;
-        }
-    }
+    void Move() => transform.position += transform.right * _movementSpeed * Time.deltaTime;
 
     public void SetFacing(bool isFacingRight)
     {
-        _isMovingRight = isFacingRight;
-
         if (isFacingRight)
         {
             transform.rotation = _rightRotation;

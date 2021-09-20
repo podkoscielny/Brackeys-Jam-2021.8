@@ -9,7 +9,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     void Awake() => _objectPooler = ObjectPooler.Instance;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (_objectPooler.IsTagInDictionary(collision.tag))
         {
