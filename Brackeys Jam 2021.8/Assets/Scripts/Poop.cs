@@ -10,22 +10,21 @@ public class Poop : MonoBehaviour
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private GameObject _spawnPoop;
-    private Vector2 _explosionRedOffset = new Vector2(0f, 0.25f);
-    private Vector2 _explosionGreenOffset = new Vector2(0f, 0.75f);
+    private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
     private int _gravityScale = 3;
     private bool _isFalling = false;
+
+    void Awake()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+        _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
+    }
 
     void OnEnable()
     {
         _isFalling = false;
         poopRb.gravityScale = 0;
-    }
-
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
-        _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
     }
 
     void LateUpdate()
@@ -36,19 +35,18 @@ public class Poop : MonoBehaviour
         }
     }
 
-    void SetGravity()
+    public void SetGravity() // Invoke after animation
     {
         poopRb.gravityScale = _gravityScale;
         _isFalling = true;
     }
-
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Tags.Ground) && _gameManager.PoopChargeLevel >= 4)
         {
             GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
-            explosion.transform.position = (Vector2)transform.position + _explosionGreenOffset;
+            explosion.transform.position = (Vector2)transform.position + _explosionOffset;
             explosion.SetActive(true);
         }
     }

@@ -18,16 +18,16 @@ public class Enemy : MonoBehaviour
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
     private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
+    void Awake()
+    {
+        _objectPooler = ObjectPooler.Instance;
+        _gameManager = GameManager.Instance;
+    }
+
     void OnEnable()
     {
         SetRandomSprite();
         _isHit = false;
-    }
-
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
     }
 
     void Update()

@@ -8,7 +8,7 @@ public class PlayerCollisions : MonoBehaviour
     private Rigidbody2D _playerRb;
     private float _hitForce = 20f;
 
-    void Start() => _playerRb = GetComponent<Rigidbody2D>();
+    void Awake() => _playerRb = GetComponent<Rigidbody2D>();
 
     void OnTriggerEnter2D(Collider2D collision)
     {

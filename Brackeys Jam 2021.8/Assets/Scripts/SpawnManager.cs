@@ -5,6 +5,7 @@ using Helpers;
 
 public class SpawnManager : MonoBehaviour
 {
+    private GameManager _gameManager;
     private ObjectPooler _objectPooler;
 
     private float _spawnMaxY = -1.98f;
@@ -21,6 +22,12 @@ public class SpawnManager : MonoBehaviour
     private int _hostileLimit = 0;
     private int _cornLimit = 3;
 
+    void Awake()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+    }
+
     void OnEnable()
     {
         GameManager.OnChaosStarGained += ChangeSpawnIntervals;
@@ -32,15 +39,11 @@ public class SpawnManager : MonoBehaviour
         CancelOngoingInvokes();
     }
 
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        SetInvokes();
-    }
+    void Start() => SetInvokes();
 
     void SpawnNeutral()
     {
-        if (GameManager.Instance.IsGameOver) return;
+        if (_gameManager.IsGameOver) return;
 
         GameObject obj = _objectPooler.GetFromPool(Tags.Character);
         Enemy objScript = obj.GetComponent<Enemy>();
@@ -60,7 +63,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnHostile()
     {
-        if (GameManager.Instance.IsGameOver) return;
+        if (_gameManager.IsGameOver) return;
 
         GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
 
@@ -82,11 +85,11 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCorn()
     {
-        if (GameManager.Instance.IsGameOver) return;
+        if (_gameManager.IsGameOver) return;
 
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
-        if(corns.Length < _cornLimit)
+        if (corns.Length < _cornLimit)
         {
             GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
             if (obj != null)
@@ -94,7 +97,7 @@ public class SpawnManager : MonoBehaviour
                 float xPosition = Random.Range(_cornMinPositionX, _cornMaxPositionX);
                 obj.transform.position = new Vector2(xPosition, _cornPositionY);
             }
-        }    
+        }
     }
 
     void SetCharactersPosition(GameObject character)

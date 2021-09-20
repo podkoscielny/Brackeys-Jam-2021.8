@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
 
 public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 {
@@ -21,6 +20,12 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private float _impactForce = 10f;
     private const int LAYER_TO_IGNORE = 8;
 
+    void Awake()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+    }
+
     void OnEnable()
     {
         enemyCollider.enabled = true;
@@ -29,12 +34,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         SetSpriteColor();
     }
 
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
-        Physics2D.IgnoreLayerCollision(LAYER_TO_IGNORE, LAYER_TO_IGNORE);
-    }
+    void Start() => Physics2D.IgnoreLayerCollision(LAYER_TO_IGNORE, LAYER_TO_IGNORE);
 
     void Move()
     {

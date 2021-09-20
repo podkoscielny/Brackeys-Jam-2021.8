@@ -7,7 +7,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    void Awake() => _objectPooler = ObjectPooler.Instance;
 
     void OnTriggerEnter2D(Collider2D collision)
     {

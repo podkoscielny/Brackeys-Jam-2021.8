@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float _movementSpeed = 200f;
     private const float _shootDelay = 0.5f;
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    void Awake() => _objectPooler = ObjectPooler.Instance;
 
     void Update()
     {

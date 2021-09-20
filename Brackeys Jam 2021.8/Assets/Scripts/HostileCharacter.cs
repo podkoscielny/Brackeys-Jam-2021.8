@@ -22,18 +22,18 @@ public class HostileCharacter : MonoBehaviour
     private bool _isFacingRight = true;
     private Vector2 _randomStopPosition;
 
+    void Awake()
+    {
+        _objectPooler = ObjectPooler.Instance;
+        _gameManager = GameManager.Instance;
+    }
+
     void OnEnable()
     {
         _hasReachedTarget = false;
     }
 
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
-
-        SetRandomStopPosition();
-    }
+    void Start() => SetRandomStopPosition();
 
     void Update()
     {

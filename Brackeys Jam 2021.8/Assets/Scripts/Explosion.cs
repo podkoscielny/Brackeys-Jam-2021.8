@@ -9,8 +9,15 @@ public class Explosion : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] LayerMask layerToImpact;
 
+    private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private float _explosionRange = 1.4f;
+
+    void Awake()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+    }
 
     void OnEnable()
     {
@@ -18,15 +25,13 @@ public class Explosion : MonoBehaviour
         ExplodeCharactersInRange();
     }
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
-
     void SetProperties()
     {
-        if (GameManager.Instance.ExplosionEffect != null)
+        if (_gameManager.ExplosionEffect != null)
         {
-            spriteRenderer.sprite = GameManager.Instance.ExplosionEffect.sprite;
-            explosionAnimator.runtimeAnimatorController = GameManager.Instance.ExplosionEffect.animatorController;
-            transform.localScale = GameManager.Instance.ExplosionEffect.size;
+            spriteRenderer.sprite = _gameManager.ExplosionEffect.sprite;
+            explosionAnimator.runtimeAnimatorController = _gameManager.ExplosionEffect.animatorController;
+            transform.localScale = _gameManager.ExplosionEffect.size;
         }
     }
 
