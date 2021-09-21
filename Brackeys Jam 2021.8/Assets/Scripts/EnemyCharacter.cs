@@ -91,7 +91,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
         _canMove = false;
         _hasExploded = true;
-        _explodeDirection = new Vector3(direction.x, direction.y, transform.position.z);
+        _explodeDirection = new Vector3(direction.x, direction.y, 0);
 
         _gameManager.UpdateScore();
     }
