@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
     private float _cornInterval = 1f; //Set to larger
 
     private int _hostileLimit = 0;
-    private int _cornLimit = 3;
+    private int _cornLimit = 10;
 
     void Awake()
     {

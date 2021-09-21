@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemyMovement
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -29,13 +29,7 @@ public class Enemy : MonoBehaviour
         _isHit = false;
     }
 
-    void Update()
-    {
-        if (baseFunctionalityController.CanMove)
-            Move();
-    }
-
-    void Move() => transform.position += transform.right * _movementSpeed * Time.deltaTime;
+    public void Move() => transform.position += transform.right * _movementSpeed * Time.deltaTime;
 
     public void SetFacing(bool isFacingRight)
     {

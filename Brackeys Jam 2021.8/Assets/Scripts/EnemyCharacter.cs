@@ -4,42 +4,57 @@ using UnityEngine;
 
 public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 {
-    public bool CanMove { get; private set; } = true;
-
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject splashEffect;
-    //[SerializeField] Rigidbody2D enemyRb;
     [SerializeField] Collider2D enemyCollider;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] string enemyTag;
 
+    private IEnemyMovement _movementController;
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
-    private Vector2 _targetPosition;
-    private float _movementSpeed = 4f;
-    //private float _impactForce = 10f;
+    private Vector3 _explodeDirection;
+    private float _explosionSpeed = 14f;
+    private float _rotationSpeed = 1200f;
+    private bool _canMove = true;
+    private bool _hasExploded = false;
     private const int LAYER_TO_IGNORE = 8;
 
     void Awake()
     {
         _gameManager = GameManager.Instance;
         _objectPooler = ObjectPooler.Instance;
+        _movementController = GetComponent<IEnemyMovement>();
     }
 
     void OnEnable()
     {
-        //enemyCollider.enabled = true;
-        CanMove = true;
+        _canMove = true;
+        _hasExploded = false;
         splashEffect.SetActive(false);
         SetSpriteColor();
     }
 
     void Start() => Physics2D.IgnoreLayerCollision(LAYER_TO_IGNORE, LAYER_TO_IGNORE);
 
-    void Move()
+    void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _movementSpeed * Time.deltaTime);
+        if (_canMove)
+        {
+            Move();
+        }
+        else if(!_canMove && _hasExploded)
+        {
+            Explode();
+        }
+    }
 
+    void Move() => _movementController.Move();
+
+    void Explode()
+    {
+        transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
+        transform.position += Vector3.up * _explosionSpeed * Time.deltaTime;
     }
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);
@@ -58,7 +73,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     public void MoveEnemyToPool() // Invoke in animation
     {
-        //enemyRb.velocity = new Vector2(0f, 0f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         _objectPooler.AddToPool(enemyTag, gameObject);
     }
@@ -71,20 +85,18 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         spriteRenderer.color = color;
     }
 
-    public void HandleExplosion()
+    public void HandleExplosion(Vector2 direction)
     {
-        //enemyCollider.enabled = false;
-
         enemyAnimator.SetTrigger("Explosion");
 
-        CanMove = false;
-
-        //enemyRb.AddForce(Vector2.up * _impactForce, ForceMode2D.Impulse);
+        _canMove = false;
+        _hasExploded = true;
+        _explodeDirection = new Vector3(direction.x, direction.y, transform.position.z);
 
         _gameManager.UpdateScore();
     }
 
-    public void DisableMoving() => CanMove = false;
+    public void DisableMoving() => _canMove = false;
 
-    public void EnableMoving() => CanMove = true;
+    public void EnableMoving() => _canMove = true;
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IExplosionHandler
 {
-    public void HandleExplosion();
+    public void HandleExplosion(Vector2 direction);
 }

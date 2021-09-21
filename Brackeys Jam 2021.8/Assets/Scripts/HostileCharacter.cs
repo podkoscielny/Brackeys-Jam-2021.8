@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour
+public class HostileCharacter : MonoBehaviour, IEnemyMovement
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
@@ -30,18 +30,13 @@ public class HostileCharacter : MonoBehaviour
 
     void OnEnable()
     {
+        enemyCollider.enabled = true;
         _hasReachedTarget = false;
     }
 
     void Start() => SetRandomStopPosition();
 
-    void Update()
-    {
-        if (baseFunctionalityController.CanMove)
-            Move();
-    }
-
-    void Move()
+    public void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
 
