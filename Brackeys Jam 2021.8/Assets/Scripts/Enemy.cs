@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class Enemy : MonoBehaviour, IEnemyMovement
+public class Enemy : MonoBehaviour, IEnemyController
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] EnemyCharacter baseFunctionalityController;
 
-    private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private float _movementSpeed = 4f;
     private bool _isHit = false;
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
     private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
-    void Awake()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
-    }
+    void Awake() => _gameManager = GameManager.Instance;
 
     void OnEnable()
     {
@@ -53,21 +48,14 @@ public class Enemy : MonoBehaviour, IEnemyMovement
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void HandlePoopHit()
     {
-        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
+        if (!_isHit)
         {
-
-            baseFunctionalityController.SetSplashEffect(collision.transform.position);
-            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-
-            if (!_isHit)
-            {
-                _gameManager.UpdateScore();
-                _isHit = true;
-                baseFunctionalityController.DisableMoving();
-                enemyAnimator.SetTrigger("IsHit");
-            }
+            _gameManager.UpdateScore();
+            _isHit = true;
+            baseFunctionalityController.DisableMoving();
+            enemyAnimator.SetTrigger("IsHit");
         }
     }
 }

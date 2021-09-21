@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour, IEnemyMovement
+public class HostileCharacter : MonoBehaviour, IEnemyController
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
@@ -20,6 +20,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     private float _maxPositionX = 7f;
     private bool _hasReachedTarget = false;
     private bool _isFacingRight = true;
+    private bool _isDown = false;
     private Vector2 _randomStopPosition;
 
     void Awake()
@@ -30,8 +31,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     void OnEnable()
     {
-        enemyCollider.enabled = true;
         _hasReachedTarget = false;
+        _isDown = false;
     }
 
     void Start() => SetRandomStopPosition();
@@ -67,6 +68,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         bullet.SetActive(true);
     }
 
+    public void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Hostile, gameObject);
+
     void SetRandomStopPosition()
     {
         float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
@@ -75,20 +78,14 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         _hasReachedTarget = false;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void HandlePoopHit()
     {
-        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
+        if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y && !_isDown)
         {
-            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-            baseFunctionalityController.SetSplashEffect(collision.transform.position);
-
-            if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y)
-            {
-                baseFunctionalityController.DisableMoving();
-                _gameManager.UpdateScore();
-                enemyAnimator.SetTrigger("Death");
-                enemyCollider.enabled = false;
-            }
+            baseFunctionalityController.DisableMoving();
+            _gameManager.UpdateScore();
+            enemyAnimator.SetTrigger("Death");
+            _isDown = true;
         }
     }
 }

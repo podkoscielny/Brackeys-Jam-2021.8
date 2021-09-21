@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Helpers;
 
 public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 {
@@ -10,7 +11,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     [SerializeField] Animator enemyAnimator;
     [SerializeField] string enemyTag;
 
-    private IEnemyMovement _movementController;
+    private IEnemyController _enemyController;
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private Vector3 _explodeDirection;
@@ -24,7 +25,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     {
         _gameManager = GameManager.Instance;
         _objectPooler = ObjectPooler.Instance;
-        _movementController = GetComponent<IEnemyMovement>();
+        _enemyController = GetComponent<IEnemyController>();
     }
 
     void OnEnable()
@@ -49,15 +50,13 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         }
     }
 
-    void Move() => _movementController.Move();
+    void Move() => _enemyController.Move();
 
     void Explode()
     {
         transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
         transform.position += _explodeDirection * _explosionSpeed * Time.deltaTime;
     }
-
-    void FlipCharacter() => transform.Rotate(0, 180, 0);
 
     public void SetSplashEffect(Vector2 poopPosition)
     {
@@ -93,4 +92,15 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     public void DisableMoving() => _canMove = false;
 
     public void EnableMoving() => _canMove = true;
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
+        {
+            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
+            SetSplashEffect(collision.transform.position);
+
+            _enemyController.HandlePoopHit();
+        }
+    }
 }
