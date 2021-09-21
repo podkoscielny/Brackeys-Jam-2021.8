@@ -71,12 +71,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
     }
 
-    public void MoveEnemyToPool() // Invoke in animation
-    {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        _objectPooler.AddToPool(enemyTag, gameObject);
-    }
-
     void SetSpriteColor()
     {
         Color color = spriteRenderer.color;
@@ -91,7 +85,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
         _canMove = false;
         _hasExploded = true;
-        _explodeDirection = new Vector3(direction.x, direction.y, 0);
+        _explodeDirection = new Vector3(direction.x, direction.y, 0).normalized;
 
         _gameManager.UpdateScore();
     }
