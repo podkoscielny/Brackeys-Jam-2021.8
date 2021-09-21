@@ -54,7 +54,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     void Explode()
     {
         transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
-        transform.position += Vector3.up * _explosionSpeed * Time.deltaTime;
+        transform.position += _explodeDirection * _explosionSpeed * Time.deltaTime;
     }
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);

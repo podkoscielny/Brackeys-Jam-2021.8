@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
+    private Vector3 _offset = new Vector3(0, -2f, 0);
     private float _explosionRange = 1.4f;
 
     void Awake()
@@ -41,7 +42,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D character in charactersInRange)
         {
-            Vector2 explodeInDirection = (character.transform.position - transform.position).normalized; 
+            Vector2 explodeInDirection = (character.transform.position - (transform.position + _offset)).normalized; 
             character.GetComponent<IExplosionHandler>()?.HandleExplosion(explodeInDirection);
         }
     }
