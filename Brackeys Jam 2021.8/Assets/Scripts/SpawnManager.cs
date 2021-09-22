@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     private ObjectPooler _objectPooler;
 
     private readonly Quaternion RESET_ROTATION = new Quaternion(0, 0, 0, 0);
+    private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
+    private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
 
     private float _spawnMaxY = -1.98f;
     private float _spawnMinY = -2.8f;
@@ -47,20 +49,11 @@ public class SpawnManager : MonoBehaviour
     {
         if (_gameManager.IsGameOver) return;
 
-        GameObject obj = _objectPooler.GetFromPoolInActive(Tags.Character);
-        Enemy objScript = obj.GetComponent<Enemy>();
+        GameObject nonHostile = _objectPooler.GetFromPoolInActive(Tags.Character);
 
-        if (obj != null)
+        if (nonHostile != null)
         {
-            bool isMovingRight = Random.Range(0, 2) == 1;
-
-            float randomX = isMovingRight ? -_spawnXRange : _spawnXRange;
-            float randomY = Random.Range(_spawnMinY, _spawnMaxY);
-            Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
-            obj.transform.position = charactersPosition;
-
-            objScript.SetFacing(isMovingRight);
-            obj.SetActive(true);
+            SetCharactersPosition(nonHostile);
         }
     }
 
@@ -72,18 +65,11 @@ public class SpawnManager : MonoBehaviour
 
         if (hostiles.Length < _hostileLimit)
         {
-            GameObject obj = _objectPooler.GetFromPoolInActive(Tags.Hostile);
+            GameObject hostile = _objectPooler.GetFromPoolInActive(Tags.Hostile);
 
-            if (obj != null)
+            if (hostile != null)
             {
-                bool isMovingRight = Random.Range(0, 2) == 1;
-
-                float randomX = isMovingRight ? -_spawnXRange : _spawnXRange;
-                float randomY = Random.Range(_spawnMinY, _spawnMaxY);
-                Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
-                obj.transform.position = charactersPosition;
-                obj.transform.rotation = RESET_ROTATION;
-                obj.SetActive(true);
+                SetCharactersPosition(hostile);
             }
         }
     }
@@ -107,10 +93,16 @@ public class SpawnManager : MonoBehaviour
 
     void SetCharactersPosition(GameObject character) // Use this utility
     {
-        float randomX = Random.Range(0, 1) > 0.5f ? _spawnXRange : -_spawnXRange;
+        bool isMovingRight = Random.Range(0, 2) == 1;
+
+        float randomX = isMovingRight ? -_spawnXRange : _spawnXRange;
         float randomY = Random.Range(_spawnMinY, _spawnMaxY);
         Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
+
         character.transform.position = charactersPosition;
+        character.transform.rotation = isMovingRight ? _rightRotation : _leftRotation;
+
+        character.SetActive(true);
     }
 
     void ChangeSpawnIntervals(int chaosStarsAmount) // Set neutral interval to 0 at later chaos stars
