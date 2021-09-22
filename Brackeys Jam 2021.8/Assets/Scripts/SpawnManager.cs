@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
 
         if (hostiles.Length < _hostileLimit)
         {
-            GameObject obj = _objectPooler.GetFromPool(Tags.Hostile);
+            GameObject obj = _objectPooler.GetFromPoolInActive(Tags.Hostile);
 
             if (obj != null)
             {
@@ -80,6 +80,8 @@ public class SpawnManager : MonoBehaviour
                 float randomY = Random.Range(_spawnMinY, _spawnMaxY);
                 Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
                 obj.transform.position = charactersPosition;
+                obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+                obj.SetActive(true);
             }
         }
     }
@@ -101,7 +103,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SetCharactersPosition(GameObject character)
+    void SetCharactersPosition(GameObject character) // Use this utility
     {
         float randomX = Random.Range(0, 1) > 0.5f ? _spawnXRange : -_spawnXRange;
         float randomY = Random.Range(_spawnMinY, _spawnMaxY);
@@ -109,7 +111,7 @@ public class SpawnManager : MonoBehaviour
         character.transform.position = charactersPosition;
     }
 
-    void ChangeSpawnIntervals(int chaosStarsAmount)
+    void ChangeSpawnIntervals(int chaosStarsAmount) // Set neutral interval to 0 at later chaos stars
     {
         CancelOngoingInvokes();
 

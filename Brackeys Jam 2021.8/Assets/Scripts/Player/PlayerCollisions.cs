@@ -12,7 +12,7 @@ public class PlayerCollisions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag(Tags.Bullet))
+        if (collision.CompareTag(Tags.Bullet))
         {
             Vector2 direction = transform.position - collision.transform.position;
             _playerRb.AddForce(direction * _hitForce, ForceMode2D.Impulse);
