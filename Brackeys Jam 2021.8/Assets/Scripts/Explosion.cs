@@ -12,7 +12,7 @@ public class Explosion : MonoBehaviour
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private Vector3 _offset = new Vector3(0, -2f, 0);
-    private float _explosionRange = 1.4f;
+    private const float EXPLOSION_RANGE = 1.4f;
 
     void Awake()
     {
@@ -38,7 +38,7 @@ public class Explosion : MonoBehaviour
 
     void ExplodeCharactersInRange()
     {
-        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange, layerToImpact);
+        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, EXPLOSION_RANGE, layerToImpact);
 
         foreach (Collider2D character in charactersInRange)
         {

@@ -6,7 +6,7 @@ using Helpers;
 public class PlayerCollisions : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    private float _hitForce = 20f;
+    private const float HIT_FORCE = 20f;
 
     void Awake() => _playerRb = GetComponent<Rigidbody2D>();
 
@@ -15,7 +15,7 @@ public class PlayerCollisions : MonoBehaviour
         if (collision.CompareTag(Tags.Bullet))
         {
             Vector2 direction = transform.position - collision.transform.position;
-            _playerRb.AddForce(direction * _hitForce, ForceMode2D.Impulse);
+            _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse);
 
             GameManager.Instance.GameOver();
         }

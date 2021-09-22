@@ -11,17 +11,16 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer splashRenderer;
-    [SerializeField] EnemyCharacter baseFunctionalityController;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
-    private float _movementSpeed = 4f;
-    private float _minPositionX = -7f;
-    private float _maxPositionX = 7f;
-    private bool _isFacingRight;
-    private bool _hasReachedTarget = false;
-    private bool _isDown = false;
     private Vector2 _randomStopPosition;
+    private bool _isFacingRight;
+    private bool _isDown = false;
+    private bool _hasReachedTarget = false;
+    private const float MOVEMENT_SPEED = 4f;
+    private const float MIN_POSITION_X = -7f;
+    private const float MAX_POSITION_X = 7f;
 
     void Awake()
     {
@@ -39,7 +38,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
 
     public void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
@@ -63,7 +62,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
 
     void SetRandomStopPosition()
     {
-        float randomPositionX = Random.Range(_minPositionX, _maxPositionX);
+        float randomPositionX = Random.Range(MIN_POSITION_X, MAX_POSITION_X);
         _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
 
         _hasReachedTarget = false;
@@ -77,14 +76,17 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);
 
-    public void HandlePoopHit()
+    public bool HandlePoopHit()
     {
         if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y && !_isDown)
         {
-            baseFunctionalityController.DisableMoving();
             _gameManager.UpdateScore();
             enemyAnimator.SetTrigger("Death");
             _isDown = true;
+
+            return false;
         }
+
+        return true;
     }
 }

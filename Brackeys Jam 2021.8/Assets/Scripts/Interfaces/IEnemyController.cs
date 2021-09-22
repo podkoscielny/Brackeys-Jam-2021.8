@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IEnemyController
 {
     public void Move();
-    public void HandlePoopHit();
+    public bool HandlePoopHit();
 }

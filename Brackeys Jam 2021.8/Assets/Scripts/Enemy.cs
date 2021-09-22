@@ -7,13 +7,10 @@ public class Enemy : MonoBehaviour, IEnemyController
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
-    [SerializeField] EnemyCharacter baseFunctionalityController;
 
     private GameManager _gameManager;
-    private float _movementSpeed = 4f;
     private bool _isHit = false;
-    private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
-    private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
+    private const float MOVEMENT_SPEED = 4f;
 
     void Awake() => _gameManager = GameManager.Instance;
 
@@ -23,19 +20,7 @@ public class Enemy : MonoBehaviour, IEnemyController
         _isHit = false;
     }
 
-    public void Move() => transform.position += transform.right * _movementSpeed * Time.deltaTime;
-
-    public void SetFacing(bool isFacingRight)
-    {
-        if (isFacingRight)
-        {
-            transform.rotation = _rightRotation;
-        }
-        else
-        {
-            transform.rotation = _leftRotation;
-        }
-    }
+    public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
 
     void SetRandomSprite()
     {
@@ -47,14 +32,17 @@ public class Enemy : MonoBehaviour, IEnemyController
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
     }
 
-    public void HandlePoopHit()
+    public bool HandlePoopHit()
     {
         if (!_isHit)
         {
             _gameManager.UpdateScore();
             _isHit = true;
-            baseFunctionalityController.DisableMoving();
             enemyAnimator.SetTrigger("IsHit");
+
+            return false;
         }
+
+        return true;
     }
 }

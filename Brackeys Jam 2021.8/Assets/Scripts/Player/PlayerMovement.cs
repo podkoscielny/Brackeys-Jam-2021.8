@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private ObjectPooler _objectPooler;
     private bool _canShoot = true;
     private float _horizontalMovement = 0f;
-    private float _movementSpeed = 200f;
-    private const float _shootDelay = 0.5f;
+    private const float MOVEMENT_SPEED = 200f;
+    private const float SHOOT_DELAY = 0.5f;
 
     void Awake() => _objectPooler = ObjectPooler.Instance;
 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (GameManager.Instance.IsGameOver) return;
 
-        _horizontalMovement = Input.GetAxisRaw("Horizontal") * _movementSpeed;
+        _horizontalMovement = Input.GetAxisRaw("Horizontal") * MOVEMENT_SPEED;
         playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
 
         if (Input.GetButtonDown("Jump"))
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator DelayShooting()
     {
-        yield return new WaitForSeconds(_shootDelay);
+        yield return new WaitForSeconds(SHOOT_DELAY);
 
         _canShoot = true;
     }

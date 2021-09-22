@@ -15,10 +15,10 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private Vector3 _explodeDirection;
-    private float _explosionSpeed = 14f;
-    private float _rotationSpeed = 1200f;
     private bool _canMove = true;
     private bool _hasExploded = false;
+    private const float ROTATION_SPEED = 1200f;
+    private const float EXPLOSION_SPEED = 14f;
     private const int LAYER_TO_IGNORE = 8;
 
     void Awake()
@@ -54,8 +54,8 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     void Explode()
     {
-        transform.Rotate(Vector3.forward * _rotationSpeed * Time.deltaTime);
-        transform.position += _explodeDirection * _explosionSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.forward * ROTATION_SPEED * Time.deltaTime);
+        transform.position += _explodeDirection * EXPLOSION_SPEED * Time.deltaTime;
     }
 
     public void SetSplashEffect(Vector2 poopPosition)
@@ -89,8 +89,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         _gameManager.UpdateScore();
     }
 
-    public void DisableMoving() => _canMove = false;
-
     public void EnableMoving() => _canMove = true;
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -100,7 +98,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             SetSplashEffect(collision.transform.position);
 
-            _enemyController.HandlePoopHit();
+            _canMove = _enemyController.HandlePoopHit();
         }
     }
 }
