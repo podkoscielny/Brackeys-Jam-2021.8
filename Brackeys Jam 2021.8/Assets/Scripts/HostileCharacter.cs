@@ -18,8 +18,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     private float _movementSpeed = 4f;
     private float _minPositionX = -7f;
     private float _maxPositionX = 7f;
+    private bool _isFacingRight;
     private bool _hasReachedTarget = false;
-    private bool _isFacingRight = true;
     private bool _isDown = false;
     private Vector2 _randomStopPosition;
 
@@ -33,6 +33,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     {
         _hasReachedTarget = false;
         _isDown = false;
+        _isFacingRight = transform.right.x == 1;
         SetRandomStopPosition();
     }
 
@@ -40,21 +41,12 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     {
         transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
 
-        if (_randomStopPosition.x < transform.position.x && _isFacingRight || _randomStopPosition.x > transform.position.x && !_isFacingRight)
-        {
-            _isFacingRight = !_isFacingRight;
-            FlipCharacter();
-        }
-
-
         if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
             _hasReachedTarget = true;
             ShootAnimation();
         }
     }
-
-    void FlipCharacter() => transform.Rotate(0, 180, 0);
 
     void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
@@ -75,7 +67,15 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
         _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
 
         _hasReachedTarget = false;
+
+        if (_randomStopPosition.x < transform.position.x && _isFacingRight || _randomStopPosition.x > transform.position.x && !_isFacingRight)
+        {
+            _isFacingRight = !_isFacingRight;
+            FlipCharacter();
+        }
     }
+
+    void FlipCharacter() => transform.Rotate(0, 180, 0);
 
     public void HandlePoopHit()
     {
