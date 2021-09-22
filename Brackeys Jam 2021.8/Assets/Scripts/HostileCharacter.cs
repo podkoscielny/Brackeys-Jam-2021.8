@@ -33,9 +33,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     {
         _hasReachedTarget = false;
         _isDown = false;
+        SetRandomStopPosition();
     }
-
-    void Start() => SetRandomStopPosition();
 
     public void Move()
     {

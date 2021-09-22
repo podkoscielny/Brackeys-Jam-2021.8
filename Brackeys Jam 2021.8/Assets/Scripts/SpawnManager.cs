@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
 
+    private readonly Quaternion RESET_ROTATION = new Quaternion(0, 0, 0, 0);
+
     private float _spawnMaxY = -1.98f;
     private float _spawnMinY = -2.8f;
     private float _spawnXRange = 10f;
@@ -80,7 +82,7 @@ public class SpawnManager : MonoBehaviour
                 float randomY = Random.Range(_spawnMinY, _spawnMaxY);
                 Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
                 obj.transform.position = charactersPosition;
-                obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+                obj.transform.rotation = RESET_ROTATION;
                 obj.SetActive(true);
             }
         }
