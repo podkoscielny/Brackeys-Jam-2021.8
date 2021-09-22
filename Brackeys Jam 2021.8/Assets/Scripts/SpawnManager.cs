@@ -91,7 +91,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SetCharactersPosition(GameObject character) // Use this utility
+    void SetCharactersPosition(GameObject character)
     {
         bool isMovingRight = Random.Range(0, 2) == 1;
 
@@ -130,11 +130,13 @@ public class SpawnManager : MonoBehaviour
                 break;
 
             case 4:
+                _neutralInterval = 7f;
                 _hostileInterval = 2f;
                 _hostileLimit = 6;
                 break;
 
             case 5:
+                _neutralInterval = 0f;
                 _hostileInterval = 2f;
                 _hostileLimit = 8;
                 break;
