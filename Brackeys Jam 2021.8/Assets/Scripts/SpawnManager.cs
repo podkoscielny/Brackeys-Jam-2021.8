@@ -8,9 +8,8 @@ public class SpawnManager : MonoBehaviour
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
 
-    private readonly Quaternion RESET_ROTATION = new Quaternion(0, 0, 0, 0);
-    private Quaternion _rightRotation = new Quaternion(0, 0, 0, 1);
-    private Quaternion _leftRotation = new Quaternion(0, 1, 0, 0);
+    private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
+    private readonly Quaternion LEFT_ROTATION = new Quaternion(0, 1, 0, 0);
 
     private float _neutralInterval = 3f;
     private float _hostileInterval = 0f;
@@ -80,6 +79,7 @@ public class SpawnManager : MonoBehaviour
         if (corns.Length < _cornLimit)
         {
             GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
+
             if (obj != null)
             {
                 float xPosition = Random.Range(CORN_MIN_POSITION_X, CORN_MAX_POSITION_X);
@@ -97,7 +97,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
 
         character.transform.position = charactersPosition;
-        character.transform.rotation = isMovingRight ? _rightRotation : _leftRotation;
+        character.transform.rotation = isMovingRight ? RIGHT_ROTATION : LEFT_ROTATION;
 
         character.SetActive(true);
     }

@@ -31,6 +31,7 @@ public class Explosion : MonoBehaviour
         if (_gameManager.ExplosionEffect != null)
         {
             spriteRenderer.sprite = _gameManager.ExplosionEffect.sprite;
+            spriteRenderer.color = _gameManager.ExplosionEffect.color;
             explosionAnimator.runtimeAnimatorController = _gameManager.ExplosionEffect.animatorController;
             transform.localScale = _gameManager.ExplosionEffect.size;
         }

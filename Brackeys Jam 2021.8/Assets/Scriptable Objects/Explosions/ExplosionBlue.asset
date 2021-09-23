@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4d7a05a55b43f745979ba0080337231, type: 3}
-  m_Name: ExplosionGreen
+  m_Name: ExplosionBlue
   m_EditorClassIdentifier: 
   size: {x: 5, y: 5, z: 1}
   sprite: {fileID: 21300000, guid: 634bc93a3ae5b064cb9b8e537be80a42, type: 3}
   animatorController: {fileID: 9100000, guid: 3886b94554c71994789c101602d7a642, type: 2}
-  color: {r: 0.047058824, g: 1, b: 0, a: 1}
+  color: {r: 0.039215688, g: 0, b: 0.99215686, a: 1}

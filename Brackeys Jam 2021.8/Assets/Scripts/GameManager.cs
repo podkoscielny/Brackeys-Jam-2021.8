@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver { get; private set; } = false;
     public ExplosionType ExplosionEffect { get; private set; }
 
-    [SerializeField] ExplosionType explosionRed;
-    [SerializeField] ExplosionType explosionGreen;
+    [SerializeField] ExplosionType[] explosions;
 
     private int _cornEaten = 0;
     private int _chargeGoal = 3;
@@ -79,11 +78,11 @@ public class GameManager : MonoBehaviour
 
         if(PoopChargeLevel == 4)
         {
-            ExplosionEffect = explosionGreen;
+            ExplosionEffect = explosions[0];
         }
         else if(PoopChargeLevel == 5)
         {
-            ExplosionEffect = explosionRed;
+            ExplosionEffect = explosions[1];
         }
     }
 

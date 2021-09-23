@@ -15,3 +15,4 @@ MonoBehaviour:
   size: {x: 5, y: 5, z: 1}
   sprite: {fileID: 21300000, guid: 634bc93a3ae5b064cb9b8e537be80a42, type: 3}
   animatorController: {fileID: 9100000, guid: 3886b94554c71994789c101602d7a642, type: 2}
+  color: {r: 1, g: 1, b: 1, a: 1}
