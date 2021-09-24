@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
     private int _chargeGoal = 3;
     private int _chaosStarGoal = 10;
     private int _scoreAmount = 10;
-    private int _maxPoopChargeLevel = 6;
-    private int _maxChaosStarsAmount = 5;
+    private const int MAX_POOP_CHARGE_LEVEL = 6;
+    private const int MAX_CHAOS_STARS_AMOUNT = 5;
 
     public static GameManager Instance;
 
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         Score += _scoreAmount;
 
-        if (Score >= _chaosStarGoal && ChaosStarsAmount < _maxChaosStarsAmount)
+        if (Score >= _chaosStarGoal && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
         {
             ChaosStarsAmount++;
             SetChaosStarsGoal();
@@ -57,16 +57,13 @@ public class GameManager : MonoBehaviour
     {
         _cornEaten++;
 
-        if (_cornEaten == _chargeGoal && PoopChargeLevel < _maxPoopChargeLevel)
+        if (_cornEaten == _chargeGoal && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL)
         {
             UpgradePoop();
         }
     }
 
-    public void GameOver()
-    {
-        OnGameOver?.Invoke();
-    }
+    public void GameOver() => OnGameOver?.Invoke();
 
     void UpgradePoop()
     {

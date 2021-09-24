@@ -31,10 +31,7 @@ public class ObjectPooler : MonoBehaviour
     }
     #endregion
 
-    void Start()
-    {
-        InitializePool();
-    }
+    void Start() => InitializePool();
 
     void InitializePool()
     {
