@@ -78,12 +78,12 @@ public class SpawnManager : MonoBehaviour
 
         if (corns.Length < _cornLimit)
         {
-            GameObject obj = _objectPooler.GetFromPool(Tags.Corn);
+            GameObject corn = _objectPooler.GetFromPool(Tags.Corn);
 
-            if (obj != null)
+            if (corn != null)
             {
                 float xPosition = Random.Range(CORN_MIN_POSITION_X, CORN_MAX_POSITION_X);
-                obj.transform.position = new Vector2(xPosition, CORN_POSITION_Y);
+                corn.transform.position = new Vector2(xPosition, CORN_POSITION_Y);
             }
         }
     }

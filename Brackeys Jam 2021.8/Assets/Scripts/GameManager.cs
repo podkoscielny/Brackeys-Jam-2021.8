@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private int _chargeGoal = 3;
     private int _chaosStarGoal = 10;
     private int _scoreAmount = 10;
-    private int _maxPoopChargeLevel = 5;
+    private int _maxPoopChargeLevel = 6;
     private int _maxChaosStarsAmount = 5;
 
     public static GameManager Instance;
@@ -76,13 +76,23 @@ public class GameManager : MonoBehaviour
         _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
         OnPoopUpgrade?.Invoke();
 
-        if(PoopChargeLevel == 4)
+        switch (PoopChargeLevel)
         {
-            ExplosionEffect = explosions[0];
-        }
-        else if(PoopChargeLevel == 5)
-        {
-            ExplosionEffect = explosions[1];
+            case 4:
+                ExplosionEffect = explosions[0];
+                break;
+
+            case 5:
+                ExplosionEffect = explosions[1];
+                break;
+
+
+            case 6:
+                ExplosionEffect = explosions[2];
+                break;
+
+            default:
+                break;
         }
     }
 
