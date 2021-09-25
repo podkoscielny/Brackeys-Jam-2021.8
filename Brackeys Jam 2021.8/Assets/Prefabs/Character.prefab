@@ -144,7 +144,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
   spriteRenderer: {fileID: 813753172112441309}
   enemyAnimator: {fileID: 813753172112441299}
-  baseFunctionalityController: {fileID: 7559855718117537268}
 --- !u!114 &1262634898865482270
 MonoBehaviour:
   m_ObjectHideFlags: 0
