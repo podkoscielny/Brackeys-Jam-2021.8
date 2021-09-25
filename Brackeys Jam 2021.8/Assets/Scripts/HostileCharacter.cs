@@ -14,10 +14,12 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
-    private Vector2 _randomStopPosition;
+    private Vector3 _randomStopPosition;
     private bool _isFacingRight;
+
     private bool _isDown = false;
     private bool _hasReachedTarget = false;
+
     private const float MOVEMENT_SPEED = 4f;
     private const float MIN_POSITION_X = -7f;
     private const float MAX_POSITION_X = 7f;
@@ -38,9 +40,9 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
 
     public void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
+        if (Vector3.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
             _hasReachedTarget = true;
             ShootAnimation();
@@ -63,7 +65,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     void SetRandomStopPosition()
     {
         float randomPositionX = Random.Range(MIN_POSITION_X, MAX_POSITION_X);
-        _randomStopPosition = new Vector2(randomPositionX, transform.position.y);
+
+        _randomStopPosition = new Vector3(randomPositionX, transform.position.y, transform.position.y);
 
         _hasReachedTarget = false;
 

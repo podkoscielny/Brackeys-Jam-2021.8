@@ -19,7 +19,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private bool _hasExploded = false;
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
-    private const int LAYER_TO_IGNORE = 8;
 
     void Awake()
     {
@@ -35,8 +34,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         splashEffect.SetActive(false);
         SetSpriteColor();
     }
-
-    void Start() => Physics2D.IgnoreLayerCollision(LAYER_TO_IGNORE, LAYER_TO_IGNORE);
 
     void Update()
     {
