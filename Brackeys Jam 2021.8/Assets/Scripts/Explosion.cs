@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
+    private bool _isFullyLoaded = false;
     private Vector3 _offset = new Vector3(0, -2f, 0);
     private const float EXPLOSION_RANGE = 1.4f;
 
@@ -22,9 +23,13 @@ public class Explosion : MonoBehaviour
 
     void OnEnable()
     {
+        if (!_isFullyLoaded) return;
+
         SetProperties();
         ExplodeCharactersInRange();
     }
+
+    void Start() => _isFullyLoaded = true;
 
     void SetProperties()
     {
@@ -43,7 +48,7 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D character in charactersInRange)
         {
-            Vector2 explodeInDirection = character.transform.position - (transform.position + _offset); 
+            Vector2 explodeInDirection = character.transform.position - (transform.position + _offset);
             character.GetComponent<IExplosionHandler>()?.HandleExplosion(explodeInDirection);
         }
     }

@@ -11,8 +11,8 @@ public class Poop : MonoBehaviour
     private GameManager _gameManager;
     private GameObject _spawnPoop;
     private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
-    private int _gravityScale = 3;
     private bool _isFalling = false;
+    private const int GRAVITY_SCALE = 3;
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class Poop : MonoBehaviour
 
     public void SetGravity() // Invoke after animation
     {
-        poopRb.gravityScale = _gravityScale;
+        poopRb.gravityScale = GRAVITY_SCALE;
         _isFalling = true;
     }
 
