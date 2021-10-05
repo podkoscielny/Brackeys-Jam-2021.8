@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 CalculateCameraOffset()
     {
-        float offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f);
+        float offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f); // check if its needed
 
         return new Vector3(0, offsetY, 0);
     }
