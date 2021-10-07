@@ -8,7 +8,7 @@ public class GroundSplash : MonoBehaviour
     private ObjectPooler _objectPooler;
     private float _disappearTime = 5f;
 
-    void Awake() => _objectPooler = ObjectPooler.Instance;
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -24,18 +24,18 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     private const float MIN_POSITION_X = -7f;
     private const float MAX_POSITION_X = 7f;
 
-    void Awake()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
-    }
-
     void OnEnable()
     {
         _hasReachedTarget = false;
         _isDown = false;
         _isFacingRight = transform.right.x == 1;
         SetRandomStopPosition();
+    }
+
+    void Start()
+    {
+        _objectPooler = ObjectPooler.Instance;
+        _gameManager = GameManager.Instance;
     }
 
     public void Move()

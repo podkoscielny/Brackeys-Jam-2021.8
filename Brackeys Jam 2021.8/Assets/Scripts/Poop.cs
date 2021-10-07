@@ -16,8 +16,6 @@ public class Poop : MonoBehaviour
 
     void Awake()
     {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
         _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
     }
 
@@ -25,6 +23,12 @@ public class Poop : MonoBehaviour
     {
         _isFalling = false;
         poopRb.gravityScale = 0;
+    }
+
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
     }
 
     void LateUpdate()
@@ -43,7 +47,7 @@ public class Poop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Ground) && _gameManager.PoopChargeLevel >= 4)
+        if (collision.CompareTag(Tags.Ground) && _gameManager.PoopChargeLevel >= _gameManager.MIN_EXPLOSION_POOP_LEVEL)
         {
             GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
             explosion.transform.position = (Vector2)transform.position + _explosionOffset;

@@ -12,13 +12,13 @@ public class Enemy : MonoBehaviour, IEnemyController
     private bool _isHit = false;
     private const float MOVEMENT_SPEED = 4f;
 
-    void Awake() => _gameManager = GameManager.Instance;
-
     void OnEnable()
     {
         SetRandomSprite();
         _isHit = false;
     }
+
+    void Start() => _gameManager = GameManager.Instance;
 
     public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
 

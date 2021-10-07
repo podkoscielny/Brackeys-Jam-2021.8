@@ -7,14 +7,19 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] LayerMask interactableMask;
     [SerializeField] AnimationController animationController;
 
+    private GameManager _gameManager;
     private bool _isInteracting = false;
     private const float INTERACTION_RADIUS = 0.7f;
 
-    void Start() => Physics2D.IgnoreLayerCollision(9, 8);
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        Physics2D.IgnoreLayerCollision(9, 8);
+    }
 
     void Update()
     {
-        if (Input.GetButtonDown("Interaction") && !_isInteracting && !GameManager.Instance.IsGameOver)
+        if (Input.GetButtonDown("Interaction") && !_isInteracting && !_gameManager.IsGameOver)
         {
             InteractWithItem();
         }

@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
 
-    void Awake() => _objectPooler = ObjectPooler.Instance;
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void OnTriggerExit2D(Collider2D collision)
     {

@@ -9,7 +9,7 @@ public class PauseGame : MonoBehaviour
     private GameManager _gameManager;
     private bool _isGamePaused = false;
 
-    void Awake() => _gameManager = GameManager.Instance;
+    void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {

@@ -20,12 +20,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
 
-    void Awake()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
-        _enemyController = GetComponent<IEnemyController>();
-    }
+    void Awake() => _enemyController = GetComponent<IEnemyController>();
 
     void OnEnable()
     {
@@ -35,13 +30,19 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
         SetSpriteColor();
     }
 
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+    }
+
     void Update()
     {
         if (_canMove)
         {
             Move();
         }
-        else if(!_canMove && _hasExploded)
+        else if (!_canMove && _hasExploded)
         {
             Explode();
         }
@@ -90,7 +91,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < 4)
+        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < _gameManager.MIN_EXPLOSION_POOP_LEVEL)
         {
             _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
             SetSplashEffect(collision.transform.position);

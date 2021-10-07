@@ -15,21 +15,22 @@ public class Explosion : MonoBehaviour
     private Vector3 _offset = new Vector3(0, -2f, 0);
     private const float EXPLOSION_RANGE = 1.4f;
 
-    void Awake()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
-    }
-
     void OnEnable()
     {
-        if (!_isFullyLoaded) return;
+        if (_isFullyLoaded)
+        {
+            SetProperties();
+            ExplodeCharactersInRange();
+        }
+        else
+        {
+            _gameManager = GameManager.Instance;
+            _objectPooler = ObjectPooler.Instance;
 
-        SetProperties();
-        ExplodeCharactersInRange();
+            _isFullyLoaded = true;
+        }
+
     }
-
-    void Start() => _isFullyLoaded = true;
 
     void SetProperties()
     {

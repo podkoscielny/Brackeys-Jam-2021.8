@@ -25,26 +25,29 @@ public class SpawnManager : MonoBehaviour
     private const float CORN_MAX_POSITION_X = 7f;
     private const float CORN_POSITION_Y = 3f;
 
-    void Awake()
+    void OnEnable()
     {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
+        GameManager.OnGameOver += CancelOngoingInvokes;
+        GameManager.OnChaosStarGained += ChangeSpawnIntervals;
     }
-
-    void OnEnable() => GameManager.OnChaosStarGained += ChangeSpawnIntervals;
 
     void OnDisable()
     {
+        GameManager.OnGameOver -= CancelOngoingInvokes;
         GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
         CancelOngoingInvokes();
     }
 
-    void Start() => SetInvokes();
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _objectPooler = ObjectPooler.Instance;
+
+        SetInvokes();
+    }
 
     void SpawnNeutral()
     {
-        if (_gameManager.IsGameOver) return;
-
         GameObject nonHostile = _objectPooler.GetFromPoolInActive(Tags.Character);
 
         if (nonHostile != null)
@@ -55,8 +58,6 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnHostile()
     {
-        if (_gameManager.IsGameOver) return;
-
         GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
 
         if (hostiles.Length < _hostileLimit)
@@ -72,8 +73,6 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnCorn()
     {
-        if (_gameManager.IsGameOver) return;
-
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
         if (corns.Length < _cornLimit)
