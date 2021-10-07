@@ -29,7 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
-    private const float SPAWN_X_RANGE = 10f;
+    private const float SPAWN_X_RANGE = 21.5f;
     private const float CORN_MIN_POSITION_X = -7f;
     private const float CORN_MAX_POSITION_X = 7f;
     private const float CORN_POSITION_Y = 3f;
