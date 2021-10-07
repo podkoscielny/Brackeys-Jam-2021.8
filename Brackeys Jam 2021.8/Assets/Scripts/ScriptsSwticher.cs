@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptsDisabler : MonoBehaviour
+public class ScriptsSwticher : MonoBehaviour
 {
     [SerializeField] List<MonoBehaviour> scriptsToDisable;
 
