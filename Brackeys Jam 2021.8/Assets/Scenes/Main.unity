@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554064751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8d29dd398da737458a6757c33288d35, type: 3}
   m_Name: 
@@ -1739,7 +1739,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554064751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9074a63dc6e688449076e3a20e9b549, type: 3}
   m_Name: 
@@ -3173,6 +3173,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8291e65a846acce4c8122a931e39b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cornSpawnPositions:
+  - leftBound: {x: -6.17, y: 0.53}
+    rightBound: {x: -3.33, y: 0.53}
+  - leftBound: {x: -1.49, y: 1.7}
+    rightBound: {x: 4.2, y: 1.7}
+  - leftBound: {x: -1.34, y: 2.66}
+    rightBound: {x: 7.92, y: 2.66}
+  - leftBound: {x: 4.25, y: 4.81}
+    rightBound: {x: 5.71, y: 4.81}
+  - leftBound: {x: -1.37, y: 7.63}
+    rightBound: {x: 3.89, y: 7.63}
+  - leftBound: {x: -6.64, y: 4.78}
+    rightBound: {x: -2.82, y: 4.78}
+  - leftBound: {x: -6.29, y: 5.45}
+    rightBound: {x: -4.32, y: 5.45}
 --- !u!1 &1476809933
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491084215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3755821, y: 2.049694, z: 289.54196}
+  m_LocalPosition: {x: -1.3755821, y: -0.32, z: 289.54196}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 933592150}

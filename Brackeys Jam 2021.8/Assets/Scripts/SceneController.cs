@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public bool IsReady { get; private set; } = false;
+    public static Action OnGameStart;
 
     private Animator animator;
 
@@ -24,10 +25,13 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync("Main");
     }
 
-    void GoToGameplay()
+    public void GoToGameplay()
     {
         SceneManager.LoadSceneAsync("Main");
     }
 
-    void MakeSceneReady() => IsReady = true;
+    public void MakeSceneReady()
+    {
+        OnGameStart?.Invoke();
+    }
 }

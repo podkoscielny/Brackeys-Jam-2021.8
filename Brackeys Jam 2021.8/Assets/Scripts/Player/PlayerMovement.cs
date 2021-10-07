@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsGameOver) return;
-
         _horizontalMovement = Input.GetAxisRaw("Horizontal") * MOVEMENT_SPEED;
         playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
 

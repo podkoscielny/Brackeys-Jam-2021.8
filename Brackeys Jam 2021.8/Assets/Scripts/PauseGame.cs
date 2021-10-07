@@ -8,16 +8,23 @@ public class PauseGame : MonoBehaviour
 
     private GameManager _gameManager;
     private bool _isGamePaused = false;
+    private bool _canBePaused = false;
+
+    void OnEnable() => SceneController.OnGameStart += AllowGamePause;
+
+    void OnDisable() => SceneController.OnGameStart -= AllowGamePause;
 
     void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {
-        if (!_gameManager.IsGameOver && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)))
+        if (!_gameManager.IsGameOver && _canBePaused && Input.GetButtonDown("Pause"))
         {
             Pause();
         }
     }
+
+    void AllowGamePause() => _canBePaused = true;
 
     void Pause()
     {

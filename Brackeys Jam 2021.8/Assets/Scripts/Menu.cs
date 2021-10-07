@@ -9,25 +9,29 @@ public class Menu : MonoBehaviour
     [SerializeField] SceneController controller;
     [SerializeField] TextMeshProUGUI startText;
 
-    private bool _canShowText = true;
+    private bool _isSceneLoaded = false;
+
+    private void OnEnable() => SceneController.OnGameStart += ShowStartText;
+
+    void OnDisable() => SceneController.OnGameStart -= ShowStartText;
 
     void Update()
     {
-        if(controller.IsReady && !startText.gameObject.activeInHierarchy && _canShowText)
-        {
-            startText.gameObject.SetActive(true);
-        }
-
-        if(Input.anyKey && controller.IsReady)
+        if (Input.anyKey && _isSceneLoaded)
         {
             StartGame();
         }
+    }
+
+    void ShowStartText()
+    {
+        _isSceneLoaded = true;
+        startText.gameObject.SetActive(true);
     }
 
     void StartGame()
     {
         sceneAnimator.SetTrigger("Hide");
         startText.gameObject.SetActive(false);
-        _canShowText = false;
     }
 }
