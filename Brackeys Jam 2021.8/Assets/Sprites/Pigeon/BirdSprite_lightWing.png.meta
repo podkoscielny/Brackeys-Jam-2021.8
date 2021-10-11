@@ -1,58 +1,58 @@
 fileFormatVersion: 2
-guid: c7ed2726543e13e45a88dc55e7fac6c1
+guid: 7df1213466d84cf43bc26dd815445207
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1207841707077272702
-    second: BirdSprite_0
+      213: -6006211851987328116
+    second: BirdSprite_lightWing_0
   - first:
-      213: -56839117156836721
-    second: BirdSprite_1
+      213: 1688543300766962192
+    second: BirdSprite_lightWing_1
   - first:
-      213: -2966782557986119690
-    second: BirdSprite_2
+      213: -6426447128309431376
+    second: BirdSprite_lightWing_2
   - first:
-      213: -7547327171053007460
-    second: BirdSprite_3
+      213: -1988528231087456785
+    second: BirdSprite_lightWing_3
   - first:
-      213: -6712714386521412304
-    second: BirdSprite_4
+      213: 1039197060431307327
+    second: BirdSprite_lightWing_4
   - first:
-      213: -3027467885991443842
-    second: BirdSprite_5
+      213: -8136816455374341117
+    second: BirdSprite_lightWing_5
   - first:
-      213: -3724123321965674295
-    second: BirdSprite_6
+      213: 86863681836914639
+    second: BirdSprite_lightWing_6
   - first:
-      213: -6726645932881956004
-    second: BirdSprite_7
+      213: -8168559394399578291
+    second: BirdSprite_lightWing_7
   - first:
-      213: 8955487205275968134
-    second: BirdSprite_8
+      213: 5999598386263607837
+    second: BirdSprite_lightWing_8
   - first:
-      213: -2178494529567005486
-    second: BirdSprite_9
+      213: -7469277737163926210
+    second: BirdSprite_lightWing_9
   - first:
-      213: 7341870254225141877
-    second: BirdSprite_10
+      213: 7367124872494594957
+    second: BirdSprite_lightWing_10
   - first:
-      213: -3355987651799540184
-    second: BirdSprite_11
+      213: 3122133332748156084
+    second: BirdSprite_lightWing_11
   - first:
-      213: -97703716045300561
-    second: BirdSprite_12
+      213: 376231538490978121
+    second: BirdSprite_lightWing_12
   - first:
-      213: -2560708704692697379
-    second: BirdSprite_13
+      213: -4472043240631836375
+    second: BirdSprite_lightWing_13
   - first:
-      213: 4344970119402266832
-    second: BirdSprite_14
+      213: -1205311490536203426
+    second: BirdSprite_lightWing_14
   - first:
-      213: 652947479290959848
-    second: BirdSprite_15
+      213: 2712569099909648103
+    second: BirdSprite_lightWing_15
   - first:
-      213: -2351375261060791496
-    second: BirdSprite_16
+      213: 2619517610494043056
+    second: BirdSprite_lightWing_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,7 +154,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BirdSprite_0
+      name: BirdSprite_lightWing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -168,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28bf1c8ed52ec3fe0800000000000000
-      internalID: -1207841707077272702
+      spriteID: c83ed849426a5aca0800000000000000
+      internalID: -6006211851987328116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_1
+      name: BirdSprite_lightWing_1
       rect:
         serializedVersion: 2
         x: 16
@@ -189,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8a1584cf11163ff0800000000000000
-      internalID: -56839117156836721
+      spriteID: 012941e8f29ee6710800000000000000
+      internalID: 1688543300766962192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_2
+      name: BirdSprite_lightWing_2
       rect:
         serializedVersion: 2
         x: 0
@@ -210,14 +210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ff99617bfed3d6d0800000000000000
-      internalID: -2966782557986119690
+      spriteID: 0b38945b26ca0d6a0800000000000000
+      internalID: -6426447128309431376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_3
+      name: BirdSprite_lightWing_3
       rect:
         serializedVersion: 2
         x: 16
@@ -231,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9d4bb5ece1824790800000000000000
-      internalID: -7547327171053007460
+      spriteID: fed32380c145764e0800000000000000
+      internalID: -1988528231087456785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_4
+      name: BirdSprite_lightWing_4
       rect:
         serializedVersion: 2
         x: 32
@@ -252,14 +252,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03dacb8b4d5a7d2a0800000000000000
-      internalID: -6712714386521412304
+      spriteID: f3263a67838fb6e00800000000000000
+      internalID: 1039197060431307327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_5
+      name: BirdSprite_lightWing_5
       rect:
         serializedVersion: 2
         x: 48
@@ -273,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e72c3967ff54cf5d0800000000000000
-      internalID: -3027467885991443842
+      spriteID: 30cfbd66b88341f80800000000000000
+      internalID: -8136816455374341117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_6
+      name: BirdSprite_lightWing_6
       rect:
         serializedVersion: 2
         x: 64
@@ -294,14 +294,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c00d76e191415cc0800000000000000
-      internalID: -3724123321965674295
+      spriteID: fc795c3fe0a943100800000000000000
+      internalID: 86863681836914639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_7
+      name: BirdSprite_lightWing_7
       rect:
         serializedVersion: 2
         x: 80
@@ -315,14 +315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c53beb0d92726a2a0800000000000000
-      internalID: -6726645932881956004
+      spriteID: d47122a728273ae80800000000000000
+      internalID: -8168559394399578291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_8
+      name: BirdSprite_lightWing_8
       rect:
         serializedVersion: 2
         x: 96
@@ -336,14 +336,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 682a70d3a28484c70800000000000000
-      internalID: 8955487205275968134
+      spriteID: d1acf30f1fad24350800000000000000
+      internalID: 5999598386263607837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_9
+      name: BirdSprite_lightWing_9
       rect:
         serializedVersion: 2
         x: 112
@@ -357,14 +357,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d4e60c74ce64c1e0800000000000000
-      internalID: -2178494529567005486
+      spriteID: e355c93d87bc75890800000000000000
+      internalID: -7469277737163926210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_10
+      name: BirdSprite_lightWing_10
       rect:
         serializedVersion: 2
         x: 0
@@ -378,14 +378,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 570b81ae81093e560800000000000000
-      internalID: 7341870254225141877
+      spriteID: d8b3cf0f9094d3660800000000000000
+      internalID: 7367124872494594957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_11
+      name: BirdSprite_lightWing_11
       rect:
         serializedVersion: 2
         x: 16
@@ -399,14 +399,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82e14efe2032d61d0800000000000000
-      internalID: -3355987651799540184
+      spriteID: 4bc3cdf69bb045b20800000000000000
+      internalID: 3122133332748156084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_12
+      name: BirdSprite_lightWing_12
       rect:
         serializedVersion: 2
         x: 32
@@ -420,14 +420,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fac52e7ecf2e4aef0800000000000000
-      internalID: -97703716045300561
+      spriteID: 94fad054794a83500800000000000000
+      internalID: 376231538490978121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_13
+      name: BirdSprite_lightWing_13
       rect:
         serializedVersion: 2
         x: 0
@@ -441,14 +441,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd68a831009867cd0800000000000000
-      internalID: -2560708704692697379
+      spriteID: 921e3f5dd5c10f1c0800000000000000
+      internalID: -4472043240631836375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_14
+      name: BirdSprite_lightWing_14
       rect:
         serializedVersion: 2
         x: 16
@@ -462,14 +462,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0a8ae8d4f6c4c30800000000000000
-      internalID: 4344970119402266832
+      spriteID: e5b94ead59fd54fe0800000000000000
+      internalID: -1205311490536203426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_15
+      name: BirdSprite_lightWing_15
       rect:
         serializedVersion: 2
         x: 32
@@ -483,14 +483,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e7df10e54cbf0900800000000000000
-      internalID: 652947479290959848
+      spriteID: 7eec0dc793bf4a520800000000000000
+      internalID: 2712569099909648103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BirdSprite_16
+      name: BirdSprite_lightWing_16
       rect:
         serializedVersion: 2
         x: 48
@@ -504,8 +504,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83384de78ac3e5fd0800000000000000
-      internalID: -2351375261060791496
+      spriteID: 0b3a06053656a5420800000000000000
+      internalID: 2619517610494043056
       vertices: []
       indices: 
       edges: []
