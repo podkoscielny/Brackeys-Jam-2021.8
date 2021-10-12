@@ -8,48 +8,30 @@ public class PlayerCollisions : MonoBehaviour
 
     private GameManager _gameManager;
     private Rigidbody2D _playerRb;
-    private Collider2D _playerCollider;
+    private Vector2 _impactDirectionRight = new Vector2(1.411f, 0.637f);
+    private Vector2 _impactDirectionLeft = new Vector2(-1.411f, 0.637f);
     private const float HIT_FORCE = 10f;
 
-    void Awake()
-    {
-        _playerRb = GetComponent<Rigidbody2D>();
-        _playerCollider = GetComponent<Collider2D>();
-    }
-
-    void OnEnable() => GameManager.OnGameOver += DisableCollisionsWithCharacters;
-
-    void OnDisable() => GameManager.OnGameOver -= DisableCollisionsWithCharacters;
+    void Awake() => _playerRb = GetComponent<Rigidbody2D>();
 
     private void Start() => _gameManager = GameManager.Instance;
 
-    void DisableCollisionsWithCharacters() => Physics2D.IgnoreLayerCollision(9, 8);
-
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (damageableTags.Contains(collision.tag))
-        //{
-        //    Vector2 direction = _colliderCenter - collision.bounds.center;
-        //    PushThePlayerOnCollision(direction);
-        //}
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (damageableTags.Contains(collision.collider.tag))
+        if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver)
         {
-            Debug.Log(collision.collider.bounds.center);
-            Vector2 direction = (_playerCollider.bounds.center - collision.collider.bounds.center).normalized;
+            Vector2 playersPosition = transform.position;
+
+            Vector2 impactDir = transform.position.x > collision.transform.position.x ? (_impactDirectionRight + playersPosition) : (_impactDirectionLeft + playersPosition);
+            Vector2 direction = (impactDir - playersPosition).normalized;
             PushThePlayerOnCollision(direction);
         }
     }
 
     void PushThePlayerOnCollision(Vector3 direction)
     {
-        //Debug.Log(direction);
         _playerRb.velocity = Vector2.zero;
-        _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
+        _playerRb.AddForce(_impactDirectionRight * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
 
         _gameManager.GetHit(0.5f); // add specific amount to specific objects
     }

@@ -74,7 +74,11 @@ public class GameManager : MonoBehaviour
             GameOver();
     }
 
-    public void GameOver() => OnGameOver?.Invoke();
+    public void GameOver()
+    {
+        IsGameOver = true;
+        OnGameOver?.Invoke();
+    }
 
     void UpgradePoop()
     {
