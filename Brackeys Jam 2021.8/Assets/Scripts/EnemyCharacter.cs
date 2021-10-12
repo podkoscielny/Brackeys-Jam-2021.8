@@ -78,6 +78,8 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
 
     public void HandleExplosion(Vector2 direction)
     {
+        Physics2D.IgnoreLayerCollision(9, 8);
+
         enemyAnimator.SetTrigger("Explosion");
 
         _canMove = false;

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static event Action OnGameOver;
 
     public int Score { get; private set; }
+    public float PlayersLives { get; private set; } = 3;
     public int PoopChargeLevel { get; private set; } = 1;
     public int ChaosStarsAmount { get; private set; } = 0;
     public bool IsGameOver { get; private set; } = false;
@@ -65,6 +66,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GetHit(float damageAmount)
+    {
+        PlayersLives -= damageAmount;
+
+        if (PlayersLives <= 0)
+            GameOver();
+    }
+
     public void GameOver() => OnGameOver?.Invoke();
 
     void UpgradePoop()
@@ -79,7 +88,7 @@ public class GameManager : MonoBehaviour
         {
             if (i < MIN_EXPLOSION_POOP_LEVEL) continue;
 
-            if(i == PoopChargeLevel)
+            if (i == PoopChargeLevel)
             {
                 int explosionIndex = i - MIN_EXPLOSION_POOP_LEVEL;
                 ExplosionEffect = explosions[explosionIndex];
