@@ -19,15 +19,14 @@ public class PlayerCollisions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver)
+        bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
+//invulnerable
+        if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
         {
             playerAnimator.SetTrigger("IsHit");
 
-            Vector2 playersPosition = transform.position;
-
-            Vector2 impactDir = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
-            Vector2 direction = (impactDir - playersPosition).normalized;
-            PushThePlayerOnCollision(impactDir);
+            Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
+            PushThePlayerOnCollision(direction);
         }
     }
 

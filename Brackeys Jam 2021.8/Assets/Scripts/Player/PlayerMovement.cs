@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private ObjectPooler _objectPooler;
     private bool _canShoot = true;
+    private bool _canMove = true;
     private float _horizontalMovement = 0f;
     private const float MOVEMENT_SPEED = 5f;
     private const float SHOOT_DELAY = 0.5f;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _horizontalMovement = Input.GetAxisRaw("Horizontal") * MOVEMENT_SPEED;
+
         playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
 
         if (Input.GetButtonDown("Jump"))
@@ -39,7 +41,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate() => controller.Move(_horizontalMovement);
+    void FixedUpdate()
+    {
+        if (_canMove)
+            controller.Move(_horizontalMovement);
+    }
+
+    public void DisableMovement() => _canMove = false;
+
+    public void EnableMovement() => _canMove = true;
 
     void Shoot()
     {
