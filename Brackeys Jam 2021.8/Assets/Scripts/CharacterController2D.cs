@@ -23,23 +23,33 @@ public class CharacterController2D : MonoBehaviour
     private bool _isCrouching = false;
     private bool _hasGroundCollisionEntered = false;
     private bool _isCheckingCeiling = false;
+    private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
-    private const float _groundedRadius = .2f;
-    private const float _ceilingRadius = .2f;
+    private const float GROUNDED_RADIUS = .2f;
+    private const float CEILING_RADIUS = .2f;
 
     public void Move(float moveAmount)
     {
         //only control the player if grounded or airControl is turned on
-        if (IsGrounded || airControl)
+        if ((IsGrounded || airControl) && moveAmount != 0)
         {
             if (_isCheckingCeiling) CeilingCheck(); //check if the player can stand up after releasing crouch key
 
             moveAmount *= _movementMultiplier;
-            characterRb.velocity = new Vector2(0, characterRb.velocity.y);
-            if (moveAmount != 0) characterRb.AddForce(Vector2.right * moveAmount);
+            characterRb.velocity = new Vector2(moveAmount, characterRb.velocity.y);
 
             if (moveAmount > 0 && !_facingRight || moveAmount < 0 && _facingRight)
                 FlipCharacter();
+
+            _canResetVelocity = true;
+        }
+        else
+        {
+            if (_canResetVelocity)
+            {
+                characterRb.velocity = new Vector2(0, characterRb.velocity.y);
+                _canResetVelocity = false;
+            }
         }
     }
 
@@ -84,13 +94,13 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    bool IsGroundBeneath() => Physics2D.OverlapCircle(groundCheck.position, _groundedRadius, groundMask) != null;
+    bool IsGroundBeneath() => Physics2D.OverlapCircle(groundCheck.position, GROUNDED_RADIUS, groundMask) != null;
 
     bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
 
     void CeilingCheck()
     {
-        _isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, _ceilingRadius, groundMask) != null;
+        _isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, CEILING_RADIUS, groundMask) != null;
         if (!_isCrouching)
         {
             _movementMultiplier = 1f;
