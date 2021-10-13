@@ -25,7 +25,7 @@ public class CharacterController2D : MonoBehaviour
     private bool _isCheckingCeiling = false;
     private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
-    private const float GROUNDED_RADIUS = .2f;
+    private const float GROUNDED_RADIUS = .15f;
     private const float CEILING_RADIUS = .2f;
 
     public void Move(float moveAmount)

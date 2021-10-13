@@ -11,7 +11,7 @@ public class PlayerCollisions : MonoBehaviour
     private Rigidbody2D _playerRb;
     private Vector2 _impactDirectionRight = new Vector2(1.411f, 0.637f);
     private Vector2 _impactDirectionLeft = new Vector2(-1.411f, 0.637f);
-    private const float HIT_FORCE = 10f;
+    private const float HIT_FORCE = 6f;
 
     void Awake() => _playerRb = GetComponent<Rigidbody2D>();
 
@@ -20,7 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
-//invulnerable
+
         if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
         {
             playerAnimator.SetTrigger("IsHit");

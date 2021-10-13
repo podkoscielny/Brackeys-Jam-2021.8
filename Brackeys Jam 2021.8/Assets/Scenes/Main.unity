@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchSpeed: 0.36
-  jumpForce: 7
+  jumpForce: 8
   airControl: 1
   groundMask:
     serializedVersion: 2
@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 554064754}
+  playerRb: {fileID: 554064758}
 --- !u!70 &554064757
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2001,7 +2002,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1

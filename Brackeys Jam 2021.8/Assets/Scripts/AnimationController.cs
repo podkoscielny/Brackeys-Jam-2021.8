@@ -5,10 +5,12 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour, IControlAnimation
 {
     [SerializeField] Animator animator;
+    [SerializeField] Rigidbody2D playerRb;
 
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
+        playerRb.velocity = new Vector2(0, playerRb.velocity.y);
     }
 
     public void OnFalling()
