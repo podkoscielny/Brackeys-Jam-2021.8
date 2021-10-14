@@ -21,11 +21,9 @@ public class CharacterController2D : MonoBehaviour
     public bool IsGrounded { get; private set; }
     private bool _facingRight = true;
     private bool _isCrouching = false;
-    private bool _hasGroundCollisionEntered = false;
     private bool _isCheckingCeiling = false;
     private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
-    private const float GROUNDED_RADIUS = .15f;
     private const float CEILING_RADIUS = .2f;
 
     public void Move(float moveAmount)
@@ -73,7 +71,6 @@ public class CharacterController2D : MonoBehaviour
         if (IsGrounded && !_isCrouching)
         {
             IsGrounded = false;
-            _hasGroundCollisionEntered = false;
             animationController.OnJumping(); //Start jump animation
             characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -84,17 +81,6 @@ public class CharacterController2D : MonoBehaviour
         _facingRight = !_facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
-
-    void GroundCheck()
-    {
-        if (IsGroundBeneath())
-        {
-            IsGrounded = true;
-            animationController.OnLanding(); //Set Landing animation
-        }
-    }
-
-    bool IsGroundBeneath() => Physics2D.OverlapCircle(groundCheck.position, GROUNDED_RADIUS, groundMask) != null;
 
     bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
 
@@ -109,24 +95,18 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsObjectsMaskSameAsGrounds(collision.gameObject))
+        if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject))
         {
-            _hasGroundCollisionEntered = true;
+            IsGrounded = true;
+            animationController.OnLanding();
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if (!IsGrounded && _hasGroundCollisionEntered) GroundCheck();
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        _hasGroundCollisionEntered = false;
-
-        if (IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && !IsGroundBeneath()) //check if collisions layer is the same as grounds
+        if (IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject))
         {
             IsGrounded = false;
             animationController.OnFalling(); //Set falling animation

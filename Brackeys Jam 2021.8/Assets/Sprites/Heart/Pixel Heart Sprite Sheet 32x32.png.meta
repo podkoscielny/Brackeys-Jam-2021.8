@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 4458994651616342869
     second: Pixel Heart Sprite Sheet 32x32_2
+  - first:
+      213: -8572402131308279664
+    second: Pixel Heart Sprite Sheet 32x32_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: 55375f8c20881ed30800000000000000
       internalID: 4458994651616342869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Heart Sprite Sheet 32x32_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 098819b1ea5b80980800000000000000
+      internalID: -8572402131308279664
       vertices: []
       indices: 
       edges: []
