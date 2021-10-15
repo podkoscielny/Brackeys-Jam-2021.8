@@ -1165,8 +1165,15 @@ MonoBehaviour:
   - {fileID: 1058310673}
   - {fileID: 486902948}
   - {fileID: 2100309983}
+  hearts:
+  - {fileID: 792744900}
+  - {fileID: 1760192085}
+  - {fileID: 373253678}
+  - {fileID: 1362009766}
+  - {fileID: 1089833865}
   gameOverPanel: {fileID: 288662526}
   bulletsUpgradedAnimator: {fileID: 1600207934}
+  halfHeartSprite: {fileID: -8572402131308279664, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
 --- !u!1 &353837896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1258,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &373253678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
+  m_PrefabInstance: {fileID: 2016731585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &378683515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2438,11 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!1 &792744900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
+  m_PrefabInstance: {fileID: 1167078747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &800899115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,6 +3172,11 @@ Transform:
   m_Father: {fileID: 933592150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1089833865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
+  m_PrefabInstance: {fileID: 1149583034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1095958759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,6 +3804,11 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1362009766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
+  m_PrefabInstance: {fileID: 544585643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422546775
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,6 +4532,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1216753, y: 0.05326382}
   m_EdgeRadius: 0
+--- !u!1 &1760192085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
+  m_PrefabInstance: {fileID: 173786941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1770526318
 PrefabInstance:
   m_ObjectHideFlags: 0

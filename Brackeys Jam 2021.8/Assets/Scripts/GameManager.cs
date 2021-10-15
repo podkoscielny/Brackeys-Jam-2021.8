@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
+    public static event Action<float> OnGetHit;
     public static event Action OnPoopUpgrade;
     public static event Action OnGameOver;
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void GetHit(float damageAmount)
     {
         PlayersLives -= damageAmount;
+        OnGetHit?.Invoke(PlayersLives);
 
         if (PlayersLives <= 0)
             GameOver();
