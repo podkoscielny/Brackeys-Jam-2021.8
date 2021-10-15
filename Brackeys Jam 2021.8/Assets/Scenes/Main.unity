@@ -1835,7 +1835,6 @@ GameObject:
   - component: {fileID: 554064752}
   - component: {fileID: 554064754}
   - component: {fileID: 554064758}
-  - component: {fileID: 554064757}
   - component: {fileID: 554064764}
   - component: {fileID: 554064755}
   - component: {fileID: 554064759}
@@ -1972,22 +1971,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 554064754}
   playerRb: {fileID: 554064758}
---- !u!70 &554064757
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554064751}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.029831136, y: -0.4974105}
-  m_Size: {x: 0.2910233, y: 0.0051835454}
-  m_Direction: 1
 --- !u!50 &554064758
 Rigidbody2D:
   serializedVersion: 4
@@ -2059,6 +2042,7 @@ MonoBehaviour:
   - Bullet
   - Hostile
   playerAnimator: {fileID: 554064754}
+  controller: {fileID: 554064755}
 --- !u!114 &554064763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,7 +2175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669549014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -0.48, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.491, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 554064753}

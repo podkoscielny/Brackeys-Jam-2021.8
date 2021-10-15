@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform groundCheck;
     [SerializeField] Transform ceilingCheck;
+    [SerializeField] Vector2 groundCheckSize = new Vector2(0.32f, 0.03f);
 
     [Header("Rigidbody")]
     [SerializeField] Rigidbody2D characterRb;
@@ -25,6 +26,11 @@ public class CharacterController2D : MonoBehaviour
     private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
     private const float CEILING_RADIUS = .2f;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    }
 
     public void Move(float moveAmount)
     {
@@ -84,6 +90,8 @@ public class CharacterController2D : MonoBehaviour
 
     bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
 
+    bool IsGroundBeneath() => Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundMask);
+
     void CeilingCheck()
     {
         _isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, CEILING_RADIUS, groundMask) != null;
@@ -95,21 +103,21 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionStay2D(Collision2D collision) // Try OnCollisionEnter
     {
-        if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject))
+        if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && IsGroundBeneath())
         {
             IsGrounded = true;
             animationController.OnLanding();
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject))
+        if (IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && !IsGroundBeneath())
         {
             IsGrounded = false;
-            animationController.OnFalling(); //Set falling animation
+            animationController.OnFalling();
         }
     }
 }
