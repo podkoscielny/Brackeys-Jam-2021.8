@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchSpeed: 0.36
-  jumpForce: 8
+  jumpForce: 9
   airControl: 1
   groundMask:
     serializedVersion: 2

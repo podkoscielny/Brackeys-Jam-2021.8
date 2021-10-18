@@ -25,7 +25,8 @@ public class SpawnManager : MonoBehaviour
     private float _cornInterval = 1f; //Set to larger
 
     private int _hostileLimit = 0;
-    private int _cornLimit = 10;
+    private int _cornsPickedUp = 0;
+    private int _cornLimit = 3;
 
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
@@ -38,6 +39,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameManager.OnGameOver += CancelOngoingInvokes;
         GameManager.OnChaosStarGained += ChangeSpawnIntervals;
+        GameManager.OnPoopUpgrade += ResetPickedUpCorns;
         SceneController.OnGameStart += SetInvokes;
     }
 
@@ -45,6 +47,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameManager.OnGameOver -= CancelOngoingInvokes;
         GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
+        GameManager.OnPoopUpgrade -= ResetPickedUpCorns;
         SceneController.OnGameStart -= SetInvokes;
         CancelOngoingInvokes();
     }
@@ -84,7 +87,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
-        if (corns.Length < _cornLimit)
+        if (corns.Length < _cornLimit && _cornsPickedUp < _gameManager.ChargeGoal && _gameManager.CanPoopBeSpawn())
         {
             GameObject corn = _objectPooler.GetFromPool(Tags.Corn);
 
@@ -95,9 +98,13 @@ public class SpawnManager : MonoBehaviour
 
                 float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
                 corn.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
+
+                _cornsPickedUp++;
             }
         }
     }
+
+    void ResetPickedUpCorns() => _cornsPickedUp = 0;
 
     void SetCharactersPosition(GameObject character)
     {
