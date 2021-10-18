@@ -115,7 +115,7 @@ public class CharacterController2D : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision) // Try OnCollisionEnter
     {
-        if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && IsGroundBeneath())
+        if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && IsGroundBeneath() && collision.enabled)
         {
             IsGrounded = true;
             _jumpsCount = 0;
