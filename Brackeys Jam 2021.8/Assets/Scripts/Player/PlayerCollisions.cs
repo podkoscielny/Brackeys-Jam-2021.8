@@ -24,6 +24,7 @@ public class PlayerCollisions : MonoBehaviour
         if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
         {
             playerAnimator.SetTrigger("IsHit");
+            playerAnimator.SetBool("IsJumping", false);
 
             Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             PushThePlayerOnCollision(direction);

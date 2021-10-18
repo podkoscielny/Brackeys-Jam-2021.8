@@ -6,6 +6,7 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 1)] [SerializeField] float crouchSpeed = .36f;
     [SerializeField] float jumpForce = 12f;
     [SerializeField] bool airControl = false;
+    [SerializeField] bool canDoubleJump = false;
 
     [Header("Collision")]
     [SerializeField] LayerMask groundMask;
@@ -25,6 +26,7 @@ public class CharacterController2D : MonoBehaviour
     private bool _isCheckingCeiling = false;
     private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
+    private int _jumpsCount = 0;
     private const float CEILING_RADIUS = .2f;
 
     private void OnDrawGizmos()
@@ -79,6 +81,14 @@ public class CharacterController2D : MonoBehaviour
             IsGrounded = false;
             animationController.OnJumping(); //Start jump animation
             characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _jumpsCount++;
+        }
+        else if(!IsGrounded && canDoubleJump && _jumpsCount < 2)
+        {
+            animationController.OnDoubleJump();
+            characterRb.velocity = new Vector2(characterRb.velocity.x, 0);
+            characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _jumpsCount++;
         }
     }
 
@@ -108,6 +118,7 @@ public class CharacterController2D : MonoBehaviour
         if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && IsGroundBeneath())
         {
             IsGrounded = true;
+            _jumpsCount = 0;
             animationController.OnLanding();
         }
     }

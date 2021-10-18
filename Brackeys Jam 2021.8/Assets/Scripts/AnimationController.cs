@@ -28,6 +28,11 @@ public class AnimationController : MonoBehaviour, IControlAnimation
         animator.SetBool("IsJumping", true);
     }
 
+    public void OnDoubleJump()
+    {
+
+    }
+
     public void OnPickup()
     {
         animator.SetTrigger("Pickup");
