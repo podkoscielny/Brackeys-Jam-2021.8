@@ -9,13 +9,13 @@ public class AnimationController : MonoBehaviour, IControlAnimation
 
     public void OnLanding()
     {
-        animator.SetBool("IsJumping", false);
+        animator.SetBool("IsGrounded", true);
         playerRb.velocity = new Vector2(0, playerRb.velocity.y);
     }
 
     public void OnFalling()
     {
-
+        animator.SetBool("IsGrounded", false);
     }
 
     public void OnCrouching(bool isCrouching)
@@ -25,12 +25,13 @@ public class AnimationController : MonoBehaviour, IControlAnimation
 
     public void OnJumping()
     {
-        animator.SetBool("IsJumping", true);
+        animator.SetTrigger("IsJumping");
+        animator.SetBool("IsGrounded", false);
     }
 
     public void OnDoubleJump()
     {
-
+        animator.SetTrigger("IsJumping");
     }
 
     public void OnPickup()
