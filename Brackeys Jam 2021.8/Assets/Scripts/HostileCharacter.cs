@@ -8,9 +8,11 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
     [SerializeField] Transform gun;
+    [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer splashRenderer;
+    [SerializeField] HostileEnemy[] hostileEnemies;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
@@ -29,6 +31,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
         _hasReachedTarget = false;
         _isDown = false;
         _isFacingRight = transform.right.x == 1;
+        SetRandomEnemy();
         SetRandomStopPosition();
     }
 
@@ -36,6 +39,17 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     {
         _objectPooler = ObjectPooler.Instance;
         _gameManager = GameManager.Instance;
+    }
+
+    void SetRandomEnemy()
+    {
+        int index = Random.Range(0, hostileEnemies.Length);
+        HostileEnemy enemy = hostileEnemies[index];
+
+        spriteRenderer.sprite = enemy.characterSprite;
+        gunRenderer.sprite = enemy.gunSprite;
+        firePoint.position = enemy.firePoint;
+        enemyAnimator.runtimeAnimatorController = enemy.animatorController;
     }
 
     public void Move()

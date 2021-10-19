@@ -198,9 +198,13 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3997750775630636564}
   enemyCollider: {fileID: 813753172112441297}
   gun: {fileID: 1279665798}
+  gunRenderer: {fileID: 1279665797}
   firePoint: {fileID: 534719745}
   enemyAnimator: {fileID: 8089543548994752381}
   splashRenderer: {fileID: 6714487046496678840}
+  hostileEnemies:
+  - {fileID: 11400000, guid: 6be6034dac73e3d4185788b41c51eaa6, type: 2}
+  - {fileID: 11400000, guid: 757833e386e49fb4d833d562e450cbaf, type: 2}
 --- !u!114 &213449981646807084
 MonoBehaviour:
   m_ObjectHideFlags: 0
