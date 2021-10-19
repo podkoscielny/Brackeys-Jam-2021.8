@@ -27,15 +27,21 @@ public class PlayerCollisions : MonoBehaviour
             playerAnimator.SetBool("IsJumping", false);
 
             Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
-            PushThePlayerOnCollision(direction);
+
+            float damageAmount = 0;
+            IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
+
+            if (playerHitter != null) damageAmount = playerHitter.PlayerDamageAmount();
+
+            PushThePlayerOnCollision(direction, damageAmount);
         }
     }
 
-    void PushThePlayerOnCollision(Vector3 direction)
+    void PushThePlayerOnCollision(Vector3 direction, float damageAmount)
     {
         _playerRb.velocity = Vector2.zero;
         _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
 
-        _gameManager.GetHit(0.5f); // add specific amount to specific objects
+        _gameManager.GetHit(damageAmount);
     }
 }

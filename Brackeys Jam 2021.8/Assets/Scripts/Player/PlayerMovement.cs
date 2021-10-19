@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public void EnableMovement()
     {
         _canMove = true;
-        //playerRb.velocity = new Vector2(0, playerRb.velocity.y);
     }
 
     void Shoot()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class EnemyCharacter : MonoBehaviour, IExplosionHandler
+public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject splashEffect;
@@ -17,6 +17,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     private Vector3 _explodeDirection;
     private bool _canMove = true;
     private bool _hasExploded = false;
+    private const float PLAYER_DAMAGE_AMOUNT = 0.5f; 
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
 
@@ -90,6 +91,8 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler
     }
 
     public void EnableMoving() => _canMove = true;
+
+    public float PlayerDamageAmount() => PLAYER_DAMAGE_AMOUNT;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
