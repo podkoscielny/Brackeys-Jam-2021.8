@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a036119de172142862d6d05b77d7ba, type: 3}
-  m_Name: Soldier
+  m_Script: {fileID: 11500000, guid: 2a9400e1d2d269c41a7396c481091785, type: 3}
+  m_Name: MachineGun
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 6246832655069406539, guid: d1be301d91292bd4d98b9d3b5a0fab84, type: 3}
   gunSprite: {fileID: -7900295659209866551, guid: 77c9123cea2fc0e429eef9c146142a8f, type: 3}
-  firePoint: {x: 0.326, y: 0.033}
-  animatorController: {fileID: 9100000, guid: 9f253232647a59f4aa1cccc3ef45f734, type: 2}
+  firePoint: {x: 0, y: 0}
