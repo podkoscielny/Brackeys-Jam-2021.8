@@ -199,6 +199,7 @@ MonoBehaviour:
   enemyCollider: {fileID: 813753172112441297}
   gun: {fileID: 1279665798}
   gunRenderer: {fileID: 1279665797}
+  gfx: {fileID: 4822493640023245685}
   firePoint: {fileID: 534719745}
   enemyAnimator: {fileID: 8089543548994752381}
   splashRenderer: {fileID: 6714487046496678840}

@@ -15,4 +15,5 @@ MonoBehaviour:
   characterSprite: {fileID: 5626149497181746903, guid: 5ba18c87909b7c44899156b6b6328eaa, type: 3}
   gunSprite: {fileID: -4254059877319897387, guid: 77c9123cea2fc0e429eef9c146142a8f, type: 3}
   firePoint: {x: 0.097, y: 0.037}
+  gunPosition: {x: -0.98, y: -0.3115}
   animatorController: {fileID: 9100000, guid: 36945ea000cf55c479cff6c0668adb8e, type: 2}
