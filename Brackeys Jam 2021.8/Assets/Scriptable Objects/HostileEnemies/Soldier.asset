@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Soldier
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 6246832655069406539, guid: d1be301d91292bd4d98b9d3b5a0fab84, type: 3}
+  gun: {fileID: 11400000, guid: 779172e0d4138ff43810c94c7ad8c346, type: 2}
   gunSprite: {fileID: -7900295659209866551, guid: 77c9123cea2fc0e429eef9c146142a8f, type: 3}
   firePoint: {x: 0.326, y: 0.033}
   localScale: {x: 0.7, y: 0.7, z: 1}

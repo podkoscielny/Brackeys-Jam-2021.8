@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Policeman
   m_EditorClassIdentifier: 
   characterSprite: {fileID: 5626149497181746903, guid: 5ba18c87909b7c44899156b6b6328eaa, type: 3}
+  gun: {fileID: 11400000, guid: d1b50cfedb2d59a46b420e5ac472bf4d, type: 2}
   gunSprite: {fileID: -4254059877319897387, guid: 77c9123cea2fc0e429eef9c146142a8f, type: 3}
   firePoint: {x: 0.097, y: 0.037}
   localScale: {x: 0.8, y: 0.8, z: 1}

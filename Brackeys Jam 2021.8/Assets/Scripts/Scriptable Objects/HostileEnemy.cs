@@ -6,8 +6,7 @@ using UnityEngine;
 public class HostileEnemy : ScriptableObject
 {
     public Sprite characterSprite;
-    public Sprite gunSprite;
-    public Vector2 firePoint;
+    public Gun gun;
     public Vector3 localScale;
     public RuntimeAnimatorController animatorController;
 }

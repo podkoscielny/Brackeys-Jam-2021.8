@@ -48,9 +48,9 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
         HostileEnemy enemy = hostileEnemies[index];
 
         spriteRenderer.sprite = enemy.characterSprite;
-        gunRenderer.sprite = enemy.gunSprite;
+        gunRenderer.sprite = enemy.gun.gunSprite;
         gun.localScale = enemy.localScale;
-        firePoint.localPosition = enemy.firePoint;
+        firePoint.localPosition = enemy.gun.firePoint;
         enemyAnimator.runtimeAnimatorController = enemy.animatorController;
     }
 
