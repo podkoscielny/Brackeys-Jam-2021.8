@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class HostileCharacter : MonoBehaviour, IEnemyController
+public class HostileCharacter : MonoBehaviour, IEnemyMovement
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider;
@@ -13,13 +13,11 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer splashRenderer;
     [SerializeField] HostileEnemy[] hostileEnemies;
-
+    
     private ObjectPooler _objectPooler;
-    private GameManager _gameManager;
     private Vector3 _randomStopPosition;
     private bool _isFacingRight;
 
-    private bool _isDown = false;
     private bool _hasReachedTarget = false;
 
     private const float MOVEMENT_SPEED = 4f;
@@ -29,18 +27,13 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     void OnEnable()
     {
         _hasReachedTarget = false;
-        _isDown = false;
         _isFacingRight = transform.right.x == 1;
 
         SetRandomEnemy();
         SetRandomStopPosition();
     }
 
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
-    }
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void SetRandomEnemy()
     {
@@ -94,18 +87,4 @@ public class HostileCharacter : MonoBehaviour, IEnemyController
     }
 
     void FlipCharacter() => transform.Rotate(0, 180, 0);
-
-    public bool HandlePoopHit()
-    {
-        if (splashRenderer.bounds.size.y / 2 >= spriteRenderer.bounds.size.y && !_isDown)
-        {
-            _gameManager.UpdateScore();
-            enemyAnimator.SetTrigger("Death");
-            _isDown = true;
-
-            return false;
-        }
-
-        return true;
-    }
 }

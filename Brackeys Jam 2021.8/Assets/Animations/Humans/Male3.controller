@@ -58,7 +58,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsHit
+    m_ConditionEvent: IsDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7313851249159460510}
@@ -109,7 +109,7 @@ AnimatorController:
   m_Name: Male3
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: IsHit
+  - m_Name: IsDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -251,16 +251,16 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4173272742438656964}
-    m_Position: {x: 330, y: 120, z: 0}
+    m_Position: {x: 330, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7313851249159460510}
-    m_Position: {x: 10, y: -60, z: 0}
+    m_Position: {x: 0, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1224671493101968233}
-    m_Position: {x: 10, y: -130, z: 0}
+    m_Position: {x: 0, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4593284515789871029}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 250, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -7154840404584149194}

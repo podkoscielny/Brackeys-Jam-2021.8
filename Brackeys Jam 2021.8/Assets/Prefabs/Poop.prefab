@@ -155,3 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poopRb: {fileID: 7332715859959600715}
+  hitableTags:
+  - Ground
+  - Character
+  - Hostile

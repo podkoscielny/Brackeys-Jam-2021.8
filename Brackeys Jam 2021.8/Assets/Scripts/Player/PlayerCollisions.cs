@@ -31,7 +31,7 @@ public class PlayerCollisions : MonoBehaviour
             float damageAmount = 0;
             IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
 
-            if (playerHitter != null) damageAmount = playerHitter.PlayerDamageAmount();
+            if (playerHitter != null) damageAmount = playerHitter.PlayerDamageAmount;
 
             PushThePlayerOnCollision(direction, damageAmount);
         }

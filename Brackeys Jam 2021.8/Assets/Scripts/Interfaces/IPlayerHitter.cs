@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerHitter
 {
-    public float PlayerDamageAmount();
+    public float PlayerDamageAmount { get; }
 }

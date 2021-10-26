@@ -50,7 +50,7 @@ public class Explosion : MonoBehaviour
         foreach (Collider2D character in charactersInRange)
         {
             Vector2 explodeInDirection = character.transform.position - (transform.position + _offset);
-            character.GetComponent<IExplosionHandler>()?.HandleExplosion(explodeInDirection);
+            character.GetComponent<IPoopHandler>()?.HandleExplosion(explodeInDirection);
         }
     }
 

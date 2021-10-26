@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonHostile : MonoBehaviour, IEnemyController
+public class NonHostile : MonoBehaviour, IEnemyMovement
 {
     [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
 
-    private GameManager _gameManager;
-    private bool _isHit = false;
     private const float MOVEMENT_SPEED = 4f;
 
     void OnEnable()
     {
         SetRandomSprite();
-        _isHit = false;
     }
-
-    void Start() => _gameManager = GameManager.Instance;
 
     public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
 
@@ -30,19 +25,5 @@ public class NonHostile : MonoBehaviour, IEnemyController
 
         spriteRenderer.sprite = humanCharacters[characterIndex].sprite;
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
-    }
-
-    public bool HandlePoopHit()
-    {
-        if (!_isHit)
-        {
-            _gameManager.UpdateScore();
-            _isHit = true;
-            enemyAnimator.SetTrigger("IsHit");
-
-            return false;
-        }
-
-        return true;
     }
 }

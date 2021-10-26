@@ -6,6 +6,7 @@ using Helpers;
 public class Poop : MonoBehaviour
 {
     [SerializeField] Rigidbody2D poopRb;
+    [SerializeField] List<string> hitableTags;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
@@ -47,11 +48,19 @@ public class Poop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Ground) && _gameManager.PoopChargeLevel >= _gameManager.MIN_EXPLOSION_POOP_LEVEL)
+        if (hitableTags.Contains(collision.tag))
         {
-            GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
-            explosion.transform.position = (Vector2)transform.position + _explosionOffset;
-            explosion.SetActive(true);
+            if(_gameManager.PoopChargeLevel >= _gameManager.MIN_EXPLOSION_POOP_LEVEL)
+            {
+                GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
+                explosion.transform.position = (Vector2)transform.position + _explosionOffset;
+                explosion.SetActive(true);
+            }
+            else
+            {
+                collision.GetComponent<IPoopHandler>()?.HandlePoopHit(transform.position);
+            }
+
             gameObject.SetActive(false);
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
 
-public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
+public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject splashEffect;
@@ -11,31 +11,29 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
     [SerializeField] Animator enemyAnimator;
     [SerializeField] string enemyTag;
 
-    private IEnemyController _enemyController;
+    public float PlayerDamageAmount { get; private set; } = 0.5f;
+
+    private IEnemyMovement _enemyMovement;
     private GameManager _gameManager;
-    private ObjectPooler _objectPooler;
     private Vector3 _explodeDirection;
     private bool _canMove = true;
+    private bool _isDown = false;
     private bool _hasExploded = false;
-    private const float PLAYER_DAMAGE_AMOUNT = 0.5f; 
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
 
-    void Awake() => _enemyController = GetComponent<IEnemyController>();
+    void Awake() => _enemyMovement = GetComponent<IEnemyMovement>();
 
     void OnEnable()
     {
         _canMove = true;
+        _isDown = false;
         _hasExploded = false;
         splashEffect.SetActive(false);
         SetSpriteColor();
     }
 
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
-    }
+    void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {
@@ -49,7 +47,7 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
         }
     }
 
-    void Move() => _enemyController.Move();
+    void Move() => _enemyMovement.Move();
 
     void Explode()
     {
@@ -79,8 +77,6 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
 
     public void HandleExplosion(Vector2 direction)
     {
-        Physics2D.IgnoreLayerCollision(9, 8);
-
         enemyAnimator.SetTrigger("Explosion");
 
         _canMove = false;
@@ -92,16 +88,17 @@ public class EnemyCharacter : MonoBehaviour, IExplosionHandler, IPlayerHitter
 
     public void EnableMoving() => _canMove = true;
 
-    public float PlayerDamageAmount() => PLAYER_DAMAGE_AMOUNT;
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public void HandlePoopHit(Vector2 splashPosition)
     {
-        if (collision.CompareTag(Tags.Poop) && _gameManager.PoopChargeLevel < _gameManager.MIN_EXPLOSION_POOP_LEVEL)
+        if (!_isDown)
         {
-            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-            SetSplashEffect(collision.transform.position);
+            SetSplashEffect(splashPosition);
+            _gameManager.UpdateScore();
+            enemyAnimator.SetTrigger("IsDown");
+            _isDown = true;
 
-            _canMove = _enemyController.HandlePoopHit();
+            _canMove = false;
+
         }
     }
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemyController
+public interface IEnemyMovement
 {
     public void Move();
-    public bool HandlePoopHit();
 }
