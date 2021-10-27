@@ -3221,10 +3221,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0091096a0b7118549b98cd228d5693f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosions:
-  - {fileID: 11400000, guid: 0ec71979273aaca479d59eb539258f5d, type: 2}
-  - {fileID: 11400000, guid: 9f149f1d94312204db53b42d5d8e4a34, type: 2}
-  - {fileID: 11400000, guid: ba87026fcbbb00a498150a70af6d2c42, type: 2}
+  poopLevels:
+  - {fileID: 11400000, guid: 0c35d13995e07d34a81801dcce643282, type: 2}
+  - {fileID: 11400000, guid: d6acb3cabfb92cf4f8692f0ce06317f2, type: 2}
+  - {fileID: 11400000, guid: b184cd29fe0351a4281b5a36e2376380, type: 2}
+  - {fileID: 11400000, guid: 17315626899f8dc49909612da4026155, type: 2}
+  - {fileID: 11400000, guid: 9ae4ab586e870bc40ab6bae59324beb8, type: 2}
+  - {fileID: 11400000, guid: 834786a9fdd5cec47bf24f65a304f8d2, type: 2}
 --- !u!1 &1135680349
 GameObject:
   m_ObjectHideFlags: 0

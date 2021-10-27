@@ -29,17 +29,16 @@ public class Explosion : MonoBehaviour
 
             _isFullyLoaded = true;
         }
-
     }
 
     void SetProperties()
     {
-        if (_gameManager.ExplosionEffect != null)
+        if (_gameManager.CurrentPoop.explosionType != null)
         {
-            spriteRenderer.sprite = _gameManager.ExplosionEffect.sprite;
-            spriteRenderer.color = _gameManager.ExplosionEffect.color;
-            explosionAnimator.runtimeAnimatorController = _gameManager.ExplosionEffect.animatorController;
-            transform.localScale = _gameManager.ExplosionEffect.size;
+            spriteRenderer.sprite = _gameManager.CurrentPoop.explosionType.sprite;
+            spriteRenderer.color = _gameManager.CurrentPoop.explosionType.color;
+            explosionAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.explosionType.animatorController;
+            transform.localScale = _gameManager.CurrentPoop.explosionType.size;
         }
     }
 

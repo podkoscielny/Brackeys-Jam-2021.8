@@ -6,6 +6,7 @@ using Helpers;
 public class Poop : MonoBehaviour
 {
     [SerializeField] Rigidbody2D poopRb;
+    [SerializeField] Animator poopAnimator;
     [SerializeField] List<string> hitableTags;
 
     private ObjectPooler _objectPooler;
@@ -13,6 +14,7 @@ public class Poop : MonoBehaviour
     private GameObject _spawnPoop;
     private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
     private bool _isFalling = false;
+    private bool _isFullyLoaded = false;
     private const int GRAVITY_SCALE = 3;
 
     void Awake()
@@ -24,12 +26,19 @@ public class Poop : MonoBehaviour
     {
         _isFalling = false;
         poopRb.gravityScale = 0;
-    }
 
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
+        if (_isFullyLoaded)
+        {
+            poopAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.poopAnimator;
+
+        }
+        else
+        {
+            _isFullyLoaded = true;
+            _gameManager = GameManager.Instance;
+            _objectPooler = ObjectPooler.Instance;
+        }
+
     }
 
     void LateUpdate()
@@ -50,7 +59,7 @@ public class Poop : MonoBehaviour
     {
         if (hitableTags.Contains(collision.tag))
         {
-            if(_gameManager.PoopChargeLevel >= _gameManager.MIN_EXPLOSION_POOP_LEVEL)
+            if (_gameManager.CurrentPoop.isExplosive)
             {
                 GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
                 explosion.transform.position = (Vector2)transform.position + _explosionOffset;

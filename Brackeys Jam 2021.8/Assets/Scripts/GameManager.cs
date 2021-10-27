@@ -16,15 +16,16 @@ public class GameManager : MonoBehaviour
     public int ChaosStarsAmount { get; private set; } = 0;
     public bool IsGameOver { get; private set; } = false;
     public ExplosionType ExplosionEffect { get; private set; }
+    public PoopType CurrentPoop { get; private set; }
 
-    [SerializeField] ExplosionType[] explosions;
+    [SerializeField] PoopType[] poopLevels;
 
     private int _cornEaten = 0;
     private int _chaosStarGoal = 10;
-    private int _scoreAmount = 10;
+    private int _scoreAmount = 0;
 
+    private int MAX_POOP_CHARGE_LEVEL;
     public readonly int MIN_EXPLOSION_POOP_LEVEL = 4;
-    private const int MAX_POOP_CHARGE_LEVEL = 6;
     private const int MAX_CHAOS_STARS_AMOUNT = 5;
 
     public static GameManager Instance;
@@ -42,6 +43,13 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    void Start()
+    {
+        CurrentPoop = poopLevels[0];
+        _scoreAmount = CurrentPoop.pointsWorth;
+        MAX_POOP_CHARGE_LEVEL = poopLevels.Length;
+    }
 
     public void UpdateScore()
     {
@@ -87,25 +95,14 @@ public class GameManager : MonoBehaviour
     void UpgradePoop()
     {
         PoopChargeLevel++;
+
+        CurrentPoop = poopLevels[PoopChargeLevel - 1];
+
         ChargeGoal = PoopChargeLevel * 3;
         _cornEaten = 0;
-        _scoreAmount = 10 * PoopChargeLevel * PoopChargeLevel;
+        _scoreAmount = CurrentPoop.pointsWorth;
+
         OnPoopUpgrade?.Invoke();
-
-        for (int i = 0; i <= MAX_POOP_CHARGE_LEVEL; i++)
-        {
-            if (i < MIN_EXPLOSION_POOP_LEVEL) continue;
-
-            if (i == PoopChargeLevel)
-            {
-                int explosionIndex = i - MIN_EXPLOSION_POOP_LEVEL;
-                ExplosionEffect = explosions[explosionIndex];
-            }
-            else
-            {
-                continue;
-            }
-        }
     }
 
     void SetChaosStarsGoal()
