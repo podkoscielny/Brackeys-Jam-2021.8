@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] GameObject[] chaosStars;
     [SerializeField] GameObject[] hearts;
+    [SerializeField] Transform chaosStarsWrapper;
+    [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] Sprite halfHeartSprite;
+
+    private List<GameObject> chaosStars = new List<GameObject>();
 
     void OnEnable()
     {
@@ -29,6 +32,18 @@ public class UIManager : MonoBehaviour
         GameManager.OnPoopUpgrade -= ShowBulletsUpgradedText;
         GameManager.OnGameOver -= SetGameOverPanel;
         GameManager.OnGetHit -= UpdateHeartsAmount;
+    }
+
+    void Start() => InitializeChaosStars();
+
+    void InitializeChaosStars()
+    {
+        for (int i = 0; i < GameManager.Instance.MaxChaosStarsAmount; i++)
+        {
+            GameObject star = Instantiate(chaosStarPrefab);
+            star.transform.SetParent(chaosStarsWrapper);
+            chaosStars.Add(star);
+        }
     }
 
     void UpdateScore(int score) => scoreText.text = score.ToString();

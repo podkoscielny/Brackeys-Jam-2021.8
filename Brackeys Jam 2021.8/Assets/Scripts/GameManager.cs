@@ -12,21 +12,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] PoopType[] poopLevels;
     [SerializeField] ChaosStar[] chaosStars;
 
+    public bool IsGameOver { get; private set; } = false;
     public int Score { get; private set; }
-    public float PlayersLives { get; private set; } = 3;
     public int PoopChargeLevel { get; private set; } = 1;
     public int ChargeGoal { get; private set; } = 3;
     public int ChaosStarsAmount { get; private set; } = 0;
-    public bool IsGameOver { get; private set; } = false;
+    public int MaxChaosStarsAmount { get { return chaosStars.Length; } }
+    public float PlayersLives { get; private set; } = 3;
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
-    public ChaosStar CurrentChaosStar { get { return chaosStars[ChaosStarsAmount]; } }
+    public ChaosStar CurrentChaosStar
+    {
+        get
+        {
+            int index = Mathf.Min(ChaosStarsAmount, MaxChaosStarsAmount - 1);
+            return chaosStars[index];
+        }
+    }
 
     private int _cornEaten = 0;
 
     private int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
-    private int MAX_CHAOS_STARS_AMOUNT { get { return chaosStars.Length; } }
-    public readonly int MIN_EXPLOSION_POOP_LEVEL = 4;
 
     public static GameManager Instance;
 
@@ -48,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         Score += CurrentPoop.pointsWorth;
 
-        if (Score >= CurrentChaosStar.pointsToReach && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
+        if (Score >= CurrentChaosStar.pointsToReach && ChaosStarsAmount < MaxChaosStarsAmount)
         {
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke(ChaosStarsAmount);
