@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public static event Action OnPoopUpgrade;
     public static event Action OnGameOver;
 
+    [SerializeField] PoopType[] poopLevels;
+    [SerializeField] ChaosStar[] chaosStars;
+
     public int Score { get; private set; }
     public float PlayersLives { get; private set; } = 3;
     public int PoopChargeLevel { get; private set; } = 1;
@@ -17,15 +20,13 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver { get; private set; } = false;
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
-
-    [SerializeField] PoopType[] poopLevels;
+    public ChaosStar CurrentChaosStar { get { return chaosStars[ChaosStarsAmount]; } }
 
     private int _cornEaten = 0;
-    private int _chaosStarGoal = 10;
 
     private int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
+    private int MAX_CHAOS_STARS_AMOUNT { get { return chaosStars.Length; } }
     public readonly int MIN_EXPLOSION_POOP_LEVEL = 4;
-    private const int MAX_CHAOS_STARS_AMOUNT = 5;
 
     public static GameManager Instance;
 
@@ -47,10 +48,9 @@ public class GameManager : MonoBehaviour
     {
         Score += CurrentPoop.pointsWorth;
 
-        if (Score >= _chaosStarGoal && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
+        if (Score >= CurrentChaosStar.pointsToReach && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
         {
             ChaosStarsAmount++;
-            SetChaosStarsGoal();
             OnChaosStarGained?.Invoke(ChaosStarsAmount);
         }
 
@@ -92,34 +92,5 @@ public class GameManager : MonoBehaviour
         _cornEaten = 0;
 
         OnPoopUpgrade?.Invoke();
-    }
-
-    void SetChaosStarsGoal()
-    {
-        switch (ChaosStarsAmount)
-        {
-            case 1:
-                _chaosStarGoal = 200;
-                break;
-
-            case 2:
-                _chaosStarGoal = 400;
-                break;
-
-            case 3:
-                _chaosStarGoal = 800;
-                break;
-
-            case 4:
-                _chaosStarGoal = 1600;
-                break;
-
-            case 5:
-                _chaosStarGoal = 3000;
-                break;
-
-            default:
-                break;
-        }
     }
 }

@@ -3228,6 +3228,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17315626899f8dc49909612da4026155, type: 2}
   - {fileID: 11400000, guid: 9ae4ab586e870bc40ab6bae59324beb8, type: 2}
   - {fileID: 11400000, guid: 834786a9fdd5cec47bf24f65a304f8d2, type: 2}
+  chaosStars:
+  - {fileID: 11400000, guid: 0d736c9acae5feb4792b534141d4f9fc, type: 2}
+  - {fileID: 11400000, guid: 8aac5bcf65f962149a75b9d8ce4153f3, type: 2}
+  - {fileID: 11400000, guid: dcb19795d1c0c4f46bd48983336762e7, type: 2}
+  - {fileID: 11400000, guid: 5ee9e3932c76fb64f9de9ccad941113f, type: 2}
+  - {fileID: 11400000, guid: def7374d812f1da4db7addb4032808cc, type: 2}
+  - {fileID: 11400000, guid: 80ce1f91f1ecc04448f7a102e29bdb7b, type: 2}
 --- !u!1 &1135680349
 GameObject:
   m_ObjectHideFlags: 0
