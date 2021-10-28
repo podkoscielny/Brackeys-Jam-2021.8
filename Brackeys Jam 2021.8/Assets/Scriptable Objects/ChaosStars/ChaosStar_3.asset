@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: ChaosStar_3
   m_EditorClassIdentifier: 
   pointsToReach: 400
+  hostilesLimit: 3
+  neutralSpawnRate: 4
+  hostileSpawnRate: 3

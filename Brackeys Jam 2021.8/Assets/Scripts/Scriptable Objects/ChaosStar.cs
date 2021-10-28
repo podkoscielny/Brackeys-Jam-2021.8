@@ -6,4 +6,7 @@ using UnityEngine;
 public class ChaosStar : ScriptableObject
 {
     public int pointsToReach;
+    public int hostilesLimit;
+    public float neutralSpawnRate;
+    public float hostileSpawnRate;
 }
