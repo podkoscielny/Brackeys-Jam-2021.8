@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
-        if (corns.Length < _cornLimit && _cornsSpawned < _gameManager.ChargeGoal && _gameManager.CanPoopBeSpawn())
+        if (corns.Length < _cornLimit && _cornsSpawned < _gameManager.ChargeGoal && _gameManager.CanCornBeSpawn())
         {
             GameObject corn = _objectPooler.GetFromPool(Tags.Corn);
 
