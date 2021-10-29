@@ -21,21 +21,7 @@ public class GameManager : MonoBehaviour
     public float PlayersLives { get; private set; } = 3;
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
-
-    public ChaosStar CurrentChaosStar
-    {
-        get
-        {
-            if (ChaosStarsAmount == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return chaosStars[ChaosStarsAmount - 1];
-            }
-        }
-    }
+    public ChaosStar CurrentChaosStar { get; private set; } = null;
 
     public int PointsToNextChaosStar
     {
@@ -72,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (Score >= PointsToNextChaosStar && ChaosStarsAmount < MaxChaosStarsAmount)
         {
+            CurrentChaosStar = chaosStars[ChaosStarsAmount];
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke(ChaosStarsAmount);
         }
