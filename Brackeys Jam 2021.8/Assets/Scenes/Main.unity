@@ -2953,12 +2953,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poopLevels:
-  - {fileID: 11400000, guid: 834786a9fdd5cec47bf24f65a304f8d2, type: 2}
   - {fileID: 11400000, guid: 0c35d13995e07d34a81801dcce643282, type: 2}
   - {fileID: 11400000, guid: d6acb3cabfb92cf4f8692f0ce06317f2, type: 2}
   - {fileID: 11400000, guid: b184cd29fe0351a4281b5a36e2376380, type: 2}
   - {fileID: 11400000, guid: 17315626899f8dc49909612da4026155, type: 2}
   - {fileID: 11400000, guid: 9ae4ab586e870bc40ab6bae59324beb8, type: 2}
+  - {fileID: 11400000, guid: 834786a9fdd5cec47bf24f65a304f8d2, type: 2}
   chaosStars:
   - {fileID: 11400000, guid: 0d736c9acae5feb4792b534141d4f9fc, type: 2}
   - {fileID: 11400000, guid: 8aac5bcf65f962149a75b9d8ce4153f3, type: 2}
