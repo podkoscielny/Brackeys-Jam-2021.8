@@ -13,7 +13,12 @@ public class Explosion : MonoBehaviour
     private ObjectPooler _objectPooler;
     private bool _isFullyLoaded = false;
     private Vector3 _offset = new Vector3(0, -2f, 0);
-    private const float EXPLOSION_RANGE = 1.4f;
+    private float _explosionRange = 1.4f;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, _explosionRange);
+    }
 
     void OnEnable()
     {
@@ -38,12 +43,13 @@ public class Explosion : MonoBehaviour
             spriteRenderer.sprite = _gameManager.CurrentPoop.explosionType.sprite;
             explosionAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.explosionType.animatorController;
             transform.localScale = _gameManager.CurrentPoop.explosionType.size;
+            _explosionRange = _gameManager.CurrentPoop.explosionType.range;
         }
     }
 
     void ExplodeCharactersInRange()
     {
-        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, EXPLOSION_RANGE, layerToImpact);
+        Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange, layerToImpact);
 
         foreach (Collider2D character in charactersInRange)
         {
