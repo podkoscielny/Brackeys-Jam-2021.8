@@ -124,43 +124,10 @@ public class SpawnManager : MonoBehaviour
     {
         CancelOngoingInvokes();
 
-        switch (chaosStarsAmount)
-        {
-            case 1:
-                _neutralInterval = 1.5f;
-                _hostileInterval = 6f;
-                _hostileLimit = 1;
-                break;
-
-            case 2:
-                _neutralInterval = 2f;
-                _hostileInterval = 4.5f;
-                _hostileLimit = 2;
-                break;
-
-            case 3:
-                _neutralInterval = 4f;
-                _hostileInterval = 3f;
-                _hostileLimit = 4;
-                break;
-
-            case 4:
-                _neutralInterval = 7f;
-                _hostileInterval = 2f;
-                _hostileLimit = 6;
-                break;
-
-            case 5:
-                _neutralInterval = 0f;
-                _hostileInterval = 2f;
-                _hostileLimit = 8;
-                break;
-
-            default:
-                _hostileInterval = 2f;
-                _hostileLimit = 8;
-                break;
-        }
+        _neutralInterval = _gameManager.CurrentChaosStar.neutralSpawnRate;
+        _hostileInterval = _gameManager.CurrentChaosStar.hostileSpawnRate;
+        _hostileLimit = _gameManager.CurrentChaosStar.hostilesLimit;
+        Debug.Log($"netural: {_neutralInterval} | hostileInterval: {_hostileInterval} | hostileLimit: {_hostileLimit}");
 
         SetInvokes();
     }

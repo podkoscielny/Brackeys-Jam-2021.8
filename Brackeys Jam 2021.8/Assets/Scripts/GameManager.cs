@@ -21,12 +21,28 @@ public class GameManager : MonoBehaviour
     public float PlayersLives { get; private set; } = 3;
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
+
     public ChaosStar CurrentChaosStar
     {
         get
         {
+            if (ChaosStarsAmount == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return chaosStars[ChaosStarsAmount - 1];
+            }
+        }
+    }
+
+    public int PointsToNextChaosStar
+    {
+        get
+        {
             int index = Mathf.Min(ChaosStarsAmount, MaxChaosStarsAmount - 1);
-            return chaosStars[index];
+            return chaosStars[index].pointsToReach;
         }
     }
 
@@ -54,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         Score += CurrentPoop.pointsWorth;
 
-        if (Score >= CurrentChaosStar.pointsToReach && ChaosStarsAmount < MaxChaosStarsAmount)
+        if (Score >= PointsToNextChaosStar && ChaosStarsAmount < MaxChaosStarsAmount)
         {
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke(ChaosStarsAmount);
