@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ef24e0187ca23143b72b8353747b95c, type: 3}
-  m_Name: Poop_Explosive_Green
+  m_Name: Poop_Explosive_Fire
   m_EditorClassIdentifier: 
   isExplosive: 1
-  pointsWorth: 300
+  pointsWorth: 400
   poopAnimator: {fileID: 9100000, guid: 9d63c63bb9f8e70459737ca164ebe3ce, type: 2}
-  explosionType: {fileID: 11400000, guid: 9f149f1d94312204db53b42d5d8e4a34, type: 2}
+  explosionType: {fileID: 11400000, guid: 3dd9044e45b478840b0cc9370e128f54, type: 2}

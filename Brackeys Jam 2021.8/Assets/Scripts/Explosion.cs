@@ -36,7 +36,6 @@ public class Explosion : MonoBehaviour
         if (_gameManager.CurrentPoop.explosionType != null)
         {
             spriteRenderer.sprite = _gameManager.CurrentPoop.explosionType.sprite;
-            spriteRenderer.color = _gameManager.CurrentPoop.explosionType.color;
             explosionAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.explosionType.animatorController;
             transform.localScale = _gameManager.CurrentPoop.explosionType.size;
         }
