@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
+    public static event Action<float> OnCornEaten;
     public static event Action<float> OnGetHit;
     public static event Action OnPoopUpgrade;
     public static event Action OnGameOver;
@@ -71,6 +72,9 @@ public class GameManager : MonoBehaviour
     public void EatCorn()
     {
         _cornEaten++;
+
+        float fillAmount = (float)_cornEaten / (float)ChargeGoal;
+        OnCornEaten?.Invoke(fillAmount);
 
         if (_cornEaten == ChargeGoal && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL)
         {

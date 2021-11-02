@@ -13,8 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] Sprite halfHeartSprite;
-    [SerializeField] TextMeshProUGUI currentPoopLevelText; 
-    [SerializeField] TextMeshProUGUI nextPoopLevelText; 
+    [SerializeField] TextMeshProUGUI currentPoopLevelText;
+    [SerializeField] TextMeshProUGUI nextPoopLevelText;
+    [SerializeField] Slider poopLevelSlider;
 
     private GameManager _gameManager;
     private List<GameObject> chaosStars = new List<GameObject>();
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnPoopUpgrade += UpdatePoopLevelUI;
         GameManager.OnGameOver += SetGameOverPanel;
         GameManager.OnGetHit += UpdateHeartsAmount;
+        GameManager.OnCornEaten += UpdateFillAmount;
     }
 
     void OnDisable()
@@ -35,6 +37,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnPoopUpgrade -= UpdatePoopLevelUI;
         GameManager.OnGameOver -= SetGameOverPanel;
         GameManager.OnGetHit -= UpdateHeartsAmount;
+        GameManager.OnCornEaten -= UpdateFillAmount;
     }
 
     void Start()
@@ -45,7 +48,7 @@ public class UIManager : MonoBehaviour
 
     void InitializeChaosStars()
     {
-        for (int i = 0; i < GameManager.Instance.MaxChaosStarsAmount; i++)
+        for (int i = 0; i < _gameManager.MaxChaosStarsAmount; i++)
         {
             GameObject star = Instantiate(chaosStarPrefab);
             star.transform.SetParent(chaosStarsWrapper);
@@ -59,12 +62,18 @@ public class UIManager : MonoBehaviour
 
     void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
+    void UpdateFillAmount(float fillAmount) => poopLevelSlider.value = fillAmount;
+
     void UpdatePoopLevelUI()
     {
         bulletsUpgradedAnimator.SetTrigger("Appear");
 
-        string nextText = _gameManager.PoopChargeLevel == _gameManager.MAX_POOP_CHARGE_LEVEL ? "Max" : $"{_gameManager.PoopChargeLevel + 1}";
+        bool isPoopMaxed = _gameManager.PoopChargeLevel == _gameManager.MAX_POOP_CHARGE_LEVEL;
 
+        string nextText = isPoopMaxed ? "Max" : $"{_gameManager.PoopChargeLevel + 1}";
+        float fillAmount = !isPoopMaxed ? 0 : 1;
+
+        UpdateFillAmount(fillAmount);
         currentPoopLevelText.text = $"{_gameManager.PoopChargeLevel}";
         nextPoopLevelText.text = $"{nextText}";
     }
@@ -75,13 +84,13 @@ public class UIManager : MonoBehaviour
 
         for (float i = 0; i < hearts.Length; i += 0.5f)
         {
-            if(i % 1 == 0 && i + 1 < playersLives)
+            if (i % 1 == 0 && i + 1 < playersLives)
             {
                 index = (int)i;
                 hearts[index].SetActive(true);
             }
-            
-            else if(i % 1 == 0 && i >= playersLives)
+
+            else if (i % 1 == 0 && i >= playersLives)
             {
                 index = (int)i;
                 hearts[index].SetActive(false);

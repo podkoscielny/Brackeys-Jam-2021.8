@@ -1077,6 +1077,7 @@ MonoBehaviour:
   halfHeartSprite: {fileID: -8572402131308279664, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
   currentPoopLevelText: {fileID: 1088129727}
   nextPoopLevelText: {fileID: 681066460}
+  poopLevelSlider: {fileID: 782102767}
 --- !u!1 &353837896
 GameObject:
   m_ObjectHideFlags: 0
