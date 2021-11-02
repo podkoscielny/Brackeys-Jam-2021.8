@@ -12,6 +12,7 @@ public class Poop : MonoBehaviour
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private GameObject _spawnPoop;
+    private List<string> collidables;
     private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
     private bool _isFalling = false;
     private bool _isFullyLoaded = false;
@@ -20,6 +21,7 @@ public class Poop : MonoBehaviour
     void Awake()
     {
         _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
+        collidables = new List<string>();
     }
 
     void OnEnable()
@@ -30,7 +32,7 @@ public class Poop : MonoBehaviour
         if (_isFullyLoaded)
         {
             poopAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.poopAnimator;
-
+            SetCollidableTags();
         }
         else
         {
@@ -55,9 +57,21 @@ public class Poop : MonoBehaviour
         _isFalling = true;
     }
 
+    void SetCollidableTags()
+    {
+        collidables.Clear();
+
+        for (int i = 0; i < hitableTags.Count; i++)
+        {
+            collidables.Add(hitableTags[i]);
+        }
+
+        if (_gameManager.CurrentPoop.isExplosive) collidables.Add(Tags.Ground);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hitableTags.Contains(collision.tag))
+        if (collidables.Contains(collision.tag))
         {
             if (_gameManager.CurrentPoop.isExplosive)
             {

@@ -157,6 +157,5 @@ MonoBehaviour:
   poopRb: {fileID: 7332715859959600715}
   poopAnimator: {fileID: 5093926533732649326}
   hitableTags:
-  - Ground
   - Character
   - Hostile
