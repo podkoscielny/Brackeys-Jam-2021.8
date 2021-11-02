@@ -7,12 +7,11 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] LayerMask interactableMask;
     [SerializeField] AnimationController animationController;
 
-    private bool _isInteracting = false;
     private const float INTERACTION_RADIUS = 0.7f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Interaction") && !_isInteracting)
+        if (Input.GetButtonDown("Interaction"))
         {
             InteractWithItem();
         }
@@ -25,10 +24,7 @@ public class PlayerInteraction : MonoBehaviour
         if (interactableObject != null)
         {
             interactableObject.GetComponent<IInteractable>()?.PickUp();
-            _isInteracting = true;
             animationController.OnPickup();
         }
     }
-
-    public void EnableInteracting() => _isInteracting = false; // Enable Interacting when animation is over
 }
