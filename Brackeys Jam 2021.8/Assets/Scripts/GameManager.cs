@@ -18,7 +18,10 @@ public class GameManager : MonoBehaviour
     public int ChargeGoal { get; private set; } = 3;
     public int ChaosStarsAmount { get; private set; } = 0;
     public int MaxChaosStarsAmount { get { return chaosStars.Length; } }
+    public int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
+
     public float PlayersLives { get; private set; } = 3;
+
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
     public ChaosStar CurrentChaosStar { get; private set; } = null;
@@ -34,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     private int _cornEaten = 0;
 
-    private int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
 
     public static GameManager Instance;
 

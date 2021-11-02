@@ -13,14 +13,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] Sprite halfHeartSprite;
+    [SerializeField] TextMeshProUGUI currentPoopLevelText; 
+    [SerializeField] TextMeshProUGUI nextPoopLevelText; 
 
+    private GameManager _gameManager;
     private List<GameObject> chaosStars = new List<GameObject>();
 
     void OnEnable()
     {
         GameManager.OnScoreUpdated += UpdateScore;
         GameManager.OnChaosStarGained += EnableChaosStar;
-        GameManager.OnPoopUpgrade += ShowBulletsUpgradedText;
+        GameManager.OnPoopUpgrade += UpdatePoopLevelUI;
         GameManager.OnGameOver += SetGameOverPanel;
         GameManager.OnGetHit += UpdateHeartsAmount;
     }
@@ -29,12 +32,16 @@ public class UIManager : MonoBehaviour
     {
         GameManager.OnScoreUpdated -= UpdateScore;
         GameManager.OnChaosStarGained -= EnableChaosStar;
-        GameManager.OnPoopUpgrade -= ShowBulletsUpgradedText;
+        GameManager.OnPoopUpgrade -= UpdatePoopLevelUI;
         GameManager.OnGameOver -= SetGameOverPanel;
         GameManager.OnGetHit -= UpdateHeartsAmount;
     }
 
-    void Start() => InitializeChaosStars();
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        InitializeChaosStars();
+    }
 
     void InitializeChaosStars()
     {
@@ -50,9 +57,17 @@ public class UIManager : MonoBehaviour
 
     void EnableChaosStar(int chaosStarsAmount) => chaosStars[chaosStarsAmount - 1].SetActive(true);
 
-    void ShowBulletsUpgradedText() => bulletsUpgradedAnimator.SetTrigger("Appear");
-
     void SetGameOverPanel() => gameOverPanel.SetActive(true);
+
+    void UpdatePoopLevelUI()
+    {
+        bulletsUpgradedAnimator.SetTrigger("Appear");
+
+        string nextText = _gameManager.PoopChargeLevel == _gameManager.MAX_POOP_CHARGE_LEVEL ? "Max" : $"{_gameManager.PoopChargeLevel + 1}";
+
+        currentPoopLevelText.text = $"{_gameManager.PoopChargeLevel}";
+        nextPoopLevelText.text = $"{nextText}";
+    }
 
     void UpdateHeartsAmount(float playersLives)
     {
