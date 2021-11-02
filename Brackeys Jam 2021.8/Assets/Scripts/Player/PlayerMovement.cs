@@ -49,10 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableMovement() => _canMove = false;
 
-    public void EnableMovement()
-    {
-        _canMove = true;
-    }
+    public void EnableMovement() => _canMove = true;
 
     void Shoot()
     {

@@ -69,7 +69,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         bullet.SetActive(true);
     }
 
-    public void MoveEnemyToPool() => _objectPooler.AddToPool(Tags.Hostile, gameObject);
+    public void MoveEnemyToPool() => gameObject.SetActive(false);
 
     void SetRandomStopPosition()
     {

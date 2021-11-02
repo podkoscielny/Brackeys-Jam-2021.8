@@ -98,7 +98,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
             _isDown = true;
 
             _canMove = false;
-
         }
     }
 }
