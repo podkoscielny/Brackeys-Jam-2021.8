@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
+    private CameraShake _cameraShake;
     private bool _isFullyLoaded = false;
     private Vector3 _offset = new Vector3(0, -2f, 0);
     private float _explosionRange = 1.4f;
@@ -31,6 +32,7 @@ public class Explosion : MonoBehaviour
         {
             _gameManager = GameManager.Instance;
             _objectPooler = ObjectPooler.Instance;
+            _cameraShake = CameraShake.Instance;
 
             _isFullyLoaded = true;
         }
@@ -56,6 +58,8 @@ public class Explosion : MonoBehaviour
             Vector2 explodeInDirection = character.transform.position - (transform.position + _offset);
             character.GetComponent<IPoopHandler>()?.HandleExplosion(explodeInDirection);
         }
+
+        _cameraShake.ShakeCamera(3f, 0.2f);
     }
 
     public void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation

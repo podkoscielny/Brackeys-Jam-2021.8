@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private int _cornEaten = 0;
 
 
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     #region Singleton
     private void Awake()
