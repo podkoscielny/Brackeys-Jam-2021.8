@@ -40,7 +40,7 @@ public class Explosion : MonoBehaviour
         }
     }
 
-    void SetProperties()
+    private void SetProperties()
     {
         ExplosionType currentExplosion = _gameManager.CurrentPoop.explosionType;
 
@@ -55,7 +55,7 @@ public class Explosion : MonoBehaviour
         }
     }
 
-    void ExplodeCharactersInRange()
+    private void ExplodeCharactersInRange()
     {
         Collider2D[] charactersInRange = Physics2D.OverlapCircleAll(transform.position, _explosionRange, layerToImpact);
 

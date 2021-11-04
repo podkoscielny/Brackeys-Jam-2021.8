@@ -57,7 +57,7 @@ public class Poop : MonoBehaviour
         _isFalling = true;
     }
 
-    void SetCollidableTags()
+    private void SetCollidableTags()
     {
         collidables.Clear();
 

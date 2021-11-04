@@ -92,17 +92,17 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    void FlipCharacter()
+    private void FlipCharacter()
     {
         _facingRight = !_facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
 
-    bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
+    private bool IsObjectsMaskSameAsGrounds(GameObject obj) => (groundMask.value & (1 << obj.layer)) > 0;
 
-    bool IsGroundBeneath() => Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundMask);
+    private bool IsGroundBeneath() => Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundMask);
 
-    void CeilingCheck()
+    private void CeilingCheck()
     {
         _isCrouching = Physics2D.OverlapCircle(ceilingCheck.position, CEILING_RADIUS, groundMask) != null;
         if (!_isCrouching)

@@ -16,7 +16,7 @@ public class ParallaxEffect : MonoBehaviour
 
     void LateUpdate() => CalculateParallax();
 
-    void CalculateParallax()
+    private void CalculateParallax()
     {
         float distance = mainCamera.transform.position.x * parallaxEffect;
 

@@ -35,7 +35,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     void Start() => _objectPooler = ObjectPooler.Instance;
 
-    void SetRandomEnemy()
+    private void SetRandomEnemy()
     {
         int index = Random.Range(0, hostileEnemies.Length);
         HostileEnemy enemy = hostileEnemies[index];
@@ -58,7 +58,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         }
     }
 
-    void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
+    private void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
     public void Shoot() // Invoke in Shoot animation
     {
@@ -71,7 +71,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     public void MoveEnemyToPool() => gameObject.SetActive(false);
 
-    void SetRandomStopPosition()
+    private void SetRandomStopPosition()
     {
         float randomPositionX = Random.Range(MIN_POSITION_X, MAX_POSITION_X);
 
@@ -86,5 +86,5 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         }
     }
 
-    void FlipCharacter() => transform.Rotate(0, 180, 0);
+    private void FlipCharacter() => transform.Rotate(0, 180, 0);
 }

@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
         InitializeChaosStars();
     }
 
-    void InitializeChaosStars()
+    private void InitializeChaosStars()
     {
         for (int i = 0; i < _gameManager.MaxChaosStarsAmount; i++)
         {
@@ -56,15 +56,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void UpdateScore(int score) => scoreText.text = score.ToString();
+    private void UpdateScore(int score) => scoreText.text = score.ToString();
 
-    void EnableChaosStar(int chaosStarsAmount) => chaosStars[chaosStarsAmount - 1].SetActive(true);
+    private void EnableChaosStar(int chaosStarsAmount) => chaosStars[chaosStarsAmount - 1].SetActive(true);
 
-    void SetGameOverPanel() => gameOverPanel.SetActive(true);
+    private void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
-    void UpdateFillAmount(float fillAmount) => poopLevelSlider.value = fillAmount;
+    private void UpdateFillAmount(float fillAmount) => poopLevelSlider.value = fillAmount;
 
-    void UpdatePoopLevelUI()
+    private void UpdatePoopLevelUI()
     {
         bulletsUpgradedAnimator.SetTrigger("Appear");
 
@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
         nextPoopLevelText.text = $"{nextText}";
     }
 
-    void UpdateHeartsAmount(float playersLives)
+    private void UpdateHeartsAmount(float playersLives)
     {
         int index;
 

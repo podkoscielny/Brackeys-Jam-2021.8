@@ -17,7 +17,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
 
     public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
 
-    void SetRandomSprite()
+    private void SetRandomSprite()
     {
         if (humanCharacters.Length < 1) return;
 

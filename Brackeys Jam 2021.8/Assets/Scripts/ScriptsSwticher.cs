@@ -18,7 +18,7 @@ public class ScriptsSwticher : MonoBehaviour
         SceneController.OnGameStart -= EnableScripts;
     }
 
-    void EnableScripts()
+    private void EnableScripts()
     {
         foreach (MonoBehaviour script in scriptsToDisable)
         {
@@ -26,7 +26,7 @@ public class ScriptsSwticher : MonoBehaviour
         }
     }
 
-    void DisableScripts()
+    private void DisableScripts()
     {
         foreach (MonoBehaviour script in scriptsToDisable)
         {

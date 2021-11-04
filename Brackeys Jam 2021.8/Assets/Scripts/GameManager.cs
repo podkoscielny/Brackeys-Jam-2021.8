@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public bool CanCornBeSpawn() => Score > CurrentPoop.pointsWorth * 3 && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL;
 
-    void UpgradePoop()
+    private void UpgradePoop()
     {
         PoopChargeLevel++;
 

@@ -11,7 +11,7 @@ public class Menu : MonoBehaviour
 
     private bool _isSceneLoaded = false;
 
-    private void OnEnable() => SceneController.OnGameStart += ShowStartText;
+    void OnEnable() => SceneController.OnGameStart += ShowStartText;
 
     void OnDisable() => SceneController.OnGameStart -= ShowStartText;
 
@@ -23,13 +23,13 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void ShowStartText()
+    private void ShowStartText()
     {
         _isSceneLoaded = true;
         startText.gameObject.SetActive(true);
     }
 
-    void StartGame()
+    private void StartGame()
     {
         sceneAnimator.SetTrigger("Hide");
         startText.gameObject.SetActive(false);

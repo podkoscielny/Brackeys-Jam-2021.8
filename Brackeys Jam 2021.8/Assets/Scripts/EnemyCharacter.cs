@@ -48,9 +48,9 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         }
     }
 
-    void Move() => _enemyMovement.Move();
+    private void Move() => _enemyMovement.Move();
 
-    void Explode()
+    private void Explode()
     {
         transform.Rotate(Vector3.forward * ROTATION_SPEED * Time.deltaTime);
         transform.position += _explodeDirection * EXPLOSION_SPEED * Time.deltaTime;
@@ -68,7 +68,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         splashEffect.transform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
     }
 
-    void SetSpriteColor()
+    private void SetSpriteColor()
     {
         Color color = spriteRenderer.color;
         color.a = 1;

@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void EnableMovement() => _canMove = true;
 
-    void Shoot()
+    private void Shoot()
     {
         GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
         poop.transform.position = poopSpawn.position;

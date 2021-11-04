@@ -58,7 +58,7 @@ public class SpawnManager : MonoBehaviour
         _objectPooler = ObjectPooler.Instance;
     }
 
-    void SpawnNeutral()
+    private void SpawnNeutral()
     {
         GameObject nonHostile = _objectPooler.GetFromPoolInActive(Tags.Character);
 
@@ -68,7 +68,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnHostile()
+    private void SpawnHostile()
     {
         GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
 
@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnCorn()
+    private void SpawnCorn()
     {
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
@@ -104,9 +104,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void ResetPickedUpCorns() => _cornsSpawned = 0;
+    private void ResetPickedUpCorns() => _cornsSpawned = 0;
 
-    void SetCharactersPosition(GameObject character)
+    private void SetCharactersPosition(GameObject character)
     {
         bool isMovingRight = Random.Range(0, 2) == 1;
 
@@ -120,7 +120,7 @@ public class SpawnManager : MonoBehaviour
         character.SetActive(true);
     }
 
-    void ChangeSpawnIntervals(int chaosStarsAmount)
+    private void ChangeSpawnIntervals(int chaosStarsAmount)
     {
         CancelOngoingInvokes();
 
@@ -131,7 +131,7 @@ public class SpawnManager : MonoBehaviour
         SetInvokes();
     }
 
-    void SetInvokes()
+    private void SetInvokes()
     {
         if (_neutralInterval != 0)
             InvokeRepeating(nameof(SpawnNeutral), 2f, _neutralInterval);
@@ -143,7 +143,7 @@ public class SpawnManager : MonoBehaviour
             InvokeRepeating(nameof(SpawnCorn), 2f, _cornInterval);
     }
 
-    void CancelOngoingInvokes()
+    private void CancelOngoingInvokes()
     {
         CancelInvoke(nameof(SpawnNeutral));
         CancelInvoke(nameof(SpawnHostile));

@@ -24,9 +24,9 @@ public class PauseGame : MonoBehaviour
         }
     }
 
-    void AllowGamePause() => _canBePaused = true;
+    private void AllowGamePause() => _canBePaused = true;
 
-    void Pause()
+    private void Pause()
     {
         Time.timeScale = _isGamePaused ? 1 : 0;
         pauseText.SetActive(!_isGamePaused);

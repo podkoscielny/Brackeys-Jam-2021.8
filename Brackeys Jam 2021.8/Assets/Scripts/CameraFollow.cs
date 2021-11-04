@@ -22,9 +22,9 @@ public class CameraFollow : MonoBehaviour
         _cameraTransposer.m_TrackedObjectOffset = CalculateCameraOffset();
     }
 
-    float CalculateLensSize() => _player.position.y * 0.2943f + 4.5057f;
+    private float CalculateLensSize() => _player.position.y * 0.2943f + 4.5057f;
 
-    Vector3 CalculateCameraOffset()
+    private Vector3 CalculateCameraOffset()
     {
         float offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f); // check if its needed
 

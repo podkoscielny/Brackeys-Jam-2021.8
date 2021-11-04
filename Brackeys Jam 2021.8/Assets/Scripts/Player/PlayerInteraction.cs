@@ -17,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    void InteractWithItem()
+    private void InteractWithItem()
     {
         Collider2D interactableObject = Physics2D.OverlapCircle(transform.position, INTERACTION_RADIUS, interactableMask);
 

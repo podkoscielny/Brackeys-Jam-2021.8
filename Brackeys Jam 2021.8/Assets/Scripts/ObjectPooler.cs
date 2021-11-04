@@ -33,7 +33,7 @@ public class ObjectPooler : MonoBehaviour
 
     void Start() => InitializePool();
 
-    void InitializePool()
+    private void InitializePool()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
