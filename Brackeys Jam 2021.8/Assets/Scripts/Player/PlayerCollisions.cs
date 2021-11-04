@@ -15,29 +15,29 @@ public class PlayerCollisions : MonoBehaviour
 
     void Awake() => _playerRb = GetComponent<Rigidbody2D>();
 
-    private void Start() => _gameManager = GameManager.Instance;
+    void Start() => _gameManager = GameManager.Instance;
 
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
 
-    //    if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
-    //    {
-    //        playerAnimator.SetTrigger("IsHit");
-    //        playerAnimator.SetBool("IsJumping", false);
+        if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
+        {
+            playerAnimator.SetTrigger("IsHit");
+            playerAnimator.SetBool("IsJumping", false);
 
-    //        Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
+            Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
 
-    //        float damageAmount = 0;
-    //        IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
+            float damageAmount = 0;
+            IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
 
-    //        if (playerHitter != null) damageAmount = playerHitter.PlayerDamageAmount;
+            if (playerHitter != null) damageAmount = playerHitter.PlayerDamageAmount;
 
-    //        PushThePlayerOnCollision(direction, damageAmount);
-    //    }
-    //}
+            PushThePlayerOnCollision(direction, damageAmount);
+        }
+    }
 
-    void PushThePlayerOnCollision(Vector3 direction, float damageAmount)
+    private void PushThePlayerOnCollision(Vector3 direction, float damageAmount)
     {
         _playerRb.velocity = Vector2.zero;
         _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects

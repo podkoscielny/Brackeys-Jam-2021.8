@@ -27,6 +27,8 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float duration)
     {
+        StopAllCoroutines();
+
         _cinemachineBasicMultiChanelPerlin.m_AmplitudeGain = intensity;
 
         StartCoroutine(ResetShake(duration));
