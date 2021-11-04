@@ -15,6 +15,8 @@ public class Explosion : MonoBehaviour
     private bool _isFullyLoaded = false;
     private Vector3 _offset = new Vector3(0, -2f, 0);
     private float _explosionRange = 1.4f;
+    private float _cameraShakeIntensity = 0f;
+    private float _cameraShakeDuration = 0f;
 
     private void OnDrawGizmos()
     {
@@ -40,12 +42,16 @@ public class Explosion : MonoBehaviour
 
     void SetProperties()
     {
-        if (_gameManager.CurrentPoop.explosionType != null)
+        ExplosionType currentExplosion = _gameManager.CurrentPoop.explosionType;
+
+        if (currentExplosion != null)
         {
-            spriteRenderer.sprite = _gameManager.CurrentPoop.explosionType.sprite;
-            explosionAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.explosionType.animatorController;
-            transform.localScale = _gameManager.CurrentPoop.explosionType.size;
-            _explosionRange = _gameManager.CurrentPoop.explosionType.range;
+            spriteRenderer.sprite = currentExplosion.sprite;
+            explosionAnimator.runtimeAnimatorController = currentExplosion.animatorController;
+            transform.localScale = currentExplosion.size;
+            _explosionRange = currentExplosion.range;
+            _cameraShakeIntensity = currentExplosion.cameraShakeIntensity;
+            _cameraShakeDuration = currentExplosion.cameraShakeDuration;
         }
     }
 
@@ -59,7 +65,7 @@ public class Explosion : MonoBehaviour
             character.GetComponent<IPoopHandler>()?.HandleExplosion(explodeInDirection);
         }
 
-        _cameraShake.ShakeCamera(3f, 0.2f);
+        _cameraShake.ShakeCamera(_cameraShakeIntensity, _cameraShakeDuration);
     }
 
     public void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation

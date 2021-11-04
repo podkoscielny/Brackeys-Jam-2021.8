@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FireExplosion
   m_EditorClassIdentifier: 
   range: 1.4
+  cameraShakeIntensity: 3
+  cameraShakeDuration: 0.3
   size: {x: 5, y: 5, z: 0}
   sprite: {fileID: -8227423255571478107, guid: 9ac8a5085f228844b8cf29ab10b4bb34, type: 3}
   animatorController: {fileID: 9100000, guid: fadf7896e4e76ef44a6f2ec5cdf0aa26, type: 2}

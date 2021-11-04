@@ -6,6 +6,8 @@ using UnityEngine;
 public class ExplosionType : ScriptableObject
 {
     public float range;
+    public float cameraShakeIntensity;
+    public float cameraShakeDuration;
     public Vector3 size;
     public Sprite sprite;
     public RuntimeAnimatorController animatorController;

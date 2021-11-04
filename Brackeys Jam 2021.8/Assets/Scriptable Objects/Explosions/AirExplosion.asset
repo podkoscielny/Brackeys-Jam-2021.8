@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AirExplosion
   m_EditorClassIdentifier: 
   range: 1.4
+  cameraShakeIntensity: 2
+  cameraShakeDuration: 0.2
   size: {x: 3, y: 3, z: 0}
   sprite: {fileID: -8516153976547529731, guid: c2ee5326af9d96a48a0414533646e32f, type: 3}
   animatorController: {fileID: 9100000, guid: 867a3b398c5925143aa05d7c1a033f55, type: 2}
