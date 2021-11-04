@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
 
 public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 {
@@ -12,6 +11,8 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     [SerializeField] string enemyTag;
 
     public float PlayerDamageAmount { get; private set; } = 0.5f;
+    public float CameraShakeIntensity { get; private set; } = 2;
+    public float CameraShakeDuration { get; private set; } = 0.2f;
 
     private IEnemyMovement _enemyMovement;
     private GameManager _gameManager;
