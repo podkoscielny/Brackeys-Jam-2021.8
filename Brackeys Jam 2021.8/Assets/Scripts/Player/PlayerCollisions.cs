@@ -28,16 +28,11 @@ public class PlayerCollisions : MonoBehaviour
 
         if (damageableTags.Contains(collision.tag) && !_gameManager.IsGameOver && !isHit)
         {
-            playerAnimator.SetTrigger("IsHit");
-            playerAnimator.SetBool("IsJumping", false);
-
-            Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
+            IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
 
             float damageAmount = 0;
             float cameraShakeIntensity = 0;
             float cameraShakeDuration = 0;
-
-            IPlayerHitter playerHitter = collision.GetComponent<IPlayerHitter>();
 
             if (playerHitter != null)
             {
@@ -46,12 +41,22 @@ public class PlayerCollisions : MonoBehaviour
                 cameraShakeDuration = playerHitter.CameraShakeDuration;
             }
 
+            SetHitAnimation();
+
+            Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             PushThePlayerOnCollision(direction, damageAmount);
+
             _cameraShake.ShakeCamera(cameraShakeIntensity, cameraShakeDuration);
         }
     }
 
-    private void PushThePlayerOnCollision(Vector3 direction, float damageAmount)
+    private void SetHitAnimation()
+    {
+        playerAnimator.SetTrigger("IsHit");
+        playerAnimator.SetBool("IsJumping", false);
+    }
+
+    private void PushThePlayerOnCollision(Vector2 direction, float damageAmount)
     {
         _playerRb.velocity = Vector2.zero;
         _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
