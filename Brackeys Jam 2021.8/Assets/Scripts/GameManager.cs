@@ -83,15 +83,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddLife()
+    public void Heal(float healAmount = 1)
     {
-        PlayersLives++;
-        OnUpdateHeartsAmount(PlayersLives);
+        PlayersLives = Mathf.Min(PlayersLives + healAmount, MAX_LIVES_AMOUNT);
+        OnUpdateHeartsAmount?.Invoke(PlayersLives);
     }
 
     public void GetHit(float damageAmount)
     {
-        PlayersLives -= damageAmount;
+        PlayersLives = Mathf.Max(0, PlayersLives - damageAmount);
         OnUpdateHeartsAmount?.Invoke(PlayersLives);
 
         if (PlayersLives <= 0)

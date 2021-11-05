@@ -1081,6 +1081,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 288662526}
   bulletsUpgradedAnimator: {fileID: 1600207934}
   halfHeartSprite: {fileID: -8572402131308279664, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
+  fullHeartSprite: {fileID: 9139294957729004389, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
   currentPoopLevelText: {fileID: 1088129727}
   nextPoopLevelText: {fileID: 681066460}
   poopLevelSlider: {fileID: 1584598445}

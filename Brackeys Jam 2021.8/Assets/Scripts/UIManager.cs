@@ -6,17 +6,16 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] GameObject heartPrefab;
     [SerializeField] Transform heartsWrapper;
     [SerializeField] Transform chaosStarsWrapper;
+    [SerializeField] GameObject heartPrefab;
     [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Animator bulletsUpgradedAnimator;
-    [SerializeField] Sprite halfHeartSprite;
+    [SerializeField] Slider poopLevelSlider;
+    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI currentPoopLevelText;
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
-    [SerializeField] Slider poopLevelSlider;
 
     private GameManager _gameManager;
     private List<GameObject> _hearts;
@@ -97,26 +96,15 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHeartsAmount(float playersLives)
     {
-        int index;
-
-        for (float i = 0; i < _hearts.Count; i += 0.5f)
+        for (int i = 0; i < _hearts.Count; i++)
         {
-            if (i % 1 == 0 && i + 1 < playersLives)
-            {
-                index = (int)i;
-                _hearts[index].SetActive(true);
-            }
+            _hearts[i].GetComponent<Image>().fillAmount = i <= playersLives - 1 ? 1f : 0f; // change to iamges instead of gameobjects
+        }
 
-            else if (i % 1 == 0 && i >= playersLives)
-            {
-                index = (int)i;
-                _hearts[index].SetActive(false);
-            }
-            else if (i % 1 != 0 && i == playersLives)
-            {
-                index = (int)(i - 0.5f);
-                _hearts[index].GetComponent<Image>().sprite = halfHeartSprite;
-            }
+        if (playersLives % 1 != 0)
+        {
+            int notFullHeartIndex = Mathf.FloorToInt(playersLives);
+            _hearts[notFullHeartIndex].GetComponent<Image>().fillAmount = playersLives - notFullHeartIndex;
         }
     }
 }

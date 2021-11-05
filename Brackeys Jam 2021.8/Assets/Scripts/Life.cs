@@ -10,7 +10,7 @@ public class Life : MonoBehaviour, IInteractable
 
     public void PickUp()
     {
-        _gameManager.AddLife();
+        _gameManager.Heal();
         gameObject.SetActive(false);
     }
 }
