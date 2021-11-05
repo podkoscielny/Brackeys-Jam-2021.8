@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public int PoopChargeLevel { get; private set; } = 1;
     public int ChargeGoal { get; private set; } = 3;
     public int ChaosStarsAmount { get; private set; } = 0;
-    public int MaxChaosStarsAmount { get { return chaosStars.Length; } }
+    public int MAX_CHAOS_STARS_AMOUNT { get { return chaosStars.Length; } }
     public int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
 
     public float PlayersLives { get; private set; } = 3;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            int index = Mathf.Min(ChaosStarsAmount, MaxChaosStarsAmount - 1);
+            int index = Mathf.Min(ChaosStarsAmount, MAX_CHAOS_STARS_AMOUNT - 1);
             return chaosStars[index].pointsToReach;
         }
     }
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         Score += CurrentPoop.pointsWorth;
 
-        if (Score >= PointsToNextChaosStar && ChaosStarsAmount < MaxChaosStarsAmount)
+        if (Score >= PointsToNextChaosStar && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
         {
             CurrentChaosStar = chaosStars[ChaosStarsAmount];
             ChaosStarsAmount++;

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] GameObject[] hearts;
+    [SerializeField] GameObject heartPrefab;
+    [SerializeField] Transform heartsWrapper;
     [SerializeField] Transform chaosStarsWrapper;
     [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
@@ -18,7 +19,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider poopLevelSlider;
 
     private GameManager _gameManager;
-    private List<GameObject> chaosStars = new List<GameObject>();
+    private List<GameObject> _hearts;
+    private List<GameObject> _chaosStars;
 
     void OnEnable()
     {
@@ -43,22 +45,37 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _hearts = new List<GameObject>();
+        _chaosStars = new List<GameObject>();
+
         InitializeChaosStars();
+        InitializeLives();
+        UpdateHeartsAmount(_gameManager.PlayersLives);
     }
 
     private void InitializeChaosStars()
     {
-        for (int i = 0; i < _gameManager.MaxChaosStarsAmount; i++)
+        for (int i = 0; i < _gameManager.MAX_CHAOS_STARS_AMOUNT; i++)
         {
             GameObject star = Instantiate(chaosStarPrefab);
             star.transform.SetParent(chaosStarsWrapper);
-            chaosStars.Add(star);
+            _chaosStars.Add(star);
+        }
+    }
+
+    private void InitializeLives()
+    {
+        for (int i = 0; i < _gameManager.MAX_LIVES_AMOUNT; i++)
+        {
+            GameObject life = Instantiate(heartPrefab);
+            life.transform.SetParent(heartsWrapper);
+            _hearts.Add(life);
         }
     }
 
     private void UpdateScore(int score) => scoreText.text = score.ToString();
 
-    private void EnableChaosStar(int chaosStarsAmount) => chaosStars[chaosStarsAmount - 1].SetActive(true);
+    private void EnableChaosStar(int chaosStarsAmount) => _chaosStars[chaosStarsAmount - 1].SetActive(true);
 
     private void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
@@ -82,23 +99,23 @@ public class UIManager : MonoBehaviour
     {
         int index;
 
-        for (float i = 0; i < hearts.Length; i += 0.5f)
+        for (float i = 0; i < _hearts.Count; i += 0.5f)
         {
             if (i % 1 == 0 && i + 1 < playersLives)
             {
                 index = (int)i;
-                hearts[index].SetActive(true);
+                _hearts[index].SetActive(true);
             }
 
             else if (i % 1 == 0 && i >= playersLives)
             {
                 index = (int)i;
-                hearts[index].SetActive(false);
+                _hearts[index].SetActive(false);
             }
             else if (i % 1 != 0 && i == playersLives)
             {
                 index = (int)(i - 0.5f);
-                hearts[index].GetComponent<Image>().sprite = halfHeartSprite;
+                _hearts[index].GetComponent<Image>().sprite = halfHeartSprite;
             }
         }
     }
