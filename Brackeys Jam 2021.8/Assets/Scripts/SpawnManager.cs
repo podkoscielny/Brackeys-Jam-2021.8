@@ -4,7 +4,7 @@ using UnityEngine;
 using Helpers;
 
 [System.Serializable]
-public struct CornCoords
+public struct PickableCoords
 {
     public Vector2 leftBound;
     public Vector2 rightBound;
@@ -12,7 +12,8 @@ public struct CornCoords
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] CornCoords[] cornSpawnPositions;
+    [SerializeField] PickableCoords[] pickableSpawnPositions;
+    [SerializeField] GameObject life;
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
@@ -28,6 +29,7 @@ public class SpawnManager : MonoBehaviour
     private int _cornsSpawned = 0;
     private int _cornLimit = 3;
 
+    private const int LIVES_LIMIT = 1;
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
     private const float SPAWN_X_RANGE = 16f;
@@ -40,6 +42,7 @@ public class SpawnManager : MonoBehaviour
         GameManager.OnGameOver += CancelOngoingInvokes;
         GameManager.OnChaosStarGained += ChangeSpawnIntervals;
         GameManager.OnPoopUpgrade += ResetPickedUpCorns;
+        GameManager.OnLifeSpawn += SpawnLife;
         SceneController.OnGameStart += SetInvokes;
     }
 
@@ -48,6 +51,7 @@ public class SpawnManager : MonoBehaviour
         GameManager.OnGameOver -= CancelOngoingInvokes;
         GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
         GameManager.OnPoopUpgrade -= ResetPickedUpCorns;
+        GameManager.OnLifeSpawn -= SpawnLife;
         SceneController.OnGameStart -= SetInvokes;
         CancelOngoingInvokes();
     }
@@ -93,8 +97,8 @@ public class SpawnManager : MonoBehaviour
 
             if (corn != null)
             {
-                int cornCoordsIndex = Random.Range(0, cornSpawnPositions.Length);
-                CornCoords cornSpawnBounds = cornSpawnPositions[cornCoordsIndex];
+                int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
+                PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
 
                 float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
                 corn.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
@@ -102,6 +106,17 @@ public class SpawnManager : MonoBehaviour
                 _cornsSpawned++;
             }
         }
+    }
+
+    private void SpawnLife()
+    {
+        int lifeCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
+        PickableCoords cornSpawnBounds = pickableSpawnPositions[lifeCoordsIndex];
+
+        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
+        life.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
+
+        life.SetActive(true);
     }
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;

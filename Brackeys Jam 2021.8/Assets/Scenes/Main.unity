@@ -1073,18 +1073,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f691e87fc8488c48813df698f008e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 151551337}
-  heartPrefab: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
   heartsWrapper: {fileID: 1001508247}
   chaosStarsWrapper: {fileID: 1015273682}
+  heartPrefab: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
   chaosStarPrefab: {fileID: 5167244787390766016, guid: fdddc20c1d7deea40ad129549230686e, type: 3}
   gameOverPanel: {fileID: 288662526}
   bulletsUpgradedAnimator: {fileID: 1600207934}
-  halfHeartSprite: {fileID: -8572402131308279664, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
-  fullHeartSprite: {fileID: 9139294957729004389, guid: ecde7296ddc0bf244a63bece952b7ced, type: 3}
+  poopLevelSlider: {fileID: 1584598445}
+  scoreText: {fileID: 151551337}
   currentPoopLevelText: {fileID: 1088129727}
   nextPoopLevelText: {fileID: 681066460}
-  poopLevelSlider: {fileID: 1584598445}
 --- !u!1 &353837896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,6 +3623,11 @@ Transform:
   m_Father: {fileID: 933592150}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222612516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1818972433920344498, guid: 9f450cfc9d22011448b21ea6f9ec13e6, type: 3}
+  m_PrefabInstance: {fileID: 412607608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1282326554 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 209474650550196925, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}
@@ -3848,7 +3851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8291e65a846acce4c8122a931e39b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cornSpawnPositions:
+  pickableSpawnPositions:
   - leftBound: {x: -6.215, y: 0.65}
     rightBound: {x: -3.271, y: 0.65}
   - leftBound: {x: -1.6, y: 1.791}
@@ -3861,6 +3864,7 @@ MonoBehaviour:
     rightBound: {x: 3.93, y: 7.73}
   - leftBound: {x: -6.67, y: 4.88}
     rightBound: {x: -2.82, y: 4.88}
+  life: {fileID: 1222612516}
 --- !u!1 &1475015178
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static event Action<float> OnUpdateHeartsAmount;
     public static event Action OnPoopUpgrade;
     public static event Action OnGameOver;
+    public static event Action OnLifeSpawn;
 
     public bool IsGameOver { get; private set; } = false;
     public int Score { get; private set; }
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     }
 
     private int _cornEaten = 0;
+    private int _lifeSpawnGoal = 3000;
+    private const int SPAWN_LIFE_TARGET = 3000;
 
     #region Singleton
     private void Awake()
@@ -64,6 +67,12 @@ public class GameManager : MonoBehaviour
             CurrentChaosStar = chaosStars[ChaosStarsAmount];
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke(ChaosStarsAmount);
+        }
+
+        if (Score >= _lifeSpawnGoal)
+        {
+            OnLifeSpawn?.Invoke();
+            _lifeSpawnGoal += SPAWN_LIFE_TARGET;
         }
 
         OnScoreUpdated?.Invoke(Score);

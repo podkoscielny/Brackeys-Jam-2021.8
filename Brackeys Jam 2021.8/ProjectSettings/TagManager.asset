@@ -11,6 +11,7 @@ TagManager:
   - Hostile
   - SpawnPoop
   - Ground
+  - Life
   layers:
   - Default
   - TransparentFX
