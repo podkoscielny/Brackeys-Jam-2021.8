@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnChaosStarGained += EnableChaosStar;
         GameManager.OnPoopUpgrade += UpdatePoopLevelUI;
         GameManager.OnGameOver += SetGameOverPanel;
-        GameManager.OnGetHit += UpdateHeartsAmount;
+        GameManager.OnUpdateHeartsAmount += UpdateHeartsAmount;
         GameManager.OnCornEaten += UpdateFillAmount;
     }
 
@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnChaosStarGained -= EnableChaosStar;
         GameManager.OnPoopUpgrade -= UpdatePoopLevelUI;
         GameManager.OnGameOver -= SetGameOverPanel;
-        GameManager.OnGetHit -= UpdateHeartsAmount;
+        GameManager.OnUpdateHeartsAmount -= UpdateHeartsAmount;
         GameManager.OnCornEaten -= UpdateFillAmount;
     }
 

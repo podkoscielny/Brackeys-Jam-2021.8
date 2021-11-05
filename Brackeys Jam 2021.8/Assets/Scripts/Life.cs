@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Life : MonoBehaviour
+public class Life : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameManager _gameManager;
 
-    // Update is called once per frame
-    void Update()
+    void Start() => _gameManager = GameManager.Instance;
+
+    public void PickUp()
     {
-        
+        _gameManager.AddLife();
+        gameObject.SetActive(false);
     }
 }
