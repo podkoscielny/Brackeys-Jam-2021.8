@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField] PoopType[] poopLevels;
+    [SerializeField] ChaosStar[] chaosStars;
+
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
     public static event Action<float> OnCornEaten;
     public static event Action<float> OnUpdateHeartsAmount;
     public static event Action OnPoopUpgrade;
     public static event Action OnGameOver;
-
-    [SerializeField] PoopType[] poopLevels;
-    [SerializeField] ChaosStar[] chaosStars;
 
     public bool IsGameOver { get; private set; } = false;
     public int Score { get; private set; }
@@ -38,9 +40,6 @@ public class GameManager : MonoBehaviour
     }
 
     private int _cornEaten = 0;
-
-
-    public static GameManager Instance { get; private set; }
 
     #region Singleton
     private void Awake()

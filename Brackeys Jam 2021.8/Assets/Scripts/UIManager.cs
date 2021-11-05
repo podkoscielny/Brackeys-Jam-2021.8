@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
 
     private GameManager _gameManager;
-    private List<GameObject> _hearts;
+    private List<Image> _hearts;
     private List<GameObject> _chaosStars;
 
     void OnEnable()
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _hearts = new List<GameObject>();
+        _hearts = new List<Image>();
         _chaosStars = new List<GameObject>();
 
         InitializeChaosStars();
@@ -68,7 +68,9 @@ public class UIManager : MonoBehaviour
         {
             GameObject life = Instantiate(heartPrefab);
             life.transform.SetParent(heartsWrapper);
-            _hearts.Add(life);
+            Image lifeImage = life.GetComponent<Image>();
+
+            _hearts.Add(lifeImage);
         }
     }
 
@@ -98,13 +100,13 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < _hearts.Count; i++)
         {
-            _hearts[i].GetComponent<Image>().fillAmount = i <= playersLives - 1 ? 1f : 0f; // change to iamges instead of gameobjects
+            _hearts[i].fillAmount = i <= playersLives - 1 ? 1f : 0f;
         }
 
         if (playersLives % 1 != 0)
         {
             int notFullHeartIndex = Mathf.FloorToInt(playersLives);
-            _hearts[notFullHeartIndex].GetComponent<Image>().fillAmount = playersLives - notFullHeartIndex;
+            _hearts[notFullHeartIndex].fillAmount = playersLives - notFullHeartIndex;
         }
     }
 }
