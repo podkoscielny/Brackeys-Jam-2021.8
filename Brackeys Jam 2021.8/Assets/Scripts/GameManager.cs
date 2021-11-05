@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
 
     public float PlayersLives { get; private set; } = 3;
+    public int MAX_LIVES_AMOUNT = 5;
 
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
