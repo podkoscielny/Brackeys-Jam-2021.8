@@ -22,14 +22,19 @@ public class PlayerMovement : MonoBehaviour
     private delegate void MovementDelegate();
     private MovementDelegate _movementDelegate;
 
+#if UNITY_ANDROID
+    private Vector2 _fingerDownPosition;
+    private Vector2 _fingerUpPosition;
+#endif
+
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
         _movementDelegate = StandaloneMovement;
 
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         _movementDelegate = MobileMovement;
-        #endif
+#endif
     }
 
     void Update()
@@ -47,13 +52,28 @@ public class PlayerMovement : MonoBehaviour
     {
         //_horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
 
-        //playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                _fingerUpPosition = touch.position;
+                _fingerDownPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                _fingerDownPosition = touch.position;
 
-        //if (joystick.Vertical > 0.5f)
-        //{
-        //    controller.Jump();
-        //}
+                if(VerticalMoveValue() > 20 && VerticalMoveValue() > HorizontalMoveValue())
+                {
+                    controller.Jump();
+                }
+            }
+        }
     }
+
+    private float VerticalMoveValue() =>  Mathf.Abs(_fingerDownPosition.y - _fingerUpPosition.y);
+
+    private float HorizontalMoveValue() => Mathf.Abs(_fingerDownPosition.x - _fingerUpPosition.x);
 
     public void MobileJump()
     {
