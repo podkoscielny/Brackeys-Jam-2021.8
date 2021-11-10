@@ -45,15 +45,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void MobileMovement()
     {
-        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
+        //_horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
 
-        playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
+        //playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
 
-        if (joystick.Vertical > 0.5f)
-        {
-            controller.Jump();
-        }
+        //if (joystick.Vertical > 0.5f)
+        //{
+        //    controller.Jump();
+        //}
     }
+
+    public void MobileJump()
+    {
+        controller.Jump();
+    }
+
+    public void MobileHorizontalMovement(int direction) => _horizontalMovement = direction * MOVEMENT_SPEED;
+
+    public void ResetMovement() => _horizontalMovement = 0;
 
     private void StandaloneMovement()
     {
