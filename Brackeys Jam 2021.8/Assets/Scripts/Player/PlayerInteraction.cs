@@ -9,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private const float INTERACTION_RADIUS = 0.7f;
 
+#if !UNITY_ANDROID
     void Update()
     {
         if (Input.GetButtonDown("Interaction"))
@@ -17,7 +18,9 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void InteractWithItem()
+#endif
+
+    public void InteractWithItem()
     {
         Collider2D interactableObject = Physics2D.OverlapCircle(transform.position, INTERACTION_RADIUS, interactableMask);
 

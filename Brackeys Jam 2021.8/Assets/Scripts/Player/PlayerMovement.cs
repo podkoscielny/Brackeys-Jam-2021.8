@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] GameObject poopPrefab;
     [SerializeField] Transform poopSpawn;
+    [SerializeField] Joystick joystick;
 
     private ObjectPooler _objectPooler;
     private bool _canShoot = true;
@@ -18,9 +19,43 @@ public class PlayerMovement : MonoBehaviour
     private const float MOVEMENT_SPEED = 5f;
     private const float SHOOT_DELAY = 0.5f;
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    private delegate void MovementDelegate();
+    private MovementDelegate _movementDelegate;
+
+    void Start()
+    {
+        _objectPooler = ObjectPooler.Instance;
+        _movementDelegate = StandaloneMovement;
+
+        #if UNITY_ANDROID
+        _movementDelegate = MobileMovement;
+        #endif
+    }
 
     void Update()
+    {
+        _movementDelegate();
+    }
+
+    void FixedUpdate()
+    {
+        if (_canMove)
+            controller.Move(_horizontalMovement);
+    }
+
+    private void MobileMovement()
+    {
+        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
+
+        playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
+
+        if (joystick.Vertical > 0.5f)
+        {
+            controller.Jump();
+        }
+    }
+
+    private void StandaloneMovement()
     {
         _horizontalMovement = Input.GetAxisRaw("Horizontal") * MOVEMENT_SPEED;
 
@@ -41,17 +76,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (_canMove)
-            controller.Move(_horizontalMovement);
-    }
-
     public void DisableMovement() => _canMove = false;
 
     public void EnableMovement() => _canMove = true;
 
-    private void Shoot()
+    public void Shoot()
     {
         GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
         poop.transform.position = poopSpawn.position;

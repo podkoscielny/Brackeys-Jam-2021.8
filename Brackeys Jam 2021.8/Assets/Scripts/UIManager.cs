@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject heartPrefab;
     [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject mobileUI;
     [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] Slider poopLevelSlider;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -50,6 +51,10 @@ public class UIManager : MonoBehaviour
         InitializeChaosStars();
         InitializeLives();
         UpdateHeartsAmount(_gameManager.PlayersLives);
+
+        #if UNITY_ANDROID
+        DisplayMobileUI();
+        #endif
     }
 
     private void InitializeChaosStars()
@@ -73,6 +78,8 @@ public class UIManager : MonoBehaviour
             _hearts.Add(lifeImage);
         }
     }
+
+    private void DisplayMobileUI() => mobileUI.SetActive(true);
 
     private void UpdateScore(int score) => scoreText.text = score.ToString();
 
