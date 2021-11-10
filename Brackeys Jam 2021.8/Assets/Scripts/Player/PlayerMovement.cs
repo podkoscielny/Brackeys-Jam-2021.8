@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MobileMovement()
     {
-        //_horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
+        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
 
         foreach (Touch touch in Input.touches)
         {
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             controller.Jump();
         }
 
-        if (Input.GetButtonDown("Fire1") && _canShoot)
+        if (Input.GetButtonDown("Fire1"))
         {
             //GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
             //Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
@@ -111,11 +111,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
-        poop.transform.position = poopSpawn.position;
+        if (_canShoot)
+        {
+            GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
+            poop.transform.position = poopSpawn.position;
 
-        _canShoot = false;
-        StartCoroutine(DelayShooting());
+            _canShoot = false;
+            StartCoroutine(DelayShooting());
+        }   
     }
 
     IEnumerator DelayShooting()

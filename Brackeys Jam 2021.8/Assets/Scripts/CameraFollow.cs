@@ -22,11 +22,26 @@ public class CameraFollow : MonoBehaviour
         _cameraTransposer.m_TrackedObjectOffset = CalculateCameraOffset();
     }
 
-    private float CalculateLensSize() => _player.position.y * 0.2943f + 4.5057f;
+    private float CalculateLensSize()
+    {
+        #if UNITY_ANDROID
+        return _player.position.y * 0.23816f + 3.7635f;
+
+        #else
+        return _player.position.y * 0.2943f + 4.5057f;
+        #endif
+    }
 
     private Vector3 CalculateCameraOffset()
     {
-        float offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f); // check if its needed
+        float offsetY;
+
+        #if UNITY_ANDROID
+        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.60526f) - 0.42288f, Time.deltaTime * 2f); // check if its needed
+
+        #else
+        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f); // check if its needed
+        #endif
 
         return new Vector3(0, offsetY, 0);
     }

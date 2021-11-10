@@ -5586,7 +5586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 287250467180482509, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 287250467545899652, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5626,7 +5626,7 @@ PrefabInstance:
       objectReference: {fileID: 554064760}
     - target: {fileID: 2398965492219487923, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3123896882205468966, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: axisOptions
@@ -5634,7 +5634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3123896882205468970, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3123896882205468971, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
       propertyPath: m_LocalScale.x
