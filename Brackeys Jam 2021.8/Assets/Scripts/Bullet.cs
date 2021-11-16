@@ -6,13 +6,11 @@ public class Bullet : MonoBehaviour, IPlayerHitter
 {
     [SerializeField] Rigidbody2D bulletRb;
 
-    public float PlayerDamageAmount { get; private set; } = 1f;
-    public float CameraShakeIntensity { get; private set; } = 3f;
-    public float CameraShakeDuration { get; private set; } = 0.2f;
+    public float PlayerDamageAmount => 1f;
 
-    private float _speed = 10f;
+    private const float SPEED = 10f;
 
     void OnEnable() => GoTowardsTarget();
 
-    private void GoTowardsTarget() => bulletRb.AddForce(transform.right * _speed, ForceMode2D.Impulse);
+    private void GoTowardsTarget() => bulletRb.AddForce(transform.right * SPEED, ForceMode2D.Impulse);
 }

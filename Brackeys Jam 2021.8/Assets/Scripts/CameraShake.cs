@@ -6,6 +6,7 @@ using Cinemachine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
+
     private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChanelPerlin;
 
     void Awake() => _cinemachineBasicMultiChanelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

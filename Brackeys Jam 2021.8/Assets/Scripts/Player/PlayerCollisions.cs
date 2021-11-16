@@ -15,6 +15,8 @@ public class PlayerCollisions : MonoBehaviour
     private Vector2 _impactDirectionLeft = new Vector2(-1.411f, 0.637f);
 
     private const float HIT_FORCE = 6f;
+    private const float CAMERA_SHAKE_INTENSITY = 3f;
+    private const float CAMERA_SHAKE_DURATION = 0.2f;
 
     void Start() => _gameManager = GameManager.Instance;
 
@@ -36,7 +38,7 @@ public class PlayerCollisions : MonoBehaviour
             Vector2 direction = transform.position.x > hitter.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             PushThePlayerOnCollision(direction, playerHitter.PlayerDamageAmount);
 
-            cameraShake.ShakeCamera(playerHitter.CameraShakeIntensity, playerHitter.CameraShakeDuration);
+            cameraShake.ShakeCamera(CAMERA_SHAKE_INTENSITY, CAMERA_SHAKE_DURATION);
         }
     }
 
