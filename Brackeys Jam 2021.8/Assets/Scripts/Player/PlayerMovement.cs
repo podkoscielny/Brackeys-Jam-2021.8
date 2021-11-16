@@ -16,25 +16,26 @@ public class PlayerMovement : MonoBehaviour
     private bool _canShoot = true;
     private bool _canMove = true;
     private float _horizontalMovement = 0f;
+
     private const float MOVEMENT_SPEED = 5f;
     private const float SHOOT_DELAY = 0.5f;
 
     private delegate void MovementDelegate();
     private MovementDelegate _movementDelegate;
 
-#if UNITY_ANDROID
+    #if UNITY_ANDROID
     private Vector2 _fingerDownPosition;
     private Vector2 _fingerUpPosition;
-#endif
+    #endif
 
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
         _movementDelegate = StandaloneMovement;
 
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         _movementDelegate = MobileMovement;
-#endif
+        #endif
     }
 
     void Update()
@@ -47,42 +48,6 @@ public class PlayerMovement : MonoBehaviour
         if (_canMove)
             controller.Move(_horizontalMovement);
     }
-
-    private void MobileMovement()
-    {
-        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
-
-        foreach (Touch touch in Input.touches)
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                _fingerUpPosition = touch.position;
-                _fingerDownPosition = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                _fingerDownPosition = touch.position;
-
-                if(VerticalMoveValue() > 20 && VerticalMoveValue() > HorizontalMoveValue())
-                {
-                    controller.Jump();
-                }
-            }
-        }
-    }
-
-    private float VerticalMoveValue() =>  Mathf.Abs(_fingerDownPosition.y - _fingerUpPosition.y);
-
-    private float HorizontalMoveValue() => Mathf.Abs(_fingerDownPosition.x - _fingerUpPosition.x);
-
-    public void MobileJump()
-    {
-        controller.Jump();
-    }
-
-    public void MobileHorizontalMovement(int direction) => _horizontalMovement = direction * MOVEMENT_SPEED;
-
-    public void ResetMovement() => _horizontalMovement = 0;
 
     private void StandaloneMovement()
     {
@@ -97,13 +62,42 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //GameObject poop = Instantiate(poopPrefab, poopSpawn.position, poopSpawn.rotation);
-            //Rigidbody2D poopRb = poop.GetComponent<Rigidbody2D>();
-
-            //poopRb.velocity = playerRb.velocity / 2;
             Shoot();
         }
     }
+
+    private void MobileMovement()
+    {
+        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
+
+        playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
+
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                _fingerUpPosition = touch.position;
+                _fingerDownPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                _fingerDownPosition = touch.position;
+
+                if (VerticalMoveValue() > 20 && VerticalMoveValue() > HorizontalMoveValue())
+                {
+                    controller.Jump();
+                }
+            }
+        }
+    }
+
+    private float VerticalMoveValue() => Mathf.Abs(_fingerDownPosition.y - _fingerUpPosition.y);
+
+    private float HorizontalMoveValue() => Mathf.Abs(_fingerDownPosition.x - _fingerUpPosition.x);
+
+    public void MobileJump() => controller.Jump();
+
+    public void ResetMovement() => _horizontalMovement = 0;
 
     public void DisableMovement() => _canMove = false;
 
@@ -118,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
             _canShoot = false;
             StartCoroutine(DelayShooting());
-        }   
+        }
     }
 
     IEnumerator DelayShooting()
