@@ -5,27 +5,12 @@ using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
-    public static CameraShake Instance { get; private set; }
-
-    private CinemachineVirtualCamera _cinemachineVirtualCamera;
+    [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChanelPerlin;
 
-    void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+    void Awake() => _cinemachineBasicMultiChanelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-        _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-        _cinemachineBasicMultiChanelPerlin = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-    }
-
-    public void ShakeCamera(float intensity, float duration)
+    public void ShakeCamera(float intensity = 0, float duration = 0)
     {
         StopAllCoroutines();
 

@@ -33,9 +33,4 @@ public class AnimationController : MonoBehaviour, IControlAnimation
     {
         animator.SetTrigger("IsJumping");
     }
-
-    public void OnPickup()
-    {
-        animator.SetTrigger("Pickup");
-    }
 }

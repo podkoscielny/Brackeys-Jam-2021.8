@@ -18,10 +18,7 @@ public class Explosion : MonoBehaviour
     private float _cameraShakeIntensity = 0f;
     private float _cameraShakeDuration = 0f;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, _explosionRange);
-    }
+    void Awake() => _cameraShake = Camera.main.GetComponent<CameraShake>();
 
     void OnEnable()
     {
@@ -34,7 +31,6 @@ public class Explosion : MonoBehaviour
         {
             _gameManager = GameManager.Instance;
             _objectPooler = ObjectPooler.Instance;
-            _cameraShake = CameraShake.Instance;
 
             _isFullyLoaded = true;
         }

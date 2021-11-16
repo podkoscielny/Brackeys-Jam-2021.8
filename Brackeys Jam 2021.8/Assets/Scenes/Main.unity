@@ -1842,7 +1842,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 128
-  animationController: {fileID: 554064756}
+  playerAnimator: {fileID: 554064754}
 --- !u!114 &554064762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,6 +1860,8 @@ MonoBehaviour:
   - Bullet
   - Hostile
   playerAnimator: {fileID: 554064754}
+  _playerRb: {fileID: 554064758}
+  cameraShake: {fileID: 1039779766}
 --- !u!114 &554064763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3020,6 +3022,7 @@ GameObject:
   - component: {fileID: 1039779761}
   - component: {fileID: 1039779764}
   - component: {fileID: 1039779765}
+  - component: {fileID: 1039779766}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3158,6 +3161,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1039779766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039779760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ded975b5a4a3e43b433bfb987d6312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 2058508225}
 --- !u!1 &1042252776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5596,7 +5612,6 @@ GameObject:
   - component: {fileID: 2058508225}
   - component: {fileID: 2058508227}
   - component: {fileID: 2058508228}
-  - component: {fileID: 2058508229}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -5684,18 +5699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 554064753}
---- !u!114 &2058508229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058508224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ded975b5a4a3e43b433bfb987d6312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &287250468068645870
 PrefabInstance:
   m_ObjectHideFlags: 0
