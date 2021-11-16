@@ -5,30 +5,29 @@ using Cinemachine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform _player;
+    [SerializeField] Transform player;
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
 
-    private CinemachineVirtualCamera _virtualCamera;
+    private float _cameraOffsetVelocityRef = 0f;
+    private float _cameraLensVelocityRef = 0f;
     private CinemachineFramingTransposer _cameraTransposer;
 
-    void Awake()
-    {
-        _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        _cameraTransposer = _virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-    }
+    private const float SMOOTH_TIME = 0.3f;
+
+    void Awake() => _cameraTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
 
     void LateUpdate()
     {
-        _virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(_virtualCamera.m_Lens.OrthographicSize, CalculateLensSize(), Time.deltaTime * 2f);
+        virtualCamera.m_Lens.OrthographicSize = CalculateLensSize();
         _cameraTransposer.m_TrackedObjectOffset = CalculateCameraOffset();
     }
 
     private float CalculateLensSize()
     {
         #if UNITY_ANDROID
-        return _player.position.y * 0.23816f + 3.7635f;
-
+        return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, player.position.y * 0.23816f + 3.7635f, ref _cameraLensVelocityRef, SMOOTH_TIME);
         #else
-        return _player.position.y * 0.2943f + 4.5057f;
+        return Mathf.SmoothDamp(_virtualCamera.m_Lens.OrthographicSize, _player.position.y * 0.2943f + 4.5057f, ref _cameraLensVelocityRef, SMOOTH_TIME);
         #endif
     }
 
@@ -37,10 +36,9 @@ public class CameraFollow : MonoBehaviour
         float offsetY;
 
         #if UNITY_ANDROID
-        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.60526f) - 0.42288f, Time.deltaTime * 2f); // check if its needed
-
+        offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, player.position.y * (-0.60526f) - 0.42288f, ref _cameraOffsetVelocityRef, SMOOTH_TIME);
         #else
-        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f); // check if its needed
+        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f);
         #endif
 
         return new Vector3(0, offsetY, 0);
