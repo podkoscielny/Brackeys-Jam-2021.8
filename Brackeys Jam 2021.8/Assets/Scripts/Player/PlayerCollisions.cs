@@ -24,11 +24,16 @@ public class PlayerCollisions : MonoBehaviour
 
         if (!damageableTags.Contains(collision.tag) || _gameManager.IsGameOver || isHit) return;
 
+        HandleHitTaken(collision);
+    }
+
+    private void HandleHitTaken(Collider2D hitter)
+    {
         SetHitAnimation();
 
-        if (TryGetComponent(out IPlayerHitter playerHitter))
+        if (hitter.TryGetComponent(out IPlayerHitter playerHitter))
         {
-            Vector2 direction = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
+            Vector2 direction = transform.position.x > hitter.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             PushThePlayerOnCollision(direction, playerHitter.PlayerDamageAmount);
 
             cameraShake.ShakeCamera(playerHitter.CameraShakeIntensity, playerHitter.CameraShakeDuration);
