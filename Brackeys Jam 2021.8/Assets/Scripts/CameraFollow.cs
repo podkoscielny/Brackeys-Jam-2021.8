@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
         #if UNITY_ANDROID
         offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, player.position.y * (-0.60526f) - 0.42288f, ref _cameraOffsetVelocityRef, SMOOTH_TIME);
         #else
-        offsetY = Mathf.Lerp(_cameraTransposer.m_TrackedObjectOffset.y, _player.position.y * (-0.6724f) + 0.3392f, Time.deltaTime * 2f);
+        offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, player.position.y * (-0.6724f) + 0.3392f, ref _cameraOffsetVelocityRef, SMOOTH_TIME);
         #endif
 
         return new Vector3(0, offsetY, 0);
