@@ -57,8 +57,11 @@ public class Explosion : MonoBehaviour
 
         foreach (Collider2D character in charactersInRange)
         {
-            Vector2 explodeInDirection = character.transform.position - (transform.position + _offset);
-            character.GetComponent<IPoopHandler>()?.HandleExplosion(explodeInDirection);
+            if (character.TryGetComponent(out IPoopHandler poopHandler))
+            {
+                Vector2 explodeInDirection = character.transform.position - (transform.position + _offset);
+                poopHandler.HandleExplosion(explodeInDirection);
+            }
         }
 
         _cameraShake.ShakeCamera(_cameraShakeIntensity, _cameraShakeDuration);
