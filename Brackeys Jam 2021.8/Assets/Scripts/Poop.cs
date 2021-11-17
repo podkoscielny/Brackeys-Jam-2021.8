@@ -13,9 +13,11 @@ public class Poop : MonoBehaviour
     private GameManager _gameManager;
     private GameObject _spawnPoop;
     private List<string> collidables;
-    private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
+
     private bool _isFalling = false;
     private bool _isFullyLoaded = false;
+    private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
+
     private const int GRAVITY_SCALE = 3;
 
     void Awake()

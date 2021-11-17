@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    [SerializeField] List<string> damageableTags;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] Rigidbody2D _playerRb;
+    [SerializeField] Rigidbody2D playerRb;
     [SerializeField] CameraShake cameraShake;
 
     private GameManager _gameManager;
@@ -24,22 +23,18 @@ public class PlayerCollisions : MonoBehaviour
     {
         bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
 
-        if (!damageableTags.Contains(collision.tag) || _gameManager.IsGameOver || isHit) return;
-
-        HandleHitTaken(collision);
+        if (collision.TryGetComponent(out IPlayerHitter playerHitter) && !_gameManager.IsGameOver & !isHit)
+        {
+            Vector2 impactDirection = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
+            HandleHitTaken(playerHitter.PlayerDamageAmount, impactDirection);
+        }
     }
 
-    private void HandleHitTaken(Collider2D hitter)
+    private void HandleHitTaken(float damageAmount, Vector2 impactDirection)
     {
         SetHitAnimation();
-
-        if (hitter.TryGetComponent(out IPlayerHitter playerHitter))
-        {
-            Vector2 direction = transform.position.x > hitter.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
-            PushThePlayerOnCollision(direction, playerHitter.PlayerDamageAmount);
-
-            cameraShake.ShakeCamera(CAMERA_SHAKE_INTENSITY, CAMERA_SHAKE_DURATION);
-        }
+        PushThePlayerOnCollision(impactDirection, damageAmount);
+        cameraShake.ShakeCamera(CAMERA_SHAKE_INTENSITY, CAMERA_SHAKE_DURATION);
     }
 
     private void SetHitAnimation()
@@ -48,10 +43,10 @@ public class PlayerCollisions : MonoBehaviour
         playerAnimator.SetBool("IsJumping", false);
     }
 
-    private void PushThePlayerOnCollision(Vector2 direction, float damageAmount)
+    private void PushThePlayerOnCollision(Vector2 impactDirection, float damageAmount)
     {
-        _playerRb.velocity = Vector2.zero;
-        _playerRb.AddForce(direction * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
+        playerRb.velocity = Vector2.zero;
+        playerRb.AddForce(impactDirection * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
 
         _gameManager.GetHit(damageAmount);
     }

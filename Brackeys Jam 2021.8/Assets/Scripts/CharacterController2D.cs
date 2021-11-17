@@ -21,22 +21,23 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] AnimationController animationController;
 
     public bool IsGrounded { get; private set; }
+
     private bool _facingRight = true;
     private bool _isCrouching = false;
     private bool _isCheckingCeiling = false;
     private bool _canResetVelocity = true;
     private float _movementMultiplier = 1f;
     private int _jumpsCount = 0;
+
     private const float CEILING_RADIUS = .2f;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
+    //}
 
     public void Move(float moveAmount)
     {
-        //only control the player if grounded or airControl is turned on
         if ((IsGrounded || airControl) && moveAmount != 0)
         {
             if (_isCheckingCeiling) CeilingCheck(); //check if the player can stand up after releasing crouch key
@@ -65,12 +66,11 @@ public class CharacterController2D : MonoBehaviour
         {
             _movementMultiplier = crouchSpeed;
             _isCrouching = true;
-            animationController.OnCrouching(true); //Start Crouching animation
+            animationController.OnCrouching(true);
         }
         else
         {
             _isCheckingCeiling = true;
-
         }
     }
 
@@ -79,7 +79,7 @@ public class CharacterController2D : MonoBehaviour
         if (IsGrounded && !_isCrouching)
         {
             IsGrounded = false;
-            animationController.OnJumping(); //Start jump animation
+            animationController.OnJumping();
             characterRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _jumpsCount++;
         }
@@ -109,11 +109,11 @@ public class CharacterController2D : MonoBehaviour
         {
             _movementMultiplier = 1f;
             _isCheckingCeiling = false;
-            animationController.OnCrouching(false); //Stop Crouching animation
+            animationController.OnCrouching(false);
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision) // Try OnCollisionEnter
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (!IsGrounded && IsObjectsMaskSameAsGrounds(collision.gameObject) && IsGroundBeneath() && collision.enabled)
         {

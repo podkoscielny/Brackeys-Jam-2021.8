@@ -1860,7 +1860,7 @@ MonoBehaviour:
   - Bullet
   - Hostile
   playerAnimator: {fileID: 554064754}
-  _playerRb: {fileID: 554064758}
+  playerRb: {fileID: 554064758}
   cameraShake: {fileID: 1039779766}
 --- !u!114 &554064763
 MonoBehaviour:
