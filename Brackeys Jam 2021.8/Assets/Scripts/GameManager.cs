@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private int _cornEaten = 0;
     private int _lifeSpawnGoal = 3000;
+
     private const int SPAWN_LIFE_TARGET = 3000;
 
     #region Singleton

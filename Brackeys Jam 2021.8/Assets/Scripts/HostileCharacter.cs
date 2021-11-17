@@ -5,12 +5,12 @@ using Helpers;
 
 public class HostileCharacter : MonoBehaviour, IEnemyMovement
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] Collider2D enemyCollider;
     [SerializeField] Transform gun;
-    [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] Collider2D enemyCollider;
+    [SerializeField] SpriteRenderer gunRenderer;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] SpriteRenderer splashRenderer;
     [SerializeField] HostileEnemy[] hostileEnemies;
     
@@ -35,18 +35,6 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     void Start() => _objectPooler = ObjectPooler.Instance;
 
-    private void SetRandomEnemy()
-    {
-        int index = Random.Range(0, hostileEnemies.Length);
-        HostileEnemy enemy = hostileEnemies[index];
-
-        spriteRenderer.sprite = enemy.characterSprite;
-        gunRenderer.sprite = enemy.gun.gunSprite;
-        gun.localScale = enemy.localScale;
-        firePoint.localPosition = enemy.gun.firePoint;
-        enemyAnimator.runtimeAnimatorController = enemy.animatorController;
-    }
-
     public void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
@@ -58,18 +46,27 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         }
     }
 
-    private void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
-
     public void Shoot() // Invoke in Shoot animation
     {
         GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
 
-        bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = gun.rotation;
+        bullet.transform.SetPositionAndRotation(firePoint.position, gun.rotation);
         bullet.SetActive(true);
     }
 
     public void MoveEnemyToPool() => gameObject.SetActive(false);
+
+    private void SetRandomEnemy()
+    {
+        int index = Random.Range(0, hostileEnemies.Length);
+        HostileEnemy enemy = hostileEnemies[index];
+
+        spriteRenderer.sprite = enemy.characterSprite;
+        gunRenderer.sprite = enemy.gun.gunSprite;
+        gun.localScale = enemy.localScale;
+        firePoint.localPosition = enemy.gun.firePoint;
+        enemyAnimator.runtimeAnimatorController = enemy.animatorController;
+    }
 
     private void SetRandomStopPosition()
     {
@@ -85,6 +82,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
             FlipCharacter();
         }
     }
+
+    private void ShootAnimation() => enemyAnimator.SetTrigger("Shoot");
 
     private void FlipCharacter() => transform.Rotate(0, 180, 0);
 }

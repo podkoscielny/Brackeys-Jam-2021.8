@@ -6,9 +6,15 @@ using Helpers;
 public class GroundSplash : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
-    private float _disappearTime = 5f;
+    private WaitForSeconds _waitForSplashEffectToDisappear;
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    private const float DISAPPEAR_TIME = 5f;
+
+    void Start()
+    {
+        _objectPooler = ObjectPooler.Instance;
+        _waitForSplashEffectToDisappear = new WaitForSeconds(DISAPPEAR_TIME);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,7 +31,7 @@ public class GroundSplash : MonoBehaviour
 
     IEnumerator MoveSplashToPool(GameObject splash)
     {
-        yield return new WaitForSeconds(_disappearTime);
+        yield return _waitForSplashEffectToDisappear;
 
         _objectPooler.AddToPool(Tags.SplashEffect, splash);
     }
