@@ -24,9 +24,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         Collider2D interactableObject = Physics2D.OverlapCircle(transform.position, INTERACTION_RADIUS, interactableMask);
 
-        if (interactableObject != null)
+        if (interactableObject != null && interactableObject.TryGetComponent(out IInteractable interactable))
         {
-            interactableObject.GetComponent<IInteractable>()?.PickUp();
+            interactable.PickUp();
             playerAnimator.SetTrigger("Pickup");
         }
     }
