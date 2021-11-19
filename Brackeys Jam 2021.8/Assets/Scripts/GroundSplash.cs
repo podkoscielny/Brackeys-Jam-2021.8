@@ -18,21 +18,28 @@ public class GroundSplash : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Tags.Poop))
-        {
-            GameObject splash = _objectPooler.GetFromPool(Tags.SplashEffect);
-            splash.transform.position = collision.transform.position;
+        if (!collision.HasLabel(Labels.Poop)) return;
 
-            StartCoroutine(MoveSplashToPool(splash));
+        SpawnSplashEffect(collision.gameObject);
+    }
 
-            _objectPooler.AddToPool(Tags.Poop, collision.gameObject);
-        }
+    private void SpawnSplashEffect(GameObject poop)
+    {
+        GameObject splash = ObjectPooler.Instance.GetFromPool(Tags.SplashEffect);
+
+        if (splash == null) return;
+
+        splash.transform.position = poop.transform.position;
+        splash.transform.SetParent(transform);
+        ObjectPooler.Instance.AddToPool(Tags.Poop, poop);
+
+        StartCoroutine(MoveSplashToPool(splash));
     }
 
     IEnumerator MoveSplashToPool(GameObject splash)
     {
-        yield return _waitForSplashEffectToDisappear;
+        yield return new WaitForSeconds(DISAPPEAR_TIME);
 
-        _objectPooler.AddToPool(Tags.SplashEffect, splash);
+        ObjectPooler.Instance.AddToPool(Tags.SplashEffect, splash);
     }
 }

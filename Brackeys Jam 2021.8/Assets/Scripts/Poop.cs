@@ -77,9 +77,7 @@ public class Poop : MonoBehaviour
         {
             if (_gameManager.CurrentPoop.isExplosive)
             {
-                GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
-                explosion.transform.position = (Vector2)transform.position + _explosionOffset;
-                explosion.SetActive(true);
+                SpawnExplosionEffect();
             }
             else
             {
@@ -88,5 +86,12 @@ public class Poop : MonoBehaviour
 
             gameObject.SetActive(false);
         }
+    }
+
+    private void SpawnExplosionEffect()
+    {
+        GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
+        explosion.transform.position = (Vector2)transform.position + _explosionOffset;
+        explosion.SetActive(true);
     }
 }
