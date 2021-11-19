@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Labels
 {
-    public static Dictionary<Label, List<GameObject>> LabeledObjects { get; private set; } = new Dictionary<Label, List<GameObject>>();
+    private static Dictionary<Label, List<GameObject>> LabeledObjects = new Dictionary<Label, List<GameObject>>();
 
     [Serializable]
     [Flags]
@@ -39,19 +39,44 @@ public static class Labels
         {
             LabeledObjects.Add((Label)value, new List<GameObject>());
         }
-
     }
 
-    public static GameObject FindGameObjectByLabel(Label label)
+    public static GameObject FindGameObjectWithLabel(Label label)
     {
         if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return null;
 
         return LabeledObjects[label][0];
     }
 
-    //public static GameObject FindAllGameObjectByLabel()
-    //{
+    public static GameObject[] FindAllGameObjecstWithLabel(Label label)
+    {
+        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return null;
 
-    //}
+        GameObject[] labeledGameObjects = LabeledObjects[label].ToArray();
+
+        return labeledGameObjects;
+    }
+
+    public static void CacheObjectToFindWithLabel(GameObject objectToCache, Label labels)
+    {
+        foreach (Enum value in Enum.GetValues(labels.GetType()))
+        {
+            if (labels.HasFlag(value))
+            {
+                LabeledObjects[(Label)value].Add(objectToCache);
+            }
+        }
+    }
+
+    public static void RemoveObjectFromFindWithLabel(GameObject objectToBeRemoved, Label labels)
+    {
+        foreach (Enum value in Enum.GetValues(labels.GetType()))
+        {
+            if (labels.HasFlag(value))
+            {
+                LabeledObjects[(Label)value].Remove(objectToBeRemoved);
+            }
+        }
+    }
 }
 
