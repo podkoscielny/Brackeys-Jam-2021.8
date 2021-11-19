@@ -16,6 +16,8 @@ public class TagManager : MonoBehaviour
         Labels.RemoveObjectFromFindWithLabel(gameObject, labels);
     }
 
+    public bool HasLabel(Label label) => (labels & label) == label;
+
     //private void CheckGameObjectsAmountInDictionary()
     //{
     //    foreach (var item in Labels.LabeledObjects)
