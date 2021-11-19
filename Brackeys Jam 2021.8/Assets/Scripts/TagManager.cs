@@ -4,9 +4,9 @@ using Label = Labels.Label;
 
 public class TagManager : MonoBehaviour
 {
-    public Label labels;
+    [SerializeField] Label labels;
 
-    void Start()
+    void Awake()
     {
         Labels.CacheObjectToFindWithLabel(gameObject, labels);
     }
