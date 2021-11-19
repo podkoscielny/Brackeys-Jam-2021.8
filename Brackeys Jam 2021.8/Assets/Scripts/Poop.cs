@@ -7,12 +7,10 @@ public class Poop : MonoBehaviour
 {
     [SerializeField] Rigidbody2D poopRb;
     [SerializeField] Animator poopAnimator;
-    [SerializeField] List<string> hitableTags;
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private GameObject _spawnPoop;
-    private List<string> collidables;
 
     private bool _isFalling = false;
     private bool _isFullyLoaded = false;
@@ -20,11 +18,7 @@ public class Poop : MonoBehaviour
 
     private const int GRAVITY_SCALE = 3;
 
-    void Awake()
-    {
-        _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
-        collidables = new List<string>();
-    }
+    void Awake() => _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
 
     void OnEnable()
     {
@@ -34,7 +28,6 @@ public class Poop : MonoBehaviour
         if (_isFullyLoaded)
         {
             poopAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.poopAnimator;
-            SetCollidableTags();
         }
         else
         {
@@ -42,7 +35,6 @@ public class Poop : MonoBehaviour
             _gameManager = GameManager.Instance;
             _objectPooler = ObjectPooler.Instance;
         }
-
     }
 
     void LateUpdate()
@@ -59,33 +51,20 @@ public class Poop : MonoBehaviour
         _isFalling = true;
     }
 
-    private void SetCollidableTags()
-    {
-        collidables.Clear();
-
-        for (int i = 0; i < hitableTags.Count; i++)
-        {
-            collidables.Add(hitableTags[i]);
-        }
-
-        if (_gameManager.CurrentPoop.isExplosive) collidables.Add(Tags.Ground);
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collidables.Contains(collision.tag))
-        {
-            if (_gameManager.CurrentPoop.isExplosive)
-            {
-                SpawnExplosionEffect();
-            }
-            else
-            {
-                collision.GetComponent<IPoopHandler>()?.HandlePoopHit(transform.position);
-            }
+        if (!collision.HasLabel(Labels.HittableByPoop)) return;
 
-            gameObject.SetActive(false);
+        if (_gameManager.CurrentPoop.isExplosive)
+        {
+            SpawnExplosionEffect();
         }
+        else
+        {
+            collision.GetComponent<IPoopHandler>()?.HandlePoopHit(transform.position);
+        }
+
+        gameObject.SetActive(false);
     }
 
     private void SpawnExplosionEffect()

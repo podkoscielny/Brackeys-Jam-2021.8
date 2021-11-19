@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7559855718117537268}
   - component: {fileID: 1262634898865482270}
   - component: {fileID: -8051431534695751512}
+  - component: {fileID: -3694572047739477755}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -158,9 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   splashEffect: {fileID: 7771160401071954365}
-  enemyCollider: {fileID: 813753172112441297}
   enemyAnimator: {fileID: 813753172112441299}
-  enemyTag: Character
 --- !u!114 &1262634898865482270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +185,19 @@ SortingGroup:
   m_SortingLayerID: 1360585385
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!114 &-3694572047739477755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labels: 1024
 --- !u!1 &3883292311394086353
 GameObject:
   m_ObjectHideFlags: 0

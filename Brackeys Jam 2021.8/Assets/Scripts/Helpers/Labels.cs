@@ -13,5 +13,6 @@ using System;
     Ground = 1 << 6,
     Explosion = 1 << 7,
     Player = 1 << 8,
-    Life = 1 << 9
+    Life = 1 << 9,
+    HittableByPoop = 1 << 10
 }
