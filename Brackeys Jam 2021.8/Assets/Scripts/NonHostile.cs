@@ -10,10 +10,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
 
     private const float MOVEMENT_SPEED = 4f;
 
-    void OnEnable()
-    {
-        SetRandomSprite();
-    }
+    void OnEnable() => SetRandomSprite();
 
     public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
 

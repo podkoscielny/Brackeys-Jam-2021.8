@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96023474a9dbfa479d7715efbd0870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1039779760}
+  mainCamera: {fileID: 1039779763}
   parallaxEffect: 0.5
 --- !u!1 &288662526
 GameObject:
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96023474a9dbfa479d7715efbd0870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1039779760}
+  mainCamera: {fileID: 1039779763}
   parallaxEffect: 0
 --- !u!1 &331221417
 GameObject:
@@ -1474,6 +1474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392663328}
+  - component: {fileID: 392663329}
   m_Layer: 9
   m_Name: Spawn Poop
   m_TagString: SpawnPoop
@@ -1495,6 +1496,19 @@ Transform:
   m_Father: {fileID: 554064753}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &392663329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392663327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labels: 2048
 --- !u!1001 &412607608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3870,7 +3884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045d5f4fbc0842646863c0ff6a32d60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labels: 64
 --- !u!4 &1184998421
 Transform:
   m_ObjectHideFlags: 0
@@ -4132,7 +4145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96023474a9dbfa479d7715efbd0870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1039779760}
+  mainCamera: {fileID: 1039779763}
   parallaxEffect: 0.7
 --- !u!114 &1396146143 stripped
 MonoBehaviour:
@@ -4297,7 +4310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96023474a9dbfa479d7715efbd0870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1039779760}
+  mainCamera: {fileID: 1039779763}
   parallaxEffect: 0.1
 --- !u!1 &1476809933
 GameObject:

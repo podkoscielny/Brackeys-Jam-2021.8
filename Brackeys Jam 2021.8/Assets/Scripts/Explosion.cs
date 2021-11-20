@@ -12,6 +12,7 @@ public class Explosion : MonoBehaviour
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private CameraShake _cameraShake;
+
     private Vector3 _offset = new Vector3(0, -2f, 0);
     private bool _isFullyLoaded = false;
     private float _explosionRange = 1.4f;

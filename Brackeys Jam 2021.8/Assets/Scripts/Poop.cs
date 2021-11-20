@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
-using Label = Labels.Label;
+using Labels = Label.Labels;
 
 public class Poop : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class Poop : MonoBehaviour
 
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
-    private GameObject _spawnPoop;
+    private Transform _spawnPoop;
 
     private bool _isFalling = false;
     private bool _isFullyLoaded = false;
@@ -19,7 +19,7 @@ public class Poop : MonoBehaviour
 
     private const int GRAVITY_SCALE = 3;
 
-    void Awake() => _spawnPoop = GameObject.FindGameObjectWithTag("SpawnPoop");
+    void Start() => _spawnPoop = Label.FindGameObjectWithLabel(Labels.PoopSpawn).transform;
 
     void OnEnable()
     {
@@ -42,7 +42,7 @@ public class Poop : MonoBehaviour
     {
         if (!_isFalling)
         {
-            transform.position = _spawnPoop.transform.position;
+            transform.position = _spawnPoop.position;
         }
     }
 
@@ -54,7 +54,7 @@ public class Poop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.HasLabel(Label.HittableByPoop)) return;
+        if (!collision.HasLabel(Labels.HittableByPoop)) return;
 
         if (_gameManager.CurrentPoop.isExplosive)
         {

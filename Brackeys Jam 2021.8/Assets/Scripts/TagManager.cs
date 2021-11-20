@@ -1,22 +1,22 @@
 using System;
 using UnityEngine;
-using Label = Labels.Label;
+using Labels = Label.Labels;
 
 public class TagManager : MonoBehaviour
 {
-    [SerializeField] Label labels;
+    [SerializeField] Labels labels;
 
     void Awake()
     {
-        Labels.CacheObjectToFindWithLabel(gameObject, labels);
+        Label.CacheObjectToFindWithLabel(gameObject, labels);
     }
 
     void OnDestroy()
     {
-        Labels.RemoveObjectFromFindWithLabel(gameObject, labels);
+        Label.RemoveObjectFromFindWithLabel(gameObject, labels);
     }
 
-    public bool HasLabel(Label label) => (labels & label) == label;
+    public bool HasLabel(Labels label) => (labels & label) == label;
 
     //private void CheckGameObjectsAmountInDictionary()
     //{

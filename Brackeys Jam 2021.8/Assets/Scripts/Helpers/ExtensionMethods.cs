@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Label = Labels.Label;
+using Labels = Label.Labels;
 
 public static class ExtensionMethods
 {
-    public static bool HasLabel(this GameObject gameObject, Label label)
+    public static bool HasLabel(this GameObject gameObject, Labels label)
     {
         bool hasFlag = false;
 
@@ -17,7 +17,7 @@ public static class ExtensionMethods
         return hasFlag;
     }
 
-    public static bool HasLabel(this Collision2D collision, Label label)
+    public static bool HasLabel(this Collision2D collision, Labels label)
     {
         bool hasFlag = false;
 
@@ -29,7 +29,7 @@ public static class ExtensionMethods
         return hasFlag;
     }
 
-    public static bool HasLabel(this Collider2D collision, Label label)
+    public static bool HasLabel(this Collider2D collision, Labels label)
     {
         bool hasFlag = false;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
-using Label = Labels.Label;
+using Labels = Label.Labels;
 
 public class GroundSplash : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class GroundSplash : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.HasLabel(Label.Poop)) return;
+        if (!collision.HasLabel(Labels.Poop)) return;
 
         SpawnSplashEffect(collision.gameObject);
     }

@@ -8,10 +8,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
-    [SerializeField] Collider2D enemyCollider;
     [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] SpriteRenderer splashRenderer;
     [SerializeField] HostileEnemy[] hostileEnemies;
     
     private ObjectPooler _objectPooler;
