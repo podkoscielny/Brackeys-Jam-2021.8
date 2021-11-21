@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canMove = true;
     private float _horizontalMovement = 0f;
 
+    private const float JOYSTICK_SENSITIVITY = 0.4f;
     private const float MOVEMENT_SPEED = 5f;
     private const float SHOOT_DELAY = 0.5f;
 
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MobileMovement()
     {
-        _horizontalMovement = joystick.Horizontal * MOVEMENT_SPEED;
+        _horizontalMovement = Mathf.Abs(joystick.HorizontalPosition) > JOYSTICK_SENSITIVITY ? joystick.Horizontal * MOVEMENT_SPEED : 0;
 
         playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
     }
