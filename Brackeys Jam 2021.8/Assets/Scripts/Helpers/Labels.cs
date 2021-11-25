@@ -51,9 +51,11 @@ public static class Label
 
     public static GameObject[] FindAllGameObjecstWithLabel(Labels label)
     {
-        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return null;
+        GameObject[] labeledGameObjects = new GameObject[0];
 
-        GameObject[] labeledGameObjects = LabeledObjects[label].ToArray();
+        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return labeledGameObjects;
+
+        labeledGameObjects = LabeledObjects[label].ToArray();
 
         return labeledGameObjects;
     }

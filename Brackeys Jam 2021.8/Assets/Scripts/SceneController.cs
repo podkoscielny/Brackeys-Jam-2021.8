@@ -6,34 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static Action OnGameStart;
+    public static event Action OnGameStart;
 
     private Animator animator;
 
+    private delegate void SceneSetterDelegate();
+    private SceneSetterDelegate _sceneSetter;
+
     void Start() => animator = GetComponent<Animator>();
 
-    public void Restart()
+    public void GoToMenu()
     {
-        animator.SetTrigger("Hide");
-        StartCoroutine(RestartGame());
+        _sceneSetter = LoadMenuScene;
+        HideSceneLoader();
     }
-
-    IEnumerator RestartGame()
-    {
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadSceneAsync("Main");
-    }
-
-    public void GoToMenu() => SceneManager.LoadSceneAsync("Menu");
 
     public void GoToGameplay()
     {
-        SceneManager.LoadSceneAsync("Main");
+        _sceneSetter = LoadMainScene;
+        HideSceneLoader();
     }
 
     public void MakeSceneReady()
     {
         OnGameStart?.Invoke();
     }
+
+    public void LoadScene() => _sceneSetter();
+
+    private void LoadMenuScene() => SceneManager.LoadSceneAsync("Menu");
+
+    private void LoadMainScene() => SceneManager.LoadSceneAsync("Main");
+
+    private void HideSceneLoader() => animator.SetTrigger("Hide");
 }
