@@ -16,10 +16,7 @@ public class ObjectPool : ScriptableObject
     [SerializeField] List<Pool> pools;
     [SerializeField] Dictionary<string, Queue<GameObject>> poolDictionary;
 
-    private void OnDisable()
-    {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
-    }
+    private void OnDisable() => poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
     public void InitializePool()
     {
@@ -52,29 +49,25 @@ public class ObjectPool : ScriptableObject
 
     public GameObject GetFromPool(string tag)
     {
-        if (!poolDictionary.ContainsKey(tag) || poolDictionary[tag].Count < 1)
+        if (!poolDictionary.ContainsKey(tag))
         {
             return null;
         }
-
-        Queue<GameObject> pool = poolDictionary[tag];
-        GameObject objectToSpawn = pool.Dequeue();
-        objectToSpawn.SetActive(true);
-
-        return objectToSpawn;
-    }
-
-    public GameObject GetFromPoolInActive(string tag)
-    {
-        if (!poolDictionary.ContainsKey(tag) || poolDictionary[tag].Count < 1)
+        else if (poolDictionary[tag].Count < 1)
         {
-            return null;
+            GameObject desiredPrefab = pools.Find(p => p.tag == tag).prefab;
+            GameObject desiredObject = Instantiate(desiredPrefab);
+
+            return desiredObject;
         }
+        else
+        {
+            Queue<GameObject> pool = poolDictionary[tag];
+            GameObject objectToSpawn = pool.Dequeue();
+            objectToSpawn.SetActive(true);
 
-        Queue<GameObject> pool = poolDictionary[tag];
-        GameObject objectToSpawn = pool.Dequeue();
-
-        return objectToSpawn;
+            return objectToSpawn;
+        }
     }
 
     public bool IsTagInDictionary(string tag) => poolDictionary.ContainsKey(tag);
