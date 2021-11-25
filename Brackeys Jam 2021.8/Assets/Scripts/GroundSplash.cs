@@ -6,14 +6,13 @@ using Labels = Label.Labels;
 
 public class GroundSplash : MonoBehaviour
 {
-    private ObjectPooler _objectPooler;
+    [SerializeField] ObjectPool objectPool;
     private WaitForSeconds _waitForSplashEffectToDisappear;
 
     private const float DISAPPEAR_TIME = 5f;
 
     void Start()
     {
-        _objectPooler = ObjectPooler.Instance;
         _waitForSplashEffectToDisappear = new WaitForSeconds(DISAPPEAR_TIME);
     }
 
@@ -26,13 +25,13 @@ public class GroundSplash : MonoBehaviour
 
     private void SpawnSplashEffect(GameObject poop)
     {
-        GameObject splash = ObjectPooler.Instance.GetFromPool(Tags.SplashEffect);
+        GameObject splash = objectPool.GetFromPool(Tags.SplashEffect);
 
         if (splash == null) return;
 
         splash.transform.position = poop.transform.position;
         splash.transform.SetParent(transform);
-        ObjectPooler.Instance.AddToPool(Tags.Poop, poop);
+        objectPool.AddToPool(Tags.Poop, poop);
 
         StartCoroutine(MoveSplashToPool(splash));
     }
@@ -41,6 +40,6 @@ public class GroundSplash : MonoBehaviour
     {
         yield return new WaitForSeconds(DISAPPEAR_TIME);
 
-        ObjectPooler.Instance.AddToPool(Tags.SplashEffect, splash);
+        objectPool.AddToPool(Tags.SplashEffect, splash);
     }
 }

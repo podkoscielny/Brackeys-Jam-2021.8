@@ -8,9 +8,9 @@ public class Explosion : MonoBehaviour
     [SerializeField] Animator explosionAnimator;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] LayerMask layerToImpact;
+    [SerializeField] ObjectPool objectPool;
 
     private GameManager _gameManager;
-    private ObjectPooler _objectPooler;
     private CameraShake _cameraShake;
 
     private Vector3 _offset = new Vector3(0, -2f, 0);
@@ -31,7 +31,6 @@ public class Explosion : MonoBehaviour
         else
         {
             _gameManager = GameManager.Instance;
-            _objectPooler = ObjectPooler.Instance;
 
             _isFullyLoaded = true;
         }
@@ -68,5 +67,5 @@ public class Explosion : MonoBehaviour
         _cameraShake.ShakeCamera(_cameraShakeIntensity, _cameraShakeDuration);
     }
 
-    public void MoveExplosionToPool() => _objectPooler.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation
+    public void MoveExplosionToPool() => objectPool.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation
 }

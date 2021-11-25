@@ -8,8 +8,8 @@ public class Poop : MonoBehaviour
 {
     [SerializeField] Rigidbody2D poopRb;
     [SerializeField] Animator poopAnimator;
+    [SerializeField] ObjectPool objectPool;
 
-    private ObjectPooler _objectPooler;
     private GameManager _gameManager;
     private Transform _spawnPoop;
 
@@ -34,7 +34,6 @@ public class Poop : MonoBehaviour
         {
             _isFullyLoaded = true;
             _gameManager = GameManager.Instance;
-            _objectPooler = ObjectPooler.Instance;
         }
     }
 
@@ -70,7 +69,7 @@ public class Poop : MonoBehaviour
 
     private void SpawnExplosionEffect()
     {
-        GameObject explosion = _objectPooler.GetFromPoolInActive(Tags.Explosion);
+        GameObject explosion = objectPool.GetFromPoolInActive(Tags.Explosion);
         explosion.transform.position = (Vector2)transform.position + _explosionOffset;
         explosion.SetActive(true);
     }

@@ -11,8 +11,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] HostileEnemy[] hostileEnemies;
+    [SerializeField] ObjectPool objectPool;
     
-    private ObjectPooler _objectPooler;
     private Vector3 _randomStopPosition;
     private bool _isFacingRight;
 
@@ -31,8 +31,6 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         SetRandomStopPosition();
     }
 
-    void Start() => _objectPooler = ObjectPooler.Instance;
-
     public void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
@@ -46,7 +44,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     public void Shoot() // Invoke in Shoot animation
     {
-        GameObject bullet = _objectPooler.GetFromPoolInActive(Tags.Bullet);
+        GameObject bullet = objectPool.GetFromPoolInActive(Tags.Bullet);
 
         bullet.transform.SetPositionAndRotation(firePoint.position, gun.rotation);
         bullet.SetActive(true);

@@ -120,3 +120,4 @@ MonoBehaviour:
   layerToImpact:
     serializedVersion: 2
     m_Bits: 256
+  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}

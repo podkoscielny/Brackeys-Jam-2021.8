@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject poopPrefab;
     [SerializeField] Transform poopSpawn;
     [SerializeField] Joystick joystick;
+    [SerializeField] ObjectPool objectPool;
 
-    private ObjectPooler _objectPooler;
     private WaitForSeconds _waitForShootDelay;
 
     private bool _canShoot = true;
@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _objectPooler = ObjectPooler.Instance;
         _waitForShootDelay = new WaitForSeconds(SHOOT_DELAY);
         _movementDelegate = StandaloneMovement;
 
@@ -78,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_canShoot) return;
 
-        GameObject poop = _objectPooler.GetFromPool(Tags.Poop);
+        GameObject poop = objectPool.GetFromPool(Tags.Poop);
         poop.transform.position = poopSpawn.position;
         _canShoot = false;
 

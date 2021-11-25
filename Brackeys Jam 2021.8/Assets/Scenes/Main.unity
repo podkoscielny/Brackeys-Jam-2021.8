@@ -1842,6 +1842,7 @@ MonoBehaviour:
   poopPrefab: {fileID: 7332715859959600718, guid: 026760682ab5e5a4e9385d6830f6e48b, type: 3}
   poopSpawn: {fileID: 392663328}
   joystick: {fileID: 1396146143}
+  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
 --- !u!114 &554064760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3500,10 +3501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poopLevels:
+  - {fileID: 11400000, guid: 9ae4ab586e870bc40ab6bae59324beb8, type: 2}
   - {fileID: 11400000, guid: 0c35d13995e07d34a81801dcce643282, type: 2}
   - {fileID: 11400000, guid: d6acb3cabfb92cf4f8692f0ce06317f2, type: 2}
   - {fileID: 11400000, guid: b184cd29fe0351a4281b5a36e2376380, type: 2}
-  - {fileID: 11400000, guid: 9ae4ab586e870bc40ab6bae59324beb8, type: 2}
   - {fileID: 11400000, guid: 2cb1ff24170342c428fc6d63de23b2ca, type: 2}
   - {fileID: 11400000, guid: 834786a9fdd5cec47bf24f65a304f8d2, type: 2}
   chaosStars:
@@ -3585,6 +3586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5353a646dbe4d4bbc0a3a9fd73da02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
 --- !u!50 &1135680355
 Rigidbody2D:
   serializedVersion: 4
@@ -3885,6 +3887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045d5f4fbc0842646863c0ff6a32d60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
 --- !u!4 &1184998421
 Transform:
   m_ObjectHideFlags: 0

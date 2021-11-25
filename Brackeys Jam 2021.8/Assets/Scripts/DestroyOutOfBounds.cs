@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    private ObjectPooler _objectPooler;
-
-    void Start() => _objectPooler = ObjectPooler.Instance;
+    [SerializeField] ObjectPool objectPool;
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (_objectPooler.IsTagInDictionary(collision.tag))
+        if (objectPool.IsTagInDictionary(collision.tag))
         {
-            _objectPooler.AddToPool(collision.tag, collision.gameObject);
+            objectPool.AddToPool(collision.tag, collision.gameObject);
         }
     }
 }

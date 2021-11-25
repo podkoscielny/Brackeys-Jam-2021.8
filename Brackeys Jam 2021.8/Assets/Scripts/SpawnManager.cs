@@ -65,7 +65,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnNeutral()
     {
-        GameObject nonHostile = objectPool.GetFromPool(Tags.Character);
+        GameObject nonHostile = objectPool.GetFromPoolInActive(Tags.Character);
 
         if (nonHostile != null)
         {
@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
 
         if (hostiles.Length < _hostileLimit)
         {
-            GameObject hostile = objectPool.GetFromPool(Tags.Hostile);
+            GameObject hostile = objectPool.GetFromPoolInActive(Tags.Hostile);
 
             if (hostile != null)
             {
@@ -132,6 +132,8 @@ public class SpawnManager : MonoBehaviour
 
         character.transform.position = charactersPosition;
         character.transform.rotation = isMovingRight ? RIGHT_ROTATION : LEFT_ROTATION;
+
+        character.SetActive(true);
     }
 
     private void ChangeSpawnIntervals(int chaosStarsAmount)

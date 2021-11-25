@@ -64,7 +64,32 @@ public class ObjectPool : ScriptableObject
         {
             Queue<GameObject> pool = poolDictionary[tag];
             GameObject objectToSpawn = pool.Dequeue();
+
             objectToSpawn.SetActive(true);
+
+            return objectToSpawn;
+        }
+    }
+
+    public GameObject GetFromPoolInActive(string tag)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            return null;
+        }
+        else if (poolDictionary[tag].Count < 1)
+        {
+            GameObject desiredPrefab = pools.Find(p => p.tag == tag).prefab;
+            GameObject desiredObject = Instantiate(desiredPrefab);
+
+            desiredObject.SetActive(false);
+
+            return desiredObject;
+        }
+        else
+        {
+            Queue<GameObject> pool = poolDictionary[tag];
+            GameObject objectToSpawn = pool.Dequeue();
 
             return objectToSpawn;
         }
