@@ -71,7 +71,7 @@ public class ObjectPool : ScriptableObject
         }
     }
 
-    public GameObject GetFromPoolInActive(string tag)
+    public GameObject GetFromPool(string tag, Vector3 position)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -81,8 +81,7 @@ public class ObjectPool : ScriptableObject
         {
             GameObject desiredPrefab = pools.Find(p => p.tag == tag).prefab;
             GameObject desiredObject = Instantiate(desiredPrefab);
-
-            desiredObject.SetActive(false);
+            desiredObject.transform.position = position;
 
             return desiredObject;
         }
@@ -90,6 +89,35 @@ public class ObjectPool : ScriptableObject
         {
             Queue<GameObject> pool = poolDictionary[tag];
             GameObject objectToSpawn = pool.Dequeue();
+
+            objectToSpawn.transform.position = position;
+            objectToSpawn.SetActive(true);
+
+            return objectToSpawn;
+        }
+    }
+
+    public GameObject GetFromPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            return null;
+        }
+        else if (poolDictionary[tag].Count < 1)
+        {
+            GameObject desiredPrefab = pools.Find(p => p.tag == tag).prefab;
+            GameObject desiredObject = Instantiate(desiredPrefab);
+            desiredObject.transform.SetPositionAndRotation(position, rotation);
+
+            return desiredObject;
+        }
+        else
+        {
+            Queue<GameObject> pool = poolDictionary[tag];
+            GameObject objectToSpawn = pool.Dequeue();
+
+            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
+            objectToSpawn.SetActive(true);
 
             return objectToSpawn;
         }

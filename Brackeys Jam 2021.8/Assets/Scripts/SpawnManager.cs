@@ -65,48 +65,35 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnNeutral()
     {
-        GameObject nonHostile = objectPool.GetFromPoolInActive(Tags.Character);
+        if (!objectPool.IsTagInDictionary(Tags.Character)) return;
 
-        if (nonHostile != null)
-        {
-            SetCharactersPosition(nonHostile);
-        }
+        GetCharacterFromPool(Tags.Character);
     }
 
     private void SpawnHostile()
     {
-        GameObject[] hostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile);
+        int spawnedHostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile).Length;
 
-        if (hostiles.Length < _hostileLimit)
-        {
-            GameObject hostile = objectPool.GetFromPoolInActive(Tags.Hostile);
+        if (!objectPool.IsTagInDictionary(Tags.Hostile) || spawnedHostiles >= _hostileLimit) return;
 
-            if (hostile != null)
-            {
-                SetCharactersPosition(hostile);
-            }
-        }
+        GetCharacterFromPool(Tags.Hostile);
     }
 
     private void SpawnCorn()
     {
         GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
 
-        if (corns.Length < _cornLimit && _cornsSpawned < _gameManager.ChargeGoal && _gameManager.CanCornBeSpawn())
-        {
-            GameObject corn = objectPool.GetFromPool(Tags.Corn);
+        if (corns.Length >= _cornLimit || _cornsSpawned >= _gameManager.ChargeGoal || !_gameManager.CanCornBeSpawn() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
 
-            if (corn != null)
-            {
-                int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
-                PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
+        int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
+        PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
 
-                float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
-                corn.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
+        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
+        Vector2 cornsPosition = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
 
-                _cornsSpawned++;
-            }
-        }
+        _cornsSpawned++;
+
+        objectPool.GetFromPool(Tags.Corn, cornsPosition);
     }
 
     private void SpawnLife()
@@ -122,18 +109,16 @@ public class SpawnManager : MonoBehaviour
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;
 
-    private void SetCharactersPosition(GameObject character)
+    private void GetCharacterFromPool(string tag)
     {
         bool isMovingRight = Random.Range(0, 2) == 1;
 
         float randomX = isMovingRight ? -SPAWN_X_RANGE : SPAWN_X_RANGE;
         float randomY = Random.Range(SPAWN_MIN_Y, SPAWN_MAX_Y);
         Vector3 charactersPosition = new Vector3(randomX, randomY, randomY);
+        Quaternion charactersRotation = isMovingRight ? RIGHT_ROTATION : LEFT_ROTATION;
 
-        character.transform.position = charactersPosition;
-        character.transform.rotation = isMovingRight ? RIGHT_ROTATION : LEFT_ROTATION;
-
-        character.SetActive(true);
+        objectPool.GetFromPool(tag, charactersPosition, charactersRotation);
     }
 
     private void ChangeSpawnIntervals(int chaosStarsAmount)

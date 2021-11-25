@@ -69,8 +69,7 @@ public class Poop : MonoBehaviour
 
     private void SpawnExplosionEffect()
     {
-        GameObject explosion = objectPool.GetFromPoolInActive(Tags.Explosion);
-        explosion.transform.position = (Vector2)transform.position + _explosionOffset;
-        explosion.SetActive(true);
+        Vector2 explosionPosition = (Vector2)transform.position + _explosionOffset;
+        objectPool.GetFromPool(Tags.Explosion, explosionPosition);
     }
 }

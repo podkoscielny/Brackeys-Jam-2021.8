@@ -10,9 +10,9 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] HostileEnemy[] hostileEnemies;
     [SerializeField] ObjectPool objectPool;
-    
+    [SerializeField] HostileEnemy[] hostileEnemies;
+
     private Vector3 _randomStopPosition;
     private bool _isFacingRight;
 
@@ -42,13 +42,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         }
     }
 
-    public void Shoot() // Invoke in Shoot animation
-    {
-        GameObject bullet = objectPool.GetFromPoolInActive(Tags.Bullet);
-
-        bullet.transform.SetPositionAndRotation(firePoint.position, gun.rotation);
-        bullet.SetActive(true);
-    }
+    public void Shoot() => objectPool.GetFromPool(Tags.Bullet, firePoint.position, gun.rotation);
 
     public void MoveEnemyToPool() => gameObject.SetActive(false);
 
