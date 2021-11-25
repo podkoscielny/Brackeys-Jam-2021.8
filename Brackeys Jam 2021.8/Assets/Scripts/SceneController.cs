@@ -25,6 +25,8 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync("Main");
     }
 
+    public void GoToMenu() => SceneManager.LoadSceneAsync("Menu");
+
     public void GoToGameplay()
     {
         SceneManager.LoadSceneAsync("Main");

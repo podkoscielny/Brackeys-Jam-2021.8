@@ -14,9 +14,9 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] PickableCoords[] pickableSpawnPositions;
     [SerializeField] GameObject life;
+    [SerializeField] ObjectPool objectPool;
 
     private GameManager _gameManager;
-    private ObjectPooler _objectPooler;
 
     private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
     private readonly Quaternion LEFT_ROTATION = new Quaternion(0, 1, 0, 0);
@@ -59,12 +59,13 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _objectPooler = ObjectPooler.Instance;
+
+        objectPool.InitializePool();
     }
 
     private void SpawnNeutral()
     {
-        GameObject nonHostile = _objectPooler.GetFromPoolInActive(Tags.Character);
+        GameObject nonHostile = objectPool.GetFromPoolInActive(Tags.Character);
 
         if (nonHostile != null)
         {
@@ -78,7 +79,7 @@ public class SpawnManager : MonoBehaviour
 
         if (hostiles.Length < _hostileLimit)
         {
-            GameObject hostile = _objectPooler.GetFromPoolInActive(Tags.Hostile);
+            GameObject hostile = objectPool.GetFromPoolInActive(Tags.Hostile);
 
             if (hostile != null)
             {
@@ -93,7 +94,7 @@ public class SpawnManager : MonoBehaviour
 
         if (corns.Length < _cornLimit && _cornsSpawned < _gameManager.ChargeGoal && _gameManager.CanCornBeSpawn())
         {
-            GameObject corn = _objectPooler.GetFromPool(Tags.Corn);
+            GameObject corn = objectPool.GetFromPool(Tags.Corn);
 
             if (corn != null)
             {
