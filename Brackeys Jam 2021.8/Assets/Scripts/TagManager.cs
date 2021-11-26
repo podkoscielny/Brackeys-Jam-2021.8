@@ -9,12 +9,12 @@ public class TagManager : MonoBehaviour
 
     void Awake()
     {
-        Label.CacheObjectToFindWithTag(gameObject, tags);
+        this.CacheObjectToTagSystem(gameObject, tags);
     }
 
     void OnDestroy()
     {
-        Label.RemoveObjectFromFindWithTag(gameObject, tags);
+        this.RemoveObjectFromTagSystem(gameObject, tags);
     }
 
     public bool HasTag(Tags tag) => tags.Contains(tag);

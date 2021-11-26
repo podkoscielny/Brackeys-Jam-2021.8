@@ -64,7 +64,17 @@ public static class Label
         return _readonlyObjects[tag];
     }
 
-    public static void CacheObjectToFindWithTag(GameObject objectToCache, List<Tags> tags)
+    public static void CacheObjectToTagSystem(this TagManager tagManager, GameObject gameObjectToCache, List<Tags> tags)
+    {
+        CacheObjectToFindWithTag(gameObjectToCache, tags);
+    }
+
+    public static void RemoveObjectFromTagSystem(this TagManager tagManager, GameObject objectToBeRemoved, List<Tags> tags)
+    {
+        RemoveObjectFromFindWithTag(objectToBeRemoved, tags);
+    }
+
+    private static void CacheObjectToFindWithTag(GameObject objectToCache, List<Tags> tags)
     {
         foreach (var item in TaggedObjects)
         {
@@ -75,7 +85,7 @@ public static class Label
         }
     }
 
-    public static void RemoveObjectFromFindWithTag(GameObject objectToBeRemoved, List<Tags> tags)
+    private static void RemoveObjectFromFindWithTag(GameObject objectToBeRemoved, List<Tags> tags)
     {
         foreach (var item in TaggedObjects)
         {
@@ -86,4 +96,3 @@ public static class Label
         }
     }
 }
-
