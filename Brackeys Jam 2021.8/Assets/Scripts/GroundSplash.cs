@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
-using Labels = Label.Labels;
+using Tags = Label.Tags;
 
 public class GroundSplash : MonoBehaviour
 {
@@ -18,20 +18,20 @@ public class GroundSplash : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.HasLabel(Labels.Poop)) return;
+        if (!collision.HasTag(Tags.Poop)) return;
 
         SpawnSplashEffect(collision.gameObject);
     }
 
     private void SpawnSplashEffect(GameObject poop)
     {
-        GameObject splash = objectPool.GetFromPool(Tags.SplashEffect);
+        GameObject splash = objectPool.GetFromPool(Helpers.Tags.SplashEffect);
 
         if (splash == null) return;
 
         splash.transform.position = poop.transform.position;
         splash.transform.SetParent(transform);
-        objectPool.AddToPool(Tags.Poop, poop);
+        objectPool.AddToPool(Helpers.Tags.Poop, poop);
 
         StartCoroutine(MoveSplashToPool(splash));
     }
@@ -40,6 +40,6 @@ public class GroundSplash : MonoBehaviour
     {
         yield return new WaitForSeconds(DISAPPEAR_TIME);
 
-        objectPool.AddToPool(Tags.SplashEffect, splash);
+        objectPool.AddToPool(Helpers.Tags.SplashEffect, splash);
     }
 }

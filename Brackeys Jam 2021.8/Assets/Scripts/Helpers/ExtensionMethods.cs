@@ -1,43 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Labels = Label.Labels;
+using Tags = Label.Tags;
 
 public static class ExtensionMethods
 {
-    public static bool HasLabel(this GameObject gameObject, Labels label)
+    public static bool HasTag(this GameObject gameObject, Tags tag)
     {
-        bool hasFlag = false;
+        bool hasTag = false;
 
         if (gameObject.TryGetComponent(out TagManager tagManager))
         {
-            hasFlag = tagManager.HasLabel(label);
+            hasTag = tagManager.HasTag(tag);
         }
 
-        return hasFlag;
+        return hasTag;
     }
 
-    public static bool HasLabel(this Collision2D collision, Labels label)
+    public static bool HasTag(this Collision2D collision, Tags tag)
     {
-        bool hasFlag = false;
+        bool hasTag = false;
 
         if (collision.gameObject.TryGetComponent(out TagManager tagManager))
         {
-            hasFlag = tagManager.HasLabel(label);
+            hasTag = tagManager.HasTag(tag);
         }
 
-        return hasFlag;
+        return hasTag;
     }
 
-    public static bool HasLabel(this Collider2D collision, Labels label)
+    public static bool HasTag(this Collider2D collision, Tags tag)
     {
-        bool hasFlag = false;
+        bool hasTag = false;
 
         if (collision.TryGetComponent(out TagManager tagManager))
         {
-            hasFlag = tagManager.HasLabel(label);
+            hasTag = tagManager.HasTag(tag);
         }
 
-        return hasFlag;
+        return hasTag;
     }
 }

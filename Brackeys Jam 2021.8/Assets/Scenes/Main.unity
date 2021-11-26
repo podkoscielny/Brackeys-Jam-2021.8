@@ -1444,8 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labels: 2048
-  tags: 
+  tags: 0c000000
 --- !u!1001 &412607608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3450,7 +3449,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ee9e3932c76fb64f9de9ccad941113f, type: 2}
   - {fileID: 11400000, guid: def7374d812f1da4db7addb4032808cc, type: 2}
   - {fileID: 11400000, guid: 80ce1f91f1ecc04448f7a102e29bdb7b, type: 2}
-  MAX_LIVES_AMOUNT: 5
 --- !u!1 &1135680349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labels: 1088
   tags: 070000000b000000
 --- !u!1 &1188629593
 GameObject:

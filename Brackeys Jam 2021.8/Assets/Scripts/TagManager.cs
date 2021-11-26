@@ -1,23 +1,21 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Labels = Label.Labels;
 using Tags = Label.Tags;
 
 public class TagManager : MonoBehaviour
 {
-    [SerializeField] Labels labels;
     [SerializeField] List<Tags> tags;
 
     void Awake()
     {
-        Label.CacheObjectToFindWithLabel(gameObject, labels);
+        Label.CacheObjectToFindWithTag(gameObject, tags);
     }
 
     void OnDestroy()
     {
-        Label.RemoveObjectFromFindWithLabel(gameObject, labels);
+        Label.RemoveObjectFromFindWithTag(gameObject, tags);
     }
 
-    public bool HasLabel(Labels label) => (labels & label) == label;
+    public bool HasTag(Tags tag) => tags.Contains(tag);
 }

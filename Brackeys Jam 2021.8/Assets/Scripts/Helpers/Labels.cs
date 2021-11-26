@@ -5,27 +5,6 @@ using UnityEngine;
 
 public static class Label
 {
-    private static Dictionary<Labels, List<GameObject>> LabeledObjects = new Dictionary<Labels, List<GameObject>>();
-
-    [Serializable]
-    [Flags]
-    public enum Labels
-    {
-        //None = 0,
-        Poop = 1 << 0,
-        Corn = 1 << 1,
-        Character = 1 << 2,
-        Bullet = 1 << 3,
-        Hostile = 1 << 4,
-        SplashEffect = 1 << 5,
-        Ground = 1 << 6,
-        Explosion = 1 << 7,
-        Player = 1 << 8,
-        Life = 1 << 9,
-        HittableByPoop = 1 << 10,
-        PoopSpawn = 1 << 11
-    }
-
     [Serializable]
     public enum Tags
     {
@@ -44,56 +23,58 @@ public static class Label
         PoopSpawn = 12
     }
 
+    private static Dictionary<Tags, List<GameObject>> TaggedObjects = new Dictionary<Tags, List<GameObject>>();
+
     static Label()
     {
-        InitializeLabeledObjectsDictionary();
+        InitializeTaggedObjectsDictionary();
     }
 
-    private static void InitializeLabeledObjectsDictionary()
+    private static void InitializeTaggedObjectsDictionary()
     {
-        Type enumType = typeof(Labels);
+        Type enumType = typeof(Tags);
         var enumValues = Enum.GetValues(enumType);
 
         foreach (var value in enumValues)
         {
-            LabeledObjects.Add((Labels)value, new List<GameObject>());
+            TaggedObjects.Add((Tags)value, new List<GameObject>());
         }
     }
 
-    public static GameObject FindGameObjectWithLabel(Labels label)
+    public static GameObject FindGameObjectWithTag(Tags tag)
     {
-        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return null;
+        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return null;
 
-        return LabeledObjects[label][0];
+        return TaggedObjects[tag][0];
     }
 
-    public static GameObject[] FindAllGameObjecstWithLabel(Labels label)
+    public static GameObject[] FindAllGameObjecstWithTag(Tags tag)
     {
-        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return Array.Empty<GameObject>();
+        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return Array.Empty<GameObject>();
 
-        GameObject[] labeledGameObjects = LabeledObjects[label].ToArray();
+        GameObject[] labeledGameObjects = TaggedObjects[tag].ToArray();
 
         return labeledGameObjects;
     }
 
-    public static void CacheObjectToFindWithLabel(GameObject objectToCache, Labels labels)
+    public static void CacheObjectToFindWithTag(GameObject objectToCache, List<Tags> tags)
     {
-        foreach (Enum value in Enum.GetValues(labels.GetType()))
+        foreach (var item in TaggedObjects)
         {
-            if (labels.HasFlag(value))
+            if (tags.Contains(item.Key))
             {
-                LabeledObjects[(Labels)value].Add(objectToCache);
+                TaggedObjects[item.Key].Add(objectToCache);
             }
         }
     }
 
-    public static void RemoveObjectFromFindWithLabel(GameObject objectToBeRemoved, Labels labels)
+    public static void RemoveObjectFromFindWithTag(GameObject objectToBeRemoved, List<Tags> tags)
     {
-        foreach (Enum value in Enum.GetValues(labels.GetType()))
+        foreach (var item in TaggedObjects)
         {
-            if (labels.HasFlag(value))
+            if (tags.Contains(item.Key))
             {
-                LabeledObjects[(Labels)value].Remove(objectToBeRemoved);
+                TaggedObjects[item.Key].Remove(objectToBeRemoved);
             }
         }
     }
