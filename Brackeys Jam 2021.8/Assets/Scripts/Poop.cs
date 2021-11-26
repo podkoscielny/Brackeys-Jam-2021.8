@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Helpers;
-using Tags = Label.Tags;
+using Tags = TagSystem.Tags;
 
 public class Poop : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class Poop : MonoBehaviour
 
     private const int GRAVITY_SCALE = 3;
 
-    void Start() => _spawnPoop = Label.FindGameObjectWithTag(Tags.PoopSpawn).transform;
+    void Start() => _spawnPoop = TagSystem.FindGameObjectWithTag(Tags.PoopSpawn).transform;
 
     void OnEnable()
     {

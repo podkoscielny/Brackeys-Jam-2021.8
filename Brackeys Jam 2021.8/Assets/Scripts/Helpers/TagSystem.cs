@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-public static class Label
+public static class TagSystem 
 {
     [Serializable]
     public enum Tags
@@ -29,7 +29,7 @@ public static class Label
 
     private static ReadOnlyCollection<GameObject> _emptyList = new List<GameObject>().AsReadOnly();
 
-    static Label()
+    static TagSystem()
     {
         InitializeTaggedObjectsDictionary();
     }

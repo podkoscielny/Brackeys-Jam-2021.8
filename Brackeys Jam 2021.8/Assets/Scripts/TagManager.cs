@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Tags = Label.Tags;
+using Tags = TagSystem.Tags;
 
 public class TagManager : MonoBehaviour
 {
