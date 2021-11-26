@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 public static class Label
@@ -24,6 +25,9 @@ public static class Label
     }
 
     private static Dictionary<Tags, List<GameObject>> TaggedObjects = new Dictionary<Tags, List<GameObject>>();
+    private static Dictionary<Tags, ReadOnlyCollection<GameObject>> _readonlyObjects = new Dictionary<Tags, ReadOnlyCollection<GameObject>>();
+
+    private static ReadOnlyCollection<GameObject> _emptyList = new List<GameObject>().AsReadOnly();
 
     static Label()
     {
@@ -39,6 +43,11 @@ public static class Label
         {
             TaggedObjects.Add((Tags)value, new List<GameObject>());
         }
+
+        foreach (var item in TaggedObjects)
+        {
+            _readonlyObjects.Add(item.Key, item.Value.AsReadOnly());
+        }
     }
 
     public static GameObject FindGameObjectWithTag(Tags tag)
@@ -48,13 +57,11 @@ public static class Label
         return TaggedObjects[tag][0];
     }
 
-    public static GameObject[] FindAllGameObjecstWithTag(Tags tag)
+    public static ReadOnlyCollection<GameObject> FindAllGameObjectsWithTag(Tags tag)
     {
-        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return Array.Empty<GameObject>();
+        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return _emptyList;
 
-        GameObject[] labeledGameObjects = TaggedObjects[tag].ToArray();
-
-        return labeledGameObjects;
+        return _readonlyObjects[tag];
     }
 
     public static void CacheObjectToFindWithTag(GameObject objectToCache, List<Tags> tags)

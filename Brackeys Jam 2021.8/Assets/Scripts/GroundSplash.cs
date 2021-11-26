@@ -7,6 +7,7 @@ using Tags = Label.Tags;
 public class GroundSplash : MonoBehaviour
 {
     [SerializeField] ObjectPool objectPool;
+
     private WaitForSeconds _waitForSplashEffectToDisappear;
 
     private const float DISAPPEAR_TIME = 5f;

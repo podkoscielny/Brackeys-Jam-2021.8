@@ -37,6 +37,8 @@ public class SpawnManager : MonoBehaviour
     private const float CORN_MAX_POSITION_X = 7f;
     private const float CORN_POSITION_Y = 3f;
 
+    private void Awake() => objectPool.InitializePool();
+
     void OnEnable()
     {
         GameManager.OnGameOver += CancelOngoingInvokes;
@@ -56,12 +58,7 @@ public class SpawnManager : MonoBehaviour
         CancelOngoingInvokes();
     }
 
-    void Start()
-    {
-        _gameManager = GameManager.Instance;
-
-        objectPool.InitializePool();
-    }
+    void Start() => _gameManager = GameManager.Instance;
 
     private void SpawnNeutral()
     {
