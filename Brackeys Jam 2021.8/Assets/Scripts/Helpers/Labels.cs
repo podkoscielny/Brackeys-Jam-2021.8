@@ -26,6 +26,24 @@ public static class Label
         PoopSpawn = 1 << 11
     }
 
+    [Serializable]
+    public enum Tags
+    {
+        None = 0,
+        Poop = 1,
+        Corn = 2,
+        Character = 3,
+        Bullet = 4,
+        Hostile = 5,
+        SplashEffect = 6,
+        Ground = 7,
+        Explosion = 8,
+        Player = 9,
+        Life = 10,
+        HittableByPoop = 11,
+        PoopSpawn = 12
+    }
+
     static Label()
     {
         InitializeLabeledObjectsDictionary();
@@ -51,11 +69,9 @@ public static class Label
 
     public static GameObject[] FindAllGameObjecstWithLabel(Labels label)
     {
-        GameObject[] labeledGameObjects = new GameObject[0];
+        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return Array.Empty<GameObject>();
 
-        if (!LabeledObjects.ContainsKey(label) || LabeledObjects[label].Count < 1) return labeledGameObjects;
-
-        labeledGameObjects = LabeledObjects[label].ToArray();
+        GameObject[] labeledGameObjects = LabeledObjects[label].ToArray();
 
         return labeledGameObjects;
     }
