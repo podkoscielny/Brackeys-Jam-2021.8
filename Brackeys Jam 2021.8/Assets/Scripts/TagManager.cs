@@ -7,12 +7,12 @@ public class TagManager : MonoBehaviour
 {
     [SerializeField] List<Tags> tags;
 
-    void Awake()
+    void OnEnable()
     {
         this.CacheObjectToTagSystem(gameObject, tags);
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
         this.RemoveObjectFromTagSystem(gameObject, tags);
     }

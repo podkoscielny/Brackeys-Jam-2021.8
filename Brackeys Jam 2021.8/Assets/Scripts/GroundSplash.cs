@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
 using Tags = TagSystem.Tags;
 
 public class GroundSplash : MonoBehaviour
@@ -26,13 +25,13 @@ public class GroundSplash : MonoBehaviour
 
     private void SpawnSplashEffect(GameObject poop)
     {
-        GameObject splash = objectPool.GetFromPool(Helpers.Tags.SplashEffect);
+        GameObject splash = objectPool.GetFromPool(Tags.SplashEffect);
 
         if (splash == null) return;
 
         splash.transform.position = poop.transform.position;
         splash.transform.SetParent(transform);
-        objectPool.AddToPool(Helpers.Tags.Poop, poop);
+        objectPool.AddToPool(Tags.Poop, poop);
 
         StartCoroutine(MoveSplashToPool(splash));
     }
@@ -41,6 +40,6 @@ public class GroundSplash : MonoBehaviour
     {
         yield return new WaitForSeconds(DISAPPEAR_TIME);
 
-        objectPool.AddToPool(Helpers.Tags.SplashEffect, splash);
+        objectPool.AddToPool(Tags.SplashEffect, splash);
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
+using Tags = TagSystem.Tags;
 
 [System.Serializable]
 public struct PickableCoords
@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnHostile()
     {
-        int spawnedHostiles = GameObject.FindGameObjectsWithTag(Tags.Hostile).Length;
+        int spawnedHostiles = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
 
         if (!objectPool.IsTagInDictionary(Tags.Hostile) || spawnedHostiles >= _hostileLimit) return;
 
@@ -78,9 +78,9 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnCorn()
     {
-        GameObject[] corns = GameObject.FindGameObjectsWithTag(Tags.Corn);
+        int spawnedCorns = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
 
-        if (corns.Length >= _cornLimit || _cornsSpawned >= _gameManager.ChargeGoal || !_gameManager.CanCornBeSpawn() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
+        if (spawnedCorns >= _cornLimit || _cornsSpawned >= _gameManager.ChargeGoal || !_gameManager.CanCornBeSpawn() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
 
         int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
         PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
@@ -106,7 +106,7 @@ public class SpawnManager : MonoBehaviour
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;
 
-    private void GetCharacterFromPool(string tag)
+    private void GetCharacterFromPool(Tags tag)
     {
         bool isMovingRight = Random.Range(0, 2) == 1;
 

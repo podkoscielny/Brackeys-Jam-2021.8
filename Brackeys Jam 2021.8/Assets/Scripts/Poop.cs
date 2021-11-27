@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
 using Tags = TagSystem.Tags;
 
 public class Poop : MonoBehaviour
@@ -70,6 +69,6 @@ public class Poop : MonoBehaviour
     private void SpawnExplosionEffect()
     {
         Vector2 explosionPosition = (Vector2)transform.position + _explosionOffset;
-        objectPool.GetFromPool(Helpers.Tags.Explosion, explosionPosition);
+        objectPool.GetFromPool(Tags.Explosion, explosionPosition);
     }
 }

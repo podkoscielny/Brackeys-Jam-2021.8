@@ -8,9 +8,9 @@ public class DestroyOutOfBounds : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (objectPool.IsTagInDictionary(collision.tag))
+        if (collision.TryGetComponent(out PooledObject pooledObject))
         {
-            objectPool.AddToPool(collision.tag, collision.gameObject);
+            objectPool.AddToPool(pooledObject.PoolTag, collision.gameObject);
         }
     }
 }

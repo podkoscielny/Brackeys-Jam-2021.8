@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Helpers;
+using Tags = TagSystem.Tags;
 
 public class PlayerMovement : MonoBehaviour
 {

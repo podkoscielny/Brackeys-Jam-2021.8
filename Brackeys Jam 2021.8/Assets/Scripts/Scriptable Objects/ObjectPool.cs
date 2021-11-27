@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tags = TagSystem.Tags;
 
 [CreateAssetMenu(fileName = "ObjectPool", menuName = "ScriptableObjects/ObjectPool")]
 public class ObjectPool : ScriptableObject
@@ -8,19 +9,19 @@ public class ObjectPool : ScriptableObject
     [System.Serializable]
     public struct Pool
     {
-        public string tag;
+        public Tags tag;
         public GameObject prefab;
         public int size;
     }
 
     [SerializeField] List<Pool> pools;
-    [SerializeField] Dictionary<string, Queue<GameObject>> poolDictionary;
+    [SerializeField] Dictionary<Tags, Queue<GameObject>> poolDictionary;
 
-    private void OnDisable() => poolDictionary = new Dictionary<string, Queue<GameObject>>();
+    private void OnDisable() => poolDictionary = new Dictionary<Tags, Queue<GameObject>>();
 
     public void InitializePool()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        poolDictionary = new Dictionary<Tags, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
         {
@@ -29,6 +30,7 @@ public class ObjectPool : ScriptableObject
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
+                obj.AddComponent<PooledObject>().SetPoolTag(pool.tag);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
@@ -37,7 +39,7 @@ public class ObjectPool : ScriptableObject
         }
     }
 
-    public void AddToPool(string tag, GameObject instance)
+    public void AddToPool(Tags tag, GameObject instance)
     {
         if (!poolDictionary.ContainsKey(tag)) return;
 
@@ -47,7 +49,7 @@ public class ObjectPool : ScriptableObject
         pool.Enqueue(instance);
     }
 
-    public GameObject GetFromPool(string tag)
+    public GameObject GetFromPool(Tags tag)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -71,7 +73,7 @@ public class ObjectPool : ScriptableObject
         }
     }
 
-    public GameObject GetFromPool(string tag, Vector3 position)
+    public GameObject GetFromPool(Tags tag, Vector3 position)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -97,7 +99,7 @@ public class ObjectPool : ScriptableObject
         }
     }
 
-    public GameObject GetFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject GetFromPool(Tags tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
@@ -123,5 +125,5 @@ public class ObjectPool : ScriptableObject
         }
     }
 
-    public bool IsTagInDictionary(string tag) => poolDictionary.ContainsKey(tag);
+    public bool IsTagInDictionary(Tags tag) => poolDictionary.ContainsKey(tag);
 }
