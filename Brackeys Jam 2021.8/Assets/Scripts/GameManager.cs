@@ -21,14 +21,14 @@ public class GameManager : MonoBehaviour
     public int PoopChargeLevel { get; private set; } = 1;
     public int ChargeGoal { get; private set; } = 3;
     public int ChaosStarsAmount { get; private set; } = 0;
-    public int MAX_CHAOS_STARS_AMOUNT { get { return chaosStars.Length; } }
-    public int MAX_POOP_CHARGE_LEVEL { get { return poopLevels.Length; } }
+    public int MAX_CHAOS_STARS_AMOUNT => chaosStars.Length;
+    public int MAX_POOP_CHARGE_LEVEL => poopLevels.Length;
 
     public float PlayersLives { get; private set; } = 3;
     public int MAX_LIVES_AMOUNT { get; private set; } = 5;
 
     public ExplosionType ExplosionEffect { get; private set; }
-    public PoopType CurrentPoop { get { return poopLevels[PoopChargeLevel - 1]; } }
+    public PoopType CurrentPoop => poopLevels[PoopChargeLevel - 1];
     public ChaosStar CurrentChaosStar { get; private set; } = null;
 
     public int PointsToNextChaosStar
