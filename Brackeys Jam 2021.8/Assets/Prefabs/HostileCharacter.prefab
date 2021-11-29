@@ -221,6 +221,7 @@ MonoBehaviour:
   splashEffect: {fileID: 8336473719959366959}
   enemyAnimator: {fileID: 8089543548994752381}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
+  score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
 --- !u!114 &-1284964971435323276
 MonoBehaviour:
   m_ObjectHideFlags: 0

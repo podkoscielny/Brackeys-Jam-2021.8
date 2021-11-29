@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c163c560f94e2f741a8a1fbcedf67c08, type: 3}
+  m_Name: ChaosStarsSystem
+  m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
+  chaosStars:
+  - {fileID: 11400000, guid: 0d736c9acae5feb4792b534141d4f9fc, type: 2}
+  - {fileID: 11400000, guid: 8aac5bcf65f962149a75b9d8ce4153f3, type: 2}
+  - {fileID: 11400000, guid: dcb19795d1c0c4f46bd48983336762e7, type: 2}
+  - {fileID: 11400000, guid: 5ee9e3932c76fb64f9de9ccad941113f, type: 2}
+  - {fileID: 11400000, guid: def7374d812f1da4db7addb4032808cc, type: 2}
+  - {fileID: 11400000, guid: 80ce1f91f1ecc04448f7a102e29bdb7b, type: 2}

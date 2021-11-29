@@ -10,19 +10,14 @@ public class GameManager : MonoBehaviour
 
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
-    public static event Action<float> OnCornEaten;
-    public static event Action OnPoopUpgrade;
     public static event Action OnLifeSpawn;
 
     public bool IsGameOver { get; private set; } = false;
     public int Score { get; private set; }
     public int PoopChargeLevel { get; private set; } = 1;
-    public int ChargeGoal { get; private set; } = 3;
     public int ChaosStarsAmount { get; private set; } = 0;
     public int MAX_CHAOS_STARS_AMOUNT => chaosStars.Length;
-    public int MAX_POOP_CHARGE_LEVEL => poopLevels.Length;
 
-    public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop => poopLevels[PoopChargeLevel - 1];
     public ChaosStar CurrentChaosStar { get; private set; } = null;
 
@@ -35,7 +30,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int _cornEaten = 0;
     private int _lifeSpawnGoal = 3000;
 
     private const int SPAWN_LIFE_TARGET = 3000;
@@ -72,30 +66,5 @@ public class GameManager : MonoBehaviour
         }
 
         OnScoreUpdated?.Invoke(Score);
-    }
-
-    public void EatCorn()
-    {
-        _cornEaten++;
-
-        float fillAmount = (float)_cornEaten / (float)ChargeGoal;
-        OnCornEaten?.Invoke(fillAmount);
-
-        if (_cornEaten == ChargeGoal && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL)
-        {
-            UpgradePoop();
-        }
-    }
-
-    public bool CanCornBeSpawn() => Score > CurrentPoop.pointsWorth * 3 && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL;
-
-    private void UpgradePoop()
-    {
-        PoopChargeLevel++;
-
-        ChargeGoal = PoopChargeLevel * 3;
-        _cornEaten = 0;
-
-        OnPoopUpgrade?.Invoke();
     }
 }

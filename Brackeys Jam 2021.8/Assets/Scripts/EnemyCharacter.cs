@@ -8,6 +8,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     [SerializeField] GameObject splashEffect;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] PoopSystem poopSystem;
+    [SerializeField] Score score;
 
     public float PlayerDamageAmount { get; private set; } = 0.5f;
 
@@ -91,7 +92,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         _hasExploded = true;
         _explodeDirection = new Vector3(direction.x, direction.y, 0).normalized;
 
-        _gameManager.UpdateScore();
+        score.AddPoints(poopSystem.CurrentPoop.pointsWorth);
     }
 
     public void HandlePoopHit(Vector2 splashPosition)
@@ -100,7 +101,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         {
             SetSplashEffect(splashPosition);
 
-            _gameManager.UpdateScore();
+            score.AddPoints(poopSystem.CurrentPoop.pointsWorth);
             enemyAnimator.SetTrigger("IsDown");
 
             _isDown = true;

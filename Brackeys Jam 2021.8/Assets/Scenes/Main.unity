@@ -1094,6 +1094,8 @@ MonoBehaviour:
   currentPoopLevelText: {fileID: 1088129727}
   nextPoopLevelText: {fileID: 681066460}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
+  score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!1 &353837896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,6 +4307,7 @@ MonoBehaviour:
   objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
   score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!1 &1475015178
 GameObject:
   m_ObjectHideFlags: 0

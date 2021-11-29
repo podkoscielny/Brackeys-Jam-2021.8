@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
     [SerializeField] Score score;
+    [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
     private GameManager _gameManager;
 
@@ -44,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     void OnEnable()
     {
         PlayerHealth.OnGameOver += CancelOngoingInvokes;
-        GameManager.OnChaosStarGained += ChangeSpawnIntervals;
+        ChaosStarsSystem.OnChaosStarGained += ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade += ResetPickedUpCorns;
         GameManager.OnLifeSpawn += SpawnLife;
         SceneController.OnGameStart += SetInvokes;
@@ -53,7 +54,7 @@ public class SpawnManager : MonoBehaviour
     void OnDisable()
     {
         PlayerHealth.OnGameOver -= CancelOngoingInvokes;
-        GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
+        ChaosStarsSystem.OnChaosStarGained -= ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade -= ResetPickedUpCorns;
         GameManager.OnLifeSpawn -= SpawnLife;
         SceneController.OnGameStart -= SetInvokes;
@@ -122,13 +123,15 @@ public class SpawnManager : MonoBehaviour
         objectPool.GetFromPool(tag, charactersPosition, charactersRotation);
     }
 
-    private void ChangeSpawnIntervals(int chaosStarsAmount)
+    private void ChangeSpawnIntervals()
     {
         CancelOngoingInvokes();
 
-        _neutralInterval = _gameManager.CurrentChaosStar.neutralSpawnRate;
-        _hostileInterval = _gameManager.CurrentChaosStar.hostileSpawnRate;
-        _hostileLimit = _gameManager.CurrentChaosStar.hostilesLimit;
+        ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
+
+        _neutralInterval = currentChaosStar.neutralSpawnRate;
+        _hostileInterval = currentChaosStar.hostileSpawnRate;
+        _hostileLimit = currentChaosStar.hostilesLimit;
 
         SetInvokes();
     }

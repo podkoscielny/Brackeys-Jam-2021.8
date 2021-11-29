@@ -16,14 +16,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI currentPoopLevelText;
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
     [SerializeField] PoopSystem poopSystem;
+    [SerializeField] Score score;
+    [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
-    private GameManager _gameManager;
     private List<GameObject> _chaosStars;
 
     void OnEnable()
     {
-        GameManager.OnScoreUpdated += UpdateScore;
-        GameManager.OnChaosStarGained += EnableChaosStar;
+        Score.OnScoreUpdated += UpdateScore;
+        ChaosStarsSystem.OnChaosStarGained += EnableChaosStar;
         PoopSystem.OnPoopUpgrade += UpdatePoopLevelUI;
         PlayerHealth.OnGameOver += SetGameOverPanel;
         PoopSystem.OnCornEaten += UpdateFillAmount;
@@ -31,8 +32,8 @@ public class UIManager : MonoBehaviour
 
     void OnDisable()
     {
-        GameManager.OnScoreUpdated -= UpdateScore;
-        GameManager.OnChaosStarGained -= EnableChaosStar;
+        Score.OnScoreUpdated -= UpdateScore;
+        ChaosStarsSystem.OnChaosStarGained -= EnableChaosStar;
         PoopSystem.OnPoopUpgrade -= UpdatePoopLevelUI;
         PlayerHealth.OnGameOver -= SetGameOverPanel;
         PoopSystem.OnCornEaten -= UpdateFillAmount;
@@ -40,7 +41,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        _gameManager = GameManager.Instance;
         _chaosStars = new List<GameObject>();
 
         InitializeChaosStars();
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void InitializeChaosStars()
     {
-        for (int i = 0; i < _gameManager.MAX_CHAOS_STARS_AMOUNT; i++)
+        for (int i = 0; i < chaosStarsSystem.MAX_CHAOS_STARS_AMOUNT; i++)
         {
             GameObject star = Instantiate(chaosStarPrefab);
             star.transform.SetParent(chaosStarsWrapper);
@@ -62,9 +62,9 @@ public class UIManager : MonoBehaviour
 
     private void DisplayMobileUI() => mobileUI.SetActive(true);
 
-    private void UpdateScore(int score) => scoreText.text = score.ToString();
+    private void UpdateScore() => scoreText.text = score.Value.ToString();
 
-    private void EnableChaosStar(int chaosStarsAmount) => _chaosStars[chaosStarsAmount - 1].SetActive(true);
+    private void EnableChaosStar() => _chaosStars[chaosStarsSystem.ChaosStarsAmount - 1].SetActive(true);
 
     private void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
