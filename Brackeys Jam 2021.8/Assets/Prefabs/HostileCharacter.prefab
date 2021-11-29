@@ -220,6 +220,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3997750775630636564}
   splashEffect: {fileID: 8336473719959366959}
   enemyAnimator: {fileID: 8089543548994752381}
+  poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
 --- !u!114 &-1284964971435323276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labels: 1536
   tags: 050000000b000000
 --- !u!1 &7615973890221965481
 GameObject:

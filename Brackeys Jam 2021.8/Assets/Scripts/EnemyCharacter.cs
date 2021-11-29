@@ -7,6 +7,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject splashEffect;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] PoopSystem poopSystem;
 
     public float PlayerDamageAmount { get; private set; } = 0.5f;
 
@@ -67,7 +68,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
     private void SetSplashEffect(Vector2 poopPosition)
     {
-        int poopLevel = _gameManager.PoopChargeLevel;
+        int poopLevel = poopSystem.PoopChargeLevel;
 
         _splashTransform.position = poopPosition;
 

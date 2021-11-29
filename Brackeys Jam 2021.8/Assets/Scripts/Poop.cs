@@ -8,6 +8,7 @@ public class Poop : MonoBehaviour
     [SerializeField] Rigidbody2D poopRb;
     [SerializeField] Animator poopAnimator;
     [SerializeField] ObjectPool objectPool;
+    [SerializeField] PoopSystem poopSystem;
 
     private GameManager _gameManager;
     private Transform _spawnPoop;
@@ -27,7 +28,7 @@ public class Poop : MonoBehaviour
 
         if (_isFullyLoaded)
         {
-            poopAnimator.runtimeAnimatorController = _gameManager.CurrentPoop.poopAnimator;
+            poopAnimator.runtimeAnimatorController = poopSystem.CurrentPoop.poopAnimator;
         }
         else
         {
@@ -54,7 +55,7 @@ public class Poop : MonoBehaviour
     {
         if (!collision.HasTag(Tags.HittableByPoop)) return;
 
-        if (_gameManager.CurrentPoop.isExplosive)
+        if (poopSystem.CurrentPoop.isExplosive)
         {
             SpawnExplosionEffect();
         }

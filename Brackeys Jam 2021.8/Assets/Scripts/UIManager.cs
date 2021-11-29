@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI currentPoopLevelText;
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
+    [SerializeField] PoopSystem poopSystem;
 
     private GameManager _gameManager;
     private List<GameObject> _chaosStars;
@@ -23,18 +24,18 @@ public class UIManager : MonoBehaviour
     {
         GameManager.OnScoreUpdated += UpdateScore;
         GameManager.OnChaosStarGained += EnableChaosStar;
-        GameManager.OnPoopUpgrade += UpdatePoopLevelUI;
+        PoopSystem.OnPoopUpgrade += UpdatePoopLevelUI;
         PlayerHealth.OnGameOver += SetGameOverPanel;
-        GameManager.OnCornEaten += UpdateFillAmount;
+        PoopSystem.OnCornEaten += UpdateFillAmount;
     }
 
     void OnDisable()
     {
         GameManager.OnScoreUpdated -= UpdateScore;
         GameManager.OnChaosStarGained -= EnableChaosStar;
-        GameManager.OnPoopUpgrade -= UpdatePoopLevelUI;
+        PoopSystem.OnPoopUpgrade -= UpdatePoopLevelUI;
         PlayerHealth.OnGameOver -= SetGameOverPanel;
-        GameManager.OnCornEaten -= UpdateFillAmount;
+        PoopSystem.OnCornEaten -= UpdateFillAmount;
     }
 
     void Start()
@@ -71,15 +72,17 @@ public class UIManager : MonoBehaviour
 
     private void UpdatePoopLevelUI()
     {
+        int poopLevel = poopSystem.PoopChargeLevel;
+
         bulletsUpgradedAnimator.SetTrigger("Appear");
 
-        bool isPoopMaxed = _gameManager.PoopChargeLevel == _gameManager.MAX_POOP_CHARGE_LEVEL;
+        bool isPoopMaxed = poopLevel == poopSystem.MAX_POOP_CHARGE_LEVEL;
 
-        string nextText = isPoopMaxed ? "Max" : $"{_gameManager.PoopChargeLevel + 1}";
+        string nextText = isPoopMaxed ? "Max" : $"{poopLevel + 1}";
         float fillAmount = !isPoopMaxed ? 0 : 1;
 
         UpdateFillAmount(fillAmount);
-        currentPoopLevelText.text = $"{_gameManager.PoopChargeLevel}";
+        currentPoopLevelText.text = $"{poopLevel}";
         nextPoopLevelText.text = $"{nextText}";
     }
 }

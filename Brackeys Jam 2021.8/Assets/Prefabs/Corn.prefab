@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e74032d3681e024bbf6f76994f4faa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
 --- !u!95 &2658632217522281179
 Animator:
   serializedVersion: 3
@@ -176,5 +177,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labels: 2
   tags: 02000000

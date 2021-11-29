@@ -47,6 +47,11 @@ public class PoopSystem : ScriptableObject
     void OnValidate()
     {
         poopChargeLevel = poopLevels.Length > 0 ? Mathf.Clamp(poopChargeLevel, 1, poopLevels.Length) : 1;
+
+        if (EditorApplication.isPlaying)
+        {
+            OnPoopUpgrade?.Invoke();
+        }
     }
 
     public void EatCorn()

@@ -9,8 +9,8 @@ public class Explosion : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] LayerMask layerToImpact;
     [SerializeField] ObjectPool objectPool;
+    [SerializeField] PoopSystem poopSystem;
 
-    private GameManager _gameManager;
     private CameraShake _cameraShake;
 
     private Vector3 _offset = new Vector3(0, -2f, 0);
@@ -30,15 +30,13 @@ public class Explosion : MonoBehaviour
         }
         else
         {
-            _gameManager = GameManager.Instance;
-
             _isFullyLoaded = true;
         }
     }
 
     private void SetProperties()
     {
-        ExplosionType currentExplosion = _gameManager.CurrentPoop.explosionType;
+        ExplosionType currentExplosion = poopSystem.CurrentPoop.explosionType;
 
         if (currentExplosion != null)
         {

@@ -15,6 +15,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] PickableCoords[] pickableSpawnPositions;
     [SerializeField] GameObject life;
     [SerializeField] ObjectPool objectPool;
+    [SerializeField] PoopSystem poopSystem;
+    [SerializeField] Score score;
 
     private GameManager _gameManager;
 
@@ -43,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     {
         PlayerHealth.OnGameOver += CancelOngoingInvokes;
         GameManager.OnChaosStarGained += ChangeSpawnIntervals;
-        GameManager.OnPoopUpgrade += ResetPickedUpCorns;
+        PoopSystem.OnPoopUpgrade += ResetPickedUpCorns;
         GameManager.OnLifeSpawn += SpawnLife;
         SceneController.OnGameStart += SetInvokes;
     }
@@ -52,7 +54,7 @@ public class SpawnManager : MonoBehaviour
     {
         PlayerHealth.OnGameOver -= CancelOngoingInvokes;
         GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
-        GameManager.OnPoopUpgrade -= ResetPickedUpCorns;
+        PoopSystem.OnPoopUpgrade -= ResetPickedUpCorns;
         GameManager.OnLifeSpawn -= SpawnLife;
         SceneController.OnGameStart -= SetInvokes;
         CancelOngoingInvokes();
@@ -80,7 +82,7 @@ public class SpawnManager : MonoBehaviour
     {
         int spawnedCorns = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
 
-        if (spawnedCorns >= _cornLimit || _cornsSpawned >= _gameManager.ChargeGoal || !_gameManager.CanCornBeSpawn() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
+        if (spawnedCorns >= _cornLimit || _cornsSpawned >= poopSystem.ChargeGoal || !CanCornBeSpawned() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
 
         int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
         PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
@@ -105,6 +107,8 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;
+
+    private bool CanCornBeSpawned() => score.Value > poopSystem.CurrentPoop.pointsWorth * 3 && poopSystem.PoopChargeLevel < poopSystem.MAX_POOP_CHARGE_LEVEL;
 
     private void GetCharacterFromPool(Tags tag)
     {

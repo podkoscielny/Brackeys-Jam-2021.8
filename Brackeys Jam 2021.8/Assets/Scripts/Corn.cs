@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Corn : MonoBehaviour, IInteractable
 {
-    private GameManager _gameManager;
-
-    void Start() => _gameManager = GameManager.Instance;
+    [SerializeField] PoopSystem poopSystem;
 
     public void PickUp()
     {
-        _gameManager.EatCorn();
+        poopSystem.EatCorn();
         gameObject.SetActive(false);
     }
 }
