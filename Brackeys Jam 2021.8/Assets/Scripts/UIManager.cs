@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Transform heartsWrapper;
     [SerializeField] Transform chaosStarsWrapper;
-    [SerializeField] GameObject heartPrefab;
     [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject mobileUI;
@@ -19,7 +17,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
 
     private GameManager _gameManager;
-    private List<Image> _hearts;
     private List<GameObject> _chaosStars;
 
     void OnEnable()
@@ -27,8 +24,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnScoreUpdated += UpdateScore;
         GameManager.OnChaosStarGained += EnableChaosStar;
         GameManager.OnPoopUpgrade += UpdatePoopLevelUI;
-        GameManager.OnGameOver += SetGameOverPanel;
-        GameManager.OnUpdateHeartsAmount += UpdateHeartsAmount;
+        PlayerHealth.OnGameOver += SetGameOverPanel;
         GameManager.OnCornEaten += UpdateFillAmount;
     }
 
@@ -37,20 +33,16 @@ public class UIManager : MonoBehaviour
         GameManager.OnScoreUpdated -= UpdateScore;
         GameManager.OnChaosStarGained -= EnableChaosStar;
         GameManager.OnPoopUpgrade -= UpdatePoopLevelUI;
-        GameManager.OnGameOver -= SetGameOverPanel;
-        GameManager.OnUpdateHeartsAmount -= UpdateHeartsAmount;
+        PlayerHealth.OnGameOver -= SetGameOverPanel;
         GameManager.OnCornEaten -= UpdateFillAmount;
     }
 
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _hearts = new List<Image>();
         _chaosStars = new List<GameObject>();
 
         InitializeChaosStars();
-        InitializeLives();
-        UpdateHeartsAmount(_gameManager.PlayersLives);
 
         #if UNITY_ANDROID
         DisplayMobileUI();
@@ -64,18 +56,6 @@ public class UIManager : MonoBehaviour
             GameObject star = Instantiate(chaosStarPrefab);
             star.transform.SetParent(chaosStarsWrapper);
             _chaosStars.Add(star);
-        }
-    }
-
-    private void InitializeLives()
-    {
-        for (int i = 0; i < _gameManager.MAX_LIVES_AMOUNT; i++)
-        {
-            GameObject life = Instantiate(heartPrefab);
-            life.transform.SetParent(heartsWrapper);
-            Image lifeImage = life.GetComponent<Image>();
-
-            _hearts.Add(lifeImage);
         }
     }
 
@@ -101,19 +81,5 @@ public class UIManager : MonoBehaviour
         UpdateFillAmount(fillAmount);
         currentPoopLevelText.text = $"{_gameManager.PoopChargeLevel}";
         nextPoopLevelText.text = $"{nextText}";
-    }
-
-    private void UpdateHeartsAmount(float playersLives)
-    {
-        for (int i = 0; i < _hearts.Count; i++)
-        {
-            _hearts[i].fillAmount = i <= playersLives - 1 ? 1f : 0f;
-        }
-
-        if (playersLives % 1 != 0)
-        {
-            int notFullHeartIndex = Mathf.FloorToInt(playersLives);
-            _hearts[notFullHeartIndex].fillAmount = playersLives - notFullHeartIndex;
-        }
     }
 }

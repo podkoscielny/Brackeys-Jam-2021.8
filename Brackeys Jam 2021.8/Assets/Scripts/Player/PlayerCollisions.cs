@@ -7,6 +7,7 @@ public class PlayerCollisions : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Rigidbody2D playerRb;
     [SerializeField] CameraShake cameraShake;
+    [SerializeField] PlayerHealth playerHealth;
 
     private GameManager _gameManager;
 
@@ -48,6 +49,6 @@ public class PlayerCollisions : MonoBehaviour
         playerRb.velocity = Vector2.zero;
         playerRb.AddForce(impactDirection * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
 
-        _gameManager.GetHit(damageAmount);
+        playerHealth.TakeDamage(damageAmount);
     }
 }

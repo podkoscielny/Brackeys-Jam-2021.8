@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
 
     void OnEnable()
     {
-        GameManager.OnGameOver += CancelOngoingInvokes;
+        PlayerHealth.OnGameOver += CancelOngoingInvokes;
         GameManager.OnChaosStarGained += ChangeSpawnIntervals;
         GameManager.OnPoopUpgrade += ResetPickedUpCorns;
         GameManager.OnLifeSpawn += SpawnLife;
@@ -50,7 +50,7 @@ public class SpawnManager : MonoBehaviour
 
     void OnDisable()
     {
-        GameManager.OnGameOver -= CancelOngoingInvokes;
+        PlayerHealth.OnGameOver -= CancelOngoingInvokes;
         GameManager.OnChaosStarGained -= ChangeSpawnIntervals;
         GameManager.OnPoopUpgrade -= ResetPickedUpCorns;
         GameManager.OnLifeSpawn -= SpawnLife;

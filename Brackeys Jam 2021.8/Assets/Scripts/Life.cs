@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Life : MonoBehaviour, IInteractable
 {
-    private GameManager _gameManager;
-
-    void Start() => _gameManager = GameManager.Instance;
+    [SerializeField] PlayerHealth playerHealth;
 
     public void PickUp()
     {
-        _gameManager.Heal();
+        playerHealth.Heal();
         gameObject.SetActive(false);
     }
 }

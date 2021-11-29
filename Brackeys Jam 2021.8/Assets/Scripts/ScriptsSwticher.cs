@@ -8,13 +8,13 @@ public class ScriptsSwticher : MonoBehaviour
 
     void OnEnable()
     {
-        GameManager.OnGameOver += DisableScripts;
+        PlayerHealth.OnGameOver += DisableScripts;
         SceneController.OnGameStart += EnableScripts;
     }
 
     void OnDisable()
     {
-        GameManager.OnGameOver -= DisableScripts;
+        PlayerHealth.OnGameOver -= DisableScripts;
         SceneController.OnGameStart -= EnableScripts;
     }
 

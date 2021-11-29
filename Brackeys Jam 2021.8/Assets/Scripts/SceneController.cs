@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static event Action OnGameStart;
+    public static event Action OnSceneChange;
 
     private Animator animator;
 
@@ -17,12 +18,14 @@ public class SceneController : MonoBehaviour
 
     public void GoToMenu()
     {
+        OnSceneChange?.Invoke();
         _sceneSetter = LoadMenuScene;
         HideSceneLoader();
     }
 
     public void GoToGameplay()
     {
+        OnSceneChange?.Invoke();
         _sceneSetter = LoadMainScene;
         HideSceneLoader();
     }

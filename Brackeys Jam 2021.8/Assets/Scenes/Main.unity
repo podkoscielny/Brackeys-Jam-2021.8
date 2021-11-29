@@ -1809,6 +1809,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 554064754}
   playerRb: {fileID: 554064758}
   cameraShake: {fileID: 1039779766}
+  playerHealth: {fileID: 11400000, guid: 94b9f6719f2333f49989f3695aeea493, type: 2}
 --- !u!114 &554064763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1001508247}
   - component: {fileID: 1001508248}
+  - component: {fileID: 1001508249}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -2896,6 +2898,20 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &1001508249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001508246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbb666a5fd52954c9db895279f8e47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 11400000, guid: 94b9f6719f2333f49989f3695aeea493, type: 2}
+  heartPrefab: {fileID: 5646735412033064378, guid: b6f4428a57f997f408ed5cf2ebbf41f6, type: 3}
 --- !u!1 &1015273681
 GameObject:
   m_ObjectHideFlags: 0
