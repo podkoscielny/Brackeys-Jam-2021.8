@@ -10,7 +10,6 @@ public class Poop : MonoBehaviour
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
 
-    private GameManager _gameManager;
     private Transform _spawnPoop;
 
     private bool _isFalling = false;
@@ -33,7 +32,6 @@ public class Poop : MonoBehaviour
         else
         {
             _isFullyLoaded = true;
-            _gameManager = GameManager.Instance;
         }
     }
 

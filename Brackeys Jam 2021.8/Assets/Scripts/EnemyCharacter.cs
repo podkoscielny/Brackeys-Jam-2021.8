@@ -12,7 +12,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
     public float PlayerDamageAmount { get; private set; } = 0.5f;
 
-    private GameManager _gameManager;
     private Transform _splashTransform;
     private IEnemyMovement _enemyMovement;
     private Vector3 _explodeDirection;
@@ -38,8 +37,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         splashEffect.SetActive(false);
         SetSpriteColor();
     }
-
-    void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {

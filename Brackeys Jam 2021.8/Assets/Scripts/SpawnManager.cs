@@ -19,8 +19,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Score score;
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
-    private GameManager _gameManager;
-
     private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
     private readonly Quaternion LEFT_ROTATION = new Quaternion(0, 1, 0, 0);
 
@@ -31,7 +29,9 @@ public class SpawnManager : MonoBehaviour
     private int _hostileLimit = 0;
     private int _cornsSpawned = 0;
     private int _cornLimit = 3;
+    private int _lifeSpawnGoal = 3000;
 
+    private const int SPAWN_LIFE_TARGET = 3000;
     private const int LIVES_LIMIT = 1;
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
@@ -47,8 +47,8 @@ public class SpawnManager : MonoBehaviour
         PlayerHealth.OnGameOver += CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained += ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade += ResetPickedUpCorns;
-        GameManager.OnLifeSpawn += SpawnLife;
         SceneController.OnGameStart += SetInvokes;
+        Score.OnScoreUpdated += CheckLifeToBeSpawn;
     }
 
     void OnDisable()
@@ -56,12 +56,10 @@ public class SpawnManager : MonoBehaviour
         PlayerHealth.OnGameOver -= CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained -= ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade -= ResetPickedUpCorns;
-        GameManager.OnLifeSpawn -= SpawnLife;
         SceneController.OnGameStart -= SetInvokes;
+        Score.OnScoreUpdated -= CheckLifeToBeSpawn;
         CancelOngoingInvokes();
     }
-
-    void Start() => _gameManager = GameManager.Instance;
 
     private void SpawnNeutral()
     {
@@ -94,6 +92,15 @@ public class SpawnManager : MonoBehaviour
         _cornsSpawned++;
 
         objectPool.GetFromPool(Tags.Corn, cornsPosition);
+    }
+
+    private void CheckLifeToBeSpawn()
+    {
+        if (score.Value >= _lifeSpawnGoal)
+        {
+            _lifeSpawnGoal += SPAWN_LIFE_TARGET;
+            SpawnLife();
+        }
     }
 
     private void SpawnLife()
