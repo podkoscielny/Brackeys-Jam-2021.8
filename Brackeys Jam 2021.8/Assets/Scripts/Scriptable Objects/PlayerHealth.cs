@@ -50,7 +50,7 @@ public class PlayerHealth : ScriptableObject
 
     void OnValidate()
     {
-        maxHealth = EditorApplication.isPlaying ? _initialMaxHealth : Mathf.Clamp(maxHealth, 0, maxHealth);
+        maxHealth = EditorApplication.isPlaying ? _initialMaxHealth : Mathf.Max(maxHealth, 0);
         healthValue = Mathf.Clamp(healthValue, 0, maxHealth);
 
         if (EditorApplication.isPlaying)

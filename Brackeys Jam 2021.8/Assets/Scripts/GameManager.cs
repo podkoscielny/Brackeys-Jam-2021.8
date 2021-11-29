@@ -11,9 +11,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> OnScoreUpdated;
     public static event Action<int> OnChaosStarGained;
     public static event Action<float> OnCornEaten;
-    public static event Action<float> OnUpdateHeartsAmount;
     public static event Action OnPoopUpgrade;
-    public static event Action OnGameOver;
     public static event Action OnLifeSpawn;
 
     public bool IsGameOver { get; private set; } = false;
@@ -23,9 +21,6 @@ public class GameManager : MonoBehaviour
     public int ChaosStarsAmount { get; private set; } = 0;
     public int MAX_CHAOS_STARS_AMOUNT => chaosStars.Length;
     public int MAX_POOP_CHARGE_LEVEL => poopLevels.Length;
-
-    public float PlayersLives { get; private set; } = 3;
-    public int MAX_LIVES_AMOUNT { get; private set; } = 5;
 
     public ExplosionType ExplosionEffect { get; private set; }
     public PoopType CurrentPoop => poopLevels[PoopChargeLevel - 1];
@@ -90,27 +85,6 @@ public class GameManager : MonoBehaviour
         {
             UpgradePoop();
         }
-    }
-
-    public void Heal(float healAmount = 1)
-    {
-        PlayersLives = Mathf.Min(PlayersLives + healAmount, MAX_LIVES_AMOUNT);
-        OnUpdateHeartsAmount?.Invoke(PlayersLives);
-    }
-
-    public void GetHit(float damageAmount)
-    {
-        PlayersLives = Mathf.Max(0, PlayersLives - damageAmount);
-        OnUpdateHeartsAmount?.Invoke(PlayersLives);
-
-        if (PlayersLives <= 0)
-            GameOver();
-    }
-
-    public void GameOver()
-    {
-        IsGameOver = true;
-        OnGameOver?.Invoke();
     }
 
     public bool CanCornBeSpawn() => Score > CurrentPoop.pointsWorth * 3 && PoopChargeLevel < MAX_POOP_CHARGE_LEVEL;
