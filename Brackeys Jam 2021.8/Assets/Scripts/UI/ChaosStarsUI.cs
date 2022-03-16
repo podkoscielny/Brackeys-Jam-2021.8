@@ -8,6 +8,7 @@ public class ChaosStarsUI : MonoBehaviour
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
     private List<GameObject> _chaosStars = new List<GameObject>();
+    private const float SPACING_FACTOR = 1.2f;
 
     private void OnEnable() => ChaosStarsSystem.OnChaosStarGained += EnableChaosStar;
 
@@ -17,10 +18,21 @@ public class ChaosStarsUI : MonoBehaviour
 
     private void InitializeChaosStars()
     {
+        float sideSize = Screen.width / 19;
+        Vector2 chaosStarSize = new Vector2(sideSize, sideSize);
+        Vector3 wrapperPosition = transform.position;
+
         for (int i = 0; i < chaosStarsSystem.MAX_CHAOS_STARS_AMOUNT; i++)
         {
             GameObject star = Instantiate(chaosStarPrefab);
+
+            Vector3 chaosStarPosition = wrapperPosition;
+            chaosStarPosition.x -= (i * chaosStarSize.x * SPACING_FACTOR);
+
             star.transform.SetParent(transform);
+            star.transform.position = chaosStarPosition;
+            star.GetComponent<RectTransform>().sizeDelta = chaosStarSize;
+
             _chaosStars.Add(star);
         }
     }
