@@ -901,7 +901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &331221418
 Transform:
   m_ObjectHideFlags: 0
@@ -3735,7 +3735,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1184998421}
   - component: {fileID: 1184998419}
-  - component: {fileID: 1184998420}
   - component: {fileID: 1184998422}
   m_Layer: 6
   m_Name: Ground
@@ -3770,19 +3769,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3294692, y: 0.7542206}
   m_EdgeRadius: 0
---- !u!114 &1184998420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184998418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045d5f4fbc0842646863c0ff6a32d60d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
 --- !u!4 &1184998421
 Transform:
   m_ObjectHideFlags: 0
@@ -3810,7 +3796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 070000000b000000
+  tags: 07000000
 --- !u!1 &1188629593
 GameObject:
   m_ObjectHideFlags: 0
