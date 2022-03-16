@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
         #if UNITY_ANDROID
         return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, player.position.y * 0.23816f + 3.7635f, ref _cameraLensVelocityRef, SMOOTH_TIME);
         #else
-        return Mathf.SmoothDamp(_virtualCamera.m_Lens.OrthographicSize, _player.position.y * 0.2943f + 4.5057f, ref _cameraLensVelocityRef, SMOOTH_TIME);
+        return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, player.position.y * 0.2943f + 4.5057f, ref _cameraLensVelocityRef, SMOOTH_TIME);
         #endif
     }
 
