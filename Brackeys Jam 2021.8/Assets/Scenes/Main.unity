@@ -2876,7 +2876,6 @@ GameObject:
   - component: {fileID: 1015273682}
   - component: {fileID: 1015273683}
   - component: {fileID: 1015273684}
-  - component: {fileID: 1015273685}
   m_Layer: 5
   m_Name: Chaos Stars
   m_TagString: Untagged
@@ -2941,20 +2940,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaosStarPrefab: {fileID: 5167244787390766016, guid: fdddc20c1d7deea40ad129549230686e, type: 3}
   chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
---- !u!114 &1015273685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015273681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a253b8fd007861345a640f9d6aade5f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridLayoutGroup: {fileID: 1015273683}
-  divideFactor: 24
 --- !u!1 &1039779760
 GameObject:
   m_ObjectHideFlags: 0
