@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Score score;
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
-    private List<GameObject> _chaosStars;
+    private List<GameObject> _chaosStars = new List<GameObject>();
 
     void OnEnable()
     {
@@ -41,13 +41,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        _chaosStars = new List<GameObject>();
-
         InitializeChaosStars();
-
-        #if UNITY_ANDROID
         DisplayMobileUI();
-        #endif
     }
 
     private void InitializeChaosStars()
@@ -60,7 +55,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void DisplayMobileUI() => mobileUI.SetActive(true);
+    private void DisplayMobileUI()
+    {
+        bool shouldMobileUIBeDisplayed = false;
+
+#if UNITY_ANDROID
+        shouldMobileUIBeDisplayed = true;
+#endif
+
+        mobileUI.SetActive(shouldMobileUIBeDisplayed);
+    }
 
     private void UpdateScore() => scoreText.text = score.Value.ToString();
 
