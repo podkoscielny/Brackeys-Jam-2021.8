@@ -6,9 +6,7 @@ using Tags = TagSystem.Tags;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] CharacterController2D controller;
-    [SerializeField] Rigidbody2D playerRb;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] GameObject poopPrefab;
     [SerializeField] Transform poopSpawn;
     [SerializeField] Joystick joystick;
     [SerializeField] ObjectPool objectPool;
@@ -31,9 +29,9 @@ public class PlayerMovement : MonoBehaviour
         _waitForShootDelay = new WaitForSeconds(SHOOT_DELAY);
         _movementDelegate = StandaloneMovement;
 
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         _movementDelegate = MobileMovement;
-        #endif
+#endif
     }
 
     void Update() => _movementDelegate();
@@ -47,19 +45,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void StandaloneMovement()
     {
+        if (!_canMove) return;
+
         _horizontalMovement = Input.GetAxisRaw("Horizontal") * MOVEMENT_SPEED;
 
         playerAnimator.SetFloat("Speed", Mathf.Abs(_horizontalMovement));
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            controller.Jump();
-        }
+        if (Input.GetButtonDown("Jump")) controller.Jump();
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+        if (Input.GetButtonDown("Fire1")) Shoot();
     }
 
     private void MobileMovement()
