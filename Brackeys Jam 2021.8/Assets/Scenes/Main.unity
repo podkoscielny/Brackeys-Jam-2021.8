@@ -1423,7 +1423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818972433920344500, guid: 9f450cfc9d22011448b21ea6f9ec13e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42
+      value: 1.953
       objectReference: {fileID: 0}
     - target: {fileID: 1818972433920344500, guid: 9f450cfc9d22011448b21ea6f9ec13e6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554064751}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8d29dd398da737458a6757c33288d35, type: 3}
   m_Name: 
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554064751}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9074a63dc6e688449076e3a20e9b549, type: 3}
   m_Name: 
@@ -1782,9 +1782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptsToDisable:
-  - {fileID: 554064759}
   - {fileID: 554064760}
-  - {fileID: 554064762}
+  - {fileID: 554064759}
 --- !u!61 &554064764
 BoxCollider2D:
   m_ObjectHideFlags: 0

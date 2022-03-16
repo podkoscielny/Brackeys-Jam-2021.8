@@ -9,6 +9,7 @@ public class PlayerCollisions : MonoBehaviour
     [SerializeField] CameraShake cameraShake;
     [SerializeField] PlayerHealth playerHealth;
 
+    private bool _areCollisionsDisabled = false;
     private Vector2 _impactDirectionRight = new Vector2(1.411f, 0.637f);
     private Vector2 _impactDirectionLeft = new Vector2(-1.411f, 0.637f);
 
@@ -16,8 +17,16 @@ public class PlayerCollisions : MonoBehaviour
     private const float CAMERA_SHAKE_INTENSITY = 3f;
     private const float CAMERA_SHAKE_DURATION = 0.2f;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnable() => PlayerHealth.OnGameOver += DisableCollisions;
+
+    private void OnDisable() => PlayerHealth.OnGameOver -= DisableCollisions;
+
+    private void DisableCollisions() => _areCollisionsDisabled = true;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_areCollisionsDisabled) return;
+
         bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
 
         if (collision.TryGetComponent(out IPlayerHitter playerHitter) && !isHit)

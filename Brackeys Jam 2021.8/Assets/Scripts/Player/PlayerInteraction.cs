@@ -12,10 +12,7 @@ public class PlayerInteraction : MonoBehaviour
 #if !UNITY_ANDROID
     void Update()
     {
-        if (Input.GetButtonDown("Interaction"))
-        {
-            InteractWithItem();
-        }
+        if (Input.GetButtonDown("Interaction")) InteractWithItem();
     }
 
 #endif

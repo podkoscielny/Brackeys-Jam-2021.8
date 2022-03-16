@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private WaitForSeconds _waitForShootDelay;
 
     private bool _canShoot = true;
-    private bool _canMove = true;
+    private bool _canMove = false;
     private float _horizontalMovement = 0f;
 
     private const float JOYSTICK_SENSITIVITY = 0.4f;
@@ -24,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private delegate void MovementDelegate();
     private MovementDelegate _movementDelegate;
 
-    void Start()
+    private void OnEnable() => SceneController.OnGameStart += EnableMovement;
+
+    private void OnDisable() => SceneController.OnGameStart -= EnableMovement;
+
+    private void Start()
     {
         _waitForShootDelay = new WaitForSeconds(SHOOT_DELAY);
         _movementDelegate = StandaloneMovement;
@@ -34,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
 #endif
     }
 
-    void Update() => _movementDelegate();
+    private void Update() => _movementDelegate();
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!_canMove) return;
 
@@ -78,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DelayShooting());
     }
 
-    IEnumerator DelayShooting()
+    private IEnumerator DelayShooting()
     {
         yield return _waitForShootDelay;
 

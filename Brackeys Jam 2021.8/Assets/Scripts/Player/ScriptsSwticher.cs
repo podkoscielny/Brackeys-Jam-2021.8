@@ -6,25 +6,9 @@ public class ScriptsSwticher : MonoBehaviour
 {
     [SerializeField] List<MonoBehaviour> scriptsToDisable;
 
-    void OnEnable()
-    {
-        PlayerHealth.OnGameOver += DisableScripts;
-        SceneController.OnGameStart += EnableScripts;
-    }
+    void OnEnable() => PlayerHealth.OnGameOver += DisableScripts;
 
-    void OnDisable()
-    {
-        PlayerHealth.OnGameOver -= DisableScripts;
-        SceneController.OnGameStart -= EnableScripts;
-    }
-
-    private void EnableScripts()
-    {
-        foreach (MonoBehaviour script in scriptsToDisable)
-        {
-            script.enabled = true;
-        }
-    }
+    void OnDisable() => PlayerHealth.OnGameOver -= DisableScripts;
 
     private void DisableScripts()
     {
