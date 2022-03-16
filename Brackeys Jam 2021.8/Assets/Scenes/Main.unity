@@ -1866,7 +1866,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poopLevelSlider: {fileID: 1584598445}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
-  bulletsUpgradedAnimator: {fileID: 1600207934}
   currentPoopLevelText: {fileID: 1088129727}
   nextPoopLevelText: {fileID: 681066460}
 --- !u!1 &636083752
@@ -2825,7 +2824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001508247}
-  - component: {fileID: 1001508248}
   - component: {fileID: 1001508249}
   m_Layer: 5
   m_Name: Lives
@@ -2850,33 +2848,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 38.899902, y: 0}
-  m_SizeDelta: {x: 100, y: 75.3}
+  m_AnchoredPosition: {x: 85.6001, y: -15}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1001508248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001508246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 90, y: 90}
-  m_Spacing: {x: 20, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 1
 --- !u!114 &1001508249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,6 +2876,7 @@ GameObject:
   - component: {fileID: 1015273682}
   - component: {fileID: 1015273683}
   - component: {fileID: 1015273684}
+  - component: {fileID: 1015273685}
   m_Layer: 5
   m_Name: Chaos Stars
   m_TagString: Untagged
@@ -2966,6 +2941,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaosStarPrefab: {fileID: 5167244787390766016, guid: fdddc20c1d7deea40ad129549230686e, type: 3}
   chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
+--- !u!114 &1015273685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015273681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a253b8fd007861345a640f9d6aade5f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridLayoutGroup: {fileID: 1015273683}
+  divideFactor: 24
 --- !u!1 &1039779760
 GameObject:
   m_ObjectHideFlags: 0

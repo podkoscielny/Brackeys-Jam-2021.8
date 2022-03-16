@@ -8,25 +8,36 @@ public class LivesUI : MonoBehaviour
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] GameObject heartPrefab;
 
-    private List<Image> _hearts;
+    private List<Image> _hearts = new List<Image>();
+    private const float SPACING_FACTOR = 1.5f;
 
-    void OnEnable() => PlayerHealth.OnHealthChanged += UpdateHeartsAmount;
+    private void OnEnable() => PlayerHealth.OnHealthChanged += UpdateHeartsAmount;
 
     private void OnDisable() => PlayerHealth.OnHealthChanged -= UpdateHeartsAmount;
 
-    void Start()
+    private void Start()
     {
-        _hearts = new List<Image>();
         InitializeLives();
         UpdateHeartsAmount();
     }
 
     private void InitializeLives()
     {
+        float sideSize = Screen.width / 19;
+        Vector2 lifeSize = new Vector2(sideSize, sideSize);
+        Vector3 wrapperPosition = transform.position;
+
         for (int i = 0; i < playerHealth.MAX_HEALTH; i++)
         {
             GameObject life = Instantiate(heartPrefab);
-            life.transform.SetParent(gameObject.transform);
+
+            Vector3 lifePosition = wrapperPosition;
+            lifePosition.x += (i * lifeSize.x * SPACING_FACTOR);
+
+            life.transform.SetParent(transform);
+            life.transform.position = lifePosition;
+            life.GetComponent<RectTransform>().sizeDelta = lifeSize;
+
             Image lifeImage = life.GetComponent<Image>();
 
             _hearts.Add(lifeImage);
