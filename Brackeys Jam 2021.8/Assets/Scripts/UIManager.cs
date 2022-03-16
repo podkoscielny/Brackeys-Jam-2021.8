@@ -10,15 +10,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mobileUI;
     [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] Slider poopLevelSlider;
-    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI currentPoopLevelText;
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
     [SerializeField] PoopSystem poopSystem;
-    [SerializeField] Score score;
 
     void OnEnable()
     {
-        Score.OnScoreUpdated += UpdateScore;
         PoopSystem.OnPoopUpgrade += UpdatePoopLevelUI;
         PlayerHealth.OnGameOver += SetGameOverPanel;
         PoopSystem.OnCornEaten += UpdateFillAmount;
@@ -26,7 +23,6 @@ public class UIManager : MonoBehaviour
 
     void OnDisable()
     {
-        Score.OnScoreUpdated -= UpdateScore;
         PoopSystem.OnPoopUpgrade -= UpdatePoopLevelUI;
         PlayerHealth.OnGameOver -= SetGameOverPanel;
         PoopSystem.OnCornEaten -= UpdateFillAmount;
@@ -44,8 +40,6 @@ public class UIManager : MonoBehaviour
 
         mobileUI.SetActive(shouldMobileUIBeDisplayed);
     }
-
-    private void UpdateScore() => scoreText.text = score.Value.ToString();
 
     private void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
