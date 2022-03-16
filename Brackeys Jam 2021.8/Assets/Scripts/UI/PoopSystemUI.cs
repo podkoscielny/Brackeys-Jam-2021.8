@@ -8,7 +8,6 @@ public class PoopSystemUI : MonoBehaviour
 {
     [SerializeField] Slider poopLevelSlider;
     [SerializeField] PoopSystem poopSystem;
-    [SerializeField] Animator bulletsUpgradedAnimator;
     [SerializeField] TextMeshProUGUI currentPoopLevelText;
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
 
@@ -29,8 +28,6 @@ public class PoopSystemUI : MonoBehaviour
     private void UpdatePoopLevelUI()
     {
         int poopLevel = poopSystem.PoopChargeLevel;
-
-        bulletsUpgradedAnimator.SetTrigger("Appear");
 
         bool isPoopMaxed = poopLevel == poopSystem.MAX_POOP_CHARGE_LEVEL;
 

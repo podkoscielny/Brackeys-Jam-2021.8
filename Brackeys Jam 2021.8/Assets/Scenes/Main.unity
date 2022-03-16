@@ -4674,6 +4674,7 @@ GameObject:
   - component: {fileID: 1600207933}
   - component: {fileID: 1600207932}
   - component: {fileID: 1600207934}
+  - component: {fileID: 1600207935}
   m_Layer: 5
   m_Name: Bullets Upgraded Text
   m_TagString: Untagged
@@ -4816,6 +4817,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1600207935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600207930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c7486c992aaf6428840011e092a3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletsUpgradedAnimator: {fileID: 1600207934}
 --- !u!1 &1670555824
 GameObject:
   m_ObjectHideFlags: 0
