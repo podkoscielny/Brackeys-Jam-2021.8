@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Transform chaosStarsWrapper;
-    [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject mobileUI;
     [SerializeField] Animator bulletsUpgradedAnimator;
@@ -17,14 +15,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI nextPoopLevelText;
     [SerializeField] PoopSystem poopSystem;
     [SerializeField] Score score;
-    [SerializeField] ChaosStarsSystem chaosStarsSystem;
-
-    private List<GameObject> _chaosStars = new List<GameObject>();
 
     void OnEnable()
     {
         Score.OnScoreUpdated += UpdateScore;
-        ChaosStarsSystem.OnChaosStarGained += EnableChaosStar;
         PoopSystem.OnPoopUpgrade += UpdatePoopLevelUI;
         PlayerHealth.OnGameOver += SetGameOverPanel;
         PoopSystem.OnCornEaten += UpdateFillAmount;
@@ -33,27 +27,12 @@ public class UIManager : MonoBehaviour
     void OnDisable()
     {
         Score.OnScoreUpdated -= UpdateScore;
-        ChaosStarsSystem.OnChaosStarGained -= EnableChaosStar;
         PoopSystem.OnPoopUpgrade -= UpdatePoopLevelUI;
         PlayerHealth.OnGameOver -= SetGameOverPanel;
         PoopSystem.OnCornEaten -= UpdateFillAmount;
     }
 
-    void Start()
-    {
-        InitializeChaosStars();
-        DisplayMobileUI();
-    }
-
-    private void InitializeChaosStars()
-    {
-        for (int i = 0; i < chaosStarsSystem.MAX_CHAOS_STARS_AMOUNT; i++)
-        {
-            GameObject star = Instantiate(chaosStarPrefab);
-            star.transform.SetParent(chaosStarsWrapper);
-            _chaosStars.Add(star);
-        }
-    }
+    void Start() => DisplayMobileUI();
 
     private void DisplayMobileUI()
     {
@@ -67,8 +46,6 @@ public class UIManager : MonoBehaviour
     }
 
     private void UpdateScore() => scoreText.text = score.Value.ToString();
-
-    private void EnableChaosStar() => _chaosStars[chaosStarsSystem.ChaosStarsAmount - 1].SetActive(true);
 
     private void SetGameOverPanel() => gameOverPanel.SetActive(true);
 
