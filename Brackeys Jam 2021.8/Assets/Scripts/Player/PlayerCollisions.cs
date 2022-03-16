@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
+    public static event Action OnHitTaken;
+
     [SerializeField] Animator playerAnimator;
     [SerializeField] Rigidbody2D playerRb;
     [SerializeField] CameraShake cameraShake;
@@ -38,6 +41,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private void HandleHitTaken(float damageAmount, Vector2 impactDirection)
     {
+        OnHitTaken?.Invoke();
         SetHitAnimation();
         PushThePlayerOnCollision(impactDirection, damageAmount);
         cameraShake.ShakeCamera(CAMERA_SHAKE_INTENSITY, CAMERA_SHAKE_DURATION);
@@ -52,7 +56,7 @@ public class PlayerCollisions : MonoBehaviour
     private void PushThePlayerOnCollision(Vector2 impactDirection, float damageAmount)
     {
         playerRb.velocity = Vector2.zero;
-        playerRb.AddForce(impactDirection * HIT_FORCE, ForceMode2D.Impulse); // add specific force to specific objects
+        playerRb.AddForce(impactDirection * HIT_FORCE, ForceMode2D.Impulse);
 
         playerHealth.TakeDamage(damageAmount);
     }
