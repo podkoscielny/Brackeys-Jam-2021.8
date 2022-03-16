@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject gameOverPanel;
-    [SerializeField] GameObject mobileUI;
 
     void OnEnable()
     {
@@ -17,19 +16,6 @@ public class UIManager : MonoBehaviour
     void OnDisable()
     {
         PlayerHealth.OnGameOver -= SetGameOverPanel;
-    }
-
-    void Start() => DisplayMobileUI();
-
-    private void DisplayMobileUI()
-    {
-        bool shouldMobileUIBeDisplayed = false;
-
-#if UNITY_ANDROID
-        shouldMobileUIBeDisplayed = true;
-#endif
-
-        mobileUI.SetActive(shouldMobileUIBeDisplayed);
     }
 
     private void SetGameOverPanel() => gameOverPanel.SetActive(true);
