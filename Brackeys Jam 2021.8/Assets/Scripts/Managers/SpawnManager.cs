@@ -13,7 +13,6 @@ public struct PickableCoords
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] PickableCoords[] pickableSpawnPositions;
-    [SerializeField] GameObject life;
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
     [SerializeField] Score score;
@@ -29,35 +28,27 @@ public class SpawnManager : MonoBehaviour
     private int _hostileLimit = 0;
     private int _cornsSpawned = 0;
     private int _cornLimit = 3;
-    private int _lifeSpawnGoal = 3000;
 
-    private const int SPAWN_LIFE_TARGET = 3000;
-    private const int LIVES_LIMIT = 1;
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
     private const float SPAWN_X_RANGE = 16f;
-    private const float CORN_MIN_POSITION_X = -7f;
-    private const float CORN_MAX_POSITION_X = 7f;
-    private const float CORN_POSITION_Y = 3f;
 
     private void Awake() => objectPool.InitializePool();
 
-    void OnEnable()
+    private void OnEnable()
     {
         PlayerHealth.OnGameOver += CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained += ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade += ResetPickedUpCorns;
         SceneController.OnGameStart += SetInvokes;
-        Score.OnScoreUpdated += CheckLifeToBeSpawn;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         PlayerHealth.OnGameOver -= CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained -= ChangeSpawnIntervals;
         PoopSystem.OnPoopUpgrade -= ResetPickedUpCorns;
         SceneController.OnGameStart -= SetInvokes;
-        Score.OnScoreUpdated -= CheckLifeToBeSpawn;
         CancelOngoingInvokes();
     }
 
@@ -92,26 +83,6 @@ public class SpawnManager : MonoBehaviour
         _cornsSpawned++;
 
         objectPool.GetFromPool(Tags.Corn, cornsPosition);
-    }
-
-    private void CheckLifeToBeSpawn()
-    {
-        if (score.Value >= _lifeSpawnGoal)
-        {
-            _lifeSpawnGoal += SPAWN_LIFE_TARGET;
-            SpawnLife();
-        }
-    }
-
-    private void SpawnLife()
-    {
-        int lifeCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
-        PickableCoords cornSpawnBounds = pickableSpawnPositions[lifeCoordsIndex];
-
-        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
-        life.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
-
-        life.SetActive(true);
     }
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;
