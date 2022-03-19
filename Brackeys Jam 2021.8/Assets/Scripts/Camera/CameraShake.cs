@@ -9,7 +9,11 @@ public class CameraShake : MonoBehaviour
 
     private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChanelPerlin;
 
-    void Awake() => _cinemachineBasicMultiChanelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    private void Awake() => _cinemachineBasicMultiChanelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+    private void OnEnable() => Explosion.OnExplosionSpawaned += ShakeCamera;
+
+    private void OnDisable() => Explosion.OnExplosionSpawaned -= ShakeCamera;
 
     public void ShakeCamera(float intensity = 0, float duration = 0)
     {
