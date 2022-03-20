@@ -22,7 +22,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     private const float MIN_POSITION_X = -7f;
     private const float MAX_POSITION_X = 7f;
 
-    void OnEnable()
+    private void OnEnable()
     {
         _hasReachedTarget = false;
         _isFacingRight = transform.right.x == 1;

@@ -16,3 +16,8 @@ MonoBehaviour:
   hostilesLimit: 1
   neutralSpawnRate: 1.5
   hostileSpawnRate: 6
+  enemiesLimit: 5
+  enemySpawnRate: 2
+  enemyTypes:
+  - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
+    probability: 1

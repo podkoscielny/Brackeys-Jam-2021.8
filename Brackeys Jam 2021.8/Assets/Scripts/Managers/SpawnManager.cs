@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tags = TagSystem.Tags;
 
-[System.Serializable]
-public struct PickableCoords
-{
-    public Vector2 leftBound;
-    public Vector2 rightBound;
-}
-
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] PickableCoords[] pickableSpawnPositions;

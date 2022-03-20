@@ -21,7 +21,7 @@ public static class TagSystem
         Player = 9,
         Life = 10,
         HittableByPoop = 11,
-        PoopSpawn = 12
+        PoopSpawn = 12,
     }
 
     private static Dictionary<Tags, List<GameObject>> TaggedObjects = new Dictionary<Tags, List<GameObject>>();
