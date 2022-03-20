@@ -23,11 +23,8 @@ public class SpawnManager : MonoBehaviour
 
     private float _neutralInterval = 3f;
     private float _hostileInterval = 0f;
-    private float _cornInterval = 1f; //Set to larger
 
     private int _hostileLimit = 0;
-    private int _cornsSpawned = 0;
-    private int _cornLimit = 3;
 
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
@@ -39,7 +36,6 @@ public class SpawnManager : MonoBehaviour
     {
         PlayerHealth.OnGameOver += CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained += ChangeSpawnIntervals;
-        PoopSystem.OnPoopUpgrade += ResetPickedUpCorns;
         SceneController.OnGameStart += SetInvokes;
     }
 
@@ -47,7 +43,6 @@ public class SpawnManager : MonoBehaviour
     {
         PlayerHealth.OnGameOver -= CancelOngoingInvokes;
         ChaosStarsSystem.OnChaosStarGained -= ChangeSpawnIntervals;
-        PoopSystem.OnPoopUpgrade -= ResetPickedUpCorns;
         SceneController.OnGameStart -= SetInvokes;
         CancelOngoingInvokes();
     }
@@ -67,27 +62,6 @@ public class SpawnManager : MonoBehaviour
 
         GetCharacterFromPool(Tags.Hostile);
     }
-
-    private void SpawnCorn()
-    {
-        int spawnedCorns = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
-
-        if (spawnedCorns >= _cornLimit || _cornsSpawned >= poopSystem.ChargeGoal || !CanCornBeSpawned() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
-
-        int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
-        PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
-
-        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
-        Vector2 cornsPosition = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
-
-        _cornsSpawned++;
-
-        objectPool.GetFromPool(Tags.Corn, cornsPosition);
-    }
-
-    private void ResetPickedUpCorns() => _cornsSpawned = 0;
-
-    private bool CanCornBeSpawned() => score.Value > poopSystem.CurrentPoop.pointsWorth * 3 && poopSystem.PoopChargeLevel < poopSystem.MAX_POOP_CHARGE_LEVEL;
 
     private void GetCharacterFromPool(Tags tag)
     {
@@ -121,15 +95,11 @@ public class SpawnManager : MonoBehaviour
 
         if (_hostileInterval != 0)
             InvokeRepeating(nameof(SpawnHostile), 2f, _hostileInterval);
-
-        if (_cornInterval != 0)
-            InvokeRepeating(nameof(SpawnCorn), 2f, _cornInterval);
     }
 
     private void CancelOngoingInvokes()
     {
         CancelInvoke(nameof(SpawnNeutral));
         CancelInvoke(nameof(SpawnHostile));
-        CancelInvoke(nameof(SpawnCorn));
     }
 }

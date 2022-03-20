@@ -4156,6 +4156,7 @@ GameObject:
   - component: {fileID: 1422546776}
   - component: {fileID: 1422546777}
   - component: {fileID: 1422546778}
+  - component: {fileID: 1422546779}
   m_Layer: 0
   m_Name: Spawn Manager
   m_TagString: Untagged
@@ -4220,6 +4221,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
   life: {fileID: 1222612516}
+  pickableSpawnPositions:
+  - leftBound: {x: -6.215, y: 0.65}
+    rightBound: {x: -3.271, y: 0.65}
+  - leftBound: {x: -1.6, y: 1.791}
+    rightBound: {x: 4.21, y: 1.791}
+  - leftBound: {x: -1.38, y: 2.76}
+    rightBound: {x: 7.91, y: 2.76}
+  - leftBound: {x: 4.25, y: 4.94}
+    rightBound: {x: 5.68, y: 4.94}
+  - leftBound: {x: -1.33, y: 7.73}
+    rightBound: {x: 3.93, y: 7.73}
+  - leftBound: {x: -6.67, y: 4.88}
+    rightBound: {x: -2.82, y: 4.88}
+--- !u!114 &1422546779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422546775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83174bc89bc08749a291e0c9fd9b7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
+  objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
+  score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
   pickableSpawnPositions:
   - leftBound: {x: -6.215, y: 0.65}
     rightBound: {x: -3.271, y: 0.65}
