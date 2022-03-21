@@ -13,17 +13,18 @@ public class ChaosStarsSystem : ScriptableObject
     public static event Action OnChaosStarGained;
 
     [SerializeField] Score score;
+    [SerializeField] ChaosStar baseChaosStar;
     [SerializeField] ChaosStar[] chaosStars;
 
     public int ChaosStarsAmount { get; private set; } = 0;
     public int MAX_CHAOS_STARS_AMOUNT => chaosStars.Length;
-    public ChaosStar CurrentChaosStar => chaosStars[ChaosStarsAmount];
+    public ChaosStar CurrentChaosStar => ChaosStarsAmount > 0 ? chaosStars[ChaosStarsAmount - 1] : baseChaosStar;
 
     public int PointsToNextChaosStar
     {
         get
         {
-            int index = Mathf.Min(ChaosStarsAmount + 1, MAX_CHAOS_STARS_AMOUNT - 1);
+            int index = Mathf.Min(ChaosStarsAmount, MAX_CHAOS_STARS_AMOUNT - 1);
             return chaosStars[index].PointsToReach;
         }
     }
@@ -56,7 +57,7 @@ public class ChaosStarsSystem : ScriptableObject
 
     private void CheckScoreToUpdateChaosStarsAmount()
     {
-        if (score.Value >= PointsToNextChaosStar && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT - 1)
+        if (score.Value >= PointsToNextChaosStar && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
         {
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke();
