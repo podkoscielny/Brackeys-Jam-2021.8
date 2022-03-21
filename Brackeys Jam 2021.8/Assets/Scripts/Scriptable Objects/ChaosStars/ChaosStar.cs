@@ -17,7 +17,7 @@ public class ChaosStar : ScriptableObject
 
     public EnemyProbability[] enemyTypes;
 
-    private void OnValidate() => SortEnemyTypesByProbability();
-
-    private void SortEnemyTypesByProbability() => Array.Sort(enemyTypes, (x, y) => x.probability.CompareTo(y.probability));
+#if UNITY_EDITOR
+    public void SortEnemyTypesByProbability() => Array.Sort(enemyTypes, (x, y) => x.probability.CompareTo(y.probability));
+#endif
 }
