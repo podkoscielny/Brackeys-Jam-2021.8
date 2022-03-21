@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
   chaosStars:
+  - {fileID: 11400000, guid: 79d93099b6f6b504a9f5b1e554571e86, type: 2}
   - {fileID: 11400000, guid: 0d736c9acae5feb4792b534141d4f9fc, type: 2}
   - {fileID: 11400000, guid: 8aac5bcf65f962149a75b9d8ce4153f3, type: 2}
   - {fileID: 11400000, guid: dcb19795d1c0c4f46bd48983336762e7, type: 2}

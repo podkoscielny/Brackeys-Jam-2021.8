@@ -29,7 +29,9 @@ public class ChaosStarsSystem : ScriptableObject
         }
     }
 
-    void OnEnable()
+    private void OnValidate() => SortChaosStarsByPoints();
+
+    private void OnEnable()
     {
         Score.OnScoreUpdated += CheckScoreToUpdateChaosStarsAmount;
         SceneController.OnSceneChange += ResetValues;
@@ -39,7 +41,7 @@ public class ChaosStarsSystem : ScriptableObject
 #endif
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         ResetValues();
 
@@ -50,6 +52,8 @@ public class ChaosStarsSystem : ScriptableObject
         EditorApplication.playModeStateChanged -= ResetValuesOnEditorQuit;
 #endif
     }
+
+    private void SortChaosStarsByPoints() => Array.Sort(chaosStars, (x, y) => x.pointsToReach.CompareTo(y.pointsToReach));
 
     private void CheckScoreToUpdateChaosStarsAmount()
     {
