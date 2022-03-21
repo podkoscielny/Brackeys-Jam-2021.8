@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,9 @@ public class ChaosStar : ScriptableObject
     public int enemiesLimit;
     public float enemySpawnRate;
 
-    public List<EnemyProbability> enemyTypes;
+    public EnemyProbability[] enemyTypes;
 
     private void OnValidate() => SortEnemyTypesByProbability();
 
-    private void SortEnemyTypesByProbability()
-    {
-
-    }
+    private void SortEnemyTypesByProbability() => Array.Sort(enemyTypes, (x, y) => x.probability.CompareTo(y.probability));
 }
