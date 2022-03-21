@@ -17,8 +17,7 @@ public class ChaosStarsSystem : ScriptableObject
 
     public int ChaosStarsAmount { get; private set; } = 0;
     public int MAX_CHAOS_STARS_AMOUNT => chaosStars.Length;
-
-    public ChaosStar CurrentChaosStar { get; private set; } = null;
+    public ChaosStar CurrentChaosStar => chaosStars[ChaosStarsAmount];
 
     public int PointsToNextChaosStar
     {
@@ -59,11 +58,12 @@ public class ChaosStarsSystem : ScriptableObject
     {
         if (score.Value >= PointsToNextChaosStar && ChaosStarsAmount < MAX_CHAOS_STARS_AMOUNT)
         {
-            CurrentChaosStar = chaosStars[ChaosStarsAmount];
             ChaosStarsAmount++;
             OnChaosStarGained?.Invoke();
         }
     }
+
+    private void ResetValues() => ChaosStarsAmount = 0;
 
 #if UNITY_EDITOR
     private void ResetValuesOnEditorQuit(PlayModeStateChange changedState)
@@ -74,10 +74,4 @@ public class ChaosStarsSystem : ScriptableObject
         }
     }
 #endif
-
-    private void ResetValues()
-    {
-        ChaosStarsAmount = 0;
-        CurrentChaosStar = null;
-    }
 }

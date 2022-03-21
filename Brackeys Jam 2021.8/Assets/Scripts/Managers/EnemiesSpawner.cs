@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tags = TagSystem.Tags;
 
-public class SpawnManager : MonoBehaviour
+public class EnemiesSpawner : MonoBehaviour
 {
     [SerializeField] PickableCoords[] pickableSpawnPositions;
     [SerializeField] ObjectPool objectPool;
@@ -27,18 +27,34 @@ public class SpawnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnGameOver += CancelOngoingInvokes;
-        ChaosStarsSystem.OnChaosStarGained += ChangeSpawnIntervals;
-        SceneController.OnGameStart += SetInvokes;
+        PlayerHealth.OnGameOver += StopSpawnCoroutine;
+        SceneController.OnGameStart += SpawnEnemy;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnGameOver -= CancelOngoingInvokes;
-        ChaosStarsSystem.OnChaosStarGained -= ChangeSpawnIntervals;
-        SceneController.OnGameStart -= SetInvokes;
-        CancelOngoingInvokes();
+        PlayerHealth.OnGameOver -= StopSpawnCoroutine;
+        SceneController.OnGameStart -= SpawnEnemy;
     }
+
+    private void SpawnEnemy() => StartCoroutine(SpawnEnemyCoroutine());
+
+    private IEnumerator SpawnEnemyCoroutine()
+    {
+        while (true)
+        {
+            ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
+
+            yield return new WaitForSeconds(currentChaosStar.EnemySpawnRate);
+
+            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Enemy).Count;
+            Tags randomEnemyTag = currentChaosStar.GetRandomEnemy();
+
+            if (objectPool.IsTagInDictionary(randomEnemyTag) && spawnedEnemies < currentChaosStar.EnemiesLimit) GetCharacterFromPool(randomEnemyTag);
+        }
+    }
+
+    private void StopSpawnCoroutine() => StopCoroutine(SpawnEnemyCoroutine());
 
     private void SpawnNeutral()
     {
@@ -66,33 +82,5 @@ public class SpawnManager : MonoBehaviour
         Quaternion charactersRotation = isMovingRight ? RIGHT_ROTATION : LEFT_ROTATION;
 
         objectPool.GetFromPool(tag, charactersPosition, charactersRotation);
-    }
-
-    private void ChangeSpawnIntervals()
-    {
-        CancelOngoingInvokes();
-
-        ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
-
-        _neutralInterval = currentChaosStar.neutralSpawnRate;
-        _hostileInterval = currentChaosStar.hostileSpawnRate;
-        _hostileLimit = currentChaosStar.hostilesLimit;
-
-        SetInvokes();
-    }
-
-    private void SetInvokes()
-    {
-        if (_neutralInterval != 0)
-            InvokeRepeating(nameof(SpawnNeutral), 2f, _neutralInterval);
-
-        if (_hostileInterval != 0)
-            InvokeRepeating(nameof(SpawnHostile), 2f, _hostileInterval);
-    }
-
-    private void CancelOngoingInvokes()
-    {
-        CancelInvoke(nameof(SpawnNeutral));
-        CancelInvoke(nameof(SpawnHostile));
     }
 }
