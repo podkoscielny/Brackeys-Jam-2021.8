@@ -34,7 +34,9 @@ public class ChaosStar : ScriptableObject
         {
             if (randomProbability - subtractFromSum <= enemy.probability)
             {
-                LastEnemyPicked = enemy.enemyType;
+                enemyToBeSpawned = enemy.enemyType;
+
+                LastEnemyPicked = enemyToBeSpawned;
                 return enemyToBeSpawned.Tag;
             }
 

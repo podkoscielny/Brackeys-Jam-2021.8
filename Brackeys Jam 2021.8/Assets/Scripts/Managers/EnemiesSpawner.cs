@@ -39,13 +39,13 @@ public class EnemiesSpawner : MonoBehaviour
         while (true)
         {
             ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
-
-            yield return new WaitForSeconds(currentChaosStar.EnemySpawnRate);
-
+            
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Enemy).Count;
             Tags randomEnemyTag = currentChaosStar.GetRandomEnemy();
 
             if (objectPool.IsTagInDictionary(randomEnemyTag) && spawnedEnemies < currentChaosStar.EnemiesLimit) GetCharacterFromPool(randomEnemyTag);
+
+            yield return new WaitForSeconds(currentChaosStar.EnemySpawnRate);
         }
     }
 
