@@ -1,5 +1,4 @@
 using System;
-using Tags = TagSystem.Tags;
 using UnityEngine;
 
 [Serializable]

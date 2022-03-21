@@ -24,7 +24,7 @@ public class ChaosStarsSystem : ScriptableObject
         get
         {
             int index = Mathf.Min(ChaosStarsAmount, MAX_CHAOS_STARS_AMOUNT - 1);
-            return chaosStars[index].pointsToReach;
+            return chaosStars[index].PointsToReach;
         }
     }
 
@@ -52,7 +52,7 @@ public class ChaosStarsSystem : ScriptableObject
 #endif
     }
 
-    private void SortChaosStarsByPoints() => Array.Sort(chaosStars, (x, y) => x.pointsToReach.CompareTo(y.pointsToReach));
+    private void SortChaosStarsByPoints() => Array.Sort(chaosStars, (x, y) => x.PointsToReach.CompareTo(y.PointsToReach));
 
     private void CheckScoreToUpdateChaosStarsAmount()
     {

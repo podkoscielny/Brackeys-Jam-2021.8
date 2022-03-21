@@ -13,13 +13,10 @@ MonoBehaviour:
   m_Name: ChaosStar_2
   m_EditorClassIdentifier: 
   pointsToReach: 200
-  hostilesLimit: 2
-  neutralSpawnRate: 2
-  hostileSpawnRate: 4.5
   enemiesLimit: 6
   enemySpawnRate: 2
   enemyTypes:
-  - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
-    probability: 0.68
   - enemyType: {fileID: 11400000, guid: 6be6034dac73e3d4185788b41c51eaa6, type: 2}
-    probability: 0.32
+    probability: 0.2
+  - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
+    probability: 0.8

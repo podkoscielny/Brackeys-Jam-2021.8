@@ -14,11 +14,6 @@ public class EnemiesSpawner : MonoBehaviour
     private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
     private readonly Quaternion LEFT_ROTATION = new Quaternion(0, 1, 0, 0);
 
-    private float _neutralInterval = 3f;
-    private float _hostileInterval = 0f;
-
-    private int _hostileLimit = 0;
-
     private const float SPAWN_MAX_Y = -1.98f;
     private const float SPAWN_MIN_Y = -2.8f;
     private const float SPAWN_X_RANGE = 16f;
@@ -55,22 +50,6 @@ public class EnemiesSpawner : MonoBehaviour
     }
 
     private void StopSpawnCoroutine() => StopCoroutine(SpawnEnemyCoroutine());
-
-    private void SpawnNeutral()
-    {
-        if (!objectPool.IsTagInDictionary(Tags.Character)) return;
-
-        GetCharacterFromPool(Tags.Character);
-    }
-
-    private void SpawnHostile()
-    {
-        int spawnedHostiles = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
-
-        if (!objectPool.IsTagInDictionary(Tags.Hostile) || spawnedHostiles >= _hostileLimit) return;
-
-        GetCharacterFromPool(Tags.Hostile);
-    }
 
     private void GetCharacterFromPool(Tags tag)
     {

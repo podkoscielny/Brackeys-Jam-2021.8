@@ -6,20 +6,16 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "ChaosStar", menuName = "ScriptableObjects/ChaosStar")]
 public class ChaosStar : ScriptableObject
 {
-    public int pointsToReach;
-
-    public int hostilesLimit;
-    public float neutralSpawnRate;
-    public float hostileSpawnRate;
-
+    [SerializeField] int pointsToReach;
     [SerializeField] int enemiesLimit;
     [SerializeField] float enemySpawnRate;
     [SerializeField] EnemyProbability[] enemyTypes;
 
+    public int PointsToReach => pointsToReach;
     public int EnemiesLimit => enemiesLimit;
     public float EnemySpawnRate => enemySpawnRate;
-    public EnemySO LastEnemyPicked { get; private set; }
     public EnemyProbability[] EnemyTypes => enemyTypes;
+    public EnemySO LastEnemyPicked { get; private set; }
 
     private float _probabilitySum;
 
