@@ -37,10 +37,7 @@ public class Poop : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!_isFalling)
-        {
-            transform.position = _spawnPoop.position;
-        }
+        if (!_isFalling) transform.position = _spawnPoop.position;
     }
 
     public void SetGravity() // Invoke after animation
@@ -51,7 +48,9 @@ public class Poop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.HasTag(Tags.HittableByPoop)) return;
+        bool isHittable = poopSystem.CurrentPoop.IsExplosive ? collision.HasTag(Tags.HittableByPoop) || collision.HasTag(Tags.Ground) : collision.HasTag(Tags.HittableByPoop);
+
+        if (!isHittable) return;
 
         if (poopSystem.CurrentPoop.IsExplosive)
         {
