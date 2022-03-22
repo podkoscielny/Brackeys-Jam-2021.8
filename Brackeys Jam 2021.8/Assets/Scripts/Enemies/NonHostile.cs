@@ -12,7 +12,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
 
     void OnEnable() => SetRandomSprite();
 
-    public void Move() => transform.position += transform.right * MOVEMENT_SPEED * Time.deltaTime;
+    public void Move() => transform.position += MOVEMENT_SPEED * Time.deltaTime * transform.right;
 
     private void SetRandomSprite()
     {
@@ -20,7 +20,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
 
         int characterIndex = Random.Range(0, humanCharacters.Length);
 
-        spriteRenderer.sprite = humanCharacters[characterIndex].sprite;
-        enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].animatorController;
+        spriteRenderer.sprite = humanCharacters[characterIndex].Sprite;
+        enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].AnimatorController;
     }
 }

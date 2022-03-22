@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HumanCharacter", menuName = "ScriptableObjects/HumanCharacter")]
 public class HumanCharacter : ScriptableObject
 {
-    public Sprite sprite;
-    public RuntimeAnimatorController animatorController;
+    [SerializeField] Sprite sprite;
+    [SerializeField] RuntimeAnimatorController animatorController;
+
+    public Sprite Sprite => sprite;
+    public RuntimeAnimatorController AnimatorController => animatorController;
 }
