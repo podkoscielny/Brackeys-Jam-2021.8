@@ -14,7 +14,6 @@ public class ChaosStar : ScriptableObject
     public int PointsToReach => pointsToReach;
     public int EnemiesLimit => enemiesLimit;
     public float EnemySpawnRate => enemySpawnRate;
-    public EnemyProbability[] EnemyTypes => enemyTypes;
     public EnemySO LastEnemyPicked { get; private set; }
 
     private float _probabilitySum;

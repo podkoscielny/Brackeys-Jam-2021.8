@@ -51,11 +51,11 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         int index = Random.Range(0, hostileEnemies.Length);
         HostileEnemy enemy = hostileEnemies[index];
 
-        spriteRenderer.sprite = enemy.characterSprite;
-        gunRenderer.sprite = enemy.gun.gunSprite;
-        gun.localScale = enemy.localScale;
-        firePoint.localPosition = enemy.gun.firePoint;
-        enemyAnimator.runtimeAnimatorController = enemy.animatorController;
+        spriteRenderer.sprite = enemy.CharacterSprite;
+        gunRenderer.sprite = enemy.Gun.GunSprite;
+        gun.localScale = enemy.LocalScale;
+        firePoint.localPosition = enemy.Gun.FirePoint;
+        enemyAnimator.runtimeAnimatorController = enemy.AnimatorController;
     }
 
     private void SetRandomStopPosition()

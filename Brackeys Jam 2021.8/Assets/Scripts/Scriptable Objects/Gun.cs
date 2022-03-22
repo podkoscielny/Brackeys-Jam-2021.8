@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gun", menuName = "ScriptableObjects/Gun")]
 public class Gun : ScriptableObject
 {
-    public Sprite gunSprite;
-    public Vector2 firePoint;
+    [SerializeField] Sprite gunSprite;
+    [SerializeField] Vector2 firePoint;
+
+    public Sprite GunSprite => gunSprite;
+    public Vector2 FirePoint => firePoint;
 }

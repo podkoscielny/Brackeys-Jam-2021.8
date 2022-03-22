@@ -40,12 +40,12 @@ public class Explosion : MonoBehaviour
 
         if (currentExplosion != null)
         {
-            spriteRenderer.sprite = currentExplosion.sprite;
-            explosionAnimator.runtimeAnimatorController = currentExplosion.animatorController;
-            transform.localScale = currentExplosion.size;
-            _explosionRange = currentExplosion.range;
-            _cameraShakeIntensity = currentExplosion.cameraShakeIntensity;
-            _cameraShakeDuration = currentExplosion.cameraShakeDuration;
+            spriteRenderer.sprite = currentExplosion.Sprite;
+            explosionAnimator.runtimeAnimatorController = currentExplosion.AnimatorController;
+            transform.localScale = currentExplosion.Size;
+            _explosionRange = currentExplosion.Range;
+            _cameraShakeIntensity = currentExplosion.CameraShakeIntensity;
+            _cameraShakeDuration = currentExplosion.CameraShakeDuration;
         }
     }
 
