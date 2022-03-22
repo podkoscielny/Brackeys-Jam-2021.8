@@ -7,11 +7,7 @@ public class SpriteMaskChanger : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] SpriteMask spriteMask;
 
-    void Update()
-    {
-        if(spriteRenderer.sprite != spriteMask.sprite)
-        {
-            spriteMask.sprite = spriteRenderer.sprite;
-        }
-    }
+    private void Update() => SetMaskSprite();
+
+    private void SetMaskSprite() => spriteMask.sprite = spriteRenderer.sprite;
 }
