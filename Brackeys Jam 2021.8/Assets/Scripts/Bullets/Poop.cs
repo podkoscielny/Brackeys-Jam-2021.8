@@ -27,7 +27,7 @@ public class Poop : MonoBehaviour
 
         if (_isFullyLoaded)
         {
-            poopAnimator.runtimeAnimatorController = poopSystem.CurrentPoop.poopAnimator;
+            poopAnimator.runtimeAnimatorController = poopSystem.CurrentPoop.PoopAnimator;
         }
         else
         {
@@ -53,7 +53,7 @@ public class Poop : MonoBehaviour
     {
         if (!collision.HasTag(Tags.HittableByPoop)) return;
 
-        if (poopSystem.CurrentPoop.isExplosive)
+        if (poopSystem.CurrentPoop.IsExplosive)
         {
             SpawnExplosionEffect();
         }

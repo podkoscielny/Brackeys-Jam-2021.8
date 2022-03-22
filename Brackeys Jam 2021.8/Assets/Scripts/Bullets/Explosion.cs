@@ -36,7 +36,7 @@ public class Explosion : MonoBehaviour
 
     private void SetProperties()
     {
-        ExplosionType currentExplosion = poopSystem.CurrentPoop.explosionType;
+        ExplosionType currentExplosion = poopSystem.CurrentPoop.ExplosionType;
 
         if (currentExplosion != null)
         {

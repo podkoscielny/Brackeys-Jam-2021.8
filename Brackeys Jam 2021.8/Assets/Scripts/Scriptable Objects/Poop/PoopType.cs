@@ -5,8 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Poop", menuName = "ScriptableObjects/Poop")]
 public class PoopType : ScriptableObject
 {
-    public bool isExplosive;
-    public int pointsWorth;
-    public RuntimeAnimatorController poopAnimator;
-    public ExplosionType explosionType;
+    [SerializeField] bool isExplosive;
+    [SerializeField] int pointsWorth;
+    [SerializeField] RuntimeAnimatorController poopAnimator;
+    [SerializeField] ExplosionType explosionType;
+
+    public bool IsExplosive => isExplosive;
+    public int PointsWorth => pointsWorth;
+    public RuntimeAnimatorController PoopAnimator => poopAnimator;
+    public ExplosionType ExplosionType => explosionType;
 }

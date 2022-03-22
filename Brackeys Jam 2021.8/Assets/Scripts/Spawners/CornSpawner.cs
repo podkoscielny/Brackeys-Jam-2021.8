@@ -46,7 +46,7 @@ public class CornSpawner : MonoBehaviour
         objectPool.GetFromPool(Tags.Corn, cornsPosition);
     }
 
-    private bool CanCornBeSpawned() => score.Value > poopSystem.CurrentPoop.pointsWorth * 3 && poopSystem.PoopChargeLevel < poopSystem.MAX_POOP_CHARGE_LEVEL;
+    private bool CanCornBeSpawned() => score.Value > poopSystem.CurrentPoop.PointsWorth * 3 && poopSystem.PoopChargeLevel < poopSystem.MAX_POOP_CHARGE_LEVEL;
 
     private void ResetPickedUpCorns() => _cornsSpawned = 0;
 

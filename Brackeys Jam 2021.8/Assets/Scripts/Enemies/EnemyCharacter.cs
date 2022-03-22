@@ -89,7 +89,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         _hasExploded = true;
         _explodeDirection = new Vector3(direction.x, direction.y, 0).normalized;
 
-        score.AddPoints(poopSystem.CurrentPoop.pointsWorth);
+        score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
     }
 
     public void HandlePoopHit(Vector2 splashPosition)
@@ -98,7 +98,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         {
             SetSplashEffect(splashPosition);
 
-            score.AddPoints(poopSystem.CurrentPoop.pointsWorth);
+            score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
             enemyAnimator.SetTrigger("IsDown");
 
             _isDown = true;
