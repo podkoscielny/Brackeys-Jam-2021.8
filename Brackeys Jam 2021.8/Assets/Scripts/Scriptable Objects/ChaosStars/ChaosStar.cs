@@ -24,22 +24,22 @@ public class ChaosStar : ScriptableObject
 
     public Tags GetRandomEnemy()
     {
-        EnemySO enemyToBeSpawned = enemyTypes[enemyTypes.Length - 1].enemyType;
+        EnemySO enemyToBeSpawned = enemyTypes[enemyTypes.Length - 1].EnemyType;
 
         float randomProbability = Random.Range(0, _probabilitySum);
         float subtractFromSum = 0;
 
         foreach (EnemyProbability enemy in enemyTypes)
         {
-            if (randomProbability - subtractFromSum <= enemy.probability)
+            if (randomProbability - subtractFromSum <= enemy.Probability)
             {
-                enemyToBeSpawned = enemy.enemyType;
+                enemyToBeSpawned = enemy.EnemyType;
 
                 LastEnemyPicked = enemyToBeSpawned;
                 return enemyToBeSpawned.Tag;
             }
 
-            subtractFromSum += enemy.probability;
+            subtractFromSum += enemy.Probability;
         }
 
         LastEnemyPicked = enemyToBeSpawned;
@@ -52,13 +52,13 @@ public class ChaosStar : ScriptableObject
 
         foreach (EnemyProbability enemyType in enemyTypes)
         {
-            probability += enemyType.probability;
+            probability += enemyType.Probability;
         }
 
         _probabilitySum = probability;
     }
 
 #if UNITY_EDITOR
-    public void SortEnemyTypesByProbability() => Array.Sort(enemyTypes, (x, y) => x.probability.CompareTo(y.probability));
+    public void SortEnemyTypesByProbability() => Array.Sort(enemyTypes, (x, y) => x.Probability.CompareTo(y.Probability));
 #endif
 }

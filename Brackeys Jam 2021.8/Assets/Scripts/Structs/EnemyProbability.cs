@@ -4,6 +4,9 @@ using UnityEngine;
 [Serializable]
 public struct EnemyProbability
 {
-    public EnemySO enemyType;
-    [Range(0, 1)] public float probability;
+    [SerializeField] EnemySO enemyType;
+    [Range(0, 1)] [SerializeField] float probability;
+
+    public EnemySO EnemyType => enemyType;
+    public float Probability => probability;
 }
