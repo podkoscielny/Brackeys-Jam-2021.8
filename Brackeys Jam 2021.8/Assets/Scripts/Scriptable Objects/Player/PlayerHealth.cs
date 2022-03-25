@@ -48,7 +48,8 @@ public class PlayerHealth : ScriptableObject
 #endif
     }
 
-    void OnValidate()
+#if UNITY_EDITOR
+    private void OnValidate()
     {
         maxHealth = EditorApplication.isPlaying ? _initialMaxHealth : Mathf.Max(maxHealth, 0);
         healthValue = Mathf.Clamp(healthValue, 0, maxHealth);
@@ -65,6 +66,7 @@ public class PlayerHealth : ScriptableObject
 
         if (EditorApplication.isPlaying && healthValue == 0) OnGameOver?.Invoke();
     }
+#endif
 
     public void Heal(float healAmount = 1)
     {

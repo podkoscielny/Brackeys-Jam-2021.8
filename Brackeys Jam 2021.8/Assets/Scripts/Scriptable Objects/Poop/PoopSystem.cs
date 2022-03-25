@@ -44,7 +44,8 @@ public class PoopSystem : ScriptableObject
 #endif
     }
 
-    void OnValidate()
+#if UNITY_EDITOR
+    private void OnValidate()
     {
         poopChargeLevel = poopLevels.Length > 0 ? Mathf.Clamp(poopChargeLevel, 1, poopLevels.Length) : 1;
 
@@ -53,6 +54,7 @@ public class PoopSystem : ScriptableObject
             OnPoopUpgrade?.Invoke();
         }
     }
+#endif
 
     public void EatCorn()
     {

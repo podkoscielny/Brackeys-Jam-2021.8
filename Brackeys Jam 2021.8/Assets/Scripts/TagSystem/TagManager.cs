@@ -7,15 +7,24 @@ public class TagManager : MonoBehaviour
 {
     [SerializeField] List<Tags> tags;
 
-    void OnEnable()
+    void OnEnable() => this.CacheObjectToTagSystem(gameObject, tags);
+
+    void OnDisable() => this.RemoveObjectFromTagSystem(gameObject, tags);
+
+    public void AddTag(Tags tagToAdd)
     {
-        this.CacheObjectToTagSystem(gameObject, tags);
+        if (tags.Contains(tagToAdd)) return;
+
+        tags.Add(tagToAdd);
+        
     }
 
-    void OnDisable()
+    public void RemoveTag(Tags tagToRemove)
     {
-        this.RemoveObjectFromTagSystem(gameObject, tags);
+        if (!tags.Contains(tagToRemove)) return;
+
+        tags.Remove(tagToRemove);
     }
 
-    public bool HasTag(Tags tag) => tags.Contains(tag);
+    public bool HasTag(Tags tagToCompare) => tags.Contains(tagToCompare);
 }

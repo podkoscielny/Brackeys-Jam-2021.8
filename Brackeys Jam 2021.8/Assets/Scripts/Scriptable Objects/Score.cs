@@ -37,7 +37,8 @@ public class Score : ScriptableObject
 #endif
     }
 
-    void OnValidate()
+#if UNITY_EDITOR
+    private void OnValidate()
     {
         if(EditorApplication.isPlaying)
         {
@@ -49,6 +50,7 @@ public class Score : ScriptableObject
             value = 0;
         }
     }
+#endif
 
     public void AddPoints(int pointsToAdd)
     {
