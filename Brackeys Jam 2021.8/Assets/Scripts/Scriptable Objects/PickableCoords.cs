@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PickableCoords", menuName = "ScriptableObjects/PickableCoords")]
 public class PickableCoords : ScriptableObject
 {
-    [SerializeField] Vector2Pair[] positions;
+    [SerializeField] SpawnBounds[] positions;
 
     public Vector2 GetRandomPosition()
     {
         int randomPositionIndex = Random.Range(0, positions.Length);
-        Vector2Pair vector2Pair = positions[randomPositionIndex];
+        SpawnBounds vector2Pair = positions[randomPositionIndex];
 
-        float xPosition = Random.Range(vector2Pair.leftBound.x, vector2Pair.rightBound.x);
-        float yPosition = vector2Pair.leftBound.y;
+        float xPosition = Random.Range(vector2Pair.leftBoundX, vector2Pair.rightBoundX);
+        float yPosition = vector2Pair.boundY;
 
         Vector2 positionToReturn = new Vector2(xPosition, yPosition);
 

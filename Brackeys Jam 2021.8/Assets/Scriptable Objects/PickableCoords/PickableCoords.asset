@@ -15,13 +15,31 @@ MonoBehaviour:
   positions:
   - leftBound: {x: -6.215, y: 0.65}
     rightBound: {x: -3.271, y: 0.65}
+    leftBoundX: -6.215
+    rightBoundX: -3.271
+    boundY: 0.65
   - leftBound: {x: -1.6, y: 1.791}
     rightBound: {x: 4.21, y: 1.791}
+    leftBoundX: -1.6
+    rightBoundX: 4.21
+    boundY: 1.791
   - leftBound: {x: -1.38, y: 2.76}
     rightBound: {x: 7.91, y: 2.76}
+    leftBoundX: -1.38
+    rightBoundX: 7.91
+    boundY: 2.76
   - leftBound: {x: 4.25, y: 4.94}
     rightBound: {x: 5.68, y: 4.94}
+    leftBoundX: 4.25
+    rightBoundX: 5.68
+    boundY: 4.94
   - leftBound: {x: -1.33, y: 7.73}
     rightBound: {x: 3.93, y: 7.73}
+    leftBoundX: -1.33
+    rightBoundX: 3.93
+    boundY: 7.73
   - leftBound: {x: -6.67, y: 4.88}
     rightBound: {x: -2.82, y: 4.88}
+    leftBoundX: -6.67
+    rightBoundX: -2.82
+    boundY: 4.88
