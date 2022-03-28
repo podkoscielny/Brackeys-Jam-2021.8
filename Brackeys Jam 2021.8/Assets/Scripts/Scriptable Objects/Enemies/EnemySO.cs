@@ -6,4 +6,9 @@ using Tags = TagSystem.Tags;
 public abstract class EnemySO : ScriptableObject
 {
     public abstract Tags Tag { get; }
+
+    public void Get()
+    {
+        Debug.Log(this);
+    }
 }

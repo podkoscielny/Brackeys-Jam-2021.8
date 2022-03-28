@@ -5,18 +5,21 @@ using Tags = TagSystem.Tags;
 
 public class HostileCharacter : MonoBehaviour, IEnemyMovement
 {
+    [Header("Characters Components")]
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer gunRenderer;
     [SerializeField] SpriteRenderer spriteRenderer;
+
+    [Header("Systems")]
     [SerializeField] ObjectPool objectPool;
-    [SerializeField] HostileEnemy[] hostileEnemies;
+    [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
     private Vector3 _randomStopPosition;
     private bool _isFacingRight;
-
     private bool _hasReachedTarget = false;
+    private bool _hasGameStarted = false;
 
     private const float MOVEMENT_SPEED = 4f;
     private const float MIN_POSITION_X = -7f;
@@ -24,6 +27,12 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     private void OnEnable()
     {
+        if (!_hasGameStarted)
+        {
+            _hasGameStarted = true;
+            return;
+        }
+
         _hasReachedTarget = false;
         _isFacingRight = transform.right.x == 1;
 
@@ -48,8 +57,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     private void SetRandomEnemy()
     {
-        int index = Random.Range(0, hostileEnemies.Length);
-        HostileEnemy enemy = hostileEnemies[index];
+        HostileEnemy enemy = (HostileEnemy)chaosStarsSystem.CurrentChaosStar.LastEnemyPicked;
+        chaosStarsSystem.CurrentChaosStar.LastEnemyPicked.Get();
 
         spriteRenderer.sprite = enemy.CharacterSprite;
         gunRenderer.sprite = enemy.Gun.GunSprite;
