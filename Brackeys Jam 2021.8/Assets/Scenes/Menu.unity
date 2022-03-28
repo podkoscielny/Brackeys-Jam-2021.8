@@ -424,7 +424,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 589077992}
-  - component: {fileID: 589077991}
   - component: {fileID: 589077990}
   m_Layer: 0
   m_Name: ----Android Setup Settings----
@@ -443,18 +442,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5faaf7d44a9afcb4886997618f50277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &589077991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589077989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a76157254892ba43b04c3690dce00fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &589077992
