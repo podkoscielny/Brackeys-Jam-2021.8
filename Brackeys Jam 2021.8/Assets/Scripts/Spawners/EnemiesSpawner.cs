@@ -14,8 +14,8 @@ public class EnemiesSpawner : MonoBehaviour
     private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
     private readonly Quaternion LEFT_ROTATION = new Quaternion(0, 1, 0, 0);
 
-    private const float SPAWN_MAX_Y = -1.98f;
-    private const float SPAWN_MIN_Y = -2.8f;
+    private const float SPAWN_MAX_Y = -1.71f;
+    private const float SPAWN_MIN_Y = -2.3f;
     private const float SPAWN_X_RANGE = 16f;
 
     private void Awake() => objectPool.InitializePool();
