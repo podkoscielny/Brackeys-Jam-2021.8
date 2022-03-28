@@ -6,21 +6,15 @@ public class LifeSpawner : MonoBehaviour
 {
     [SerializeField] Score score;
     [SerializeField] GameObject life;
-    [SerializeField] PickableCoords[] pickableSpawnPositions;
+    [SerializeField] PickableCoords pickableCoords;
 
     private int _lifeSpawnGoal = 3000;
 
     private const int SPAWN_LIFE_TARGET = 3000;
 
-    private void OnEnable()
-    {
-        Score.OnScoreUpdated += CheckLifeToBeSpawn;
-    }
+    private void OnEnable() => Score.OnScoreUpdated += CheckLifeToBeSpawn;
 
-    private void OnDisable()
-    {
-        Score.OnScoreUpdated -= CheckLifeToBeSpawn;
-    }
+    private void OnDisable() =>  Score.OnScoreUpdated -= CheckLifeToBeSpawn;
 
     private void CheckLifeToBeSpawn()
     {
@@ -33,11 +27,7 @@ public class LifeSpawner : MonoBehaviour
 
     private void SpawnLife()
     {
-        int lifeCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
-        PickableCoords cornSpawnBounds = pickableSpawnPositions[lifeCoordsIndex];
-
-        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
-        life.transform.position = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
+        life.transform.position = pickableCoords.GetRandomPosition();
 
         life.SetActive(true);
     }

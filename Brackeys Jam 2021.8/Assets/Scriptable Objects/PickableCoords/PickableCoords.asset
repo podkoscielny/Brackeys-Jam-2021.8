@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a26fbc5463e38b4fab08f1010bdcd1c, type: 3}
+  m_Name: PickableCoords
+  m_EditorClassIdentifier: 
+  positions:
+  - leftBound: {x: -6.215, y: 0.65}
+    rightBound: {x: -3.271, y: 0.65}
+  - leftBound: {x: -1.6, y: 1.791}
+    rightBound: {x: 4.21, y: 1.791}
+  - leftBound: {x: -1.38, y: 2.76}
+    rightBound: {x: 7.91, y: 2.76}
+  - leftBound: {x: 4.25, y: 4.94}
+    rightBound: {x: 5.68, y: 4.94}
+  - leftBound: {x: -1.33, y: 7.73}
+    rightBound: {x: 3.93, y: 7.73}
+  - leftBound: {x: -6.67, y: 4.88}
+    rightBound: {x: -2.82, y: 4.88}

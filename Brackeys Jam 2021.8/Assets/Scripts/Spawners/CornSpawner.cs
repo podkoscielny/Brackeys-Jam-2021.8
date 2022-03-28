@@ -8,7 +8,7 @@ public class CornSpawner : MonoBehaviour
     [SerializeField] PoopSystem poopSystem;
     [SerializeField] ObjectPool objectPool;
     [SerializeField] Score score;
-    [SerializeField] PickableCoords[] pickableSpawnPositions;
+    [SerializeField] PickableCoords pickableCoords;
 
     private int _cornsSpawned = 0;
 
@@ -35,15 +35,11 @@ public class CornSpawner : MonoBehaviour
 
         if (spawnedCorns >= CORN_LIMIT || _cornsSpawned >= poopSystem.ChargeGoal || !CanCornBeSpawned() || !objectPool.IsTagInDictionary(Tags.Corn)) return;
 
-        int cornCoordsIndex = Random.Range(0, pickableSpawnPositions.Length);
-        PickableCoords cornSpawnBounds = pickableSpawnPositions[cornCoordsIndex];
-
-        float xPosition = Random.Range(cornSpawnBounds.leftBound.x, cornSpawnBounds.rightBound.x);
-        Vector2 cornsPosition = new Vector2(xPosition, cornSpawnBounds.leftBound.y);
-
         _cornsSpawned++;
 
-        objectPool.GetFromPool(Tags.Corn, cornsPosition);
+        Vector2 randomCornPosition = pickableCoords.GetRandomPosition();
+
+        objectPool.GetFromPool(Tags.Corn, randomCornPosition);
     }
 
     private bool CanCornBeSpawned() => score.Value > poopSystem.CurrentPoop.PointsWorth * 3 && poopSystem.PoopChargeLevel < poopSystem.MAX_POOP_CHARGE_LEVEL;
