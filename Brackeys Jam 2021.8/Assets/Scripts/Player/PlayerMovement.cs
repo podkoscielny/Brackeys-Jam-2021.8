@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canMove = false;
     private float _horizontalMovement = 0f;
 
-    private const float JOYSTICK_SENSITIVITY = 0.4f;
+    private const float JOYSTICK_SENSITIVITY = 0.2f;
     private const float MOVEMENT_SPEED = 5f;
     private const float SHOOT_DELAY = 0.5f;
     private const float MOVEMENT_DELAY = 0.7f;
