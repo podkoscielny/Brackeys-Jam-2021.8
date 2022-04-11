@@ -12,7 +12,6 @@ public class Poop : MonoBehaviour
     [SerializeField] PoopSystem poopSystem;
 
     private Transform _spawnPoop;
-
     private bool _isFalling = false;
     private bool _isFullyLoaded = false;
     private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
