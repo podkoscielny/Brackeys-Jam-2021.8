@@ -81,15 +81,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_canShoot) return;
 
-        GameObject poop = objectPool.GetFromPool(Tags.Poop);
-        poop.transform.position = poopSpawn.position;
-        _canShoot = false;
+        objectPool.GetFromPool(Tags.Poop, poopSpawn.position);
 
         StartCoroutine(DelayShooting());
     }
 
     private IEnumerator DelayShooting()
     {
+        _canShoot = false;
+
         yield return _waitForShootDelay;
 
         _canShoot = true;

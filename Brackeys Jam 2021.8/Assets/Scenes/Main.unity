@@ -1387,7 +1387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392663327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: -0.852, z: 0}
+  m_LocalPosition: {x: 0.252, y: -0.852, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 554064753}
@@ -1618,6 +1618,7 @@ GameObject:
   - component: {fileID: 554064760}
   - component: {fileID: 554064762}
   - component: {fileID: 554064763}
+  - component: {fileID: 554064752}
   m_Layer: 9
   m_Name: Player_Pigeon
   m_TagString: Player
@@ -1625,6 +1626,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &554064752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554064751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157abfef3aa2e004ea09803ab1db6f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 09000000
 --- !u!4 &554064753
 Transform:
   m_ObjectHideFlags: 0
@@ -2302,8 +2316,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 107206495
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1207841707077272702, guid: c7ed2726543e13e45a88dc55e7fac6c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
