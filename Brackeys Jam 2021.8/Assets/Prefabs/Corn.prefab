@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6103923790451666249}
   - component: {fileID: 6103923790451666250}
   - component: {fileID: 2658632217522281179}
-  - component: {fileID: 1514902424278541239}
+  - component: {fileID: 2583599196610209529}
   m_Layer: 7
   m_Name: Corn
   m_TagString: Corn
@@ -165,7 +165,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1514902424278541239
+--- !u!114 &2583599196610209529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6103923790451666246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
+  m_Script: {fileID: 11500000, guid: 157abfef3aa2e004ea09803ab1db6f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 02000000

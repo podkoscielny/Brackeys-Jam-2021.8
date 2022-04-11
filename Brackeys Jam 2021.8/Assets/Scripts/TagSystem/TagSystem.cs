@@ -4,95 +4,88 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-public static class TagSystem 
+namespace AoOkami.MultipleTagSystem
 {
-    [Serializable]
-    public enum Tags
+    public static class TagSystem
     {
-        None = 0,
-        Poop = 1,
-        Corn = 2,
-        Character = 3,
-        Bullet = 4,
-        Hostile = 5,
-        SplashEffect = 6,
-        Ground = 7,
-        Explosion = 8,
-        Player = 9,
-        Life = 10,
-        HittableByPoop = 11,
-        PoopSpawn = 12,
-        Enemy = 13
-    }
-
-    private static Dictionary<Tags, List<GameObject>> TaggedObjects = new Dictionary<Tags, List<GameObject>>();
-    private static Dictionary<Tags, ReadOnlyCollection<GameObject>> _readonlyObjects = new Dictionary<Tags, ReadOnlyCollection<GameObject>>();
-
-    private static ReadOnlyCollection<GameObject> _emptyList = new List<GameObject>().AsReadOnly();
-
-    static TagSystem()
-    {
-        InitializeTaggedObjectsDictionary();
-    }
-
-    private static void InitializeTaggedObjectsDictionary()
-    {
-        Type enumType = typeof(Tags);
-        var enumValues = Enum.GetValues(enumType);
-
-        foreach (var value in enumValues)
+        [Serializable]
+        public enum Tags
         {
-            TaggedObjects.Add((Tags)value, new List<GameObject>());
+            None = 0,
+            Poop = 1,
+            Corn = 2,
+            Character = 3,
+            Bullet = 4,
+            Hostile = 5,
+            SplashEffect = 6,
+            Ground = 7,
+            Explosion = 8,
+            Player = 9,
+            Life = 10,
+            HittableByPoop = 11,
+            PoopSpawn = 12,
+            Enemy = 13
         }
 
-        foreach (var item in TaggedObjects)
+        private static Dictionary<Tags, List<GameObject>> _taggedObjects = new Dictionary<Tags, List<GameObject>>();
+        private static Dictionary<Tags, ReadOnlyCollection<GameObject>> _readonlyObjects = new Dictionary<Tags, ReadOnlyCollection<GameObject>>();
+
+        private static ReadOnlyCollection<GameObject> _emptyList = new List<GameObject>().AsReadOnly();
+
+        static TagSystem()
         {
-            _readonlyObjects.Add(item.Key, item.Value.AsReadOnly());
+            InitializeTaggedObjectsDictionary();
         }
-    }
 
-    public static GameObject FindGameObjectWithTag(Tags tag)
-    {
-        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return null;
-
-        return TaggedObjects[tag][0];
-    }
-
-    public static ReadOnlyCollection<GameObject> FindAllGameObjectsWithTag(Tags tag)
-    {
-        if (!TaggedObjects.ContainsKey(tag) || TaggedObjects[tag].Count < 1) return _emptyList;
-
-        return _readonlyObjects[tag];
-    }
-
-    public static void CacheObjectToTagSystem(this TagManager tagManager, GameObject gameObjectToCache, List<Tags> tags)
-    {
-        CacheObjectToFindWithTag(gameObjectToCache, tags);
-    }
-
-    public static void RemoveObjectFromTagSystem(this TagManager tagManager, GameObject objectToBeRemoved, List<Tags> tags)
-    {
-        RemoveObjectFromFindWithTag(objectToBeRemoved, tags);
-    }
-
-    private static void CacheObjectToFindWithTag(GameObject objectToCache, List<Tags> tags)
-    {
-        foreach (var item in TaggedObjects)
+        public static GameObject FindGameObjectWithTag(Tags tag)
         {
-            if (tags.Contains(item.Key))
+            if (!_taggedObjects.ContainsKey(tag) || _taggedObjects[tag].Count < 1) return null;
+
+            return _taggedObjects[tag][0];
+        }
+
+        public static ReadOnlyCollection<GameObject> FindAllGameObjectsWithTag(Tags tag)
+        {
+            if (!_taggedObjects.ContainsKey(tag) || _taggedObjects[tag].Count < 1) return _emptyList;
+
+            return _readonlyObjects[tag];
+        }
+
+        internal static void CacheObjectToTagSystem(GameObject objectToBeCached, List<Tags> tags)
+        {
+            foreach (var item in _taggedObjects)
             {
-                TaggedObjects[item.Key].Add(objectToCache);
+                if (tags.Contains(item.Key))
+                    _taggedObjects[item.Key].Add(objectToBeCached);
             }
         }
-    }
 
-    private static void RemoveObjectFromFindWithTag(GameObject objectToBeRemoved, List<Tags> tags)
-    {
-        foreach (var item in TaggedObjects)
+        internal static void RemoveObjectFromTagSystem(GameObject objectToBeRemoved, List<Tags> tags)
         {
-            if (tags.Contains(item.Key))
+            foreach (var item in _taggedObjects)
             {
-                TaggedObjects[item.Key].Remove(objectToBeRemoved);
+                if (tags.Contains(item.Key))
+                    _taggedObjects[item.Key].Remove(objectToBeRemoved);
+            }
+        }
+
+        internal static void CacheObjectToNewTag(GameObject objectToBeCached, Tags tag) => _taggedObjects[tag].Add(objectToBeCached);
+
+        internal static void RemoveTagFromObject(GameObject objectToBeRemoved, Tags tag) => _taggedObjects[tag].Remove(objectToBeRemoved);
+
+        private static void InitializeTaggedObjectsDictionary()
+        {
+            Type enumType = typeof(Tags);
+            var enumValues = Enum.GetValues(enumType);
+
+            foreach (var value in enumValues)
+            {
+                _taggedObjects.Add((Tags)value, new List<GameObject>());
+            }
+
+            foreach (var item in _taggedObjects)
+            {
+                _readonlyObjects.Add(item.Key, item.Value.AsReadOnly());
             }
         }
     }

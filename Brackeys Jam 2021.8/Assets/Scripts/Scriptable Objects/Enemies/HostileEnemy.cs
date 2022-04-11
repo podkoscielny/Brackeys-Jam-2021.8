@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Tags = TagSystem.Tags;
+using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 [CreateAssetMenu(fileName = "HostileEnemy", menuName = "ScriptableObjects/HostileEnemy")]
 public class HostileEnemy : EnemySO

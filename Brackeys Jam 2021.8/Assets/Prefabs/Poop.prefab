@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5093926533732649326}
   - component: {fileID: 1391844587408523225}
   - component: {fileID: -7297051915397418152}
-  - component: {fileID: -8307910776231403284}
+  - component: {fileID: 3287052150117104505}
   m_Layer: 0
   m_Name: Poop
   m_TagString: Poop
@@ -159,7 +159,7 @@ MonoBehaviour:
   poopAnimator: {fileID: 5093926533732649326}
   objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
---- !u!114 &-8307910776231403284
+--- !u!114 &3287052150117104505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7332715859959600718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
+  m_Script: {fileID: 11500000, guid: 157abfef3aa2e004ea09803ab1db6f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 01000000

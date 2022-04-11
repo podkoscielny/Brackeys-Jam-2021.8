@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7559855718117537268}
   - component: {fileID: 1262634898865482270}
   - component: {fileID: -8051431534695751512}
-  - component: {fileID: -3694572047739477755}
+  - component: {fileID: 8047365522209983519}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -187,7 +187,7 @@ SortingGroup:
   m_SortingLayerID: 1360585385
   m_SortingLayer: 1
   m_SortingOrder: 0
---- !u!114 &-3694572047739477755
+--- !u!114 &8047365522209983519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 813753172112441310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2bd26cf707e47d48b3d8c5168e1002b, type: 3}
+  m_Script: {fileID: 11500000, guid: 157abfef3aa2e004ea09803ab1db6f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 030000000b0000000d000000

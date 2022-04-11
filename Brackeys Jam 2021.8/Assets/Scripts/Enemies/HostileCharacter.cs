@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Tags = TagSystem.Tags;
+using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class HostileCharacter : MonoBehaviour, IEnemyMovement
 {
@@ -58,7 +58,6 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     private void SetRandomEnemy()
     {
         HostileEnemy enemy = (HostileEnemy)chaosStarsSystem.CurrentChaosStar.LastEnemyPicked;
-        chaosStarsSystem.CurrentChaosStar.LastEnemyPicked.Get();
 
         spriteRenderer.sprite = enemy.CharacterSprite;
         gunRenderer.sprite = enemy.Gun.GunSprite;

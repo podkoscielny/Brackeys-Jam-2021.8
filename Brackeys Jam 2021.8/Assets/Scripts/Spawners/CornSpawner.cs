@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Tags = TagSystem.Tags;
+using AoOkami.MultipleTagSystem;
+using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class CornSpawner : MonoBehaviour
 {
