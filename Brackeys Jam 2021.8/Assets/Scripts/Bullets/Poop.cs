@@ -19,9 +19,9 @@ public class Poop : MonoBehaviour
 
     private const int GRAVITY_SCALE = 3;
 
-    void Start() => _spawnPoop = TagSystem.FindGameObjectWithTag(Tags.PoopSpawn).transform;
+    private void Start() => _spawnPoop = TagSystem.FindGameObjectWithTag(Tags.PoopSpawn).transform;
 
-    void OnEnable()
+    private void OnEnable()
     {
         _isFalling = false;
         poopRb.gravityScale = 0;
@@ -36,7 +36,7 @@ public class Poop : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (!_isFalling) transform.position = _spawnPoop.position;
     }
@@ -49,9 +49,7 @@ public class Poop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        bool isHittable = poopSystem.CurrentPoop.IsExplosive ? collision.HasTag(Tags.HittableByPoop) || collision.HasTag(Tags.Ground) : collision.HasTag(Tags.HittableByPoop);
-
-        if (!isHittable) return;
+        if (!collision.HasTag(Tags.HittableByPoop)) return;
 
         if (poopSystem.CurrentPoop.IsExplosive)
         {
