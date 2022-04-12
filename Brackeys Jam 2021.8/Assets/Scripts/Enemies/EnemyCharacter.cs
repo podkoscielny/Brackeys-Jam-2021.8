@@ -24,20 +24,9 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
 
-    private void Awake()
-    {
-        _enemyMovement = GetComponent<IEnemyMovement>();
-        _splashTransform = splashEffect.transform;
-    }
+    private void Awake() => CacheComponents();
 
-    private void OnEnable()
-    {
-        _canMove = true;
-        _isDown = false;
-        _hasExploded = false;
-        splashEffect.SetActive(false);
-        SetSpriteColor();
-    }
+    private void OnEnable() => ResetEnemyState();
 
     private void Update()
     {
@@ -49,37 +38,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         {
             Explode();
         }
-    }
-
-    private void Explode()
-    {
-        transform.Rotate(ROTATION_SPEED * Time.deltaTime * Vector3.forward);
-        transform.position += EXPLOSION_SPEED * Time.deltaTime * _explodeDirection;
-    }
-
-    private void SetSpriteColor()
-    {
-        Color color = spriteRenderer.color;
-        color.a = 1;
-
-        spriteRenderer.color = color;
-    }
-
-    private void SetSplashEffect(Vector2 poopPosition)
-    {
-        int poopLevel = poopSystem.PoopChargeLevel;
-
-        _splashTransform.position = poopPosition;
-
-        float splashSizeFactor = SPLASH_SIZE_FACTOR * poopLevel;
-
-        float splashScaleX = _splashTransform.localScale.x + splashSizeFactor;
-        float splashScaleY = _splashTransform.localScale.y + splashSizeFactor;
-        float splashScaleZ = _splashTransform.localScale.z;
-
-        _splashTransform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
-
-        splashEffect.SetActive(true);
     }
 
     public void EnableMoving() => _canMove = true; //Invoke in animation event
@@ -107,5 +65,51 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
             _isDown = true;
             _canMove = false;
         }
+    }
+
+    private void Explode()
+    {
+        transform.Rotate(ROTATION_SPEED * Time.deltaTime * Vector3.forward);
+        transform.position += EXPLOSION_SPEED * Time.deltaTime * _explodeDirection;
+    }
+
+    private void ResetEnemyState()
+    {
+        _canMove = true;
+        _isDown = false;
+        _hasExploded = false;
+        splashEffect.SetActive(false);
+        SetSpriteColor();
+    }
+
+    private void SetSpriteColor()
+    {
+        Color color = spriteRenderer.color;
+        color.a = 1;
+
+        spriteRenderer.color = color;
+    }
+
+    private void SetSplashEffect(Vector2 poopPosition)
+    {
+        int poopLevel = poopSystem.PoopChargeLevel;
+
+        _splashTransform.position = poopPosition;
+
+        float splashSizeFactor = SPLASH_SIZE_FACTOR * poopLevel;
+
+        float splashScaleX = _splashTransform.localScale.x + splashSizeFactor;
+        float splashScaleY = _splashTransform.localScale.y + splashSizeFactor;
+        float splashScaleZ = _splashTransform.localScale.z;
+
+        _splashTransform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
+
+        splashEffect.SetActive(true);
+    }
+
+    private void CacheComponents()
+    {
+        _enemyMovement = GetComponent<IEnemyMovement>();
+        _splashTransform = splashEffect.transform;
     }
 }
