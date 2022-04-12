@@ -11,8 +11,6 @@ public class Poop : MonoBehaviour
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
 
-    private Vector2 _explosionOffset = new Vector2(0f, 0.75f);
-
     private void OnEnable() => SetPoopAnimator();
 
     private void SetPoopAnimator() => poopAnimator.runtimeAnimatorController = poopSystem.CurrentPoop.PoopAnimator;
@@ -35,7 +33,7 @@ public class Poop : MonoBehaviour
 
     private void SpawnExplosionEffect()
     {
-        Vector2 explosionPosition = (Vector2)transform.position + _explosionOffset;
+        Vector2 explosionPosition = transform.position;
         objectPool.GetFromPool(Tags.Explosion, explosionPosition);
     }
 }

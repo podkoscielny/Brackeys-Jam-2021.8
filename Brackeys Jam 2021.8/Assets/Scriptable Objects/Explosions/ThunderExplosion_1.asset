@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d7a05a55b43f745979ba0080337231, type: 3}
   m_Name: ThunderExplosion_1
   m_EditorClassIdentifier: 
-  range: 1.4
+  range: 1.2
   cameraShakeIntensity: 3
   cameraShakeDuration: 0.2
-  size: {x: 3, y: 3, z: 0}
+  size: {x: 4, y: 4, z: 1}
   sprite: {fileID: -6287118868028267826, guid: ce0745ae6d333b6428c8c1b8f40a77bd, type: 3}
   animatorController: {fileID: 9100000, guid: 128243451ef9f8d4891603455519efe8, type: 2}
