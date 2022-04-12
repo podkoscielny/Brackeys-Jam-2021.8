@@ -20,16 +20,17 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     private bool _isDown = false;
     private bool _hasExploded = false;
 
+    private const float SPLASH_SIZE_FACTOR = 0.05f;
     private const float ROTATION_SPEED = 1200f;
     private const float EXPLOSION_SPEED = 14f;
 
-    void Awake()
+    private void Awake()
     {
         _enemyMovement = GetComponent<IEnemyMovement>();
         _splashTransform = splashEffect.transform;
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         _canMove = true;
         _isDown = false;
@@ -38,7 +39,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         SetSpriteColor();
     }
 
-    void Update()
+    private void Update()
     {
         if (_canMove)
         {
@@ -52,10 +53,10 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
     private void Explode()
     {
-        transform.Rotate(Vector3.forward * ROTATION_SPEED * Time.deltaTime);
-        transform.position += _explodeDirection * EXPLOSION_SPEED * Time.deltaTime;
+        transform.Rotate(ROTATION_SPEED * Time.deltaTime * Vector3.forward);
+        transform.position += EXPLOSION_SPEED * Time.deltaTime * _explodeDirection;
     }
-    
+
     private void SetSpriteColor()
     {
         Color color = spriteRenderer.color;
@@ -70,8 +71,10 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
         _splashTransform.position = poopPosition;
 
-        float splashScaleX = _splashTransform.localScale.x + 0.1f * poopLevel;
-        float splashScaleY = _splashTransform.localScale.y + 0.1f * poopLevel;
+        float splashSizeFactor = SPLASH_SIZE_FACTOR * poopLevel;
+
+        float splashScaleX = _splashTransform.localScale.x + splashSizeFactor;
+        float splashScaleY = _splashTransform.localScale.y + splashSizeFactor;
         float splashScaleZ = _splashTransform.localScale.z;
 
         _splashTransform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
@@ -79,7 +82,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         splashEffect.SetActive(true);
     }
 
-    public void EnableMoving() => _canMove = true;
+    public void EnableMoving() => _canMove = true; //Invoke in animation event
 
     public void HandleExplosion(Vector2 direction)
     {
