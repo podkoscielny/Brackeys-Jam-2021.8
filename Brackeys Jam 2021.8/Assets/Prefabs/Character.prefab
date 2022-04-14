@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
   spriteRenderer: {fileID: 813753172112441309}
   enemyAnimator: {fileID: 813753172112441299}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!114 &7559855718117537268
 MonoBehaviour:
   m_ObjectHideFlags: 0

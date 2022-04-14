@@ -16,7 +16,7 @@ MonoBehaviour:
   enemiesLimit: 5
   enemySpawnRate: 3
   enemyTypes:
-  - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
+  - enemyType: {fileID: 11400000, guid: 0b6b833b67f74bf428bfc7903cdadd80, type: 2}
     probability: 0.4
   - enemyType: {fileID: 11400000, guid: 519bd1522ca492944bddd59a17a3ad7c, type: 2}
     probability: 0.6

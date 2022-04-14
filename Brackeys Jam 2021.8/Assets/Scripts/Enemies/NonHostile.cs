@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class NonHostile : MonoBehaviour, IEnemyMovement
 {
-    [SerializeField] HumanCharacter[] humanCharacters;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] ChaosStarsSystem chaosStarsSystem;
+    [SerializeField] HumanCharacter[] humanCharacters;
 
-    private const float MOVEMENT_SPEED = 4f;
+    private float _movementSpeed = 4f;
 
-    void OnEnable() => SetRandomSprite();
+    private void OnEnable()
+    {
+        SetRandomSprite();
+        SetEnemySpeed();
+    }
 
-    public void Move() => transform.position += MOVEMENT_SPEED * Time.deltaTime * transform.right;
+    public void Move() => transform.position += _movementSpeed * Time.deltaTime * transform.right;
 
     private void SetRandomSprite()
     {
@@ -23,4 +28,6 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
         spriteRenderer.sprite = humanCharacters[characterIndex].Sprite;
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].AnimatorController;
     }
+
+    private void SetEnemySpeed() => _movementSpeed = chaosStarsSystem.CurrentChaosStar.LastEnemyPicked.MovementSpeed;
 }

@@ -36,7 +36,6 @@ public class ChaosStar : ScriptableObject
                 enemyToBeSpawned = enemy.EnemyType;
 
                 LastEnemyPicked = enemyToBeSpawned;
-                Debug.Log(LastEnemyPicked);
                 return enemyToBeSpawned.Tag;
             }
 
