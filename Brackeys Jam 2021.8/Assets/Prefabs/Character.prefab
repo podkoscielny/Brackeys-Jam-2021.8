@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: -3402253088665188352}
   - component: {fileID: 7559855718117537268}
   - component: {fileID: 1262634898865482270}
-  - component: {fileID: -8051431534695751512}
+  - component: {fileID: -129862616069341845}
   - component: {fileID: 8047365522209983519}
+  - component: {fileID: -8051431534695751512}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -138,14 +139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2100a82d6c27429d663b7107651b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 813753172112441309}
+  enemyAnimator: {fileID: 813753172112441299}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
   humanCharacters:
   - {fileID: 11400000, guid: c05b479f1e7726143bfe668334b33ef0, type: 2}
   - {fileID: 11400000, guid: 448390ee55fefc5469735e58e2e7f96f, type: 2}
   - {fileID: 11400000, guid: 0be5e1e9305b37541ade9852f529e7a9, type: 2}
   - {fileID: 11400000, guid: db54b5af0947f9546a7e666b37e250cd, type: 2}
-  spriteRenderer: {fileID: 813753172112441309}
-  enemyAnimator: {fileID: 813753172112441299}
-  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!114 &7559855718117537268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,17 +178,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 813753172112441309}
   spriteMask: {fileID: 8591371557590965562}
---- !u!210 &-8051431534695751512
-SortingGroup:
+--- !u!114 &-129862616069341845
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813753172112441310}
   m_Enabled: 1
-  m_SortingLayerID: 1360585385
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a784978fb2e28ad478f78784ada3af9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 813753172112441299}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!114 &8047365522209983519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +205,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 030000000b0000000d000000
+--- !u!210 &-8051431534695751512
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_SortingLayerID: 1360585385
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &3883292311394086353
 GameObject:
   m_ObjectHideFlags: 0

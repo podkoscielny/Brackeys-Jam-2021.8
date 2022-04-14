@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 813753172112441297}
   - component: {fileID: 4258235215177178470}
   - component: {fileID: 213449981646807084}
+  - component: {fileID: 6011389209614235764}
   - component: {fileID: 5302321510237085941}
   m_Layer: 8
   m_Name: HostileCharacter
@@ -220,6 +221,20 @@ MonoBehaviour:
   enemyAnimator: {fileID: 8089543548994752381}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
   score: {fileID: 11400000, guid: b192debd0b035574395f02027545d6d8, type: 2}
+--- !u!114 &6011389209614235764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813753172112441310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a784978fb2e28ad478f78784ada3af9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 8089543548994752381}
+  chaosStarsSystem: {fileID: 11400000, guid: 31bbdbbb19ee332418001904e14ed867, type: 2}
 --- !u!114 &5302321510237085941
 MonoBehaviour:
   m_ObjectHideFlags: 0
