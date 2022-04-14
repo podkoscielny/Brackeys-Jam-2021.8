@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a036119de172142862d6d05b77d7ba, type: 3}
+  m_Name: Policeman_mid_speed
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 5626149497181746903, guid: 5ba18c87909b7c44899156b6b6328eaa, type: 3}
+  gun: {fileID: 11400000, guid: d1b50cfedb2d59a46b420e5ac472bf4d, type: 2}
+  localScale: {x: 0.8, y: 0.8, z: 1}
+  movementSpeed: 5.5
+  animatorController: {fileID: 9100000, guid: 36945ea000cf55c479cff6c0668adb8e, type: 2}

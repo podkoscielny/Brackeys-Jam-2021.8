@@ -20,5 +20,5 @@ MonoBehaviour:
     probability: 0.2
   - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
     probability: 0.3
-  - enemyType: {fileID: 11400000, guid: 6be6034dac73e3d4185788b41c51eaa6, type: 2}
+  - enemyType: {fileID: 11400000, guid: 519bd1522ca492944bddd59a17a3ad7c, type: 2}
     probability: 0.5

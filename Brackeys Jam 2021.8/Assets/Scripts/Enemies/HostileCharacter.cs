@@ -20,8 +20,8 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     private bool _isFacingRight;
     private bool _hasReachedTarget = false;
     private bool _hasGameStarted = false;
+    private float _movementSpeed = 40f;
 
-    private const float MOVEMENT_SPEED = 4f;
     private const float MIN_POSITION_X = -7f;
     private const float MAX_POSITION_X = 7f;
 
@@ -42,7 +42,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     public void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _randomStopPosition, MOVEMENT_SPEED * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _randomStopPosition, _movementSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, _randomStopPosition) < 0.01f && !_hasReachedTarget)
         {
@@ -63,6 +63,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         gunRenderer.sprite = enemy.Gun.GunSprite;
         gun.localScale = enemy.LocalScale;
         firePoint.localPosition = enemy.Gun.FirePoint;
+        _movementSpeed = enemy.MovementSpeed;
         enemyAnimator.runtimeAnimatorController = enemy.AnimatorController;
     }
 
