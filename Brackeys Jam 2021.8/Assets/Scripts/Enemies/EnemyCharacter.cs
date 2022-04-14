@@ -44,8 +44,11 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
     public void HandleExplosion(Vector2 direction)
     {
+        if (_isDown) return;
+
         enemyAnimator.SetTrigger("Explosion");
 
+        _isDown = true;
         _canMove = false;
         _hasExploded = true;
         _explodeDirection = new Vector3(direction.x, direction.y, 0).normalized;
@@ -55,16 +58,15 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 
     public void HandlePoopHit(Vector2 splashPosition)
     {
-        if (!_isDown)
-        {
-            SetSplashEffect(splashPosition);
+        if (_isDown) return;
 
-            score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
-            enemyAnimator.SetTrigger("IsDown");
+        SetSplashEffect(splashPosition);
 
-            _isDown = true;
-            _canMove = false;
-        }
+        score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
+        enemyAnimator.SetTrigger("IsDown");
+
+        _isDown = true;
+        _canMove = false;
     }
 
     private void Explode()
