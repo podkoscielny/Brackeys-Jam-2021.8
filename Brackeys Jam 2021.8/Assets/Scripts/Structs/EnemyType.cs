@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEditor;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public struct EnemyType<T>
@@ -15,9 +16,21 @@ public struct EnemyType<T>
     public EnemyProbability<T>[] EnemyVariants => enemyVariants;
     public float ProbabilitySum => _probabilitySum;
 
-    public void GetRandomEnemy()
+    public T GetRandomEnemy()
     {
-        if (enemyVariants.Length == 0) return;
+        if (enemyVariants.Length == 0) return default(T);
+
+        float randomProbability = Random.Range(0, _probabilitySum);
+        float subtractFromSum = 0;
+
+        foreach (var enemy in enemyVariants)
+        {
+            if (randomProbability - subtractFromSum <= enemy.Probability) return enemy.EnemyType;
+
+            subtractFromSum += enemy.Probability;
+        }
+
+        return enemyVariants[enemyVariants.Length - 1].EnemyType;
     }
 }
 

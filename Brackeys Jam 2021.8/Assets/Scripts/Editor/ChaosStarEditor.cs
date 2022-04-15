@@ -12,7 +12,7 @@ class ChaosStarEditor : Editor
 
         ChaosStar chaosStar = (ChaosStar)target;
 
-        if (!EditorGUIUtility.editingTextField) chaosStar.SortEnemyTypesByProbability();
+        //if (!EditorGUIUtility.editingTextField) chaosStar.SortEnemyTypesByProbability();
     }
 }
 #endif

@@ -23,34 +23,51 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnGameOver += StopSpawnCoroutine;
-        SceneController.OnGameStart += SpawnEnemy;
+        PlayerHealth.OnGameOver += StopSpawnCoroutines;
+        SceneController.OnGameStart += SpawnEnemies;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnGameOver -= StopSpawnCoroutine;
-        SceneController.OnGameStart -= SpawnEnemy;
+        PlayerHealth.OnGameOver -= StopSpawnCoroutines;
+        SceneController.OnGameStart -= SpawnEnemies;
     }
 
-    private void SpawnEnemy() => StartCoroutine(SpawnEnemyCoroutine());
+    private void SpawnEnemies()
+    {
+        StartCoroutine(SpawnHostileCoroutine());
+        StartCoroutine(SpawnNonHostileCoroutine());
+    }
 
-    private IEnumerator SpawnEnemyCoroutine()
+    private IEnumerator SpawnHostileCoroutine()
     {
         while (true)
         {
             ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
             
-            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Enemy).Count;
-            Tags randomEnemyTag = currentChaosStar.GetRandomEnemy();
+            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
 
-            if (objectPool.IsTagInDictionary(randomEnemyTag) && spawnedEnemies < currentChaosStar.HostilesLimit) GetCharacterFromPool(randomEnemyTag);
+            if (objectPool.IsTagInDictionary(Tags.Hostile) && spawnedEnemies < currentChaosStar.HostileEnemies.EnemyLimit) GetCharacterFromPool(Tags.Hostile);
 
-            yield return new WaitForSeconds(currentChaosStar.HostileSpawnRate);
+            yield return new WaitForSeconds(currentChaosStar.HostileEnemies.SpawnRate);
         }
     }
 
-    private void StopSpawnCoroutine() => StopCoroutine(SpawnEnemyCoroutine());
+    private IEnumerator SpawnNonHostileCoroutine()
+    {
+        while (true)
+        {
+            ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
+
+            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Character).Count;
+
+            if (objectPool.IsTagInDictionary(Tags.Character) && spawnedEnemies < currentChaosStar.NonHostileEnemies.EnemyLimit) GetCharacterFromPool(Tags.Character);
+
+            yield return new WaitForSeconds(currentChaosStar.NonHostileEnemies.SpawnRate);
+        }
+    }
+
+    private void StopSpawnCoroutines() => StopAllCoroutines();
 
     private void GetCharacterFromPool(Tags tag)
     {
