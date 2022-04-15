@@ -29,5 +29,5 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].AnimatorController;
     }
 
-    private void SetEnemySpeed() => _movementSpeed = chaosStarsSystem.CurrentChaosStar.LastEnemyPicked.MovementSpeed;
+    private void SetEnemySpeed() => _movementSpeed = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies.GetRandomEnemy().MovementSpeed;
 }

@@ -57,7 +57,7 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
 
     private void SetRandomEnemy()
     {
-        HostileEnemy enemy = (HostileEnemy)chaosStarsSystem.CurrentChaosStar.LastEnemyPicked;
+        HostileEnemy enemy = chaosStarsSystem.CurrentChaosStar.HostileEnemies.GetRandomEnemy(); 
 
         spriteRenderer.sprite = enemy.CharacterSprite;
         gunRenderer.sprite = enemy.Gun.GunSprite;
