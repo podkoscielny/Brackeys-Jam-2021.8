@@ -7,13 +7,15 @@ using Random = UnityEngine.Random;
 public class ChaosStar : ScriptableObject
 {
     [SerializeField] int pointsToReach;
-    [SerializeField] int enemiesLimit;
-    [SerializeField] float enemySpawnRate;
-    [SerializeField] EnemyProbability[] enemyTypes;
+    [SerializeField] int hostilesLimit;
+    [SerializeField] float hostileSpawnRate;
+    [SerializeField] EnemyProbability<EnemySO>[] enemyTypes;
+    [SerializeField] EnemyType<HostileEnemy> hostileEnemies;
+    [SerializeField] EnemyType<NonHostileSO> nonhostileEnemies;
 
     public int PointsToReach => pointsToReach;
-    public int EnemiesLimit => enemiesLimit;
-    public float EnemySpawnRate => enemySpawnRate;
+    public int HostilesLimit => hostilesLimit;
+    public float HostileSpawnRate => hostileSpawnRate;
     public EnemySO LastEnemyPicked { get; private set; }
 
     private float _probabilitySum;
@@ -29,7 +31,7 @@ public class ChaosStar : ScriptableObject
         float randomProbability = Random.Range(0, _probabilitySum);
         float subtractFromSum = 0;
 
-        foreach (EnemyProbability enemy in enemyTypes)
+        foreach (EnemyProbability<EnemySO> enemy in enemyTypes)
         {
             if (randomProbability - subtractFromSum <= enemy.Probability)
             {
@@ -50,7 +52,7 @@ public class ChaosStar : ScriptableObject
     {
         float probability = 0;
 
-        foreach (EnemyProbability enemyType in enemyTypes)
+        foreach (EnemyProbability<EnemySO> enemyType in enemyTypes)
         {
             probability += enemyType.Probability;
         }

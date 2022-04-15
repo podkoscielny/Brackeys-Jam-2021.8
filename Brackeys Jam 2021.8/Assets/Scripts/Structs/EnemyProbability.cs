@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct EnemyProbability
+public struct EnemyProbability<T>
 {
-    [SerializeField] EnemySO enemyType;
+    [SerializeField] T enemyType;
     [Range(0, 1)] [SerializeField] float probability;
 
-    public EnemySO EnemyType => enemyType;
+    public T EnemyType => enemyType;
     public float Probability => probability;
 }
