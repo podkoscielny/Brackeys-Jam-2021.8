@@ -28,7 +28,9 @@ MonoBehaviour:
       probability: 0.3
     - enemyType: {fileID: 11400000, guid: 8d9e25b99bdf6d1428bbdfe2f5d2ccf2, type: 2}
       probability: 0.7
+    _probabilitySum: 1
   nonhostileEnemies:
     enemyLimit: 0
     spawnRate: 0
     enemyVariants: []
+    _probabilitySum: 0

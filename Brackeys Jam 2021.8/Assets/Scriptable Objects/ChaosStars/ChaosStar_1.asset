@@ -26,9 +26,11 @@ MonoBehaviour:
     enemyVariants:
     - enemyType: {fileID: 11400000, guid: 6be6034dac73e3d4185788b41c51eaa6, type: 2}
       probability: 1
+    _probabilitySum: 1
   nonhostileEnemies:
     enemyLimit: 4
     spawnRate: 2
     enemyVariants:
     - enemyType: {fileID: 11400000, guid: b626f50947441f7489a27e64a2eb9be8, type: 2}
       probability: 1
+    _probabilitySum: 1
