@@ -44,6 +44,8 @@ public class EnemiesSpawner : MonoBehaviour
         {
             EnemyType<HostileEnemy> enemyType = chaosStarsSystem.CurrentChaosStar.HostileEnemies;
             
+            if (enemyType.SpawnRate <= 0) yield return new WaitUntil(() => chaosStarsSystem.CurrentChaosStar.HostileEnemies.SpawnRate > 0);
+            
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
 
             if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(enemyTag);
@@ -59,6 +61,8 @@ public class EnemiesSpawner : MonoBehaviour
         while (true)
         {
             EnemyType<NonHostileSO> enemyType = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies;
+            
+            if (enemyType.SpawnRate <= 0) yield return new WaitUntil(() => chaosStarsSystem.CurrentChaosStar.NonHostileEnemies.SpawnRate > 0);
 
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
 
