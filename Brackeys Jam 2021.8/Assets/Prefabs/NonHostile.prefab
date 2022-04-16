@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8047365522209983519}
   - component: {fileID: -8051431534695751512}
   m_Layer: 8
-  m_Name: Character
+  m_Name: NonHostile
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157abfef3aa2e004ea09803ab1db6f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 030000000b0000000d000000
+  tags: 030000000b0000000d0000000e000000
 --- !u!210 &-8051431534695751512
 SortingGroup:
   m_ObjectHideFlags: 0

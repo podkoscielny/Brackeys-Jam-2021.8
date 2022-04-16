@@ -16,5 +16,5 @@ public class HostileEnemy : EnemySO
     public Vector3 LocalScale => localScale;
     public RuntimeAnimatorController AnimatorController => animatorController;
 
-    public override Tags Tag { get; } = Tags.Hostile;
+    public override Tags PoolTag { get; } = Tags.Hostile;
 }

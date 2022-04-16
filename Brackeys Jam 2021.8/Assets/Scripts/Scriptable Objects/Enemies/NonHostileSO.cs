@@ -6,5 +6,5 @@ using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 [CreateAssetMenu(fileName = "NonHostileSO", menuName = "ScriptableObjects/NonHostileSO")]
 public class NonHostileSO : EnemySO
 {
-    public override Tags Tag { get; } = Tags.Character;
+    public override Tags PoolTag { get; } = Tags.Character;
 }

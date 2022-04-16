@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: ObjectPool
   m_EditorClassIdentifier: 
   pools:
-  - tag: 3
+  - tag: 14
     prefab: {fileID: 813753172112441310, guid: 09252f7b1f09c024a9ca9573fc5b8ee8, type: 3}
+    size: 10
+  - tag: 5
+    prefab: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
     size: 10
   - tag: 1
     prefab: {fileID: 7332715859959600718, guid: 026760682ab5e5a4e9385d6830f6e48b, type: 3}
@@ -25,9 +28,6 @@ MonoBehaviour:
   - tag: 4
     prefab: {fileID: 5473719288613799238, guid: ea3720726714df44488a04ec6e331a90, type: 3}
     size: 20
-  - tag: 5
-    prefab: {fileID: 813753172112441310, guid: b7352b57f5453e3458b194435003f9d1, type: 3}
-    size: 10
   - tag: 6
     prefab: {fileID: 2917257354452572864, guid: 996e741fc6e7884448632c904f627ffb, type: 3}
     size: 15

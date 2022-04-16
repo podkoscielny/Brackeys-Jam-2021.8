@@ -24,7 +24,8 @@ namespace AoOkami.MultipleTagSystem
             Life = 10,
             HittableByPoop = 11,
             PoopSpawn = 12,
-            Enemy = 13
+            Enemy = 13,
+            NonHostile = 14
         }
 
         private static Dictionary<Tags, List<GameObject>> _taggedObjects = new Dictionary<Tags, List<GameObject>>();

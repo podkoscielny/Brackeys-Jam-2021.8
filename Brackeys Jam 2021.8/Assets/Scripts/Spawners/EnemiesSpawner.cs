@@ -38,13 +38,15 @@ public class EnemiesSpawner : MonoBehaviour
 
     private IEnumerator SpawnHostileCoroutine()
     {
+        Tags enemyTag = Tags.Hostile;
+
         while (true)
         {
             EnemyType<HostileEnemy> enemyType = chaosStarsSystem.CurrentChaosStar.HostileEnemies;
             
-            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
+            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
 
-            if (objectPool.IsTagInDictionary(Tags.Hostile) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(Tags.Hostile);
+            if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(enemyTag);
 
             yield return new WaitForSeconds(enemyType.SpawnRate);
         }
@@ -52,13 +54,15 @@ public class EnemiesSpawner : MonoBehaviour
 
     private IEnumerator SpawnNonHostileCoroutine()
     {
+        Tags enemyTag = Tags.NonHostile;
+
         while (true)
         {
             EnemyType<NonHostileSO> enemyType = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies;
 
-            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Character).Count;
+            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
 
-            if (objectPool.IsTagInDictionary(Tags.Character) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(Tags.Character);
+            if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(enemyTag);
 
             yield return new WaitForSeconds(enemyType.SpawnRate);
         }
