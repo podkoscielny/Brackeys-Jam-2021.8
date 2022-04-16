@@ -13,5 +13,4 @@ public class ChaosStar : ScriptableObject
     public int PointsToReach => pointsToReach;
     public EnemyType<HostileEnemy> HostileEnemies => hostileEnemies;
     public EnemyType<NonHostileSO> NonHostileEnemies => nonhostileEnemies;
-    public EnemySO LastEnemyPicked { get; private set; }
 }

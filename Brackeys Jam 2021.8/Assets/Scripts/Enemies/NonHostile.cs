@@ -9,7 +9,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
     [SerializeField] HumanCharacter[] humanCharacters;
 
-    private float _movementSpeed = 4f;
+    public float MovementSpeed { get; private set; } = 4f;
 
     private void OnEnable()
     {
@@ -17,7 +17,7 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
         SetEnemySpeed();
     }
 
-    public void Move() => transform.position += _movementSpeed * Time.deltaTime * transform.right;
+    public void Move() => transform.position += MovementSpeed * Time.deltaTime * transform.right;
 
     private void SetRandomSprite()
     {
@@ -29,5 +29,5 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].AnimatorController;
     }
 
-    private void SetEnemySpeed() => _movementSpeed = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies.GetRandomEnemy().MovementSpeed;
+    private void SetEnemySpeed() => MovementSpeed = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies.GetRandomEnemy().MovementSpeed;
 }

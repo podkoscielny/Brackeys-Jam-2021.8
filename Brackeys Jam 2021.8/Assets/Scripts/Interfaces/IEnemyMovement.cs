@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IEnemyMovement
 {
+    public float MovementSpeed { get; }
+
     public void Move();
 }
