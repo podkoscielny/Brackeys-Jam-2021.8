@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AoOkami.MultipleTagSystem;
 using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
+using Random = UnityEngine.Random;
 
 public class EnemiesSpawner : MonoBehaviour
 {
@@ -32,45 +34,27 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        StartCoroutine(SpawnHostileCoroutine());
-        StartCoroutine(SpawnNonHostileCoroutine());
+        StartCoroutine(SpawnEnemyCoroutine(GetNonHostileVaraints, Tags.NonHostile));
+        StartCoroutine(SpawnEnemyCoroutine(GetHostileVaraints, Tags.Hostile));
     }
 
-    private IEnumerator SpawnHostileCoroutine()
+    private IEnumerator SpawnEnemyCoroutine<T>(Func<EnemyType<T>> getEnemyVariantsCallback, Tags enemyTag)
     {
-        Tags enemyTag = Tags.Hostile;
-
         while (true)
         {
-            EnemyType<HostileEnemy> enemyType = chaosStarsSystem.CurrentChaosStar.HostileEnemies;
-            
-            if (enemyType.SpawnRate <= 0) yield return new WaitUntil(() => chaosStarsSystem.CurrentChaosStar.HostileEnemies.SpawnRate > 0);
-            
-            int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
-
-            if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(enemyTag);
-
-            yield return new WaitForSeconds(enemyType.SpawnRate);
-        }
-    }
-
-    private IEnumerator SpawnNonHostileCoroutine()
-    {
-        Tags enemyTag = Tags.NonHostile;
-
-        while (true)
-        {
-            EnemyType<NonHostileSO> enemyType = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies;
-            
-            if (enemyType.SpawnRate <= 0) yield return new WaitUntil(() => chaosStarsSystem.CurrentChaosStar.NonHostileEnemies.SpawnRate > 0);
+            if (getEnemyVariantsCallback.Invoke().SpawnRate <= 0)
+                yield return new WaitUntil(() => getEnemyVariantsCallback.Invoke().SpawnRate > 0);
 
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(enemyTag).Count;
 
-            if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(enemyTag);
+            if (objectPool.IsTagInDictionary(enemyTag) && spawnedEnemies < getEnemyVariantsCallback.Invoke().EnemyLimit) GetCharacterFromPool(enemyTag);
 
-            yield return new WaitForSeconds(enemyType.SpawnRate);
+            yield return new WaitForSeconds(getEnemyVariantsCallback.Invoke().SpawnRate);
         }
     }
+
+    private EnemyType<NonHostileSO> GetNonHostileVaraints() => chaosStarsSystem.CurrentChaosStar.NonHostileEnemies;
+    private EnemyType<HostileEnemy> GetHostileVaraints() => chaosStarsSystem.CurrentChaosStar.HostileEnemies;
 
     private void StopSpawnCoroutines() => StopAllCoroutines();
 
