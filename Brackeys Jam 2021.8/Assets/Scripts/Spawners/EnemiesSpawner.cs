@@ -6,10 +6,7 @@ using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] PickableCoords[] pickableSpawnPositions;
     [SerializeField] ObjectPool objectPool;
-    [SerializeField] PoopSystem poopSystem;
-    [SerializeField] Score score;
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
     private readonly Quaternion RIGHT_ROTATION = new Quaternion(0, 0, 0, 1);
@@ -43,13 +40,13 @@ public class EnemiesSpawner : MonoBehaviour
     {
         while (true)
         {
-            ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
+            EnemyType<HostileEnemy> enemyType = chaosStarsSystem.CurrentChaosStar.HostileEnemies;
             
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Hostile).Count;
 
-            if (objectPool.IsTagInDictionary(Tags.Hostile) && spawnedEnemies < currentChaosStar.HostileEnemies.EnemyLimit) GetCharacterFromPool(Tags.Hostile);
+            if (objectPool.IsTagInDictionary(Tags.Hostile) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(Tags.Hostile);
 
-            yield return new WaitForSeconds(currentChaosStar.HostileEnemies.SpawnRate);
+            yield return new WaitForSeconds(enemyType.SpawnRate);
         }
     }
 
@@ -57,13 +54,13 @@ public class EnemiesSpawner : MonoBehaviour
     {
         while (true)
         {
-            ChaosStar currentChaosStar = chaosStarsSystem.CurrentChaosStar;
+            EnemyType<NonHostileSO> enemyType = chaosStarsSystem.CurrentChaosStar.NonHostileEnemies;
 
             int spawnedEnemies = TagSystem.FindAllGameObjectsWithTag(Tags.Character).Count;
 
-            if (objectPool.IsTagInDictionary(Tags.Character) && spawnedEnemies < currentChaosStar.NonHostileEnemies.EnemyLimit) GetCharacterFromPool(Tags.Character);
+            if (objectPool.IsTagInDictionary(Tags.Character) && spawnedEnemies < enemyType.EnemyLimit) GetCharacterFromPool(Tags.Character);
 
-            yield return new WaitForSeconds(currentChaosStar.NonHostileEnemies.SpawnRate);
+            yield return new WaitForSeconds(enemyType.SpawnRate);
         }
     }
 

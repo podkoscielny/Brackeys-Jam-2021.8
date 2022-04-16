@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
-using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "ChaosStar", menuName = "ScriptableObjects/ChaosStar")]
 public class ChaosStar : ScriptableObject
