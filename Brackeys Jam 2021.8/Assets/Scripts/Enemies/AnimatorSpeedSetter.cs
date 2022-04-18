@@ -11,9 +11,9 @@ public class AnimatorSpeedSetter : MonoBehaviour
 
     private const float BASE_SPEED = 4f;
 
-    private void OnEnable() => SetAnimatorSpeed();
+    private void Awake() => enemyMovement = GetComponent<IEnemyMovement>();
 
-    private void Start() => enemyMovement = GetComponent<IEnemyMovement>();
+    private void OnEnable() => SetAnimatorSpeed();
 
     private void SetAnimatorSpeed()
     {
