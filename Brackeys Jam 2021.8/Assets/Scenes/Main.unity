@@ -827,6 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d6c9f5192ca704a8918829d553752c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1039779762}
   player: {fileID: 554064753}
   cageRenderer: {fileID: 191036050}
 --- !u!1 &288662526
