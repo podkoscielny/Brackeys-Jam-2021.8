@@ -18,3 +18,4 @@ MonoBehaviour:
   size: {x: 4, y: 4, z: 1}
   sprite: {fileID: -6287118868028267826, guid: ce0745ae6d333b6428c8c1b8f40a77bd, type: 3}
   animatorController: {fileID: 9100000, guid: 128243451ef9f8d4891603455519efe8, type: 2}
+  soundEffect: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}

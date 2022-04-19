@@ -10,6 +10,7 @@ public class Explosion : MonoBehaviour
 
     [SerializeField] Animator explosionAnimator;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] AudioSource explosionAudio;
     [SerializeField] LayerMask layerToImpact;
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
@@ -26,6 +27,7 @@ public class Explosion : MonoBehaviour
         {
             SetProperties();
             ExplodeCharactersInRange();
+            PlaySoundEffect();
             OnExplosionSpawaned?.Invoke(_cameraShakeIntensity, _cameraShakeDuration);
         }
         else
@@ -43,11 +45,14 @@ public class Explosion : MonoBehaviour
             spriteRenderer.sprite = currentExplosion.Sprite;
             explosionAnimator.runtimeAnimatorController = currentExplosion.AnimatorController;
             transform.localScale = currentExplosion.Size;
+            explosionAudio.clip = currentExplosion.SoundEffect;
             _explosionRange = currentExplosion.Range;
             _cameraShakeIntensity = currentExplosion.CameraShakeIntensity;
             _cameraShakeDuration = currentExplosion.CameraShakeDuration;
         }
     }
+
+    private void PlaySoundEffect() => explosionAudio.Play();
 
     private void ExplodeCharactersInRange()
     {

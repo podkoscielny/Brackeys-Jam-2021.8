@@ -11,6 +11,7 @@ public class ExplosionType : ScriptableObject
     [SerializeField] Vector3 size;
     [SerializeField] Sprite sprite;
     [SerializeField] RuntimeAnimatorController animatorController;
+    [SerializeField] AudioClip soundEffect;
 
     public float Range => range;
     public float CameraShakeIntensity => cameraShakeIntensity;
@@ -18,4 +19,5 @@ public class ExplosionType : ScriptableObject
     public Vector3 Size => size;
     public Sprite Sprite => sprite;
     public RuntimeAnimatorController AnimatorController => animatorController;
+    public AudioClip SoundEffect => soundEffect;
 }
