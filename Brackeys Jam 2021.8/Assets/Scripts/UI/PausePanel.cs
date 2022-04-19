@@ -18,6 +18,7 @@ public class PausePanel : MonoBehaviour
         PauseGame.OnGamePaused -= EnablePausePanel;
         PauseGame.OnGameResumed -= DisablePausePanel;
     }
+
 #if UNITY_STANDALONE
     private void Update()
     {
