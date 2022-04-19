@@ -5,6 +5,7 @@ using UnityEngine;
 public class PausePanel : MonoBehaviour
 {
     [SerializeField] GameObject pausePanel;
+    [SerializeField] PauseGame pauseGame;
 
     private void OnEnable()
     {
@@ -17,6 +18,12 @@ public class PausePanel : MonoBehaviour
         PauseGame.OnGamePaused -= EnablePausePanel;
         PauseGame.OnGameResumed -= DisablePausePanel;
     }
+#if UNITY_STANDALONE
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) pauseGame.Pause();
+    }
+#endif
 
     private void EnablePausePanel() => pausePanel.SetActive(true);
 
