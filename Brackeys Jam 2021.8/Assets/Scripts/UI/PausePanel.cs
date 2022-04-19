@@ -19,12 +19,10 @@ public class PausePanel : MonoBehaviour
         PauseGame.OnGameResumed -= DisablePausePanel;
     }
 
-#if UNITY_STANDALONE
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) pauseGame.Pause();
     }
-#endif
 
     private void EnablePausePanel() => pausePanel.SetActive(true);
 
