@@ -6,7 +6,7 @@ using TMPro;
 public class Menu : MonoBehaviour
 {
     [SerializeField] Animator sceneAnimator;
-    [SerializeField] SceneController sceneController;
+    [SerializeField] GameObject menuPanel;
     [SerializeField] TextMeshProUGUI startText;
 
     private bool _isSceneLoaded = false;
@@ -20,7 +20,8 @@ public class Menu : MonoBehaviour
     {
         if (Input.anyKey && _isSceneLoaded && !_isKeyPressed)
         {
-            sceneController.GoToGameplay();
+            menuPanel.SetActive(true);
+            startText.gameObject.SetActive(false);
             _isKeyPressed = true;
         }
     }
