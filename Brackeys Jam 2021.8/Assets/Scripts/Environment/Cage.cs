@@ -8,6 +8,7 @@ public class Cage : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] Transform player;
     [SerializeField] SpriteRenderer cageRenderer;
+    [SerializeField] AudioSource cageAudio;
 
     private Color _cageColor = Color.white;
     private Vector3 _impactRotation = new Vector3(0, 0, 5f);
@@ -30,7 +31,13 @@ public class Cage : MonoBehaviour
 
         float targetYPosition = player.position.y + OFFSET_FROM_PLAYER;
 
-        transform.DOMoveY(targetYPosition, FALL_DURATION).SetEase(Ease.InCirc).OnComplete(() => transform.DOPunchRotation(_impactRotation, ROTATION_DURATION));
+        transform.DOMoveY(targetYPosition, FALL_DURATION).SetEase(Ease.InCirc).OnComplete(PunchRotateCage);
+    }
+
+    private void PunchRotateCage()
+    {
+        cageAudio.Play();
+        transform.DOPunchRotation(_impactRotation, ROTATION_DURATION);
     }
 
     private void SpawnCageOutsideCameraView()
