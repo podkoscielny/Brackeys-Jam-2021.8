@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class SceneController : MonoBehaviour
 {
     public static event Action OnGameStart;
@@ -30,10 +34,16 @@ public class SceneController : MonoBehaviour
         HideSceneLoader();
     }
 
-    public void MakeSceneReady()
+    public void QuitGame()
     {
-        OnGameStart?.Invoke();
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
+
+    public void MakeSceneReady() => OnGameStart?.Invoke();
 
     public void LoadScene() => _sceneSetter();
 
