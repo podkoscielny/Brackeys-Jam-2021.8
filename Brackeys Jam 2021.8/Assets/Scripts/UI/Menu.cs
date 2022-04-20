@@ -12,9 +12,9 @@ public class Menu : MonoBehaviour
     private bool _isSceneLoaded = false;
     private bool _isKeyPressed = false;
 
-    void OnEnable() => SceneController.OnGameStart += ShowStartText;
+    void OnEnable() => SceneController.OnSceneTransitionUnveiled += ShowStartText;
 
-    void OnDisable() => SceneController.OnGameStart -= ShowStartText;
+    void OnDisable() => SceneController.OnSceneTransitionUnveiled -= ShowStartText;
 
     void Update()
     {

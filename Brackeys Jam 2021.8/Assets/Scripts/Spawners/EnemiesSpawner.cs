@@ -23,13 +23,13 @@ public class EnemiesSpawner : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnGameOver += StopSpawnCoroutines;
-        SceneController.OnGameStart += SpawnEnemies;
+        SceneController.OnSceneTransitionUnveiled += SpawnEnemies;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnGameOver -= StopSpawnCoroutines;
-        SceneController.OnGameStart -= SpawnEnemies;
+        SceneController.OnSceneTransitionUnveiled -= SpawnEnemies;
     }
 
     private void SpawnEnemies()

@@ -10,7 +10,7 @@ using UnityEditor;
 
 public class SceneController : MonoBehaviour
 {
-    public static event Action OnGameStart;
+    public static event Action OnSceneTransitionUnveiled;
     public static event Action OnSceneChange;
 
     private Animator animator;
@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
 #endif
     }
 
-    public void MakeSceneReady() => OnGameStart?.Invoke(); //Invoke in animation trigger
+    public void MakeSceneReady() => OnSceneTransitionUnveiled?.Invoke(); //Invoke in animation trigger
 
     private void LoadScene(string sceneName)
     {

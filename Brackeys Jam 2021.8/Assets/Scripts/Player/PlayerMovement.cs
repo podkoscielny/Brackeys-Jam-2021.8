@@ -29,13 +29,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneController.OnGameStart += EnableMovement;
+        SceneController.OnSceneTransitionUnveiled += EnableMovement;
         PlayerCollisions.OnHitTaken += DisableMovement;
     }
 
     private void OnDisable()
     {
-        SceneController.OnGameStart -= EnableMovement;
+        SceneController.OnSceneTransitionUnveiled -= EnableMovement;
         PlayerCollisions.OnHitTaken -= DisableMovement;
     }
 
