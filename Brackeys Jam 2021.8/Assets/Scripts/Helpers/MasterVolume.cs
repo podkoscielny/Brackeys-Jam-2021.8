@@ -8,11 +8,10 @@ public static class MasterVolume
 {
     private static Tween _muteTween;
     private static bool _isMuting = false;
-    private static readonly float _changeVolumeDuration = 0.7f;
+    private static readonly float _changeVolumeDuration = 1f;
 
     public static void Mute(Action callback = null)
     {
-        Debug.Log("Mute");
         _isMuting = true;
 
         _muteTween = DOTween.To(() => AudioListener.volume, x => AudioListener.volume = x, 0, _changeVolumeDuration)
@@ -21,7 +20,6 @@ public static class MasterVolume
 
     public static void UnMute()
     {
-        Debug.Log("UnMute");
         if (_isMuting)
         {
             _muteTween.Kill();

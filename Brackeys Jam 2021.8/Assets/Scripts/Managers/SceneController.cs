@@ -15,24 +15,11 @@ public class SceneController : MonoBehaviour
 
     private Animator animator;
 
-    private delegate void SceneSetterDelegate();
-    private SceneSetterDelegate _sceneSetter;
-
     void Start() => animator = GetComponent<Animator>();
 
-    public void GoToMenu()
-    {
-        OnSceneChange?.Invoke();
-        _sceneSetter = LoadMenuScene;
-        HideSceneLoader();
-    }
+    public void GoToMenu() => LoadScene("Menu");
 
-    public void GoToGameplay()
-    {
-        OnSceneChange?.Invoke();
-        _sceneSetter = LoadMainScene;
-        HideSceneLoader();
-    }
+    public void GoToGameplay() => LoadScene("Main");
 
     public void QuitGame()
     {
@@ -43,13 +30,14 @@ public class SceneController : MonoBehaviour
 #endif
     }
 
-    public void MakeSceneReady() => OnGameStart?.Invoke();
+    public void MakeSceneReady() => OnGameStart?.Invoke(); //Invoke in animation trigger
 
-    public void LoadScene() => MasterVolume.Mute(() => _sceneSetter());
-
-    private void LoadMenuScene() => SceneManager.LoadSceneAsync("Menu");
-
-    private void LoadMainScene() => SceneManager.LoadSceneAsync("Main");
+    private void LoadScene(string sceneName)
+    {
+        OnSceneChange?.Invoke();
+        HideSceneLoader();
+        MasterVolume.Mute(() => SceneManager.LoadSceneAsync(sceneName));
+    }
 
     private void HideSceneLoader() => animator.SetTrigger("Hide");
 }
