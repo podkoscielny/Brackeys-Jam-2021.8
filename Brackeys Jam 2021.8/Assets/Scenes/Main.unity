@@ -1327,7 +1327,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 223a3cadf280fec41be2e802f6293f3f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.7
-  m_Pitch: 1.2
+  m_Pitch: 1.4
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -7503,3 +7503,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3574a3082a64ee4dad5d83339166589, type: 3}
+--- !u!1001 &1195126170690874748
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736124, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195126171417736131, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
+      propertyPath: m_Name
+      value: ----Background Music----
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
