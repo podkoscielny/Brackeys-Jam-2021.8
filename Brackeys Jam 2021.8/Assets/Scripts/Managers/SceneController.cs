@@ -45,7 +45,7 @@ public class SceneController : MonoBehaviour
 
     public void MakeSceneReady() => OnGameStart?.Invoke();
 
-    public void LoadScene() => _sceneSetter();
+    public void LoadScene() => MasterVolume.Mute(() => _sceneSetter());
 
     private void LoadMenuScene() => SceneManager.LoadSceneAsync("Menu");
 
