@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e74032d3681e024bbf6f76994f4faa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 39bf72ff3b5b2e642838d5f399929d49, type: 3}
   poopSystem: {fileID: 11400000, guid: d9458e8eeb86c6647a7529d6f0e20be9, type: 2}
 --- !u!95 &2658632217522281179
 Animator:
