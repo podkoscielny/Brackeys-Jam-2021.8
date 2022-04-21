@@ -7,6 +7,8 @@ public class AnimationController : MonoBehaviour, IControlAnimation
 
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D playerRb;
+    [SerializeField] AudioSource playerAudio;
+    [SerializeField] AudioClip jumpSound;
 
     private bool _isGameOver = false;
 
@@ -36,16 +38,24 @@ public class AnimationController : MonoBehaviour, IControlAnimation
     {
         animator.SetTrigger("IsJumping");
         animator.SetBool("IsGrounded", false);
+        PlayJumpSound();
     }
 
     public void OnDoubleJump()
     {
         animator.SetTrigger("IsJumping");
+        PlayJumpSound();
     }
 
     private void SetGameToOver()
     {
         _isGameOver = true;
         animator.SetTrigger("GameOver");
+    }
+
+    private void PlayJumpSound()
+    {
+        playerAudio.clip = jumpSound;
+        playerAudio.Play();
     }
 }

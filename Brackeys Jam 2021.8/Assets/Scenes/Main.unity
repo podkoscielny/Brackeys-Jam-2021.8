@@ -2243,6 +2243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 554064754}
   playerRb: {fileID: 554064758}
+  playerAudio: {fileID: 319365706}
+  jumpSound: {fileID: 8300000, guid: c9fbcc157d4412846b71edb8b1f899a3, type: 3}
 --- !u!114 &554064757
 MonoBehaviour:
   m_ObjectHideFlags: 0
