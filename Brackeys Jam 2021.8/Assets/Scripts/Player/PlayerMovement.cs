@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] CharacterController2D controller;
     [SerializeField] Animator playerAnimator;
-    [SerializeField] AudioSource playerAudio;
     [SerializeField] Transform poopSpawn;
     [SerializeField] Joystick joystick;
     [SerializeField] ObjectPool objectPool;
@@ -83,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         if (!_canShoot) return;
 
         objectPool.GetFromPool(Tags.Poop, poopSpawn.position);
-        playerAudio.Play();
 
         StartCoroutine(DelayShooting());
     }
