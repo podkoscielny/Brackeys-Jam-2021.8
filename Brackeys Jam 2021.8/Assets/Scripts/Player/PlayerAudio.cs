@@ -12,4 +12,9 @@ public class PlayerAudio : MonoBehaviour
         playerAudio.clip = footstepSoundEffect;
         playerAudio.Play();
     }
+
+    public void PlayJumpSound()
+    {
+
+    }
 }
