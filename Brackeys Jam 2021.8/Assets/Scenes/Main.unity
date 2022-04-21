@@ -1321,13 +1321,13 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319365704}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 223a3cadf280fec41be2e802f6293f3f, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1.4
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2145,6 +2145,7 @@ GameObject:
   - component: {fileID: 554064756}
   - component: {fileID: 554064760}
   - component: {fileID: 554064762}
+  - component: {fileID: 554064757}
   - component: {fileID: 554064763}
   - component: {fileID: 554064752}
   m_Layer: 9
@@ -2242,6 +2243,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 554064754}
   playerRb: {fileID: 554064758}
+--- !u!114 &554064757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554064751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a07d712a16d9f249bca4fbfcfb813ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAudio: {fileID: 319365706}
+  footstepSoundEffect: {fileID: 8300000, guid: 45846be178cb75249af330561e0bae0b, type: 3}
 --- !u!50 &554064758
 Rigidbody2D:
   serializedVersion: 4
@@ -2277,7 +2292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 554064755}
   playerAnimator: {fileID: 554064754}
-  playerAudio: {fileID: 319365706}
   poopSpawn: {fileID: 392663328}
   joystick: {fileID: 1396146143}
   objectPool: {fileID: 11400000, guid: 31e4b34d374e2994690d6daad9fdb33c, type: 2}
