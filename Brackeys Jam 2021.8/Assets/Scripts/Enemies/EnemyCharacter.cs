@@ -41,7 +41,10 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         }
     }
 
-    public void PlayFootstepSound() => _enemyAudio.Play(); //Invoke in walk animation
+    public void PlayFootstepSound()//Invoke in walk animation
+    {
+        //_enemyAudio.Play(); 
+    }
 
     public void EnableMoving() => _canMove = true; //Invoke in animation event
 

@@ -9,8 +9,8 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayFootstepSound() //Invoke in walk animation
     {
-        playerAudio.clip = footstepSoundEffect;
-        playerAudio.Play();
+        //playerAudio.clip = footstepSoundEffect;
+        //playerAudio.Play();
     }
 
     public void PlayJumpSound()
