@@ -9,6 +9,8 @@ public class PlayerCollisions : MonoBehaviour
 
     [SerializeField] Animator playerAnimator;
     [SerializeField] Rigidbody2D playerRb;
+    [SerializeField] AudioSource playerAudio;
+    [SerializeField] AudioClip impactSoundEffect;
     [SerializeField] CameraShake cameraShake;
     [SerializeField] PlayerHealth playerHealth;
 
@@ -36,7 +38,14 @@ public class PlayerCollisions : MonoBehaviour
         {
             Vector2 impactDirection = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             HandleHitTaken(playerHitter.PlayerDamageAmount, impactDirection);
+            PlayImpactSound();
         }
+    }
+
+    private void PlayImpactSound()
+    {
+        playerAudio.clip = impactSoundEffect;
+        playerAudio.Play();
     }
 
     private void HandleHitTaken(float damageAmount, Vector2 impactDirection)

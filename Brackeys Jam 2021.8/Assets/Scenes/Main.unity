@@ -2326,6 +2326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 554064754}
   playerRb: {fileID: 554064758}
+  playerAudio: {fileID: 319365706}
+  impactSoundEffect: {fileID: 8300000, guid: 22bb7b7a9de290f48b750797f6dea683, type: 3}
   cameraShake: {fileID: 1039779766}
   playerHealth: {fileID: 11400000, guid: 94b9f6719f2333f49989f3695aeea493, type: 2}
 --- !u!114 &554064763
@@ -7726,7 +7728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195126171417736125, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1195126171417736131, guid: 7961b459fe7f89e44a90740ca0215a60, type: 3}
       propertyPath: m_Name
