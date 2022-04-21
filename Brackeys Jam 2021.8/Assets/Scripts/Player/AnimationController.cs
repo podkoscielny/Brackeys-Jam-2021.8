@@ -43,5 +43,9 @@ public class AnimationController : MonoBehaviour, IControlAnimation
         animator.SetTrigger("IsJumping");
     }
 
-    private void SetGameToOver() => _isGameOver = true;
+    private void SetGameToOver()
+    {
+        _isGameOver = true;
+        animator.SetTrigger("GameOver");
+    }
 }
