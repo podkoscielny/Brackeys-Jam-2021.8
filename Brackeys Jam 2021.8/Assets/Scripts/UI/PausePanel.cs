@@ -7,6 +7,10 @@ public class PausePanel : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] PauseGame pauseGame;
 
+    private float _previousMasterVolume;
+
+    private const float TURNED_DOWN_VOLUME = 0.3f;
+
     private void OnEnable()
     {
         PauseGame.OnGamePaused += EnablePausePanel;
@@ -24,7 +28,18 @@ public class PausePanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) pauseGame.Pause();
     }
 
-    private void EnablePausePanel() => pausePanel.SetActive(true);
+    private void EnablePausePanel()
+    {
+        _previousMasterVolume = AudioListener.volume;
+        MasterVolume.TurnVolumeDown(TURNED_DOWN_VOLUME);
 
-    private void DisablePausePanel() => pausePanel.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    private void DisablePausePanel()
+    {
+        MasterVolume.TurnVolumeUp(_previousMasterVolume);
+
+        pausePanel.SetActive(false);
+    }
 }

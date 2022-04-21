@@ -29,6 +29,10 @@ public static class MasterVolume
         DOTween.To(() => AudioListener.volume, x => AudioListener.volume = x, 1, _changeVolumeDuration);
     }
 
+    public static void TurnVolumeDown(float desiredVolume) => AudioListener.volume = desiredVolume;
+
+    public static void TurnVolumeUp(float desiredVolume) => AudioListener.volume = desiredVolume;
+
     private static void MuteCallback(Action AdditionalCallback = null)
     {
         _isMuting = false;
