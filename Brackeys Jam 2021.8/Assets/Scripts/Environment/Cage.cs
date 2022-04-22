@@ -5,8 +5,11 @@ using DG.Tweening;
 
 public class Cage : MonoBehaviour
 {
+    [Header("Scene Objects")]
     [SerializeField] Camera mainCamera;
     [SerializeField] Transform player;
+
+    [Header("Cage Components")]
     [SerializeField] SpriteRenderer cageRenderer;
     [SerializeField] AudioSource cageAudio;
 
