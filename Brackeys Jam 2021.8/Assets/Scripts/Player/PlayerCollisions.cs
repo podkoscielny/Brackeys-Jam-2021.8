@@ -22,9 +22,17 @@ public class PlayerCollisions : MonoBehaviour
     private const float CAMERA_SHAKE_INTENSITY = 3f;
     private const float CAMERA_SHAKE_DURATION = 0.2f;
 
-    private void OnEnable() => PlayerHealth.OnGameOver += DisableCollisions;
+    private void OnEnable()
+    {
+        PlayerHealth.OnGameOver += DisableCollisions;
+        SceneController.OnSceneChange += DisableCollisions;
+    }
 
-    private void OnDisable() => PlayerHealth.OnGameOver -= DisableCollisions;
+    private void OnDisable()
+    {
+        PlayerHealth.OnGameOver -= DisableCollisions;
+        SceneController.OnSceneChange -= DisableCollisions;
+    }
 
     private void DisableCollisions() => _areCollisionsDisabled = true;
 

@@ -15,16 +15,17 @@ public class PlayerHealth : ScriptableObject
 
     [SerializeField] int maxHealth;
     [SerializeField] float healthValue;
+    [SerializeField] float initialHealth;
 
     public int MAX_HEALTH => maxHealth;
     public float HealthValue => healthValue;
 
-    private float _initialHealth;
     private int _initialMaxHealth;
 
     void OnEnable()
     {
         CacheInitialHealth();
+        ResetHealth();
 
         SceneController.OnSceneChange += ResetHealth;
 
@@ -56,7 +57,7 @@ public class PlayerHealth : ScriptableObject
         }
         else
         {
-            _initialHealth = healthValue;
+            initialHealth = healthValue;
             _initialMaxHealth = maxHealth;
         }
 
@@ -79,15 +80,11 @@ public class PlayerHealth : ScriptableObject
             OnGameOver?.Invoke();
     }
 
-    private void CacheInitialHealth()
-    {
-        _initialHealth = healthValue;
-        _initialMaxHealth = maxHealth;
-    }
+    private void CacheInitialHealth() => _initialMaxHealth = maxHealth;
 
     private void ResetHealth()
     {
-        healthValue = _initialHealth;
+        healthValue = initialHealth;
         maxHealth = _initialMaxHealth;
     }
 
