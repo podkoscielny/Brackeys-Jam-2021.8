@@ -5,10 +5,15 @@ using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Components")]
     [SerializeField] CharacterController2D controller;
     [SerializeField] Animator playerAnimator;
+
+    [Header("Scene Components")]
     [SerializeField] Transform poopSpawn;
     [SerializeField] Joystick joystick;
+
+    [Header("Systems")]
     [SerializeField] ObjectPool objectPool;
 
     private WaitForSeconds _waitForShootDelay;
