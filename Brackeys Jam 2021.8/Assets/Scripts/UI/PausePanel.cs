@@ -5,7 +5,7 @@ using UnityEngine;
 public class PausePanel : MonoBehaviour
 {
     [SerializeField] GameObject pausePanel;
-    [SerializeField] PauseGame pauseGame;
+    [SerializeField] PauseGameSO pauseGame;
 
     private float _previousMasterVolume;
 
@@ -13,14 +13,14 @@ public class PausePanel : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseGame.OnGamePaused += EnablePausePanel;
-        PauseGame.OnGameResumed += DisablePausePanel;
+        PauseGameSO.OnGamePaused += EnablePausePanel;
+        PauseGameSO.OnGameResumed += DisablePausePanel;
     }
 
     private void OnDisable()
     {
-        PauseGame.OnGamePaused -= EnablePausePanel;
-        PauseGame.OnGameResumed -= DisablePausePanel;
+        PauseGameSO.OnGamePaused -= EnablePausePanel;
+        PauseGameSO.OnGameResumed -= DisablePausePanel;
     }
 
     private void Update()

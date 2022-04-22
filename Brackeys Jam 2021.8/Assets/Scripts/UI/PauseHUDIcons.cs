@@ -9,14 +9,14 @@ public class PauseHUDIcons : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseGame.OnGamePaused += EnableResumeIcon;
-        PauseGame.OnGameResumed += EnablePauseIcon;
+        PauseGameSO.OnGamePaused += EnableResumeIcon;
+        PauseGameSO.OnGameResumed += EnablePauseIcon;
     }
 
     private void OnDisable()
     {
-        PauseGame.OnGamePaused -= EnableResumeIcon;
-        PauseGame.OnGameResumed -= EnablePauseIcon;
+        PauseGameSO.OnGamePaused -= EnableResumeIcon;
+        PauseGameSO.OnGameResumed -= EnablePauseIcon;
     }
 
     private void EnablePauseIcon()

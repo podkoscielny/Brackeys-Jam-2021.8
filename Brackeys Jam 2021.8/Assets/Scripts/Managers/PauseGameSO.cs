@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-public class PauseGame : MonoBehaviour
+[CreateAssetMenu(fileName = "PauseGameSO", menuName = "ScriptableObjects/PauseGameSO")]
+public class PauseGameSO : ScriptableObject
 {
     public static event Action OnGamePaused;
     public static event Action OnGameResumed;

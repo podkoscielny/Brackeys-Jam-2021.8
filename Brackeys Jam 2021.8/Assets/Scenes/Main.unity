@@ -361,7 +361,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 111296416}
-  - component: {fileID: 111296417}
   m_Layer: 5
   m_Name: Pause Panel
   m_TagString: Untagged
@@ -393,18 +392,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &111296417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111296415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f61af0ebe734b41bbadc0643d3d1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &151551335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,8 +3453,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 111296417}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
+        m_TargetAssemblyTypeName: PauseGameSO, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -3718,8 +3705,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 111296417}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
+        m_TargetAssemblyTypeName: PauseGameSO, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -4320,7 +4307,6 @@ GameObject:
   - component: {fileID: 1042252781}
   - component: {fileID: 1042252782}
   - component: {fileID: 1042252783}
-  - component: {fileID: 1042252784}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4453,19 +4439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 111296415}
-  pauseGame: {fileID: 1042252784}
---- !u!114 &1042252784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042252776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f61af0ebe734b41bbadc0643d3d1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pauseGame: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
 --- !u!1 &1051415024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4561,8 +4535,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 111296417}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
+        m_TargetAssemblyTypeName: PauseGameSO, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -4966,8 +4940,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1188629595}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
+        m_TargetAssemblyTypeName: PauseGameSO, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -5124,7 +5098,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1188629594}
-  - component: {fileID: 1188629595}
   - component: {fileID: 1188629596}
   m_Layer: 5
   m_Name: Pause
@@ -5154,18 +5127,6 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1188629595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188629593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f61af0ebe734b41bbadc0643d3d1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1188629596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,8 +7129,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1188629595}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: d8484f974bef1584da15de58519d61d9, type: 2}
+        m_TargetAssemblyTypeName: PauseGameSO, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
