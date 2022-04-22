@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
 {
+    [Header("Enemy Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] GameObject splashEffect;
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] GameObject splashEffect;
+
+    [Header("Systems")]
     [SerializeField] PoopSystem poopSystem;
     [SerializeField] Score score;
 
@@ -46,13 +49,12 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     {
         if (_isDown) return;
 
-        enemyAnimator.SetTrigger("Explosion");
-
         _isDown = true;
         _canMove = false;
         _hasExploded = true;
         _explodeDirection = new Vector3(direction.x, direction.y, 0).normalized;
 
+        enemyAnimator.SetTrigger("Explosion");
         score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
     }
 
@@ -60,13 +62,12 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     {
         if (_isDown) return;
 
-        SetSplashEffect(splashPosition);
-
-        score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
-        enemyAnimator.SetTrigger("IsDown");
-
         _isDown = true;
         _canMove = false;
+
+        SetSplashEffect(splashPosition);
+        enemyAnimator.SetTrigger("IsDown");
+        score.AddPoints(poopSystem.CurrentPoop.PointsWorth);
     }
 
     private void Explode()
@@ -105,7 +106,7 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         float splashScaleZ = _splashTransform.localScale.z;
 
         _splashTransform.localScale = new Vector3(splashScaleX, splashScaleY, splashScaleZ);
-
+        
         splashEffect.SetActive(true);
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NonHostile : MonoBehaviour, IEnemyMovement
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
     [SerializeField] HumanCharacter[] humanCharacters;
@@ -25,7 +24,6 @@ public class NonHostile : MonoBehaviour, IEnemyMovement
 
         int characterIndex = Random.Range(0, humanCharacters.Length);
 
-        spriteRenderer.sprite = humanCharacters[characterIndex].Sprite;
         enemyAnimator.runtimeAnimatorController = humanCharacters[characterIndex].AnimatorController;
     }
 

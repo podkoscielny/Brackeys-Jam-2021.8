@@ -4,13 +4,12 @@ using UnityEngine;
 using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class HostileCharacter : MonoBehaviour, IEnemyMovement
-{//Subscribe to SceneController.OnSceneTransitionUnveiled and replace _hasGameStarted
+{
     [Header("Characters Components")]
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] SpriteRenderer gunRenderer;
-    [SerializeField] SpriteRenderer spriteRenderer;
 
     [Header("Systems")]
     [SerializeField] ObjectPool objectPool;
@@ -19,24 +18,23 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
     public float MovementSpeed { get; private set; } = 4f;
 
     private Vector3 _randomStopPosition;
+
     private bool _isFacingRight;
     private bool _hasReachedTarget = false;
-    private bool _hasGameStarted = false;
+    private bool _isBeingInitialized = true;
 
     private const float MIN_POSITION_X = -7f;
     private const float MAX_POSITION_X = 7f;
 
     private void OnEnable()
     {
-        if (!_hasGameStarted)
+        if (_isBeingInitialized)
         {
-            _hasGameStarted = true;
+            _isBeingInitialized = false;
             return;
         }
 
-        _hasReachedTarget = false;
-        _isFacingRight = transform.right.x == 1;
-
+        SetEnemyFacing();
         SetRandomEnemy();
         SetRandomStopPosition();
     }
@@ -52,15 +50,14 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         }
     }
 
-    public void Shoot() => objectPool.GetFromPool(Tags.Bullet, firePoint.position, gun.rotation);
+    public void Shoot() => objectPool.GetFromPool(Tags.Bullet, firePoint.position, gun.rotation); //Invoke in shoot animation
 
-    public void MoveEnemyToPool() => gameObject.SetActive(false);
+    public void MoveEnemyToPool() => gameObject.SetActive(false); //Invoke in death animation
 
     private void SetRandomEnemy()
     {
         HostileEnemy enemy = chaosStarsSystem.CurrentChaosStar.HostileEnemies.GetRandomEnemy(); 
 
-        spriteRenderer.sprite = enemy.CharacterSprite;
         gunRenderer.sprite = enemy.Gun.GunSprite;
         gun.localScale = enemy.LocalScale;
         firePoint.localPosition = enemy.Gun.FirePoint;
@@ -68,7 +65,13 @@ public class HostileCharacter : MonoBehaviour, IEnemyMovement
         enemyAnimator.runtimeAnimatorController = enemy.AnimatorController;
     }
 
-    private void SetRandomStopPosition()
+    private void SetEnemyFacing()
+    {
+        _hasReachedTarget = false;
+        _isFacingRight = transform.right.x == 1;
+    }
+
+    private void SetRandomStopPosition() //Invoke after shoot animation
     {
         float randomPositionX = Random.Range(MIN_POSITION_X, MAX_POSITION_X);
 
