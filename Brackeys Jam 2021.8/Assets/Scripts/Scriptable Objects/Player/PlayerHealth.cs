@@ -20,11 +20,8 @@ public class PlayerHealth : ScriptableObject
     public int MAX_HEALTH => maxHealth;
     public float HealthValue => healthValue;
 
-    private int _initialMaxHealth;
-
     void OnEnable()
     {
-        CacheInitialHealth();
         ResetHealth();
 
         SceneController.OnSceneChange += ResetHealth;
@@ -48,7 +45,7 @@ public class PlayerHealth : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        maxHealth = EditorApplication.isPlaying ? _initialMaxHealth : Mathf.Max(maxHealth, 0);
+        maxHealth = Mathf.Max(maxHealth, 0);
         healthValue = Mathf.Clamp(healthValue, 0, maxHealth);
 
         if (EditorApplication.isPlaying)
@@ -58,7 +55,6 @@ public class PlayerHealth : ScriptableObject
         else
         {
             initialHealth = healthValue;
-            _initialMaxHealth = maxHealth;
         }
 
         if (EditorApplication.isPlaying && healthValue == 0) OnGameOver?.Invoke();
@@ -80,13 +76,7 @@ public class PlayerHealth : ScriptableObject
             OnGameOver?.Invoke();
     }
 
-    private void CacheInitialHealth() => _initialMaxHealth = maxHealth;
-
-    private void ResetHealth()
-    {
-        healthValue = initialHealth;
-        maxHealth = _initialMaxHealth;
-    }
+    private void ResetHealth() => healthValue = initialHealth;
 
 #if UNITY_EDITOR
     private void ResetValuesOnEditorQuit(PlayModeStateChange changedState)
