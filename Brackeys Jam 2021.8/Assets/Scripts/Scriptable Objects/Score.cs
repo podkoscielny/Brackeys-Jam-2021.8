@@ -55,7 +55,7 @@ public class Score : ScriptableObject
     public void AddPoints(int pointsToAdd)
     {
         value += pointsToAdd;
-        OnScoreUpdated.Invoke();
+        OnScoreUpdated?.Invoke();
     }
 
 #if UNITY_EDITOR

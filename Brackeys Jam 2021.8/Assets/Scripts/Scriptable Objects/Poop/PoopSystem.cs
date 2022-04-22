@@ -19,8 +19,16 @@ public class PoopSystem : ScriptableObject
     public int PoopChargeLevel => poopChargeLevel;
     public int ChargeGoal => poopChargeLevel * 3;
     public PoopType CurrentPoop => poopLevels[poopChargeLevel - 1];
-
     public int MAX_POOP_CHARGE_LEVEL => poopLevels.Length;
+
+    public int PointsToNextPoopLevel
+    {
+        get
+        {
+            int index = Mathf.Min(PoopChargeLevel, MAX_POOP_CHARGE_LEVEL - 1);
+            return poopLevels[index].PointsToReach;
+        }
+    }
 
     private int _cornEaten = 0;
 

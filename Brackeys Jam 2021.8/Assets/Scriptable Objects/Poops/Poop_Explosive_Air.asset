@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Poop_Explosive_Air
   m_EditorClassIdentifier: 
   isExplosive: 1
-  pointsWorth: 150
+  pointsWorth: 220
+  pointsToReach: 1800
   poopAnimator: {fileID: 9100000, guid: 9d63c63bb9f8e70459737ca164ebe3ce, type: 2}
   explosionType: {fileID: 11400000, guid: 7a8e72d189831874686daecf9cec4d89, type: 2}

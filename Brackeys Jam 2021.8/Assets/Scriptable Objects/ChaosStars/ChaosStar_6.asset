@@ -12,21 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d44ed77a1eadbb4b838d02b5fd7373e, type: 3}
   m_Name: ChaosStar_6
   m_EditorClassIdentifier: 
-  pointsToReach: 3000
-  hostilesLimit: 0
-  hostileSpawnRate: 0
-  enemyTypes:
-  - enemyType: {fileID: 11400000, guid: 8273998cc69cb7e419017b2e93314fdc, type: 2}
-    probability: 0.5
-  - enemyType: {fileID: 11400000, guid: 8d9e25b99bdf6d1428bbdfe2f5d2ccf2, type: 2}
-    probability: 0.5
+  pointsToReach: 10000
   hostileEnemies:
     enemyLimit: 5
     spawnRate: 2
     enemyVariants:
-    - enemyType: {fileID: 11400000, guid: 8273998cc69cb7e419017b2e93314fdc, type: 2}
-      probability: 0.3
     - enemyType: {fileID: 11400000, guid: 8d9e25b99bdf6d1428bbdfe2f5d2ccf2, type: 2}
+      probability: 0.1
+    - enemyType: {fileID: 11400000, guid: 519bd1522ca492944bddd59a17a3ad7c, type: 2}
+      probability: 0.2
+    - enemyType: {fileID: 11400000, guid: 8273998cc69cb7e419017b2e93314fdc, type: 2}
       probability: 0.7
     _probabilitySum: 1
   nonhostileEnemies:

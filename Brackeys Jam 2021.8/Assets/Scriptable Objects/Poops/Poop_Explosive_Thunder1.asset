@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplosive: 1
   pointsWorth: 500
+  pointsToReach: 10000
   poopAnimator: {fileID: 9100000, guid: 9d63c63bb9f8e70459737ca164ebe3ce, type: 2}
   explosionType: {fileID: 11400000, guid: 07c30b8099b029145b999334ac2723d5, type: 2}
