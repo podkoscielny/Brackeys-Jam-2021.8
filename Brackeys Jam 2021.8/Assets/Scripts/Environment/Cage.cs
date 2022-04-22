@@ -21,9 +21,9 @@ public class Cage : MonoBehaviour
     private const float ROTATION_DURATION = 0.4f;
     private const float OFFSET_FROM_PLAYER = 0.55f;
 
-    private void OnEnable() => AnimationController.OnLanded += MoveToPlayersPosition;
+    private void OnEnable() => AnimationController.OnGameOverLanded += MoveToPlayersPosition;
 
-    private void OnDisable() => AnimationController.OnLanded -= MoveToPlayersPosition;
+    private void OnDisable() => AnimationController.OnGameOverLanded -= MoveToPlayersPosition;
 
     private void Start() => SetCageToTransparent();
 

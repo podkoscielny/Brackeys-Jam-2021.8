@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour, IControlAnimation
 {
-    public static event Action OnLanded;
+    public static event Action OnGameOverLanded;
 
+    [Header("Player components")]
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D playerRb;
+
+    [Header("Audio")]
     [SerializeField] AudioSource playerAudio;
     [SerializeField] AudioClip jumpSound;
 
@@ -18,7 +21,7 @@ public class AnimationController : MonoBehaviour, IControlAnimation
 
     public void OnLanding()
     {
-        if (_isGameOver) OnLanded?.Invoke();
+        if (_isGameOver) OnGameOverLanded?.Invoke();
 
         animator.SetBool("IsGrounded", true);
         playerRb.velocity = new Vector2(0, playerRb.velocity.y);
