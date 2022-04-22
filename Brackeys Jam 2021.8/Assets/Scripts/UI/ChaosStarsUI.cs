@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChaosStarsUI : MonoBehaviour
 {
+    [SerializeField] AudioSource chaosStarsAudio;
     [SerializeField] GameObject chaosStarPrefab;
     [SerializeField] ChaosStarsSystem chaosStarsSystem;
 
@@ -37,5 +38,9 @@ public class ChaosStarsUI : MonoBehaviour
         }
     }
 
-    private void EnableChaosStar() => _chaosStars[chaosStarsSystem.ChaosStarsAmount - 1].SetActive(true);
+    private void EnableChaosStar()
+    {
+        chaosStarsAudio.Play();
+        _chaosStars[chaosStarsSystem.ChaosStarsAmount - 1].SetActive(true);
+    }
 }
