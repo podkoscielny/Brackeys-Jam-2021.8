@@ -6513,10 +6513,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 209474650550196914, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 209474650550196915, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6604,10 +6600,6 @@ PrefabInstance:
     - target: {fileID: 209474650550196919, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}
       propertyPath: m_Name
       value: SceneLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 209474650550196924, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}
-      propertyPath: m_UpdateMode
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f17bfa9eee1a0914cb8526c66f7c3ad5, type: 3}

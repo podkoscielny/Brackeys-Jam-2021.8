@@ -15,6 +15,8 @@ public class Ground : MonoBehaviour
 
     private void SwitchHittableByPoopTag()
     {
+        if (tagManager == null) return;
+
         if (poopSystem.CurrentPoop.IsExplosive)
         {
             tagManager.AddTag(Tags.HittableByPoop);
