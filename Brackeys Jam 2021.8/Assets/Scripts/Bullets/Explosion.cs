@@ -8,10 +8,14 @@ public class Explosion : MonoBehaviour
 {
     public static event Action<float, float> OnExplosionSpawaned;
 
+    [Header("Explosion Components")]
     [SerializeField] Animator explosionAnimator;
-    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] AudioSource explosionAudio;
+
+    [Header("Layer")]
     [SerializeField] LayerMask layerToImpact;
+
+    [Header("Systems")]
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
 
@@ -42,7 +46,6 @@ public class Explosion : MonoBehaviour
 
         if (currentExplosion != null)
         {
-            spriteRenderer.sprite = currentExplosion.Sprite;
             explosionAnimator.runtimeAnimatorController = currentExplosion.AnimatorController;
             transform.localScale = currentExplosion.Size;
             explosionAudio.clip = currentExplosion.SoundEffect;
