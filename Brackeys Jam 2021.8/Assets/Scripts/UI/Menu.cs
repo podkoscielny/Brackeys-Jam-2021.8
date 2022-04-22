@@ -6,6 +6,7 @@ using TMPro;
 public class Menu : MonoBehaviour
 {
     [SerializeField] Animator sceneAnimator;
+    [SerializeField] AudioSource uiAudio;
     [SerializeField] GameObject menuPanel;
     [SerializeField] TextMeshProUGUI startText;
 
@@ -23,6 +24,7 @@ public class Menu : MonoBehaviour
             menuPanel.SetActive(true);
             startText.gameObject.SetActive(false);
             _isKeyPressed = true;
+            uiAudio.Play();
         }
     }
 
