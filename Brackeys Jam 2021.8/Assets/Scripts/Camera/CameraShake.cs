@@ -24,9 +24,9 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(ResetShake(duration));
     }
 
-    IEnumerator ResetShake(float time)
+    IEnumerator ResetShake(float shakeDuration)
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(shakeDuration);
 
         _cinemachineBasicMultiChanelPerlin.m_AmplitudeGain = 0f;
     }

@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
 #if UNITY_ANDROID
         return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, CalculateLinearFunctionValue(0.23f, 3.25f), ref _cameraLensVelocityRef, SMOOTH_TIME);
 #else
-        return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, player.position.y * 0.2943f + 4.5057f, ref _cameraLensVelocityRef, SMOOTH_TIME);
+        return Mathf.SmoothDamp(virtualCamera.m_Lens.OrthographicSize, CalculateLinearFunctionValue(0.2943f, 4.5057f), ref _cameraLensVelocityRef, SMOOTH_TIME);
 #endif
     }
 
@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
 #if UNITY_ANDROID
         offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, CalculateLinearFunctionValue(-0.62f, -0.59f), ref _cameraOffsetVelocityRef, SMOOTH_TIME);
 #else
-        offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, player.position.y * (-0.6724f) + 0.3392f, ref _cameraOffsetVelocityRef, SMOOTH_TIME);
+        offsetY = Mathf.SmoothDamp(_cameraTransposer.m_TrackedObjectOffset.y, CalculateLinearFunctionValue(-0.6724f, 0.3392f), ref _cameraOffsetVelocityRef, SMOOTH_TIME);
 #endif
 
         return new Vector3(0, offsetY, 0);
@@ -46,7 +46,10 @@ public class CameraFollow : MonoBehaviour
 
     private float CalculateLinearFunctionValue(float a, float b)
     {
-        float x = player.position.y > 3 ? 3 : player.position.y;
+        float x = player.position.y;
+#if UNITY_ANDROID
+        x = player.position.y > 3 ? 3 : player.position.y;
+#endif
 
         return x * a + b;
     }
