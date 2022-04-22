@@ -7,11 +7,18 @@ public class PlayerCollisions : MonoBehaviour
 {
     public static event Action OnHitTaken;
 
+    [Header("Player Components")]
     [SerializeField] Animator playerAnimator;
     [SerializeField] Rigidbody2D playerRb;
+
+    [Header("Audio")]
     [SerializeField] AudioSource playerAudio;
     [SerializeField] AudioClip impactSoundEffect;
+
+    [Header("Scene Components")]
     [SerializeField] CameraShake cameraShake;
+
+    [Header("Systems")]
     [SerializeField] PlayerHealth playerHealth;
 
     private bool _areCollisionsDisabled = false;
@@ -34,16 +41,17 @@ public class PlayerCollisions : MonoBehaviour
         SceneController.OnSceneChange -= DisableCollisions;
     }
 
+    public void EnableCollisions() => _areCollisionsDisabled = false; //Invoke in Pigeon_hitTaken animation
+
     private void DisableCollisions() => _areCollisionsDisabled = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_areCollisionsDisabled) return;
 
-        bool isHit = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pigeon_hitTaken");
-
-        if (collision.TryGetComponent(out IPlayerHitter playerHitter) && !isHit)
+        if (collision.TryGetComponent(out IPlayerHitter playerHitter))
         {
+            _areCollisionsDisabled = true;
             Vector2 impactDirection = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             HandleHitTaken(playerHitter.PlayerDamageAmount, impactDirection);
             PlayImpactSound();
@@ -60,7 +68,8 @@ public class PlayerCollisions : MonoBehaviour
     {
         OnHitTaken?.Invoke();
         SetHitAnimation();
-        PushThePlayerOnCollision(impactDirection, damageAmount);
+        PushThePlayerOnCollision(impactDirection);
+        playerHealth.TakeDamage(damageAmount);
         cameraShake.ShakeCamera(CAMERA_SHAKE_INTENSITY, CAMERA_SHAKE_DURATION);
     }
 
@@ -70,11 +79,9 @@ public class PlayerCollisions : MonoBehaviour
         playerAnimator.SetBool("IsJumping", false);
     }
 
-    private void PushThePlayerOnCollision(Vector2 impactDirection, float damageAmount)
+    private void PushThePlayerOnCollision(Vector2 impactDirection)
     {
         playerRb.velocity = Vector2.zero;
         playerRb.AddForce(impactDirection * HIT_FORCE, ForceMode2D.Impulse);
-
-        playerHealth.TakeDamage(damageAmount);
     }
 }
