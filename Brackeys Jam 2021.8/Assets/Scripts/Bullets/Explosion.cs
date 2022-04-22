@@ -19,15 +19,15 @@ public class Explosion : MonoBehaviour
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
 
-    private Vector3 _offset = new Vector3(0, -2f, 0);
-    private bool _isFullyLoaded = false;
+    private bool _isBeingInitialized = true;
     private float _explosionRange = 1.4f;
     private float _cameraShakeIntensity = 0f;
     private float _cameraShakeDuration = 0f;
+    private Vector3 _offset = new Vector3(0, -2f, 0);
 
-    void OnEnable()
+    private void OnEnable()
     {
-        if (_isFullyLoaded)
+        if (!_isBeingInitialized)
         {
             SetProperties();
             ExplodeCharactersInRange();
@@ -35,7 +35,7 @@ public class Explosion : MonoBehaviour
             OnExplosionSpawaned?.Invoke(_cameraShakeIntensity, _cameraShakeDuration);
         }
         else
-            _isFullyLoaded = true;
+            _isBeingInitialized = false;
     }
 
     public void MoveExplosionToPool() => objectPool.AddToPool(Tags.Explosion, gameObject); // Invoke after the animation

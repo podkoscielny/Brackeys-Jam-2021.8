@@ -6,8 +6,11 @@ using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class Poop : MonoBehaviour
 {
+    [Header("Poop Components")]
     [SerializeField] Rigidbody2D poopRb;
     [SerializeField] Animator poopAnimator;
+
+    [Header("Systems")]
     [SerializeField] ObjectPool objectPool;
     [SerializeField] PoopSystem poopSystem;
 
@@ -31,9 +34,5 @@ public class Poop : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SpawnExplosionEffect()
-    {
-        Vector2 explosionPosition = transform.position;
-        objectPool.GetFromPool(Tags.Explosion, explosionPosition);
-    }
+    private void SpawnExplosionEffect() => objectPool.GetFromPool(Tags.Explosion, transform.position);
 }

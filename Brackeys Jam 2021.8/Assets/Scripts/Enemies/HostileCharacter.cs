@@ -4,7 +4,7 @@ using UnityEngine;
 using Tags = AoOkami.MultipleTagSystem.TagSystem.Tags;
 
 public class HostileCharacter : MonoBehaviour, IEnemyMovement
-{
+{//Subscribe to SceneController.OnSceneTransitionUnveiled and replace _hasGameStarted
     [Header("Characters Components")]
     [SerializeField] Transform gun;
     [SerializeField] Transform firePoint;
