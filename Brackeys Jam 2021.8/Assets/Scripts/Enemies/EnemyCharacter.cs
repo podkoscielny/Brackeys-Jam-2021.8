@@ -15,7 +15,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     private Transform _splashTransform;
     private IEnemyMovement _enemyMovement;
     private Vector3 _explodeDirection;
-    private AudioSource _enemyAudio;
 
     private bool _canMove = true;
     private bool _isDown = false;
@@ -39,11 +38,6 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
         {
             Explode();
         }
-    }
-
-    public void PlayFootstepSound()//Invoke in walk animation
-    {
-        //_enemyAudio.Play(); 
     }
 
     public void EnableMoving() => _canMove = true; //Invoke in animation event
@@ -119,6 +113,5 @@ public class EnemyCharacter : MonoBehaviour, IPoopHandler, IPlayerHitter
     {
         _enemyMovement = GetComponent<IEnemyMovement>();
         _splashTransform = splashEffect.transform;
-        _enemyAudio = GetComponent<AudioSource>();
     }
 }

@@ -2162,7 +2162,6 @@ GameObject:
   - component: {fileID: 554064756}
   - component: {fileID: 554064760}
   - component: {fileID: 554064762}
-  - component: {fileID: 554064757}
   - component: {fileID: 554064763}
   - component: {fileID: 554064752}
   m_Layer: 9
@@ -2262,20 +2261,6 @@ MonoBehaviour:
   playerRb: {fileID: 554064758}
   playerAudio: {fileID: 319365706}
   jumpSound: {fileID: 8300000, guid: c9fbcc157d4412846b71edb8b1f899a3, type: 3}
---- !u!114 &554064757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554064751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a07d712a16d9f249bca4fbfcfb813ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAudio: {fileID: 319365706}
-  footstepSoundEffect: {fileID: 8300000, guid: 45846be178cb75249af330561e0bae0b, type: 3}
 --- !u!50 &554064758
 Rigidbody2D:
   serializedVersion: 4
