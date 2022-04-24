@@ -22,9 +22,11 @@ public class PlayerCollisions : MonoBehaviour
     [SerializeField] PlayerHealth playerHealth;
 
     private bool _areCollisionsDisabled = false;
+    private WaitForSeconds _waitForReenableCollisions;
     private Vector2 _impactDirectionRight = new Vector2(1.411f, 0.637f);
     private Vector2 _impactDirectionLeft = new Vector2(-1.411f, 0.637f);
 
+    private const string HIT_ANIMATION_NAME = "Pigeon_hitTaken";
     private const float HIT_FORCE = 6f;
     private const float CAMERA_SHAKE_INTENSITY = 3f;
     private const float CAMERA_SHAKE_DURATION = 0.2f;
@@ -41,9 +43,16 @@ public class PlayerCollisions : MonoBehaviour
         SceneController.OnSceneChange -= DisableCollisions;
     }
 
-    public void EnableCollisions() => _areCollisionsDisabled = false; //Invoke in Pigeon_hitTaken animation
+    private void Start() => CacheHitTakenAnimationDuration();
 
-    private void DisableCollisions() => _areCollisionsDisabled = true;
+    private void CacheHitTakenAnimationDuration()
+    {
+        foreach (var animation in playerAnimator.runtimeAnimatorController.animationClips)
+        {
+            if (animation.name == HIT_ANIMATION_NAME)
+                _waitForReenableCollisions = new WaitForSeconds(animation.averageDuration);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,12 +60,24 @@ public class PlayerCollisions : MonoBehaviour
 
         if (collision.TryGetComponent(out IPlayerHitter playerHitter))
         {
-            _areCollisionsDisabled = true;
             Vector2 impactDirection = transform.position.x > collision.transform.position.x ? _impactDirectionRight : _impactDirectionLeft;
             HandleHitTaken(playerHitter.PlayerDamageAmount, impactDirection);
             PlayImpactSound();
+            DisableCollisions();
+            StartCoroutine(EnableCollisions());
         }
     }
+
+    private IEnumerator EnableCollisions()
+    {
+        yield return _waitForReenableCollisions;
+
+        if (playerHealth.HealthValue <= 0) yield break;
+
+        _areCollisionsDisabled = false;
+    }
+
+    private void DisableCollisions() => _areCollisionsDisabled = true;
 
     private void PlayImpactSound()
     {
